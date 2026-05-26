@@ -1,0 +1,6 @@
+pydantic
+python-pptx
+pydantic-ai
+openai
+google-genai
+requests
