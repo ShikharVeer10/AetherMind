@@ -1,0 +1,516 @@
+{
+    "document_type": "ppt",
+    "document_name": "Gradient_Descent_Presentation.pptx",
+    "slides": [
+        {
+            "slide_number": 1,
+            "title": "Gradient Descent with Linear Approximation",
+            "elements": [
+                {
+                    "id": "slide_1_shape_0",
+                    "type": "text_box",
+                    "text": "Gradient Descent with Linear Approximation",
+                    "position": {
+                        "x": 48.0,
+                        "y": 28.83,
+                        "width": 864.0,
+                        "height": 120.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#ff0000",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Gradient Descent with Linear Approximation"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_1_shape_1",
+                    "type": "text_box",
+                    "text": "A reinforcement learning agent uses a linear value function approximation: V(s) = w1x1 + w2x2\nLearning via gradient descent",
+                    "position": {
+                        "x": 48.0,
+                        "y": 168.0,
+                        "width": 864.0,
+                        "height": 475.17
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "A reinforcement learning agent uses a linear value function approximation: V(s) = w1x1 + w2x2"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Learning via gradient descent"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_1_shape_2",
+                    "type": "shape",
+                    "text": "Given Data",
+                    "position": {
+                        "x": 91.44,
+                        "y": 441.82,
+                        "width": 127.18,
+                        "height": 38.78
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Given Data"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_1_shape_3",
+                    "type": "shape",
+                    "text": "Initial weights: [0.5, -0.2]\nFeatures: [3, 4]\nTarget: 6\nLearning rate: 0.1",
+                    "position": {
+                        "x": 81.28,
+                        "y": 482.99,
+                        "width": 350.72,
+                        "height": 126.02
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Initial weights: [0.5, -0.2]"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Features: [3, 4]"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Target: 6"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Learning rate: 0.1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_1_shape_4",
+                    "type": "shape",
+                    "text": "Compute the predicted value of the state. \nCalculate the error. \nPerform two successive gradient descent updates. \nShow updated weights after each step. \nComment on the learning behavior.",
+                    "position": {
+                        "x": 492.14,
+                        "y": 477.42,
+                        "width": 480.0,
+                        "height": 184.18
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Compute the predicted value of the state."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Calculate the error."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Perform two successive gradient descent updates."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Show updated weights after each step."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Comment on the learning behavior."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "The slide discusses gradient descent with linear approximation in reinforcement learning. Key data includes initial weights [0.5, -0.2], features [3, 4], target 6, and learning rate 0.1. The main message is to compute the predicted state value, calculate the error, and perform successive gradient descent updates to show updated weights and comment on the learning behavior."
+        },
+        {
+            "slide_number": 2,
+            "title": "Step 0: Prediction",
+            "elements": [
+                {
+                    "id": "slide_2_shape_0",
+                    "type": "text_box",
+                    "text": "Step 0: Prediction",
+                    "position": {
+                        "x": 48.0,
+                        "y": 25.88,
+                        "width": 864.0,
+                        "height": 120.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Step 0: Prediction"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_2_shape_1",
+                    "type": "text_box",
+                    "text": "V = 0.5*3 + (-0.2)*4 = 0.7\nCompute Error\nError = T- V= 6 - 0.7 = 5.3",
+                    "position": {
+                        "x": 48.0,
+                        "y": 168.0,
+                        "width": 864.0,
+                        "height": 475.17
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "V = 0.5*3 + (-0.2)*4 = 0.7"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Compute Error"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Error = T- V= 6 - 0.7 = 5.3"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_2_shape_2",
+                    "type": "shape",
+                    "text": "Compute Predicted Value",
+                    "position": {
+                        "x": 75.54,
+                        "y": 168.0,
+                        "width": 463.66,
+                        "height": 61.39
+                    },
+                    "style": {
+                        "font_size": 32.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Compute Predicted Value"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "The slide discusses the prediction step, where the predicted value V is calculated as 0.7 using the formula V = 0.5*3 + (-0.2)*4. The error is then computed as the difference between the target value T (6) and the predicted value V, resulting in an error of 5.3. The key information includes the predicted value (0.7) and the error (5.3), with no decisions made in this step."
+        },
+        {
+            "slide_number": 3,
+            "title": "Step 1: Weight Update",
+            "elements": [
+                {
+                    "id": "slide_3_shape_0",
+                    "type": "text_box",
+                    "text": "Step 1: Weight Update",
+                    "position": {
+                        "x": 27.32,
+                        "y": 14.06,
+                        "width": 864.0,
+                        "height": 78.98
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Step 1: Weight Update"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_1",
+                    "type": "text_box",
+                    "text": "w1 = 2.09,w2 = 1.92\nNew Predicted Value\nV=2.09⋅3+1.92⋅4=6.27+7.68=13.95V\nPrediction = 13.95\nError=6−13.95=−7.95",
+                    "position": {
+                        "x": 48.0,
+                        "y": 168.0,
+                        "width": 864.0,
+                        "height": 539.45
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "w1 = 2.09,w2 = 1.92"
+                            },
+                            {
+                                "level": 0,
+                                "text": "New Predicted Value"
+                            },
+                            {
+                                "level": 0,
+                                "text": "V=2.09⋅3+1.92⋅4=6.27+7.68=13.95V"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Prediction = 13.95"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Error=6−13.95=−7.95"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 48.0,
+                        "y": 94.91,
+                        "width": 650.47,
+                        "height": 305.72
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "The slide outlines Step 1: Weight Update, where weights w1 and w2 are updated to 2.09 and 1.92 respectively. The new predicted value is calculated as 13.95, resulting in an error of -7.95. The key information includes the updated weights, predicted value, and error calculation. No decisions are made in this step, but the updated weights will be used in subsequent steps."
+        },
+        {
+            "slide_number": 4,
+            "title": "Step 2: Weight Update",
+            "elements": [
+                {
+                    "id": "slide_4_shape_0",
+                    "type": "text_box",
+                    "text": "Step 2: Weight Update",
+                    "position": {
+                        "x": 48.0,
+                        "y": 28.83,
+                        "width": 864.0,
+                        "height": 120.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Step 2: Weight Update"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_1",
+                    "type": "text_box",
+                    "text": "w1 = -0.295\nw2 = -1.26",
+                    "position": {
+                        "x": 48.0,
+                        "y": 168.0,
+                        "width": 864.0,
+                        "height": 475.17
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "w1 = -0.295"
+                            },
+                            {
+                                "level": 0,
+                                "text": "w2 = -1.26"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 79.8,
+                        "y": 182.02,
+                        "width": 732.51,
+                        "height": 199.02
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "The main message of this slide is the weight update, with w1 updated to -0.295 and w2 updated to -1.26. These updated weights are the key data points on this slide, and no specific decisions are noted."
+        },
+        {
+            "slide_number": 5,
+            "title": "Conclusion",
+            "elements": [
+                {
+                    "id": "slide_5_shape_0",
+                    "type": "text_box",
+                    "text": "Conclusion",
+                    "position": {
+                        "x": 48.0,
+                        "y": 28.83,
+                        "width": 864.0,
+                        "height": 120.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Conclusion"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_1",
+                    "type": "text_box",
+                    "text": "Learning rate affects convergence\nHigh alpha causes oscillation\nGradual updates improve stability",
+                    "position": {
+                        "x": 48.0,
+                        "y": 168.0,
+                        "width": 864.0,
+                        "height": 475.17
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Learning rate affects convergence"
+                            },
+                            {
+                                "level": 0,
+                                "text": "High alpha causes oscillation"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Gradual updates improve stability"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "In conclusion, the learning rate has a significant impact on convergence. A high alpha value can lead to oscillation, while gradual updates improve stability. Key takeaways include the importance of carefully selecting the learning rate to achieve stable convergence."
+        }
+    ]
+}
