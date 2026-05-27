@@ -32,12 +32,9 @@ class ExtractionService:
             document_model = extractor.extract_document()
             if self.enable_summaries and self.summarization_agent:
                 for slide in document_model.slides:
-                    try:
-                        slide.slide_summary = (
-                            await self.summarization_agent.summarize_slide(slide)
-                        )
-                    except Exception:
-                        slide.slide_summary = None
+                    slide.slide_summary = await self.summarization_agent.summarize_slide(
+                        slide
+                    )
             if self.enable_image_summaries and self.image_summarization_agent:
                 await self._summarize_images(document_model)
             return document_model

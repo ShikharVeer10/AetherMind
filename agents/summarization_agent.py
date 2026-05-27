@@ -7,7 +7,7 @@ class SlideSummaryResponse(BaseModel):
 
 
 slide_summary_agent = Agent(
-    model="google:gemini-2.0-flash",
+    model="groq:llama-3.3-70b-versatile",
     output_type=SlideSummaryResponse,
     system_prompt=(
         """

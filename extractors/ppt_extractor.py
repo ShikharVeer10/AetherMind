@@ -1,8 +1,9 @@
 from pathlib import Path
 from typing import Optional
 from pptx import Presentation
-from pptx.enum.shapes import MSO_SHAPE_TYPE  # Classify the shape
 from pptx.dml.color import RGBColor
+from pptx.enum.dml import MSO_COLOR_TYPE, MSO_FILL
+from pptx.enum.shapes import MSO_SHAPE_TYPE, PP_PLACEHOLDER  # Classify the shape
 from models.document_model import DocumentModel
 from models.document_model import DocumentElementModel
 from models.document_model import SlideModel
@@ -11,6 +12,19 @@ from models.document_model import StyleModel
 
 
 # Extract structured information from ppt presentation
+EMU_PER_INCH = 914400
+PIXELS_PER_INCH = 96
+TITLE_PLACEHOLDER_TYPES = {
+    placeholder
+    for placeholder in (
+        getattr(PP_PLACEHOLDER, "TITLE", None),
+        getattr(PP_PLACEHOLDER, "CENTER_TITLE", None),
+        getattr(PP_PLACEHOLDER, "SUBTITLE", None),
+    )
+    if placeholder is not None
+}
+
+
 class PPTExtractor:
     def __init__(self, pptx_file_path: str):
         self.pptx_file_path = Path(pptx_file_path)
@@ -37,6 +51,10 @@ class PPTExtractor:
         extracted_elements = []
         slide_title: Optional[str] = None
         for index, shape in enumerate(slide.shapes):
+            if slide_title is None:
+                title_text = self.extract_title_text(shape)
+                if title_text:
+                    slide_title = title_text
             extracted_element = self.extract_shape(
                 shape=shape, slide_number=slide_number, shape_index=index
             )
@@ -61,10 +79,10 @@ class PPTExtractor:
 
         # Determine dimensions
         position_model = PositionModel(
-            x=float(shape.left),
-            y=float(shape.top),
-            width=float(shape.width),
-            height=float(shape.height),
+            x=self.emu_to_pixels(shape.left),
+            y=self.emu_to_pixels(shape.top),
+            width=self.emu_to_pixels(shape.width),
+            height=self.emu_to_pixels(shape.height),
         )
 
         style_model = self.extract_text_style(shape=shape)
@@ -81,25 +99,32 @@ class PPTExtractor:
         return element
 
     def get_shape_type(self, shape) -> str:
-        if shape.shape_type == MSO_SHAPE_TYPE.TEXT_BOX:
-            return "text_box"
-        if shape.shape_type == MSO_SHAPE_TYPE.AUTO_SHAPE:
-            shape_name = shape.name.lower()
-            if "arrow" in shape_name:
-                return "arrow"
-            if "rectangle" in shape_name or "box" in shape_name:
-                return "shape"
-            return "shape"
-
-        connector_type = getattr(MSO_SHAPE_TYPE, "CONNECTOR", None)
-        if connector_type is not None and shape.shape_type == connector_type:
-            return "connector"
-        if shape.shape_type == MSO_SHAPE_TYPE.TABLE:
+        if shape.has_table:
             return "table"
         if shape.shape_type == MSO_SHAPE_TYPE.PICTURE:
             return "image"
+        if getattr(shape, "is_connector", False):
+            return "connector"
+        if shape.shape_type == MSO_SHAPE_TYPE.LINE:
+            return "connector"
+        if shape.shape_type == MSO_SHAPE_TYPE.AUTO_SHAPE:
+            auto_shape = getattr(shape, "auto_shape_type", None)
+            auto_shape_name = ""
+            if auto_shape is not None:
+                auto_shape_name = auto_shape.name.lower()
+            elif shape.name:
+                auto_shape_name = shape.name.lower()
+            if "arrow" in auto_shape_name or "chevron" in auto_shape_name:
+                return "arrow"
+            return "shape"
+        if shape.shape_type == MSO_SHAPE_TYPE.TEXT_BOX:
+            return "text_box"
+        if shape.has_text_frame:
+            return "text_box"
+        if shape.shape_type == MSO_SHAPE_TYPE.GROUP:
+            return "group"
 
-        return "unknown"
+        return "shape"
 
     def extract_table_data(self, shape) -> list:
         extracted_rows = []
@@ -120,12 +145,14 @@ class PPTExtractor:
         metadata = {}
         shape_type = self.get_shape_type(shape)
         if shape_type == "table":
-            metadata["table_data"] = self.extract_table_data(shape)
+            table_data = self.extract_table_data(shape)
+            metadata["table_data"] = table_data
+            if table_data:
+                metadata["table_rows"] = len(table_data)
+                metadata["table_columns"] = max(len(row) for row in table_data)
         if shape_type == "image":
-            try:
-                metadata["__image_bytes"] = shape.image.blob
-            except Exception:
-                metadata["__image_bytes"] = None
+            image = getattr(shape, "image", None)
+            metadata["__image_bytes"] = image.blob if image else None
         if shape.has_text_frame:
             metadata["bullet_hierarchy"] = self.extract_bullet_hierarchy(shape)
         return metadata
@@ -151,34 +178,36 @@ class PPTExtractor:
         text_color = None
         background_color = None
 
-        try:
-            # Check for
-            if shape.has_text_frame:
-                paragraphs = shape.text_frame.paragraphs
-                if paragraphs and paragraphs[0].runs:
-                    first_run = paragraphs[0].runs[0]
-                    font = first_run.font
-
-                    if font.size:
+        if shape.has_text_frame:
+            for paragraph in shape.text_frame.paragraphs:
+                for run in paragraph.runs:
+                    font = run.font
+                    if font.size and font_size is None:
                         font_size = float(font.size.pt)
-                    if font.name:
+                    if font.name and font_name is None:
                         font_name = font.name
-                    if font.bold:
+                    if font.bold is True:
                         is_bold = True
-                    if font.italic:
+                    if font.italic is True:
                         is_italic = True
-                    if font.color and font.color.rgb:
-                        text_color = self.convert_rgb_to_hex(font.color.rgb)
+                    if text_color is None:
+                        text_color = self.extract_hex_color(font.color)
 
-        except Exception:
-            pass
+                paragraph_font = paragraph.font
+                if paragraph_font.size and font_size is None:
+                    font_size = float(paragraph_font.size.pt)
+                if paragraph_font.name and font_name is None:
+                    font_name = paragraph_font.name
+                if paragraph_font.bold is True:
+                    is_bold = True
+                if paragraph_font.italic is True:
+                    is_italic = True
+                if text_color is None:
+                    text_color = self.extract_hex_color(paragraph_font.color)
 
-        try:
-            if shape.fill and shape.fill.fore_color and shape.fill.fore_color.rgb:
-                background_color = self.convert_rgb_to_hex(shape.fill.fore_color.rgb)
-
-        except Exception:
-            pass
+        fill = getattr(shape, "fill", None)
+        if fill and fill.type == MSO_FILL.SOLID:
+            background_color = self.extract_hex_color(fill.fore_color)
 
         style_model = StyleModel(
             font_size=font_size,
@@ -197,6 +226,30 @@ class PPTExtractor:
             slide.elements, key=lambda element: (element.position.y, element.position.x)
         )
         return sorted_elements
+
+    @staticmethod
+    def emu_to_pixels(emu: float) -> float:
+        return round((float(emu) / EMU_PER_INCH) * PIXELS_PER_INCH, 2)
+
+    def extract_title_text(self, shape) -> Optional[str]:
+        if not getattr(shape, "is_placeholder", False):
+            return None
+        placeholder_type = getattr(shape.placeholder_format, "type", None)
+        if placeholder_type not in TITLE_PLACEHOLDER_TYPES:
+            return None
+        if not shape.has_text_frame:
+            return None
+        title_text = shape.text_frame.text.strip()
+        return title_text or None
+
+    def extract_hex_color(self, color_format) -> Optional[str]:
+        if not color_format:
+            return None
+        if color_format.type != MSO_COLOR_TYPE.RGB:
+            return None
+        if not color_format.rgb:
+            return None
+        return self.convert_rgb_to_hex(color_format.rgb)
 
     @staticmethod
     def convert_rgb_to_hex(rgb_color: RGBColor) -> str:
