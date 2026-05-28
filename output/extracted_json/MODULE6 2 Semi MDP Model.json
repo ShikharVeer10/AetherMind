@@ -1,0 +1,787 @@
+{
+    "document_type": "ppt",
+    "document_name": "MODULE6 2 Semi MDP Model.pptx",
+    "document_summary": "Slides cover: CSE4037 \nREINFORCEMENT LEARNING\n\nSEMI MDP MODEL; Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours; Markov Decision Process; Markov Decision Process; Markov Decision Process.",
+    "slides": [
+        {
+            "slide_number": 1,
+            "title": "CSE4037 \nREINFORCEMENT LEARNING\n\nSEMI MDP MODEL",
+            "elements": [
+                {
+                    "id": "slide_1_shape_0",
+                    "type": "text_box",
+                    "text": "CSE4037 \nREINFORCEMENT LEARNING\n\nSEMI MDP MODEL",
+                    "position": {
+                        "x": 138.67,
+                        "y": 140.8,
+                        "width": 1097.6,
+                        "height": 420.27
+                    },
+                    "style": {
+                        "font_size": 40.0,
+                        "bold": true,
+                        "italic": false,
+                        "color": "#ff0000",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "CSE4037"
+                            },
+                            {
+                                "level": 0,
+                                "text": "REINFORCEMENT LEARNING"
+                            },
+                            {
+                                "level": 0,
+                                "text": "SEMI MDP MODEL"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_1_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 156.8,
+                        "y": 535.47,
+                        "width": 681.72,
+                        "height": 157.17
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_1_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 875.73,
+                        "y": 10.13,
+                        "width": 392.53,
+                        "height": 220.8
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "CSE4037",
+                    "to": "REINFORCEMENT LEARNING",
+                    "container_element_id": "slide_1_shape_0"
+                },
+                {
+                    "type": "sequence",
+                    "from": "REINFORCEMENT LEARNING",
+                    "to": "SEMI MDP MODEL",
+                    "container_element_id": "slide_1_shape_0"
+                }
+            ],
+            "summary": "CSE4037 \nREINFORCEMENT LEARNING\n\nSEMI MDP MODEL. Key points: CSE4037; REINFORCEMENT LEARNING; SEMI MDP MODEL."
+        },
+        {
+            "slide_number": 2,
+            "title": "Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours",
+            "elements": [
+                {
+                    "id": "slide_2_shape_0",
+                    "type": "text_box",
+                    "text": "Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours",
+                    "position": {
+                        "x": 100.27,
+                        "y": 17.07,
+                        "width": 1160.53,
+                        "height": 210.93
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_2_shape_1",
+                    "type": "text_box",
+                    "text": "Hierarchical Reinforcement Learning\nTypes of Optimality\nSemi MDP Model\nOptions\nLearning with Options\nHierarchical Abstract Machines\nA partially observable Markov decision process.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1054.93,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#000000",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Hierarchical Reinforcement Learning"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Types of Optimality"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Semi MDP Model"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Options"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Learning with Options"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Hierarchical Abstract Machines"
+                            },
+                            {
+                                "level": 0,
+                                "text": "A partially observable Markov decision process."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "Hierarchical Reinforcement Learning",
+                    "to": "Types of Optimality",
+                    "container_element_id": "slide_2_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Types of Optimality",
+                    "to": "Semi MDP Model",
+                    "container_element_id": "slide_2_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Semi MDP Model",
+                    "to": "Options",
+                    "container_element_id": "slide_2_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Options",
+                    "to": "Learning with Options",
+                    "container_element_id": "slide_2_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Learning with Options",
+                    "to": "Hierarchical Abstract Machines",
+                    "container_element_id": "slide_2_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Hierarchical Abstract Machines",
+                    "to": "A partially observable Markov decision process.",
+                    "container_element_id": "slide_2_shape_1"
+                }
+            ],
+            "summary": "Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours. Key points: Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours; Hierarchical Reinforcement Learning; Types of Optimality."
+        },
+        {
+            "slide_number": 3,
+            "title": "Markov Decision Process",
+            "elements": [
+                {
+                    "id": "slide_3_shape_0",
+                    "type": "text_box",
+                    "text": "Markov Decision Process",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": 44.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Markov Decision Process"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_1",
+                    "type": "text_box",
+                    "text": "Markov Decision Process (MDP) is a mathematical formulation of decision making. An agent is the decision maker. In the reinforcement learning framework, he is the learner or the decision maker. \n\nWe need to give this agent information so that it is able to learn to decide. As such, an MDP is a tuple: ⟨𝑆,𝐴,𝑃,𝛾,𝑅⟩ that is (State, Action, Probability Transitions, discount factor, Reward).\n\nIt is basically all you need to know about the problem to be able to make a good decision to optimally perform a task.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 161.07,
+                        "width": 1075.2,
+                        "height": 454.93
+                    },
+                    "style": {
+                        "font_size": 25.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Markov Decision Process (MDP) is a mathematical formulation of decision making. An agent is the decision maker. In the reinforcement learning framework, he is the learner or the decision maker."
+                            },
+                            {
+                                "level": 0,
+                                "text": "We need to give this agent information so that it is able to learn to decide. As such, an MDP is a tuple: ⟨𝑆,𝐴,𝑃,𝛾,𝑅⟩ that is (State, Action, Probability Transitions, discount factor, Reward)."
+                            },
+                            {
+                                "level": 0,
+                                "text": "It is basically all you need to know about the problem to be able to make a good decision to optimally perform a task."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "Markov Decision Process (MDP) is a mathematical formulation of decision making. An agent is the decision maker. In the reinforcement learning framework, he is the learner or the decision maker.",
+                    "to": "We need to give this agent information so that it is able to learn to decide. As such, an MDP is a tuple: ⟨𝑆,𝐴,𝑃,𝛾,𝑅⟩ that is (State, Action, Probability Transitions, discount factor, Reward).",
+                    "container_element_id": "slide_3_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "We need to give this agent information so that it is able to learn to decide. As such, an MDP is a tuple: ⟨𝑆,𝐴,𝑃,𝛾,𝑅⟩ that is (State, Action, Probability Transitions, discount factor, Reward).",
+                    "to": "It is basically all you need to know about the problem to be able to make a good decision to optimally perform a task.",
+                    "container_element_id": "slide_3_shape_1"
+                }
+            ],
+            "summary": "Markov Decision Process. Key points: Markov Decision Process; Markov Decision Process (MDP) is a mathematical formulation of decision making. An agent is the decision maker. In the reinforcement learning framework, he is the learner or the decision maker.; We need to give this agent information so that it is able to learn to decide. As such, an MDP is a tuple: ⟨𝑆,𝐴,𝑃,𝛾,𝑅⟩ that is (State, Action, Probability Transitions, discount factor, Reward).."
+        },
+        {
+            "slide_number": 4,
+            "title": "Markov Decision Process",
+            "elements": [
+                {
+                    "id": "slide_4_shape_0",
+                    "type": "text_box",
+                    "text": "Markov Decision Process",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": 44.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Markov Decision Process"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_1",
+                    "type": "text_box",
+                    "text": "A Markov Decision Process (MDP) is a formal model, used to describe discrete-time stochastic control processes. The MDP model is useful for representing decision-making problems in which an agent can influence the process by executing actions.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#222222",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "A Markov Decision Process (MDP) is a formal model, used to describe discrete-time stochastic control processes. The MDP model is useful for representing decision-making problems in which an agent can influence the process by executing actions."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 96.55,
+                        "y": 423.0,
+                        "width": 1157.98,
+                        "height": 215.93
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "reading_order",
+                    "from": "Markov Decision Process",
+                    "to": "A Markov Decision Process (MDP) is a formal model, used to describe discrete-time stochastic control processes. The MDP ",
+                    "from_element_id": "slide_4_shape_0",
+                    "to_element_id": "slide_4_shape_1",
+                    "direction": "top_to_bottom"
+                }
+            ],
+            "summary": "Markov Decision Process. Key points: Markov Decision Process; A Markov Decision Process (MDP) is a formal model, used to describe discrete-time stochastic control processes. The MDP model is useful for representing decision-making problems in which an agent can influence the process by executing actions.."
+        },
+        {
+            "slide_number": 5,
+            "title": "Markov Decision Process",
+            "elements": [
+                {
+                    "id": "slide_5_shape_0",
+                    "type": "text_box",
+                    "text": "Markov Decision Process",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": 44.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Markov Decision Process"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_5_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 122.0,
+                        "y": 243.5,
+                        "width": 1151.16,
+                        "height": 258.9
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Markov Decision Process. Key points: Markov Decision Process."
+        },
+        {
+            "slide_number": 6,
+            "title": "Markov Decision Process",
+            "elements": [
+                {
+                    "id": "slide_6_shape_0",
+                    "type": "text_box",
+                    "text": "Markov Decision Process",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": 44.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Markov Decision Process"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_6_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_6_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 74.67,
+                        "y": 176.0,
+                        "width": 1188.19,
+                        "height": 501.25
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Markov Decision Process. Key points: Markov Decision Process."
+        },
+        {
+            "slide_number": 7,
+            "title": "MDP Vs SMDP",
+            "elements": [
+                {
+                    "id": "slide_7_shape_0",
+                    "type": "text_box",
+                    "text": "MDP Vs SMDP",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "MDP Vs SMDP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_7_shape_1",
+                    "type": "text_box",
+                    "text": "The MDP framework differs from an SMDP, in that an SMDP allows the length between timesteps to be variable. This is an essential property to support temporally extended actions.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 480.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": 23.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#222222",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "The MDP framework differs from an SMDP, in that an SMDP allows the length between timesteps to be variable. This is an essential property to support temporally extended actions."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_7_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 648.0,
+                        "y": 240.0,
+                        "width": 550.0,
+                        "height": 320.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "reading_order",
+                    "from": "MDP Vs SMDP",
+                    "to": "The MDP framework differs from an SMDP, in that an SMDP allows the length between timesteps to be variable. This is an e",
+                    "from_element_id": "slide_7_shape_0",
+                    "to_element_id": "slide_7_shape_1",
+                    "direction": "top_to_bottom"
+                }
+            ],
+            "summary": "MDP Vs SMDP. Key points: MDP Vs SMDP; The MDP framework differs from an SMDP, in that an SMDP allows the length between timesteps to be variable. This is an essential property to support temporally extended actions.."
+        },
+        {
+            "slide_number": 8,
+            "title": "Semi-Markov Decision Process",
+            "elements": [
+                {
+                    "id": "slide_8_shape_0",
+                    "type": "text_box",
+                    "text": "Semi-Markov Decision Process",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Semi-Markov Decision Process"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_1",
+                    "type": "text_box",
+                    "text": "In order to support variable duration of a single action, the MDP framework has been extended to the Semi-Markov Decision Process (SMDP) framework",
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#222222",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "In order to support variable duration of a single action, the MDP framework has been extended to the Semi-Markov Decision Process (SMDP) framework"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 82.55,
+                        "y": 383.0,
+                        "width": 1166.82,
+                        "height": 101.27
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "reading_order",
+                    "from": "Semi-Markov Decision Process",
+                    "to": "In order to support variable duration of a single action, the MDP framework has been extended to the Semi-Markov Decisio",
+                    "from_element_id": "slide_8_shape_0",
+                    "to_element_id": "slide_8_shape_1",
+                    "direction": "top_to_bottom"
+                }
+            ],
+            "summary": "Semi-Markov Decision Process. Key points: Semi-Markov Decision Process; In order to support variable duration of a single action, the MDP framework has been extended to the Semi-Markov Decision Process (SMDP) framework."
+        },
+        {
+            "slide_number": 9,
+            "title": "Semi-Markov Decision Processes",
+            "elements": [
+                {
+                    "id": "slide_9_shape_0",
+                    "type": "text_box",
+                    "text": "Semi-Markov Decision Processes",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Semi-Markov Decision Processes"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_1",
+                    "type": "text_box",
+                    "text": "It is a semi-MDP because the process is Markovian at the level of decision points/epochs (at the level of the decisions over options) but not at the \"flat\" level. That is, if you don't observe the current choice of options along the trajectories and only see state-action pairs, that process won't be Markovian.\n\nSemi-MDPs are thus used to deal with such problems that involve actions of different levels of abstraction. Hierarchical reinforcement learning (HRL) is a generalization (or extension) of reinforcement learning where the environment is modeled as a semi-MDP.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 203.73,
+                        "width": 1008.0,
+                        "height": 462.93
+                    },
+                    "style": {
+                        "font_size": 25.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#222222",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "It is a semi-MDP because the process is Markovian at the level of decision points/epochs (at the level of the decisions over options) but not at the \"flat\" level. That is, if you don't observe the current choice of options along the trajectories and only see state-action pairs, that process won't be Markovian."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Semi-MDPs are thus used to deal with such problems that involve actions of different levels of abstraction. Hierarchical reinforcement learning (HRL) is a generalization (or extension) of reinforcement learning where the environment is modeled as a semi-MDP."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "It is a semi-MDP because the process is Markovian at the level of decision points/epochs (at the level of the decisions over options) but not at the \"flat\" level. That is, if you don't observe the current choice of options along the trajectories and only see state-action pairs, that process won't be Markovian.",
+                    "to": "Semi-MDPs are thus used to deal with such problems that involve actions of different levels of abstraction. Hierarchical reinforcement learning (HRL) is a generalization (or extension) of reinforcement learning where the environment is modeled as a semi-MDP.",
+                    "container_element_id": "slide_9_shape_1"
+                }
+            ],
+            "summary": "Semi-Markov Decision Processes. Key points: Semi-Markov Decision Processes; It is a semi-MDP because the process is Markovian at the level of decision points/epochs (at the level of the decisions over options) but not at the \"flat\" level. That is, if you don't observe the current choice of options along the trajectories and only see state-action pairs, that process won't be Markovian.; Semi-MDPs are thus used to deal with such problems that involve actions of different levels of abstraction. Hierarchical reinforcement learning (HRL) is a generalization (or extension) of reinforcement learning where the environment is modeled as a semi-MDP.."
+        }
+    ]
+}

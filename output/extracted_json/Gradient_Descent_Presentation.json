@@ -1,6 +1,7 @@
 {
     "document_type": "ppt",
     "document_name": "Gradient_Descent_Presentation.pptx",
+    "document_summary": "Slides cover: Gradient Descent with Linear Approximation; Step 0: Prediction; Step 1: Weight Update; Step 2: Weight Update; Conclusion.",
     "slides": [
         {
             "slide_number": 1,
@@ -169,8 +170,57 @@
                     }
                 }
             ],
-            "relationships": [],
-            "summary": "The slide discusses gradient descent with linear approximation in reinforcement learning. Key data includes initial weights [0.5, -0.2], features [3, 4], target 6, and learning rate 0.1. The main message is to compute the predicted state value, calculate the error, and perform successive gradient descent updates to show updated weights and comment on the learning behavior."
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "A reinforcement learning agent uses a linear value function approximation: V(s) = w1x1 + w2x2",
+                    "to": "Learning via gradient descent",
+                    "container_element_id": "slide_1_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Initial weights: [0.5, -0.2]",
+                    "to": "Features: [3, 4]",
+                    "container_element_id": "slide_1_shape_3"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Features: [3, 4]",
+                    "to": "Target: 6",
+                    "container_element_id": "slide_1_shape_3"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Target: 6",
+                    "to": "Learning rate: 0.1",
+                    "container_element_id": "slide_1_shape_3"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Compute the predicted value of the state.",
+                    "to": "Calculate the error.",
+                    "container_element_id": "slide_1_shape_4"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Calculate the error.",
+                    "to": "Perform two successive gradient descent updates.",
+                    "container_element_id": "slide_1_shape_4"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Perform two successive gradient descent updates.",
+                    "to": "Show updated weights after each step.",
+                    "container_element_id": "slide_1_shape_4"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Show updated weights after each step.",
+                    "to": "Comment on the learning behavior.",
+                    "container_element_id": "slide_1_shape_4"
+                }
+            ],
+            "summary": "Gradient Descent with Linear Approximation. Key points: Gradient Descent with Linear Approximation; A reinforcement learning agent uses a linear value function approximation: V(s) = w1x1 + w2x2; Learning via gradient descent."
         },
         {
             "slide_number": 2,
@@ -263,8 +313,21 @@
                     }
                 }
             ],
-            "relationships": [],
-            "summary": "The slide discusses the prediction step, where the predicted value V is calculated as 0.7 using the formula V = 0.5*3 + (-0.2)*4. The error is then computed as the difference between the target value T (6) and the predicted value V, resulting in an error of 5.3. The key information includes the predicted value (0.7) and the error (5.3), with no decisions made in this step."
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "V = 0.5*3 + (-0.2)*4 = 0.7",
+                    "to": "Compute Error",
+                    "container_element_id": "slide_2_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Compute Error",
+                    "to": "Error = T- V= 6 - 0.7 = 5.3",
+                    "container_element_id": "slide_2_shape_1"
+                }
+            ],
+            "summary": "Step 0: Prediction. Key points: Step 0: Prediction; V = 0.5*3 + (-0.2)*4 = 0.7; Compute Error."
         },
         {
             "slide_number": 3,
@@ -358,8 +421,33 @@
                     "metadata": {}
                 }
             ],
-            "relationships": [],
-            "summary": "The slide outlines Step 1: Weight Update, where weights w1 and w2 are updated to 2.09 and 1.92 respectively. The new predicted value is calculated as 13.95, resulting in an error of -7.95. The key information includes the updated weights, predicted value, and error calculation. No decisions are made in this step, but the updated weights will be used in subsequent steps."
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "w1 = 2.09,w2 = 1.92",
+                    "to": "New Predicted Value",
+                    "container_element_id": "slide_3_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "New Predicted Value",
+                    "to": "V=2.09⋅3+1.92⋅4=6.27+7.68=13.95V",
+                    "container_element_id": "slide_3_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "V=2.09⋅3+1.92⋅4=6.27+7.68=13.95V",
+                    "to": "Prediction = 13.95",
+                    "container_element_id": "slide_3_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Prediction = 13.95",
+                    "to": "Error=6−13.95=−7.95",
+                    "container_element_id": "slide_3_shape_1"
+                }
+            ],
+            "summary": "Step 1: Weight Update. Key points: Step 1: Weight Update; w1 = 2.09,w2 = 1.92; New Predicted Value."
         },
         {
             "slide_number": 4,
@@ -441,8 +529,15 @@
                     "metadata": {}
                 }
             ],
-            "relationships": [],
-            "summary": "The main message of this slide is the weight update, with w1 updated to -0.295 and w2 updated to -1.26. These updated weights are the key data points on this slide, and no specific decisions are noted."
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "w1 = -0.295",
+                    "to": "w2 = -1.26",
+                    "container_element_id": "slide_4_shape_1"
+                }
+            ],
+            "summary": "Step 2: Weight Update. Key points: Step 2: Weight Update; w1 = -0.295; w2 = -1.26."
         },
         {
             "slide_number": 5,
@@ -509,8 +604,21 @@
                     }
                 }
             ],
-            "relationships": [],
-            "summary": "In conclusion, the learning rate has a significant impact on convergence. A high alpha value can lead to oscillation, while gradual updates improve stability. Key takeaways include the importance of carefully selecting the learning rate to achieve stable convergence."
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "Learning rate affects convergence",
+                    "to": "High alpha causes oscillation",
+                    "container_element_id": "slide_5_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "High alpha causes oscillation",
+                    "to": "Gradual updates improve stability",
+                    "container_element_id": "slide_5_shape_1"
+                }
+            ],
+            "summary": "Conclusion. Key points: Conclusion; Learning rate affects convergence; High alpha causes oscillation."
         }
     ]
 }

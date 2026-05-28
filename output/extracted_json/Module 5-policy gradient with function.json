@@ -1,0 +1,1233 @@
+{
+    "document_type": "ppt",
+    "document_name": "Module 5-policy gradient with function.pptx",
+    "document_summary": "Slides cover: CSE4037 \nREINFORCEMENT LEARNING\n\nPOLICY GRADIENT APPROACH \nWITH FUNCTION APPROXIMATION; Module No. 5\u000bFitted Q and DQN– 6 Hours; Function Approximation; Policy gradient + function approximation; Which Function Approximation?.",
+    "slides": [
+        {
+            "slide_number": 1,
+            "title": "CSE4037 \nREINFORCEMENT LEARNING\n\nPOLICY GRADIENT APPROACH \nWITH FUNCTION APPROXIMATION",
+            "elements": [
+                {
+                    "id": "slide_1_shape_0",
+                    "type": "text_box",
+                    "text": "CSE4037 \nREINFORCEMENT LEARNING\n\nPOLICY GRADIENT APPROACH \nWITH FUNCTION APPROXIMATION",
+                    "position": {
+                        "x": 138.67,
+                        "y": 140.8,
+                        "width": 1097.6,
+                        "height": 329.93
+                    },
+                    "style": {
+                        "font_size": 40.0,
+                        "bold": true,
+                        "italic": false,
+                        "color": "#ff0000",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "CSE4037"
+                            },
+                            {
+                                "level": 0,
+                                "text": "REINFORCEMENT LEARNING"
+                            },
+                            {
+                                "level": 0,
+                                "text": "POLICY GRADIENT APPROACH"
+                            },
+                            {
+                                "level": 0,
+                                "text": "WITH FUNCTION APPROXIMATION"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_1_shape_1",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 875.73,
+                        "y": 10.13,
+                        "width": 392.53,
+                        "height": 220.8
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "CSE4037",
+                    "to": "REINFORCEMENT LEARNING",
+                    "container_element_id": "slide_1_shape_0"
+                },
+                {
+                    "type": "sequence",
+                    "from": "REINFORCEMENT LEARNING",
+                    "to": "POLICY GRADIENT APPROACH",
+                    "container_element_id": "slide_1_shape_0"
+                },
+                {
+                    "type": "sequence",
+                    "from": "POLICY GRADIENT APPROACH",
+                    "to": "WITH FUNCTION APPROXIMATION",
+                    "container_element_id": "slide_1_shape_0"
+                }
+            ],
+            "summary": "CSE4037 \nREINFORCEMENT LEARNING\n\nPOLICY GRADIENT APPROACH \nWITH FUNCTION APPROXIMATION. Key points: CSE4037; REINFORCEMENT LEARNING; POLICY GRADIENT APPROACH."
+        },
+        {
+            "slide_number": 2,
+            "title": "Module No. 5\u000bFitted Q and DQN– 6 Hours",
+            "elements": [
+                {
+                    "id": "slide_2_shape_0",
+                    "type": "text_box",
+                    "text": "Module No. 5\u000bFitted Q and DQN– 6 Hours",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Module No. 5\u000bFitted Q and DQN– 6 Hours"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_2_shape_1",
+                    "type": "text_box",
+                    "text": "DQN and Fitted Q iterations\nPolicy Gradient Approach\nPolicy Gradient approach with function approximation",
+                    "position": {
+                        "x": 100.27,
+                        "y": 228.0,
+                        "width": 1133.87,
+                        "height": 386.93
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#000000",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "DQN and Fitted Q iterations"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Policy Gradient Approach"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Policy Gradient approach with function approximation"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "DQN and Fitted Q iterations",
+                    "to": "Policy Gradient Approach",
+                    "container_element_id": "slide_2_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Policy Gradient Approach",
+                    "to": "Policy Gradient approach with function approximation",
+                    "container_element_id": "slide_2_shape_1"
+                }
+            ],
+            "summary": "Module No. 5\u000bFitted Q and DQN– 6 Hours. Key points: Module No. 5\u000bFitted Q and DQN– 6 Hours; DQN and Fitted Q iterations; Policy Gradient Approach."
+        },
+        {
+            "slide_number": 3,
+            "title": "Function Approximation",
+            "elements": [
+                {
+                    "id": "slide_3_shape_0",
+                    "type": "text_box",
+                    "text": "Function Approximation",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": "#242424",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Function Approximation"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_3_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 87.47,
+                        "y": 179.66,
+                        "width": 1184.98,
+                        "height": 428.34
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Function Approximation. Key points: Function Approximation."
+        },
+        {
+            "slide_number": 4,
+            "title": "Policy gradient + function approximation",
+            "elements": [
+                {
+                    "id": "slide_4_shape_0",
+                    "type": "text_box",
+                    "text": "Policy gradient + function approximation",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1090.13,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Policy gradient + function approximation"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_4_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 97.8,
+                        "y": 171.02,
+                        "width": 1175.09,
+                        "height": 433.78
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Policy gradient + function approximation. Key points: Policy gradient + function approximation."
+        },
+        {
+            "slide_number": 5,
+            "title": "Which Function Approximation?",
+            "elements": [
+                {
+                    "id": "slide_5_shape_0",
+                    "type": "text_box",
+                    "text": "Which Function Approximation?",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Which Function Approximation?"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_1",
+                    "type": "text_box",
+                    "text": "There are many function approximators,\nArtificial neural network\nDecision tree\nNearest neighbor\nFourier/wavelet bases\nCoarse coding\nIn principle, any function approximator can be used. However, the choice may be affected by some properties of RL:\nExperience is not – Agent’s action affect the subsequent data it receives\nDuring control, value function V(s) changes with the policy (non-stationary)",
+                    "position": {
+                        "x": 144.0,
+                        "y": 150.4,
+                        "width": 1089.07,
+                        "height": 553.6
+                    },
+                    "style": {
+                        "font_size": 25.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "There are many function approximators,"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Artificial neural network"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Decision tree"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Nearest neighbor"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Fourier/wavelet bases"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Coarse coding"
+                            },
+                            {
+                                "level": 0,
+                                "text": "In principle, any function approximator can be used. However, the choice may be affected by some properties of RL:"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Experience is not – Agent’s action affect the subsequent data it receives"
+                            },
+                            {
+                                "level": 1,
+                                "text": "During control, value function V(s) changes with the policy (non-stationary)"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "There are many function approximators,",
+                    "to": "Artificial neural network",
+                    "container_element_id": "slide_5_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Artificial neural network",
+                    "to": "Decision tree",
+                    "container_element_id": "slide_5_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Decision tree",
+                    "to": "Nearest neighbor",
+                    "container_element_id": "slide_5_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Nearest neighbor",
+                    "to": "Fourier/wavelet bases",
+                    "container_element_id": "slide_5_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Fourier/wavelet bases",
+                    "to": "Coarse coding",
+                    "container_element_id": "slide_5_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Coarse coding",
+                    "to": "In principle, any function approximator can be used. However, the choice may be affected by some properties of RL:",
+                    "container_element_id": "slide_5_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "In principle, any function approximator can be used. However, the choice may be affected by some properties of RL:",
+                    "to": "Experience is not – Agent’s action affect the subsequent data it receives",
+                    "container_element_id": "slide_5_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Experience is not – Agent’s action affect the subsequent data it receives",
+                    "to": "During control, value function V(s) changes with the policy (non-stationary)",
+                    "container_element_id": "slide_5_shape_1"
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "There are many function approximators,",
+                    "to": "Artificial neural network",
+                    "container_element_id": "slide_5_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "There are many function approximators,",
+                    "to": "Decision tree",
+                    "container_element_id": "slide_5_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "There are many function approximators,",
+                    "to": "Nearest neighbor",
+                    "container_element_id": "slide_5_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "There are many function approximators,",
+                    "to": "Fourier/wavelet bases",
+                    "container_element_id": "slide_5_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "There are many function approximators,",
+                    "to": "Coarse coding",
+                    "container_element_id": "slide_5_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "In principle, any function approximator can be used. However, the choice may be affected by some properties of RL:",
+                    "to": "Experience is not – Agent’s action affect the subsequent data it receives",
+                    "container_element_id": "slide_5_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "In principle, any function approximator can be used. However, the choice may be affected by some properties of RL:",
+                    "to": "During control, value function V(s) changes with the policy (non-stationary)",
+                    "container_element_id": "slide_5_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                }
+            ],
+            "summary": "Which Function Approximation?. Key points: Which Function Approximation?; There are many function approximators,; Artificial neural network."
+        },
+        {
+            "slide_number": 6,
+            "title": "Function Approximation",
+            "elements": [
+                {
+                    "id": "slide_6_shape_0",
+                    "type": "text_box",
+                    "text": "Function Approximation",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": "#242424",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Function Approximation"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_6_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_6_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 163.43,
+                        "width": 1026.61,
+                        "height": 529.13
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Function Approximation. Key points: Function Approximation."
+        },
+        {
+            "slide_number": 7,
+            "title": "Function approximation – computing value function",
+            "elements": [
+                {
+                    "id": "slide_7_shape_0",
+                    "type": "text_box",
+                    "text": "Function approximation – computing value function",
+                    "position": {
+                        "x": 144.0,
+                        "y": 8.33,
+                        "width": 1110.4,
+                        "height": 219.67
+                    },
+                    "style": {
+                        "font_size": 42.0,
+                        "bold": true,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Function approximation – computing value function"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_7_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_7_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 125.67,
+                        "width": 973.0,
+                        "height": 586.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Function approximation – computing value function. Key points: Function approximation – computing value function."
+        },
+        {
+            "slide_number": 8,
+            "title": "How to improve the policy?",
+            "elements": [
+                {
+                    "id": "slide_8_shape_0",
+                    "type": "text_box",
+                    "text": "How to improve the policy?",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "How to improve the policy?"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_8_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 30.0,
+                        "y": 184.0,
+                        "width": 1250.0,
+                        "height": 464.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "How to improve the policy?. Key points: How to improve the policy?."
+        },
+        {
+            "slide_number": 9,
+            "title": "Function approximation idea – generalization and efficiency\nGradient descent approximation to estimate value/\n    Q functions\nGradient descent to optimize the optimal Q-function directly",
+            "elements": [
+                {
+                    "id": "slide_9_shape_0",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_9_shape_1",
+                    "type": "text_box",
+                    "text": "Function approximation idea – generalization and efficiency\nGradient descent approximation to estimate value/\n    Q functions\nGradient descent to optimize the optimal Q-function directly",
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1094.4,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": 30.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Function approximation idea – generalization and efficiency"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Gradient descent approximation to estimate value/"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Q functions"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Gradient descent to optimize the optimal Q-function directly"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "Function approximation idea – generalization and efficiency",
+                    "to": "Gradient descent approximation to estimate value/",
+                    "container_element_id": "slide_9_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Gradient descent approximation to estimate value/",
+                    "to": "Q functions",
+                    "container_element_id": "slide_9_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Q functions",
+                    "to": "Gradient descent to optimize the optimal Q-function directly",
+                    "container_element_id": "slide_9_shape_1"
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "Function approximation idea – generalization and efficiency",
+                    "to": "Gradient descent approximation to estimate value/",
+                    "container_element_id": "slide_9_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "Function approximation idea – generalization and efficiency",
+                    "to": "Q functions",
+                    "container_element_id": "slide_9_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                },
+                {
+                    "type": "hierarchy",
+                    "from": "Function approximation idea – generalization and efficiency",
+                    "to": "Gradient descent to optimize the optimal Q-function directly",
+                    "container_element_id": "slide_9_shape_1",
+                    "from_level": 0,
+                    "to_level": 1
+                }
+            ],
+            "summary": "Function approximation idea – generalization and efficiency\nGradient descent approximation to estimate value/\n    Q functions\nGradient descent to optimize the optimal Q-function directly. Key points: Function approximation idea – generalization and efficiency; Gradient descent approximation to estimate value/; Q functions."
+        },
+        {
+            "slide_number": 10,
+            "title": "Policy gradient algorithm for approximate MDP",
+            "elements": [
+                {
+                    "id": "slide_10_shape_0",
+                    "type": "text_box",
+                    "text": "Policy gradient algorithm for approximate MDP",
+                    "position": {
+                        "x": 144.0,
+                        "y": 25.6,
+                        "width": 1079.47,
+                        "height": 202.4
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Policy gradient algorithm for approximate MDP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_10_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 99.77,
+                        "y": 201.77,
+                        "width": 1170.69,
+                        "height": 506.5
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Policy gradient algorithm for approximate MDP. Key points: Policy gradient algorithm for approximate MDP."
+        },
+        {
+            "slide_number": 11,
+            "title": "Policy gradient without a gradient",
+            "elements": [
+                {
+                    "id": "slide_11_shape_0",
+                    "type": "text_box",
+                    "text": "Policy gradient without a gradient",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Policy gradient without a gradient"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_11_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_11_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 150.0,
+                        "width": 1098.37,
+                        "height": 548.67
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Policy gradient without a gradient. Key points: Policy gradient without a gradient."
+        },
+        {
+            "slide_number": 12,
+            "title": "Gradient descent without a gradient",
+            "elements": [
+                {
+                    "id": "slide_12_shape_0",
+                    "type": "text_box",
+                    "text": "Gradient descent without a gradient",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Gradient descent without a gradient"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_12_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_12_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 182.13,
+                        "width": 1036.8,
+                        "height": 512.36
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Gradient descent without a gradient. Key points: Gradient descent without a gradient."
+        },
+        {
+            "slide_number": 13,
+            "title": "Gradient descent without a gradient",
+            "elements": [
+                {
+                    "id": "slide_13_shape_0",
+                    "type": "text_box",
+                    "text": "Gradient descent without a gradient",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Gradient descent without a gradient"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_13_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_13_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 97.53,
+                        "y": 158.43,
+                        "width": 1168.7,
+                        "height": 510.24
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Gradient descent without a gradient. Key points: Gradient descent without a gradient."
+        },
+        {
+            "slide_number": 14,
+            "title": null,
+            "elements": [
+                {
+                    "id": "slide_14_shape_0",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_14_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_14_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 230.5,
+                        "y": 36.0,
+                        "width": 819.0,
+                        "height": 136.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_14_shape_3",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 231.0,
+                        "y": 196.03,
+                        "width": 818.0,
+                        "height": 441.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Slide contains no extractable text."
+        }
+    ]
+}
