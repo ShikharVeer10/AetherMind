@@ -111,7 +111,10 @@ class PPTExtractor:
             auto_shape = getattr(shape, "auto_shape_type", None)
             auto_shape_name = ""
             if auto_shape is not None:
-                auto_shape_name = auto_shape.name.lower()
+                auto_shape_label = getattr(auto_shape, "name", None)
+                if auto_shape_label is None:
+                    auto_shape_label = str(auto_shape)
+                auto_shape_name = str(auto_shape_label).lower()
             elif shape.name:
                 auto_shape_name = shape.name.lower()
             if "arrow" in auto_shape_name or "chevron" in auto_shape_name:

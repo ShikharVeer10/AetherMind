@@ -1,0 +1,1400 @@
+{
+    "document_type": "ppt",
+    "document_name": "Module 5-DQN and Fitted Q.pptx",
+    "document_summary": "Slides cover: CSE4037 \nREINFORCEMENT LEARNING\n\nDQN and Fitted Q iterations; Module No. 5\u000bFitted Q and DQN– 6 Hours; DQN and Fitted Q iterations; Fitted Q iterations; Fitted Q iterations.",
+    "slides": [
+        {
+            "slide_number": 1,
+            "title": "CSE4037 \nREINFORCEMENT LEARNING\n\nDQN and Fitted Q iterations",
+            "elements": [
+                {
+                    "id": "slide_1_shape_0",
+                    "type": "text_box",
+                    "text": "CSE4037 \nREINFORCEMENT LEARNING\n\nDQN and Fitted Q iterations",
+                    "position": {
+                        "x": 138.67,
+                        "y": 140.8,
+                        "width": 1097.6,
+                        "height": 329.93
+                    },
+                    "style": {
+                        "font_size": 40.0,
+                        "bold": true,
+                        "italic": false,
+                        "color": "#ff0000",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "CSE4037"
+                            },
+                            {
+                                "level": 0,
+                                "text": "REINFORCEMENT LEARNING"
+                            },
+                            {
+                                "level": 0,
+                                "text": "DQN and Fitted Q iterations"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_1_shape_1",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 875.73,
+                        "y": 10.13,
+                        "width": 392.53,
+                        "height": 220.8
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "CSE4037",
+                    "to": "REINFORCEMENT LEARNING",
+                    "container_element_id": "slide_1_shape_0"
+                },
+                {
+                    "type": "sequence",
+                    "from": "REINFORCEMENT LEARNING",
+                    "to": "DQN and Fitted Q iterations",
+                    "container_element_id": "slide_1_shape_0"
+                }
+            ],
+            "summary": "CSE4037 \nREINFORCEMENT LEARNING\n\nDQN and Fitted Q iterations. Key points: CSE4037; REINFORCEMENT LEARNING; DQN and Fitted Q iterations."
+        },
+        {
+            "slide_number": 2,
+            "title": "Module No. 5\u000bFitted Q and DQN– 6 Hours",
+            "elements": [
+                {
+                    "id": "slide_2_shape_0",
+                    "type": "text_box",
+                    "text": "Module No. 5\u000bFitted Q and DQN– 6 Hours",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Module No. 5\u000bFitted Q and DQN– 6 Hours"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_2_shape_1",
+                    "type": "text_box",
+                    "text": "DQN and Fitted Q iterations\nPolicy Gradient Approach\nPolicy Gradient approach with function approximation",
+                    "position": {
+                        "x": 100.27,
+                        "y": 228.0,
+                        "width": 1133.87,
+                        "height": 386.93
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#000000",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "DQN and Fitted Q iterations"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Policy Gradient Approach"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Policy Gradient approach with function approximation"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "DQN and Fitted Q iterations",
+                    "to": "Policy Gradient Approach",
+                    "container_element_id": "slide_2_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Policy Gradient Approach",
+                    "to": "Policy Gradient approach with function approximation",
+                    "container_element_id": "slide_2_shape_1"
+                }
+            ],
+            "summary": "Module No. 5\u000bFitted Q and DQN– 6 Hours. Key points: Module No. 5\u000bFitted Q and DQN– 6 Hours; DQN and Fitted Q iterations; Policy Gradient Approach."
+        },
+        {
+            "slide_number": 3,
+            "title": "DQN and Fitted Q iterations",
+            "elements": [
+                {
+                    "id": "slide_3_shape_0",
+                    "type": "text_box",
+                    "text": "DQN and Fitted Q iterations",
+                    "position": {
+                        "x": 136.0,
+                        "y": 53.33,
+                        "width": 1008.0,
+                        "height": 204.53
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "DQN and Fitted Q iterations"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_1",
+                    "type": "text_box",
+                    "text": "To get the target value, DQN uses the target network, though fitted Q iteration uses the current policy.\n\nActually, Neural Fitted Q Iteration is considered as a batch-RL algorithm.\n\nDeep Q Network (DQN) builds on Fitted Q-Iteration (FQI) and make use of different tricks to stabilize the learning with neural networks: it uses a replay buffer, a target network and gradient clipping.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 177.07,
+                        "width": 1085.87,
+                        "height": 489.6
+                    },
+                    "style": {
+                        "font_size": 26.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#040c28",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "To get the target value, DQN uses the target network, though fitted Q iteration uses the current policy."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Actually, Neural Fitted Q Iteration is considered as a batch-RL algorithm."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Deep Q Network (DQN) builds on Fitted Q-Iteration (FQI) and make use of different tricks to stabilize the learning with neural networks: it uses a replay buffer, a target network and gradient clipping."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "To get the target value, DQN uses the target network, though fitted Q iteration uses the current policy.",
+                    "to": "Actually, Neural Fitted Q Iteration is considered as a batch-RL algorithm.",
+                    "container_element_id": "slide_3_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Actually, Neural Fitted Q Iteration is considered as a batch-RL algorithm.",
+                    "to": "Deep Q Network (DQN) builds on Fitted Q-Iteration (FQI) and make use of different tricks to stabilize the learning with neural networks: it uses a replay buffer, a target network and gradient clipping.",
+                    "container_element_id": "slide_3_shape_1"
+                }
+            ],
+            "summary": "DQN and Fitted Q iterations. Key points: DQN and Fitted Q iterations; To get the target value, DQN uses the target network, though fitted Q iteration uses the current policy.; Actually, Neural Fitted Q Iteration is considered as a batch-RL algorithm.."
+        },
+        {
+            "slide_number": 4,
+            "title": "Fitted Q iterations",
+            "elements": [
+                {
+                    "id": "slide_4_shape_0",
+                    "type": "text_box",
+                    "text": "Fitted Q iterations",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Fitted Q iterations"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_1",
+                    "type": "text_box",
+                    "text": "The Fitted Q-Network (FQN) algorithm is a model-free, off-policy, batch reinforcement learning (RL) method. \nLike other neural-network based algorithms, FQN uses neural networks to approximate a system’s state-action value function (Q-function). \nIn other words, the Q-function takes a state-action pair and returns a Q-value to assess the quality of the action when performed in the given state. \nChoosing an action that maximizes Q for a given state yields the agent’s optimal policy.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 182.4,
+                        "width": 1008.0,
+                        "height": 480.0
+                    },
+                    "style": {
+                        "font_size": 25.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1b1d22",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "The Fitted Q-Network (FQN) algorithm is a model-free, off-policy, batch reinforcement learning (RL) method."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Like other neural-network based algorithms, FQN uses neural networks to approximate a system’s state-action value function (Q-function)."
+                            },
+                            {
+                                "level": 0,
+                                "text": "In other words, the Q-function takes a state-action pair and returns a Q-value to assess the quality of the action when performed in the given state."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Choosing an action that maximizes Q for a given state yields the agent’s optimal policy."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "The Fitted Q-Network (FQN) algorithm is a model-free, off-policy, batch reinforcement learning (RL) method.",
+                    "to": "Like other neural-network based algorithms, FQN uses neural networks to approximate a system’s state-action value function (Q-function).",
+                    "container_element_id": "slide_4_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Like other neural-network based algorithms, FQN uses neural networks to approximate a system’s state-action value function (Q-function).",
+                    "to": "In other words, the Q-function takes a state-action pair and returns a Q-value to assess the quality of the action when performed in the given state.",
+                    "container_element_id": "slide_4_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "In other words, the Q-function takes a state-action pair and returns a Q-value to assess the quality of the action when performed in the given state.",
+                    "to": "Choosing an action that maximizes Q for a given state yields the agent’s optimal policy.",
+                    "container_element_id": "slide_4_shape_1"
+                }
+            ],
+            "summary": "Fitted Q iterations. Key points: Fitted Q iterations; The Fitted Q-Network (FQN) algorithm is a model-free, off-policy, batch reinforcement learning (RL) method.; Like other neural-network based algorithms, FQN uses neural networks to approximate a system’s state-action value function (Q-function).."
+        },
+        {
+            "slide_number": 5,
+            "title": "Fitted Q iterations",
+            "elements": [
+                {
+                    "id": "slide_5_shape_0",
+                    "type": "text_box",
+                    "text": "Fitted Q iterations",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Fitted Q iterations"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_1",
+                    "type": "text_box",
+                    "text": "In practice, the Q-function is generally unknown and only approximations are available. FQN is a method that approximates a Q-function by using a neural network to learn from data.\n\nAs a batch RL method, FQN relies on a fixed set of experiences for training. Once trained, the neural network can be scored, and a value of Q is produced for each state-action pair in the input data set.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": 25.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1b1d22",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "In practice, the Q-function is generally unknown and only approximations are available. FQN is a method that approximates a Q-function by using a neural network to learn from data."
+                            },
+                            {
+                                "level": 0,
+                                "text": "As a batch RL method, FQN relies on a fixed set of experiences for training. Once trained, the neural network can be scored, and a value of Q is produced for each state-action pair in the input data set."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "In practice, the Q-function is generally unknown and only approximations are available. FQN is a method that approximates a Q-function by using a neural network to learn from data.",
+                    "to": "As a batch RL method, FQN relies on a fixed set of experiences for training. Once trained, the neural network can be scored, and a value of Q is produced for each state-action pair in the input data set.",
+                    "container_element_id": "slide_5_shape_1"
+                }
+            ],
+            "summary": "Fitted Q iterations. Key points: Fitted Q iterations; In practice, the Q-function is generally unknown and only approximations are available. FQN is a method that approximates a Q-function by using a neural network to learn from data.; As a batch RL method, FQN relies on a fixed set of experiences for training. Once trained, the neural network can be scored, and a value of Q is produced for each state-action pair in the input data set.."
+        },
+        {
+            "slide_number": 6,
+            "title": "FQN Algorithm",
+            "elements": [
+                {
+                    "id": "slide_6_shape_0",
+                    "type": "text_box",
+                    "text": "FQN Algorithm",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": "#1b1d22",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "FQN Algorithm"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_6_shape_1",
+                    "type": "text_box",
+                    "text": "The FQN algorithm is an extension of the Fitted Q-Iteration (FQI) algorithm. \n\nThis approach applies many ideas of Neural Fitted Q-Iteration (NFQ) and Deep Q-Networks (DQN) to train a neural network to approximate the state-action value function. \n\nFQN trains a network on a fixed set D of (s,a,r,s’) that is (state, action, immediate reward, successor state) tuples. During training, FQN minimizes the squared differences of the network estimated Q-values and a target network Q-values. The following steps illustrate the general training approach.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 180.27,
+                        "width": 1008.0,
+                        "height": 496.0
+                    },
+                    "style": {
+                        "font_size": 25.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "The FQN algorithm is an extension of the Fitted Q-Iteration (FQI) algorithm."
+                            },
+                            {
+                                "level": 0,
+                                "text": "This approach applies many ideas of Neural Fitted Q-Iteration (NFQ) and Deep Q-Networks (DQN) to train a neural network to approximate the state-action value function."
+                            },
+                            {
+                                "level": 0,
+                                "text": "FQN trains a network on a fixed set D of (s,a,r,s’) that is (state, action, immediate reward, successor state) tuples. During training, FQN minimizes the squared differences of the network estimated Q-values and a target network Q-values. The following steps illustrate the general training approach."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "The FQN algorithm is an extension of the Fitted Q-Iteration (FQI) algorithm.",
+                    "to": "This approach applies many ideas of Neural Fitted Q-Iteration (NFQ) and Deep Q-Networks (DQN) to train a neural network to approximate the state-action value function.",
+                    "container_element_id": "slide_6_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "This approach applies many ideas of Neural Fitted Q-Iteration (NFQ) and Deep Q-Networks (DQN) to train a neural network to approximate the state-action value function.",
+                    "to": "FQN trains a network on a fixed set D of (s,a,r,s’) that is (state, action, immediate reward, successor state) tuples. During training, FQN minimizes the squared differences of the network estimated Q-values and a target network Q-values. The following steps illustrate the general training approach.",
+                    "container_element_id": "slide_6_shape_1"
+                }
+            ],
+            "summary": "FQN Algorithm. Key points: FQN Algorithm; The FQN algorithm is an extension of the Fitted Q-Iteration (FQI) algorithm.; This approach applies many ideas of Neural Fitted Q-Iteration (NFQ) and Deep Q-Networks (DQN) to train a neural network to approximate the state-action value function.."
+        },
+        {
+            "slide_number": 7,
+            "title": "FQN Algorithm",
+            "elements": [
+                {
+                    "id": "slide_7_shape_0",
+                    "type": "text_box",
+                    "text": "FQN Algorithm",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": "#1b1d22",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "FQN Algorithm"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_7_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_7_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 74.83,
+                        "y": 155.05,
+                        "width": 1205.17,
+                        "height": 545.89
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "FQN Algorithm. Key points: FQN Algorithm."
+        },
+        {
+            "slide_number": 8,
+            "title": "Using FQN",
+            "elements": [
+                {
+                    "id": "slide_8_shape_0",
+                    "type": "text_box",
+                    "text": "Using FQN",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": true,
+                        "italic": false,
+                        "color": "#1b1d22",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Using FQN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_1",
+                    "type": "text_box",
+                    "text": "The FQN network architecture is built and trained simultaneously using the rlTrainFqn action in the Reinforcement Learning action set. Once trained, the model architecture and weights are stored in an in-memory table that is specified by the modelOut= parameter.\n\nAs a table, the model can be viewed, modified, or otherwise manipulated like any other table in advanced ML. It is also immediately ready for use by other actions in the Reinforcement Learning action set.\n\nAs with any learning model, FQN can be easily customized with user-specified hyperparameters. The rlTrainFqn supports many standard reinforcement learning hyperparameters and action parameters. The QModel parameter is particularly important because it specifies the neural network architecture. Specifically, QModel is a list of layers and layer properties that make up the hidden layers of the neural network. The input and output layers can be inferred from the data and FQN model type.",
+                    "position": {
+                        "x": 118.4,
+                        "y": 132.27,
+                        "width": 1108.27,
+                        "height": 483.73
+                    },
+                    "style": {
+                        "font_size": 23.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "The FQN network architecture is built and trained simultaneously using the rlTrainFqn action in the Reinforcement Learning action set. Once trained, the model architecture and weights are stored in an in-memory table that is specified by the modelOut= parameter."
+                            },
+                            {
+                                "level": 0,
+                                "text": "As a table, the model can be viewed, modified, or otherwise manipulated like any other table in advanced ML. It is also immediately ready for use by other actions in the Reinforcement Learning action set."
+                            },
+                            {
+                                "level": 0,
+                                "text": "As with any learning model, FQN can be easily customized with user-specified hyperparameters. The rlTrainFqn supports many standard reinforcement learning hyperparameters and action parameters. The QModel parameter is particularly important because it specifies the neural network architecture. Specifically, QModel is a list of layers and layer properties that make up the hidden layers of the neural network. The input and output layers can be inferred from the data and FQN model type."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "The FQN network architecture is built and trained simultaneously using the rlTrainFqn action in the Reinforcement Learning action set. Once trained, the model architecture and weights are stored in an in-memory table that is specified by the modelOut= parameter.",
+                    "to": "As a table, the model can be viewed, modified, or otherwise manipulated like any other table in advanced ML. It is also immediately ready for use by other actions in the Reinforcement Learning action set.",
+                    "container_element_id": "slide_8_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "As a table, the model can be viewed, modified, or otherwise manipulated like any other table in advanced ML. It is also immediately ready for use by other actions in the Reinforcement Learning action set.",
+                    "to": "As with any learning model, FQN can be easily customized with user-specified hyperparameters. The rlTrainFqn supports many standard reinforcement learning hyperparameters and action parameters. The QModel parameter is particularly important because it specifies the neural network architecture. Specifically, QModel is a list of layers and layer properties that make up the hidden layers of the neural network. The input and output layers can be inferred from the data and FQN model type.",
+                    "container_element_id": "slide_8_shape_1"
+                }
+            ],
+            "summary": "Using FQN. Key points: Using FQN; The FQN network architecture is built and trained simultaneously using the rlTrainFqn action in the Reinforcement Learning action set. Once trained, the model architecture and weights are stored in an in-memory table that is specified by the modelOut= parameter.; As a table, the model can be viewed, modified, or otherwise manipulated like any other table in advanced ML. It is also immediately ready for use by other actions in the Reinforcement Learning action set.."
+        },
+        {
+            "slide_number": 9,
+            "title": "About Fitted Q iterations..",
+            "elements": [
+                {
+                    "id": "slide_9_shape_0",
+                    "type": "text_box",
+                    "text": "About Fitted Q iterations..",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "About Fitted Q iterations.."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_1",
+                    "type": "text_box",
+                    "text": "The idea of fitted Q-iteration (FQI) was derived from the pioneer work of Ormoneit and Sen, who combined the idea of fitted value iteration with kernel based reinforcement learning, and reformulates the Q-function determination problem as a sequence of kernel-based regression problems.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 210.13,
+                        "width": 1089.07,
+                        "height": 481.07
+                    },
+                    "style": {
+                        "font_size": 26.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1f1f1f",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "The idea of fitted Q-iteration (FQI) was derived from the pioneer work of Ormoneit and Sen, who combined the idea of fitted value iteration with kernel based reinforcement learning, and reformulates the Q-function determination problem as a sequence of kernel-based regression problems."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "reading_order",
+                    "from": "About Fitted Q iterations..",
+                    "to": "The idea of fitted Q-iteration (FQI) was derived from the pioneer work of Ormoneit and Sen, who combined the idea of fit",
+                    "from_element_id": "slide_9_shape_0",
+                    "to_element_id": "slide_9_shape_1",
+                    "direction": "top_to_bottom"
+                }
+            ],
+            "summary": "About Fitted Q iterations... Key points: About Fitted Q iterations..; The idea of fitted Q-iteration (FQI) was derived from the pioneer work of Ormoneit and Sen, who combined the idea of fitted value iteration with kernel based reinforcement learning, and reformulates the Q-function determination problem as a sequence of kernel-based regression problems.."
+        },
+        {
+            "slide_number": 10,
+            "title": "About Fitted Q iterations..",
+            "elements": [
+                {
+                    "id": "slide_10_shape_0",
+                    "type": "text_box",
+                    "text": "About Fitted Q iterations..",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "About Fitted Q iterations.."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_1",
+                    "type": "text_box",
+                    "text": "FQI was introduced by Ernst to fit (using a set of four-tuples) any (parametric or non-parametric) approximation architecture to the Q-function. The authors in their numerical experiments used tree-based algorithms. Identity function to the output is a special case leading to FQI combined with basis function, in particular they used in their comparative study piecewise linear approximation.\n\nAt each step the algorithm uses the full set of four-tuples gathered from observation of the system together with the function computed at the previous step to determine a new training set which is used by a supervised learning (regression) method to compute the next function of the sequence. It produces a sequence of QN-functions, which is proved to converge under certain assumptions.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 157.87,
+                        "width": 1063.47,
+                        "height": 545.07
+                    },
+                    "style": {
+                        "font_size": 26.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1f1f1f",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "FQI was introduced by Ernst to fit (using a set of four-tuples) any (parametric or non-parametric) approximation architecture to the Q-function. The authors in their numerical experiments used tree-based algorithms. Identity function to the output is a special case leading to FQI combined with basis function, in particular they used in their comparative study piecewise linear approximation."
+                            },
+                            {
+                                "level": 0,
+                                "text": "At each step the algorithm uses the full set of four-tuples gathered from observation of the system together with the function computed at the previous step to determine a new training set which is used by a supervised learning (regression) method to compute the next function of the sequence. It produces a sequence of QN-functions, which is proved to converge under certain assumptions."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "FQI was introduced by Ernst to fit (using a set of four-tuples) any (parametric or non-parametric) approximation architecture to the Q-function. The authors in their numerical experiments used tree-based algorithms. Identity function to the output is a special case leading to FQI combined with basis function, in particular they used in their comparative study piecewise linear approximation.",
+                    "to": "At each step the algorithm uses the full set of four-tuples gathered from observation of the system together with the function computed at the previous step to determine a new training set which is used by a supervised learning (regression) method to compute the next function of the sequence. It produces a sequence of QN-functions, which is proved to converge under certain assumptions.",
+                    "container_element_id": "slide_10_shape_1"
+                }
+            ],
+            "summary": "About Fitted Q iterations... Key points: About Fitted Q iterations..; FQI was introduced by Ernst to fit (using a set of four-tuples) any (parametric or non-parametric) approximation architecture to the Q-function. The authors in their numerical experiments used tree-based algorithms. Identity function to the output is a special case leading to FQI combined with basis function, in particular they used in their comparative study piecewise linear approximation.; At each step the algorithm uses the full set of four-tuples gathered from observation of the system together with the function computed at the previous step to determine a new training set which is used by a supervised learning (regression) method to compute the next function of the sequence. It produces a sequence of QN-functions, which is proved to converge under certain assumptions.."
+        },
+        {
+            "slide_number": 11,
+            "title": "About Fitted Q iterations..",
+            "elements": [
+                {
+                    "id": "slide_11_shape_0",
+                    "type": "text_box",
+                    "text": "About Fitted Q iterations..",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "About Fitted Q iterations.."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_11_shape_1",
+                    "type": "text_box",
+                    "text": "Antonos proposed a variant of fitted Q-iteration, where the greedy action selection was replaced by searching for a policy in a restricted set of candidate policies by maximizing the average action values.\nNeumann and Peters adapted FQI for the case of continuous action spaces, by using a soft-greedy action selection.\nRiedmiller proposed the Neural Fitted Q Iteration (NFQ), by combining FQI with the neural networks approximator. The author used the Rprop algorithm for the supervised learning, since it is known to be fast and insensitive with respect to the choice of the learning parameters. Anyway, convergence was not proved. Though the stability of a certain class of ANNs has been discussed, proving the convergence (i.e. consistency and stability) of the FQI scheme combined with ANNs is a very difficult task, due in general to the structure of ANNs.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 162.13,
+                        "width": 1086.93,
+                        "height": 525.87
+                    },
+                    "style": {
+                        "font_size": 26.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#ff0000",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Antonos proposed a variant of fitted Q-iteration, where the greedy action selection was replaced by searching for a policy in a restricted set of candidate policies by maximizing the average action values."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Neumann and Peters adapted FQI for the case of continuous action spaces, by using a soft-greedy action selection."
+                            },
+                            {
+                                "level": 0,
+                                "text": "Riedmiller proposed the Neural Fitted Q Iteration (NFQ), by combining FQI with the neural networks approximator. The author used the Rprop algorithm for the supervised learning, since it is known to be fast and insensitive with respect to the choice of the learning parameters. Anyway, convergence was not proved. Though the stability of a certain class of ANNs has been discussed, proving the convergence (i.e. consistency and stability) of the FQI scheme combined with ANNs is a very difficult task, due in general to the structure of ANNs."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "Antonos proposed a variant of fitted Q-iteration, where the greedy action selection was replaced by searching for a policy in a restricted set of candidate policies by maximizing the average action values.",
+                    "to": "Neumann and Peters adapted FQI for the case of continuous action spaces, by using a soft-greedy action selection.",
+                    "container_element_id": "slide_11_shape_1"
+                },
+                {
+                    "type": "sequence",
+                    "from": "Neumann and Peters adapted FQI for the case of continuous action spaces, by using a soft-greedy action selection.",
+                    "to": "Riedmiller proposed the Neural Fitted Q Iteration (NFQ), by combining FQI with the neural networks approximator. The author used the Rprop algorithm for the supervised learning, since it is known to be fast and insensitive with respect to the choice of the learning parameters. Anyway, convergence was not proved. Though the stability of a certain class of ANNs has been discussed, proving the convergence (i.e. consistency and stability) of the FQI scheme combined with ANNs is a very difficult task, due in general to the structure of ANNs.",
+                    "container_element_id": "slide_11_shape_1"
+                }
+            ],
+            "summary": "About Fitted Q iterations... Key points: About Fitted Q iterations..; Antonos proposed a variant of fitted Q-iteration, where the greedy action selection was replaced by searching for a policy in a restricted set of candidate policies by maximizing the average action values.; Neumann and Peters adapted FQI for the case of continuous action spaces, by using a soft-greedy action selection.."
+        },
+        {
+            "slide_number": 12,
+            "title": "About Fitted Q iterations..",
+            "elements": [
+                {
+                    "id": "slide_12_shape_0",
+                    "type": "text_box",
+                    "text": "About Fitted Q iterations..",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "About Fitted Q iterations.."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_12_shape_1",
+                    "type": "text_box",
+                    "text": "Timmer and Riedmiller combined the CMAC (Cerebellar model articulation controller) function approximator with the FQI algorithm, in order to have a powerful function approximator to solve the problem of a small set of sampled state transitions.",
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": 26.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#ff0000",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Timmer and Riedmiller combined the CMAC (Cerebellar model articulation controller) function approximator with the FQI algorithm, in order to have a powerful function approximator to solve the problem of a small set of sampled state transitions."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "reading_order",
+                    "from": "About Fitted Q iterations..",
+                    "to": "Timmer and Riedmiller combined the CMAC (Cerebellar model articulation controller) function approximator with the FQI al",
+                    "from_element_id": "slide_12_shape_0",
+                    "to_element_id": "slide_12_shape_1",
+                    "direction": "top_to_bottom"
+                }
+            ],
+            "summary": "About Fitted Q iterations... Key points: About Fitted Q iterations..; Timmer and Riedmiller combined the CMAC (Cerebellar model articulation controller) function approximator with the FQI algorithm, in order to have a powerful function approximator to solve the problem of a small set of sampled state transitions.."
+        },
+        {
+            "slide_number": 13,
+            "title": "Functional Networks",
+            "elements": [
+                {
+                    "id": "slide_13_shape_0",
+                    "type": "text_box",
+                    "text": "Functional Networks",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": 44.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1f1f1f",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Functional Networks"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_13_shape_1",
+                    "type": "text_box",
+                    "text": "Functional networks describe statistical dependence between nodes, regardless of whether the nodes are physically connected; the statistical dependence can be quantified using various approaches, from simple correlation to more advanced (t,f)-based approaches.\n\na network representing the interactions between the elements of a complex system",
+                    "position": {
+                        "x": 144.0,
+                        "y": 179.2,
+                        "width": 1008.0,
+                        "height": 436.8
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1f1f1f",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Functional networks describe statistical dependence between nodes, regardless of whether the nodes are physically connected; the statistical dependence can be quantified using various approaches, from simple correlation to more advanced (t,f)-based approaches."
+                            },
+                            {
+                                "level": 0,
+                                "text": "a network representing the interactions between the elements of a complex system"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_13_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 549.0,
+                        "y": 440.63,
+                        "width": 603.0,
+                        "height": 259.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "sequence",
+                    "from": "Functional networks describe statistical dependence between nodes, regardless of whether the nodes are physically connected; the statistical dependence can be quantified using various approaches, from simple correlation to more advanced (t,f)-based approaches.",
+                    "to": "a network representing the interactions between the elements of a complex system",
+                    "container_element_id": "slide_13_shape_1"
+                }
+            ],
+            "summary": "Functional Networks. Key points: Functional Networks; Functional networks describe statistical dependence between nodes, regardless of whether the nodes are physically connected; the statistical dependence can be quantified using various approaches, from simple correlation to more advanced (t,f)-based approaches.; a network representing the interactions between the elements of a complex system."
+        },
+        {
+            "slide_number": 14,
+            "title": "Functional Networks",
+            "elements": [
+                {
+                    "id": "slide_14_shape_0",
+                    "type": "text_box",
+                    "text": "Functional Networks",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": 44.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1f1f1f",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Functional Networks"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_14_shape_1",
+                    "type": "text_box",
+                    "text": "the idea of Fitted Q-iteration, use a computational scheme based on Functional Networks, which have been proved to be a powerful alternative to Neural Networks, because they do not require a large number of training samples",
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#040c28",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "the idea of Fitted Q-iteration, use a computational scheme based on Functional Networks, which have been proved to be a powerful alternative to Neural Networks, because they do not require a large number of training samples"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "reading_order",
+                    "from": "Functional Networks",
+                    "to": "the idea of Fitted Q-iteration, use a computational scheme based on Functional Networks, which have been proved to be a ",
+                    "from_element_id": "slide_14_shape_0",
+                    "to_element_id": "slide_14_shape_1",
+                    "direction": "top_to_bottom"
+                }
+            ],
+            "summary": "Functional Networks. Key points: Functional Networks; the idea of Fitted Q-iteration, use a computational scheme based on Functional Networks, which have been proved to be a powerful alternative to Neural Networks, because they do not require a large number of training samples."
+        },
+        {
+            "slide_number": 15,
+            "title": "Fitted Q-iteration",
+            "elements": [
+                {
+                    "id": "slide_15_shape_0",
+                    "type": "text_box",
+                    "text": "Fitted Q-iteration",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1f1f1f",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Fitted Q-iteration"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_15_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_15_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 98.13,
+                        "y": 163.3,
+                        "width": 1151.14,
+                        "height": 407.37
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Fitted Q-iteration. Key points: Fitted Q-iteration."
+        },
+        {
+            "slide_number": 16,
+            "title": "Fitted Q-iteration",
+            "elements": [
+                {
+                    "id": "slide_16_shape_0",
+                    "type": "text_box",
+                    "text": "Fitted Q-iteration",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1f1f1f",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Fitted Q-iteration"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_16_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_16_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 156.47,
+                        "y": 164.87,
+                        "width": 886.0,
+                        "height": 418.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Fitted Q-iteration. Key points: Fitted Q-iteration."
+        },
+        {
+            "slide_number": 17,
+            "title": "Fitted Q-iteration",
+            "elements": [
+                {
+                    "id": "slide_17_shape_0",
+                    "type": "text_box",
+                    "text": "Fitted Q-iteration",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#1f1f1f",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Fitted Q-iteration"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_17_shape_1",
+                    "type": "text_box",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 240.0,
+                        "width": 1008.0,
+                        "height": 376.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_17_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 144.0,
+                        "y": 150.0,
+                        "width": 903.0,
+                        "height": 538.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "Fitted Q-iteration. Key points: Fitted Q-iteration."
+        },
+        {
+            "slide_number": 18,
+            "title": "Question?",
+            "elements": [
+                {
+                    "id": "slide_18_shape_0",
+                    "type": "text_box",
+                    "text": "Question?",
+                    "position": {
+                        "x": 144.0,
+                        "y": 72.0,
+                        "width": 1008.0,
+                        "height": 156.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Question?"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_18_shape_1",
+                    "type": "text_box",
+                    "text": "I understand Value Iteration (VI) and Fitted Value Iteration(FVI). My question is does Fitted Q-iteration simply mean Q-Learning with some kind of state space approximation?",
+                    "position": {
+                        "x": 144.0,
+                        "y": 154.67,
+                        "width": 1100.8,
+                        "height": 461.33
+                    },
+                    "style": {
+                        "font_size": 22.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#0c0d0e",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "I understand Value Iteration (VI) and Fitted Value Iteration(FVI). My question is does Fitted Q-iteration simply mean Q-Learning with some kind of state space approximation?"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_18_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 193.6,
+                        "y": 268.28,
+                        "width": 966.45,
+                        "height": 451.72
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "reading_order",
+                    "from": "Question?",
+                    "to": "I understand Value Iteration (VI) and Fitted Value Iteration(FVI). My question is does Fitted Q-iteration simply mean Q-",
+                    "from_element_id": "slide_18_shape_0",
+                    "to_element_id": "slide_18_shape_1",
+                    "direction": "top_to_bottom"
+                }
+            ],
+            "summary": "Question?. Key points: Question?; I understand Value Iteration (VI) and Fitted Value Iteration(FVI). My question is does Fitted Q-iteration simply mean Q-Learning with some kind of state space approximation?."
+        }
+    ]
+}
