@@ -14,6 +14,21 @@ class PositionModel(BaseModel):
     width: float
     height: float
 
+#To support Slide models
+class SlideModel(BaseModel):
+    slide_number: int
+    title: Optional[str] = None
+    slide_type: Optional[str] = None
+    elements: List[DocumentElementModel] = Field(default_factory=list)
+    sections: List[SectionModel] = Field(default_factory=list)
+    slide_summary: Optional[str] = None
+    
+class SectionModel(BaseModel):
+    section_name: str
+    element_ids: List[str] = Field(default_factory=list)
+    bounding_box: Optional[PositionModel] = None
+    
+
 
 class StyleModel(BaseModel):
     font_size: Optional[float] = None
