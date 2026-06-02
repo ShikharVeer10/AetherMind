@@ -1,17 +1,14 @@
-from typing import Any
-from typing import Dict
-from typing import List
-from typing import Optional
+from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
-# Store the position and dimensions of the element
+
 class PositionModel(BaseModel):
     x: float
     y: float
     width: float
     height: float
+
 
 class StyleModel(BaseModel):
     font_size: Optional[float] = None
@@ -21,76 +18,142 @@ class StyleModel(BaseModel):
     text_color: Optional[str] = None
     background_color: Optional[str] = None
 
-# Represents the relation between 2 elements
+
+class RunModel(BaseModel):
+    text: str
+    bold: bool = False
+    italic: bool = False
+    font_size: Optional[float] = None
+    font_name: Optional[str] = None
+    font_color: Optional[str] = None
+
+
+class ParagraphModel(BaseModel):
+    level: int = 0
+    text: str
+    runs: List[RunModel] = Field(default_factory=list)
+
+
 class RelationshipModel(BaseModel):
     relationship_type: str
     source_element_id: str
     target_element_id: str
-    
-class HeaderModel(BaseModel):
-    text:str
-    element_id:str
-    position:Optional[PositionModel]=None
+    label: Optional[str] = None
+    confidence: float = 1.0
 
-class FooterModel(BaseModel):
-    text:str
-    element_id:str
-    is_page_number:bool=False
-    position:Optional[PositionModel]=None
-    
-class ContextModel(BaseModel):
-    title_count:int=0
-    box_count:int=0
-    text_box_count:int=0
-    shape_count:int=0
-    arrow_count:int=0
-    image_count:int=0
-    table_count:int=0
-    flowchart_detected:bool=False
-    diagram_detected:bool=False
-    timeline_detected:bool=False
-    
-#FlowModel: Stores flow chart level information
-class FlowModel(BaseModel):
-    flow_detected:bool=False
-    flow_type:Optional[str]=None
-    start_node:Optional[str]=None
-    end_node:Optional[str]=None
-    node_count:int=0
-    connector_count:int=0
-    relationship_count:int=0
 
-#Representing extracted objects like shape,arrow,etc
+class TextPointModel(BaseModel):
+    element_id: str
+    level: int = 0
+    text: str
+
+
+class PositionMapModel(BaseModel):
+    element_id: str
+    element_type: str
+    x: float
+    y: float
+    width: float
+    height: float
+
+
+class DiagramUnderstandingModel(BaseModel):
+    is_diagram: bool = False
+    diagram_type: str = "none"
+    node_count: int = 0
+    edge_count: int = 0
+    nodes: List[Dict[str, Any]] = Field(default_factory=list)
+    edges: List[Dict[str, Any]] = Field(default_factory=list)
+    summary: str = ""
+
+
 class DocumentElementModel(BaseModel):
-    element_id:str
-    element_type:str
-    text:Optional[str]=None
-    position:PositionModel
-    style:Optional[StyleModel]=None
-    shape_type:Optional[str]=None
-    metadata:Dict[str,Any]=Field(default_factory=dict)
+    element_id: str
+    element_type: str
+    text: Optional[str] = None
+    paragraphs: List[ParagraphModel] = Field(default_factory=list)
+    position: PositionModel
+    style: Optional[StyleModel] = None
+    shape_type: Optional[str] = None
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+    table_markdown: Optional[str] = None
 
-class SectionModel(BaseModel):
-    section_name: str
+
+class HeaderFooterModel(BaseModel):
+    header_text: Optional[str] = None
+    footer_text: Optional[str] = None
+    slide_number_text: Optional[str] = None
+    date_text: Optional[str] = None
+
+
+class VisualInventoryModel(BaseModel):
+    text_box_count: int = 0
+    shape_count: int = 0
+    arrow_count: int = 0
+    connector_count: int = 0
+    image_count: int = 0
+    table_count: int = 0
+    group_count: int = 0
+    chart_count: int = 0
+    placeholder_count: int = 0
+    unknown_count: int = 0
+    total_elements: int = 0
+
+
+class RegionModel(BaseModel):
+    name: str
+    x_start: float = 0
+    y_start: float = 0
+    x_end: float = 0
+    y_end: float = 0
     element_ids: List[str] = Field(default_factory=list)
-    bounding_box: Optional[PositionModel] = None
 
-#To support Slide models
+
+class LayoutStructureModel(BaseModel):
+    layout_type: str = "unknown"
+    regions: List[RegionModel] = Field(default_factory=list)
+
+
+class FlowchartModel(BaseModel):
+    is_flowchart: bool = False
+    box_count: int = 0
+    arrow_count: int = 0
+    boxes: List[Dict[str, Any]] = Field(default_factory=list)
+    arrows: List[Dict[str, Any]] = Field(default_factory=list)
+    relationships: List[RelationshipModel] = Field(default_factory=list)
+    reading_order: List[str] = Field(default_factory=list)
+
+
+class SlideContextModel(BaseModel):
+    header_footer: Optional[HeaderFooterModel] = None
+    title: Optional[str] = None
+    visual_inventory: Optional[VisualInventoryModel] = None
+    layout_structure: Optional[LayoutStructureModel] = None
+    flowchart: Optional[FlowchartModel] = None
+    text_points: List[TextPointModel] = Field(default_factory=list)
+    position_mapping: List[PositionMapModel] = Field(default_factory=list)
+    relationship_mapping: List[RelationshipModel] = Field(default_factory=list)
+    diagram_understanding: Optional[DiagramUnderstandingModel] = None
+    outline: str = ""
+
+
 class SlideModel(BaseModel):
     slide_number: int
     title: Optional[str] = None
-    slide_type: Optional[str] = None
-    headers:List[HeaderModel]=Field(default_factory=list)
-    footers:List[FooterModel]=Field(default_factory=list)
-    context:Optional[ContextModel]=None
     elements: List[DocumentElementModel] = Field(default_factory=list)
-    sections: List[SectionModel] = Field(default_factory=list)
     relationships: List[RelationshipModel] = Field(default_factory=list)
-    flow_information: Optional[FlowModel] = None
+    header_footer: Optional[HeaderFooterModel] = None
+    visual_inventory: Optional[VisualInventoryModel] = None
+    layout_structure: Optional[LayoutStructureModel] = None
+    flowchart: Optional[FlowchartModel] = None
+    context: Optional[SlideContextModel] = None
+    table_markdowns: List[str] = Field(default_factory=list)
     slide_summary: Optional[str] = None
-    metadata: Dict[str, Any] = Field(default_factory=dict)
-    
-# Represents the entire document
+    text_points: List[TextPointModel] = Field(default_factory=list)
+    position_mapping: List[PositionMapModel] = Field(default_factory=list)
+    diagram_understanding: Optional[DiagramUnderstandingModel] = None
+
+
 class DocumentModel(BaseModel):
     document_name: str
     document_type: str
@@ -98,5 +161,3 @@ class DocumentModel(BaseModel):
     slides: List[SlideModel] = Field(default_factory=list)
     relationships: List[RelationshipModel] = Field(default_factory=list)
     metadata: Dict[str, Any] = Field(default_factory=dict)
-
-

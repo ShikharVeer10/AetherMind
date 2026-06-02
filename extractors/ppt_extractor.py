@@ -1,28 +1,17 @@
 from pathlib import Path
-from typing import Optional
+from typing import List, Optional
 from pptx import Presentation
+from pptx.enum.shapes import MSO_SHAPE_TYPE
 from pptx.dml.color import RGBColor
-from pptx.enum.dml import MSO_COLOR_TYPE, MSO_FILL
-from pptx.enum.shapes import MSO_SHAPE_TYPE, PP_PLACEHOLDER  # Classify the shape
-from models.document_model import DocumentModel
-from models.document_model import DocumentElementModel
-from models.document_model import SlideModel
-from models.document_model import PositionModel
-from models.document_model import StyleModel
-
-
-# Extract structured information from ppt presentation
-EMU_PER_INCH = 914400
-PIXELS_PER_INCH = 96
-TITLE_PLACEHOLDER_TYPES = {
-    placeholder
-    for placeholder in (
-        getattr(PP_PLACEHOLDER, "TITLE", None),
-        getattr(PP_PLACEHOLDER, "CENTER_TITLE", None),
-        getattr(PP_PLACEHOLDER, "SUBTITLE", None),
-    )
-    if placeholder is not None
-}
+from models.document_model import (
+    DocumentModel,
+    DocumentElementModel,
+    SlideModel,
+    PositionModel,
+    StyleModel,
+    ParagraphModel,
+    RunModel,
+)
 
 
 class PPTExtractor:
@@ -32,148 +21,290 @@ class PPTExtractor:
 
     def extract_document(self) -> DocumentModel:
         extracted_slides = []
-
         for slide_index, slide in enumerate(self.presentation.slides):
             extracted_slide = self.extract_slide(
                 slide=slide, slide_number=slide_index + 1
             )
             extracted_slides.append(extracted_slide)
 
-        document_model = DocumentModel(
+        return DocumentModel(
             document_name=Path(self.pptx_file_path).name,
             document_type="ppt",
             total_slides=len(extracted_slides),
             slides=extracted_slides,
         )
-        return document_model
-
     def extract_slide(self, slide, slide_number: int) -> SlideModel:
         extracted_elements = []
         slide_title: Optional[str] = None
+
         for index, shape in enumerate(slide.shapes):
-            if slide_title is None:
-                title_text = self.extract_title_text(shape)
-                if title_text:
-                    slide_title = title_text
-            extracted_element = self.extract_shape(
-                shape=shape, slide_number=slide_number, shape_index=index
+            elements = self._extract_shape_recursive(
+                shape=shape,
+                slide_number=slide_number,
+                shape_index=index,
+                prefix=f"slide_{slide_number}",
             )
-            if extracted_element is not None:
-                extracted_elements.append(extracted_element)
-                if slide_title is None and extracted_element.text:
-                    slide_title = extracted_element.text
+            for element in elements:
+                extracted_elements.append(element)
+                if slide_title is None and element.text:
+                    slide_title = element.text
 
-        slide_model = SlideModel(
-            slide_number=slide_number, title=slide_title, elements=extracted_elements
+        return SlideModel(
+            slide_number=slide_number,
+            title=slide_title,
+            elements=extracted_elements,
         )
-        return slide_model
+    def _extract_shape_recursive(self,shape,slide_number: int,shape_index: int,prefix: str,) -> List[DocumentElementModel]:
+        if shape.shape_type == MSO_SHAPE_TYPE.GROUP:
+            child_elements = []
+            group_shapes = getattr(shape, "shapes", [])
+            for child_idx, child_shape in enumerate(group_shapes):
+                child_prefix = f"{prefix}_group_{shape_index}"
+                child_elements.extend(
+                    self._extract_shape_recursive(
+                        shape=child_shape,
+                        slide_number=slide_number,
+                        shape_index=child_idx,
+                        prefix=child_prefix,
+                    )
+                )
+            return child_elements
+        element = self._extract_single_shape(shape=shape,element_id=f"{prefix}_shape_{shape_index}",)
+        return [element] if element is not None else []
 
-    def extract_shape(
-        self, shape, slide_number: int, shape_index: int
+    def _extract_single_shape(
+        self, shape, element_id: str
     ) -> Optional[DocumentElementModel]:
-        extracted_text = None
+        paragraphs: List[ParagraphModel] = []
+        full_text: Optional[str] = None
+
         if shape.has_text_frame:
-            extracted_text = shape.text_frame.text.strip()
-            if extracted_text == "":
-                extracted_text = None
+            paragraph_texts = []
+            for paragraph in shape.text_frame.paragraphs:
+                para_text = paragraph.text.strip()
+                if not para_text:
+                    continue
 
-        # Determine dimensions
-        position_model = PositionModel(
-            x=self.emu_to_pixels(shape.left),
-            y=self.emu_to_pixels(shape.top),
-            width=self.emu_to_pixels(shape.width),
-            height=self.emu_to_pixels(shape.height),
+                runs = []
+                for run in paragraph.runs:
+                    run_text = run.text
+                    if not run_text:
+                        continue
+                    run_model = RunModel(
+                        text=run_text,
+                        bold=bool(run.font.bold),
+                        italic=bool(run.font.italic),
+                        font_size=(
+                            float(run.font.size.pt) if run.font.size else None
+                        ),
+                        font_name=run.font.name,
+                        font_color=self._safe_font_color(run),
+                    )
+                    runs.append(run_model)
+
+                paragraphs.append(
+                    ParagraphModel(
+                        level=paragraph.level,
+                        text=para_text,
+                        runs=runs,
+                    )
+                )
+                paragraph_texts.append(para_text)
+
+            if paragraph_texts:
+                full_text = "\n".join(paragraph_texts)
+
+        x, y, w, h = self._safe_position(shape)
+        position = PositionModel(
+            x=x,
+            y=y,
+            width=w,
+            height=h,
         )
 
-        style_model = self.extract_text_style(shape=shape)
-
-        element = DocumentElementModel(
-            element_id=f"slide_{slide_number}_shape_{shape_index}",
-            element_type=self.get_shape_type(shape),
-            text=extracted_text,
-            position=position_model,
-            style=style_model,
+        style = self._extract_text_style(shape)
+        element_type = self._get_shape_type(shape)
+        metadata = self._extract_shape_metadata(shape, element_type)
+        table_md: Optional[str] = None
+        if element_type == "table":
+            table_md = self.extract_table_as_markdown(shape)
+        return DocumentElementModel(
+            element_id=element_id,
+            element_type=element_type,
+            text=full_text,
+            paragraphs=paragraphs,
+            position=position,
+            style=style,
             shape_type=str(shape.shape_type),
-            metadata=self.extract_shape_metadata(shape),
+            metadata=metadata,
+            table_markdown=table_md,
         )
-        return element
 
-    def get_shape_type(self, shape) -> str:
-        if shape.has_table:
-            return "table"
-        if shape.shape_type == MSO_SHAPE_TYPE.PICTURE:
-            return "image"
-        if getattr(shape, "is_connector", False):
-            return "connector"
-        if shape.shape_type == MSO_SHAPE_TYPE.LINE:
-            return "connector"
-        if shape.shape_type == MSO_SHAPE_TYPE.AUTO_SHAPE:
-            auto_shape = getattr(shape, "auto_shape_type", None)
-            auto_shape_name = ""
-            if auto_shape is not None:
-                auto_shape_label = getattr(auto_shape, "name", None)
-                if auto_shape_label is None:
-                    auto_shape_label = str(auto_shape)
-                auto_shape_name = str(auto_shape_label).lower()
-            elif shape.name:
-                auto_shape_name = shape.name.lower()
-            if "arrow" in auto_shape_name or "chevron" in auto_shape_name:
+    def _get_shape_type(self, shape) -> str:
+        st = shape.shape_type
+
+        if st == MSO_SHAPE_TYPE.TEXT_BOX:
+            return "text_box"
+
+        if st == MSO_SHAPE_TYPE.AUTO_SHAPE:
+            name = shape.name.lower()
+            if "arrow" in name:
                 return "arrow"
             return "shape"
-        if shape.shape_type == MSO_SHAPE_TYPE.TEXT_BOX:
-            return "text_box"
-        if shape.has_text_frame:
-            return "text_box"
-        if shape.shape_type == MSO_SHAPE_TYPE.GROUP:
+
+        if st == MSO_SHAPE_TYPE.GROUP:
             return "group"
 
-        return "shape"
+        if st == MSO_SHAPE_TYPE.TABLE:
+            return "table"
 
-    def extract_table_data(self, shape) -> list:
-        extracted_rows = []
-        if not shape.has_table:
-            return extracted_rows
-        table = shape.table
+        if st == MSO_SHAPE_TYPE.PICTURE:
+            return "image"
 
-        for row in table.rows:
-            extracted_cells = []
-            for cell in row.cells:
-                cell_text = cell.text.strip()
-                extracted_cells.append(cell_text)
-            extracted_rows.append(extracted_cells)
+        if st == MSO_SHAPE_TYPE.CHART:
+            return "chart"
 
-        return extracted_rows
+        if st == MSO_SHAPE_TYPE.FREEFORM:
+            return "freeform"
 
-    def extract_shape_metadata(self, shape) -> dict:
-        metadata = {}
-        shape_type = self.get_shape_type(shape)
-        if shape_type == "table":
-            table_data = self.extract_table_data(shape)
-            metadata["table_data"] = table_data
-            if table_data:
-                metadata["table_rows"] = len(table_data)
-                metadata["table_columns"] = max(len(row) for row in table_data)
-        if shape_type == "image":
-            image = getattr(shape, "image", None)
-            metadata["__image_bytes"] = image.blob if image else None
+        if st == MSO_SHAPE_TYPE.PLACEHOLDER:
+            return "placeholder"
+
+        connector_type = getattr(MSO_SHAPE_TYPE, "CONNECTOR", None)
+        if connector_type is not None and st == connector_type:
+            return "connector"
+        if st == MSO_SHAPE_TYPE.LINE:
+            return "connector"
+
+        return "unknown"
+
+
+    def _extract_shape_metadata(self, shape, element_type: str) -> dict:
+        metadata: dict = {}
+        if element_type == "table":
+            metadata["table_data"] = self._extract_table_data(shape)
+        if element_type == "image":
+            try:
+                metadata["__image_bytes"] = shape.image.blob
+            except Exception:
+                metadata["__image_bytes"] = None
+
         if shape.has_text_frame:
-            metadata["bullet_hierarchy"] = self.extract_bullet_hierarchy(shape)
+            metadata["bullet_hierarchy"] = self._extract_bullet_hierarchy(shape)
+        if element_type == "connector":
+            metadata["connector_endpoints"] = (
+                self._extract_connector_endpoints(shape)
+            )
+
         return metadata
 
-    def extract_bullet_hierarchy(self, shape) -> list:
-        bullet_items = []
+    def _extract_table_data(self, shape) -> list:
+        rows_out = []
+        if not shape.has_table:
+            return rows_out
+        for row in shape.table.rows:
+            cells = [cell.text.strip() for cell in row.cells]
+            rows_out.append(cells)
+        return rows_out
+
+    def _extract_bullet_hierarchy(self, shape) -> list:
+        items = []
         if not shape.has_text_frame:
-            return bullet_items
-        text_frame = shape.text_frame
-        for paragraph in text_frame.paragraphs:
-            level = paragraph.level
+            return items
+        for paragraph in shape.text_frame.paragraphs:
             text = paragraph.text.strip()
             if text:
-                bullet_items.append({"level": level, "text": text})
-        return bullet_items
+                items.append({"level": paragraph.level, "text": text})
+        return items
 
-    # Extracts font and style information from a shape
-    def extract_text_style(self, shape) -> StyleModel:
+    def _extract_connector_endpoints(self, shape) -> dict:
+        endpoints: dict = {
+            "begin_x": None,
+            "begin_y": None,
+            "end_x": None,
+            "end_y": None,
+        }
+        try:
+            sp_element = shape._element
+            xfrm = sp_element.find(
+                ".//{http://schemas.openxmlformats.org/drawingml/2006/main}xfrm"
+            )
+            if xfrm is not None:
+                off = xfrm.find(
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}off"
+                )
+                ext = xfrm.find(
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ext"
+                )
+                if off is not None:
+                    endpoints["begin_x"] = float(off.get("x", 0))
+                    endpoints["begin_y"] = float(off.get("y", 0))
+                if off is not None and ext is not None:
+                    endpoints["end_x"] = (
+                        float(off.get("x", 0)) + float(ext.get("cx", 0))
+                    )
+                    endpoints["end_y"] = (
+                        float(off.get("y", 0)) + float(ext.get("cy", 0))
+                    )
+        except Exception:
+            pass
+        return endpoints
+
+    def _safe_position(self, shape) -> tuple[float, float, float, float]:
+        try:
+            return (
+                float(shape.left),
+                float(shape.top),
+                float(shape.width),
+                float(shape.height),
+            )
+        except Exception:
+            pass
+
+        try:
+            sp_element = shape._element
+            xfrm = sp_element.find(
+                ".//{http://schemas.openxmlformats.org/drawingml/2006/main}xfrm"
+            )
+            if xfrm is None:
+                return 0.0, 0.0, 0.0, 0.0
+            off = xfrm.find(
+                "{http://schemas.openxmlformats.org/drawingml/2006/main}off"
+            )
+            ext = xfrm.find(
+                "{http://schemas.openxmlformats.org/drawingml/2006/main}ext"
+            )
+            x = float(off.get("x", 0)) if off is not None else 0.0
+            y = float(off.get("y", 0)) if off is not None else 0.0
+            w = float(ext.get("cx", 0)) if ext is not None else 0.0
+            h = float(ext.get("cy", 0)) if ext is not None else 0.0
+            return x, y, w, h
+        except Exception:
+            return 0.0, 0.0, 0.0, 0.0
+
+
+    def extract_table_as_markdown(self, shape) -> str:
+        if not shape.has_table:
+            return ""
+
+        rows = []
+        for row in shape.table.rows:
+            cells = [cell.text.strip().replace("|", "\\|") for cell in row.cells]
+            rows.append(cells)
+
+        if not rows:
+            return ""
+
+        header = "| " + " | ".join(rows[0]) + " |"
+        separator = "| " + " | ".join("---" for _ in rows[0]) + " |"
+        body_lines = []
+        for row in rows[1:]:
+            body_lines.append("| " + " | ".join(row) + " |")
+
+        parts = [header, separator] + body_lines
+        return "\n".join(parts)
+
+    def _extract_text_style(self, shape) -> StyleModel:
         font_size: Optional[float] = None
         font_name: Optional[str] = None
         is_bold = False
@@ -181,38 +312,32 @@ class PPTExtractor:
         text_color = None
         background_color = None
 
-        if shape.has_text_frame:
-            for paragraph in shape.text_frame.paragraphs:
-                for run in paragraph.runs:
-                    font = run.font
-                    if font.size and font_size is None:
+        try:
+            if shape.has_text_frame:
+                paragraphs = shape.text_frame.paragraphs
+                if paragraphs and paragraphs[0].runs:
+                    first_run = paragraphs[0].runs[0]
+                    font = first_run.font
+                    if font.size:
                         font_size = float(font.size.pt)
-                    if font.name and font_name is None:
+                    if font.name:
                         font_name = font.name
-                    if font.bold is True:
+                    if font.bold:
                         is_bold = True
-                    if font.italic is True:
+                    if font.italic:
                         is_italic = True
-                    if text_color is None:
-                        text_color = self.extract_hex_color(font.color)
+                    if font.color and font.color.rgb:
+                        text_color = self.convert_rgb_to_hex(font.color.rgb)
+        except Exception:
+            pass
 
-                paragraph_font = paragraph.font
-                if paragraph_font.size and font_size is None:
-                    font_size = float(paragraph_font.size.pt)
-                if paragraph_font.name and font_name is None:
-                    font_name = paragraph_font.name
-                if paragraph_font.bold is True:
-                    is_bold = True
-                if paragraph_font.italic is True:
-                    is_italic = True
-                if text_color is None:
-                    text_color = self.extract_hex_color(paragraph_font.color)
+        try:
+            if shape.fill and shape.fill.fore_color and shape.fill.fore_color.rgb:
+                background_color = self.convert_rgb_to_hex(shape.fill.fore_color.rgb)
+        except Exception:
+            pass
 
-        fill = getattr(shape, "fill", None)
-        if fill and fill.type == MSO_FILL.SOLID:
-            background_color = self.extract_hex_color(fill.fore_color)
-
-        style_model = StyleModel(
+        return StyleModel(
             font_size=font_size,
             font_name=font_name,
             bold=is_bold,
@@ -221,39 +346,23 @@ class PPTExtractor:
             background_color=background_color,
         )
 
-        return style_model
+    def _safe_font_color(self, run) -> Optional[str]:
+        try:
+            if run.font.color and run.font.color.rgb:
+                return self.convert_rgb_to_hex(run.font.color.rgb)
+        except AttributeError:
+            return None
+        return None
 
-    # Sorting elements from top to bottom or right to left
     def sort_elements_by_reading_order(self, slide):
-        sorted_elements = sorted(
-            slide.elements, key=lambda element: (element.position.y, element.position.x)
+        """Sort elements top-to-bottom, then left-to-right."""
+        return sorted(
+            slide.elements,
+            key=lambda e: (e.position.y, e.position.x),
         )
-        return sorted_elements
-
-    @staticmethod
-    def emu_to_pixels(emu: float) -> float:
-        return round((float(emu) / EMU_PER_INCH) * PIXELS_PER_INCH, 2)
-
-    def extract_title_text(self, shape) -> Optional[str]:
-        if not getattr(shape, "is_placeholder", False):
-            return None
-        placeholder_type = getattr(shape.placeholder_format, "type", None)
-        if placeholder_type not in TITLE_PLACEHOLDER_TYPES:
-            return None
-        if not shape.has_text_frame:
-            return None
-        title_text = shape.text_frame.text.strip()
-        return title_text or None
-
-    def extract_hex_color(self, color_format) -> Optional[str]:
-        if not color_format:
-            return None
-        if color_format.type != MSO_COLOR_TYPE.RGB:
-            return None
-        if not color_format.rgb:
-            return None
-        return self.convert_rgb_to_hex(color_format.rgb)
 
     @staticmethod
     def convert_rgb_to_hex(rgb_color: RGBColor) -> str:
-        return "#{:02x}{:02x}{:02x}".format(rgb_color[0], rgb_color[1], rgb_color[2])
+        return "#{:02x}{:02x}{:02x}".format(
+            rgb_color[0], rgb_color[1], rgb_color[2]
+        )

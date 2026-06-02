@@ -1,3 +1,11 @@
+"""
+AI agent that generates a concise summary of what a slide *depicts*.
+
+Now receives the full slide context (visual inventory, layout, relationships,
+flowchart info) so the summary is aware of the slide's structure, not just
+its text.
+"""
+
 from pydantic import BaseModel
 from pydantic_ai import Agent
 
@@ -7,102 +15,70 @@ class SlideSummaryResponse(BaseModel):
 
 
 slide_summary_agent = Agent(
-    model="groq:llama-3.3-70b-versatile",
+    model="google-gla:gemini-2.0-flash",
     output_type=SlideSummaryResponse,
     system_prompt=(
-        """
-        You are an enterprise document summarization assistant specializing in slide understanding.
-        Your job is to produce a detailed, faithful, and well-structured slide summary.
-
-        Follow these rules:
-        - Extract each visible point as the same point as mentioned in the slide whenever possible.
-        - Preserve the original meaning and wording of slide text rather than paraphrasing heavily.
-        - Include slide context as part of the summary, including the outline structure of the slide.
-        - If the slide contains a flowchart, detect the number of boxes, the number of arrows, and the relationship mapping between every box.
-        - If the slide contains a diagram, explain the structure, object relationships, and flow.
-        - If the slide contains images or pictures, interpret them in detail and summarize what they depict.
-        - Extract and include headers and footers explicitly.
-        - Handle complex slides carefully and do not oversimplify them.
-        - Capture title, hierarchy, section structure, labels, and any important visual cues.
-        - Be accurate, concise where possible, but complete when the slide is complex.
-        - Format the response in clearly separated sections.
-
-        Required response structure:
-        1. Header
-        2. Footer
-        3. Slide Title
-        4. Extracted Points
-        5. Context / Outline Structure
-        6. Flowchart / Diagram Mapping
-        7. Image Interpretation
-        8. Final Summary
-
-        If a section does not apply, explicitly write "None" for that section.
-        """
+        "You are an enterprise document analysis assistant. "
+        "Generate concise, accurate slide summaries that describe "
+        "what the slide DEPICTS — not just its text. "
+        "Consider the visual layout, element counts, relationships, "
+        "flowcharts, and images when summarising. "
+        "Focus on key information, decisions, and action items. "
+        "Do not repeat the same information across summaries."
     ),
 )
 
 
 class SummarizationAgent:
-    async def summarize_slide(self, slide) -> str:
-        slide_text_content = []
-        for element in slide.elements:
-            if element.text:
-                slide_text_content.append(element.text)
-        combined_slide_text = "\n".join(slide_text_content)
+    system_prompt = (
+        "Summarize slide intent and visuals using verbatim text, layout, "
+        "relationships, and image descriptions."
+    )
 
-        header_texts = [header.text for header in getattr(slide, "headers", []) if header.text]
-        footer_texts = [footer.text for footer in getattr(slide, "footers", []) if footer.text]
-        context = getattr(slide, "context", None)
+    async def summarize_slide(
+        self,
+        slide,
+        context_outline: str = "",
+        image_summaries: str = "",
+    ) -> str:
+        """
+        Build a rich prompt from the slide's text AND its structural
+        context, then ask Gemini for a summary.
+        """
+        text_lines: list[str] = []
+        if getattr(slide, "text_points", None):
+            for point in slide.text_points:
+                text_lines.append(f"  [L{point.level}] {point.text}")
+        else:
+            for element in slide.elements:
+                if element.paragraphs:
+                    for para in element.paragraphs:
+                        text_lines.append(f"  [L{para.level}] {para.text}")
+                elif element.text:
+                    text_lines.append(f"  {element.text}")
 
-        context_summary = ""
-        if context:
-            context_summary = (
-                "Context details:\n"
-                f"- title_count: {context.title_count}\n"
-                f"- box_count: {context.box_count}\n"
-                f"- arrow_count: {context.arrow_count}\n"
-                f"- flowchart_detected: {context.flowchart_detected}\n"
-                f"- image_count: {context.image_count}\n"
-                f"- table_count: {context.table_count}\n"
-            )
+        slide_text = "\n".join(text_lines) if text_lines else "(no text)"
 
-        structure_summary = ""
-        slide_structure = getattr(slide, "structure", None)
-        if slide_structure:
-            structure_summary = f"Slide Structure: {slide_structure}\n"
+        prompt = f"""\
+Slide {slide.slide_number}
+Title: {slide.title or '(none)'}
 
-        image_summary = ""
-        slide_images = getattr(slide, "images", None)
-        if slide_images:
-            image_descriptions = []
-            for image in slide_images:
-                description = getattr(image, "description", None) or getattr(image, "text", None)
-                if description:
-                    image_descriptions.append(str(description))
-            if image_descriptions:
-                image_summary = "Image details:\n" + "\n".join(f"- {desc}" for desc in image_descriptions) + "\n"
+--- Extracted Text (verbatim, one bullet per line) ---
+{slide_text}
 
-        prompt = f"""
-Slide Title: {slide.title}
-Headers: {"; ".join(header_texts) if header_texts else "None"}
-Footers: {"; ".join(footer_texts) if footer_texts else "None"}
-{context_summary}{structure_summary}{image_summary}
-Slide Content:
-{combined_slide_text}
+--- Slide Context ---
+{context_outline or '(no context available)'}
 
-Instructions:
-- Extract the visible text points in the same order and, when possible, use the same wording as shown on the slide.
-- Use a structured response with the required sections.
-- Describe the slide outline and structure.
-- If the slide is a flowchart or process diagram, state the number of boxes, the number of arrows, and the mapping between boxes.
-- If the slide contains relationships between boxes, show the flow from one box to another.
-- If the slide contains images, interpret them in detail.
-- Include headers and footers explicitly.
-- Provide a detailed summary of what the slide depicts.
-- Do not omit important labels, headings, or visual relationships.
+--- Image Descriptions ---
+{image_summaries or '(no images)'}
 
-Return a complete slide summary that is detailed enough to understand the slide without seeing it.
+Generate a concise enterprise-style summary of what this slide depicts.
+Include:
+- The main message or purpose of the slide
+- Key data, statistics, or figures mentioned
+- Any decisions, conclusions, or action items
+- A brief description of the visual layout or diagram if relevant
 """
+
         result = await slide_summary_agent.run(prompt)
         return result.output.summary

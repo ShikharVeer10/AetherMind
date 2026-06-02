@@ -1,11 +1,18 @@
-# Extraction service for a powerpoint presentation
+"""
+Orchestrates the end-to-end extraction of a .pptx document.
+
+Delegates per-slide enrichment to AgentOrchestrator, which runs
+multiple extraction agents in parallel phases.
+"""
+
 import json
 from pathlib import Path
-from typing import Optional
 from extractors.ppt_extractor import PPTExtractor
+from agents.agent_orchestrator import AgentOrchestrator
 
 
 class ExtractionService:
+
     def __init__(
         self,
         document_path: str,
@@ -16,47 +23,66 @@ class ExtractionService:
         self.document_extension = Path(document_path).suffix.lower()
         self.enable_summaries = enable_summaries
         self.enable_image_summaries = enable_image_summaries
+
         self.summarization_agent = None
         self.image_summarization_agent = None
+
         if self.enable_summaries:
             from agents.summarization_agent import SummarizationAgent
-
             self.summarization_agent = SummarizationAgent()
+
         if self.enable_image_summaries:
             from agents.image_summarization_agent import ImageSummaryAgent
-
             self.image_summarization_agent = ImageSummaryAgent()
 
     async def extract_document(self):
-        if self.document_extension == ".pptx":
-            extractor = PPTExtractor(self.document_path)
-            document_model = extractor.extract_document()
-            if self.enable_summaries and self.summarization_agent:
-                for slide in document_model.slides:
-                    slide.slide_summary = await self.summarization_agent.summarize_slide(
-                        slide
-                    )
-            if self.enable_image_summaries and self.image_summarization_agent:
-                await self._summarize_images(document_model)
-            return document_model
-        else:
-            raise ValueError(f"Unsupported document type: {self.document_extension}")
+        if self.document_extension != ".pptx":
+            raise ValueError(
+                f"Unsupported document type: {self.document_extension}"
+            )
 
-    # Provide a method to load the json file
+        extractor = PPTExtractor(self.document_path)
+        document_model = extractor.extract_document()
+
+        orchestrator = AgentOrchestrator(
+            summarization_agent=self.summarization_agent,
+            image_summarization_agent=self.image_summarization_agent,
+        )
+
+        raw_slides = list(extractor.presentation.slides)
+
+        for slide_model, raw_slide in zip(
+            document_model.slides, raw_slides
+        ):
+            slide_model.slide_summary = self._build_fallback_summary(
+                slide_model
+            )
+            await orchestrator.process_slide(
+                slide_model=slide_model,
+                raw_slide=raw_slide,
+            )
+
+        return document_model
+
     def export_to_json(
-        self, extracted_document, output_directory: str = "output/extracted_json"
+        self,
+        extracted_document,
+        output_directory: str = "output/extracted_json",
     ):
         output_path = Path(output_directory)
         output_path.mkdir(parents=True, exist_ok=True)
         document_name = Path(self.document_path).stem
         json_output_file = output_path / f"{document_name}.json"
+
         output_payload = self._format_output(extracted_document)
-        with open(json_output_file, "w", encoding="utf-8") as json_file:
-            json.dump(output_payload, json_file, indent=4, ensure_ascii=False)
+        with open(json_output_file, "w", encoding="utf-8") as f:
+            json.dump(output_payload, f, indent=4, ensure_ascii=False)
+
         return json_output_file
 
     def _format_output(self, extracted_document):
         slides_payload = []
+
         for slide in extracted_document.slides:
             elements_payload = []
             for element in slide.elements:
@@ -64,17 +90,38 @@ class ExtractionService:
                 if element.style:
                     style = {
                         "font_size": element.style.font_size,
+                        "font_name": element.style.font_name,
                         "bold": element.style.bold,
                         "italic": element.style.italic,
                         "color": element.style.text_color,
                         "background_color": element.style.background_color,
                     }
 
+                paragraphs = [
+                    {
+                        "level": p.level,
+                        "text": p.text,
+                        "runs": [
+                            {
+                                "text": r.text,
+                                "bold": r.bold,
+                                "italic": r.italic,
+                                "font_size": r.font_size,
+                                "font_name": r.font_name,
+                                "font_color": r.font_color,
+                            }
+                            for r in p.runs
+                        ],
+                    }
+                    for p in element.paragraphs
+                ]
+
                 elements_payload.append(
                     {
                         "id": element.element_id,
                         "type": element.element_type,
                         "text": element.text,
+                        "paragraphs": paragraphs,
                         "position": {
                             "x": element.position.x,
                             "y": element.position.y,
@@ -82,299 +129,154 @@ class ExtractionService:
                             "height": element.position.height,
                         },
                         "style": style,
+                        "table_markdown": element.table_markdown,
                         "metadata": self._sanitize_metadata(element.metadata),
                     }
                 )
 
-            relationships_payload = self._build_slide_relationships(slide)
-            slide_summary = slide.slide_summary or self._build_slide_summary(slide)
+            relationships_payload = [
+                {
+                    "type": r.relationship_type,
+                    "source": r.source_element_id,
+                    "target": r.target_element_id,
+                    "label": r.label,
+                    "confidence": r.confidence,
+                }
+                for r in slide.relationships
+            ]
+
+            hf = None
+            if slide.header_footer:
+                hf = {
+                    "header": slide.header_footer.header_text,
+                    "footer": slide.header_footer.footer_text,
+                    "slide_number": slide.header_footer.slide_number_text,
+                    "date": slide.header_footer.date_text,
+                }
+
+            inv = None
+            if slide.visual_inventory:
+                inv = slide.visual_inventory.model_dump()
+
+            layout = None
+            if slide.layout_structure:
+                layout = {
+                    "type": slide.layout_structure.layout_type,
+                    "regions": [
+                        {
+                            "name": r.name,
+                            "element_ids": r.element_ids,
+                        }
+                        for r in slide.layout_structure.regions
+                    ],
+                }
+
+            flowchart = None
+            if slide.flowchart and slide.flowchart.is_flowchart:
+                flowchart = {
+                    "box_count": slide.flowchart.box_count,
+                    "arrow_count": slide.flowchart.arrow_count,
+                    "boxes": slide.flowchart.boxes,
+                    "arrows": slide.flowchart.arrows,
+                    "relationships": [
+                        {
+                            "type": r.relationship_type,
+                            "source": r.source_element_id,
+                            "target": r.target_element_id,
+                            "label": r.label,
+                            "confidence": r.confidence,
+                        }
+                        for r in slide.flowchart.relationships
+                    ],
+                    "reading_order": slide.flowchart.reading_order,
+                }
+
+            context = None
+            if slide.context:
+                context = slide.context.model_dump()
+
+            text_points = [
+                {
+                    "element_id": p.element_id,
+                    "level": p.level,
+                    "text": p.text,
+                }
+                for p in slide.text_points
+            ]
+
+            position_mapping = [
+                {
+                    "element_id": p.element_id,
+                    "element_type": p.element_type,
+                    "x": p.x,
+                    "y": p.y,
+                    "width": p.width,
+                    "height": p.height,
+                }
+                for p in slide.position_mapping
+            ]
+
+            diagram_understanding = None
+            if slide.diagram_understanding:
+                diagram_understanding = slide.diagram_understanding.model_dump()
+
             slides_payload.append(
                 {
                     "slide_number": slide.slide_number,
                     "title": slide.title,
+                    "header_footer": hf,
+                    "visual_inventory": inv,
+                    "layout": layout,
                     "elements": elements_payload,
                     "relationships": relationships_payload,
-                    "summary": slide_summary,
+                    "flowchart": flowchart,
+                    "context": context,
+                    "text_points": text_points,
+                    "position_mapping": position_mapping,
+                    "diagram_understanding": diagram_understanding,
+                    "table_markdowns": slide.table_markdowns,
+                    "summary": slide.slide_summary,
                 }
             )
-
-        document_summary = self._build_document_summary(
-            extracted_document=extracted_document, slides_payload=slides_payload
-        )
 
         return {
             "document_type": "ppt",
             "document_name": extracted_document.document_name,
-            "document_summary": document_summary,
+            "total_slides": extracted_document.total_slides,
             "slides": slides_payload,
         }
 
-    async def _summarize_images(self, document_model):
-        for slide in document_model.slides:
-            image_summaries = []
-            for element in slide.elements:
-                if element.element_type != "image":
-                    continue
-                image_bytes = element.metadata.get("__image_bytes")
-                if not image_bytes:
-                    continue
-                try:
-                    summary = await self.image_summarization_agent.summarize_image(
-                        image_bytes
-                    )
-                except Exception:
-                    summary = None
-                if summary:
-                    element.metadata["image_summary"] = summary
-                    image_summaries.append(summary)
+    @staticmethod
+    def _build_fallback_summary(slide) -> str:
+        title = (slide.title or "").strip()
+        text_fragments = []
 
-            if image_summaries:
-                joined_summary = " ".join(image_summaries)
-                if slide.slide_summary:
-                    slide.slide_summary = (
-                        f"{slide.slide_summary}\nImage summary: {joined_summary}"
-                    )
-                else:
-                    slide.slide_summary = f"Image summary: {joined_summary}"
+        for element in slide.elements:
+            if element.text:
+                cleaned = " ".join(element.text.split())
+                if cleaned:
+                    text_fragments.append(cleaned)
+
+        if text_fragments:
+            unique = []
+            for frag in text_fragments:
+                if frag not in unique:
+                    unique.append(frag)
+            body = "; ".join(unique[:3])
+            if title and title not in body:
+                return f"{title}. Key points: {body}."
+            return f"Key points: {body}."
+
+        if title:
+            return f"{title}."
+
+        return f"Slide {slide.slide_number} contains no extracted text."
 
     @staticmethod
     def _sanitize_metadata(metadata: dict) -> dict:
         if not metadata:
             return {}
-        sanitized = {}
-        for key, value in metadata.items():
-            if key.startswith("__"):
-                continue
-            sanitized[key] = value
-        return sanitized
-
-    def _build_slide_relationships(self, slide) -> list:
-        relationships = []
-        relationships.extend(self._build_flow_relationships(slide))
-        relationships.extend(self._build_bullet_relationships(slide))
-        if not relationships:
-            relationships.extend(self._build_reading_order_relationships(slide))
-        return relationships
-
-    def _build_flow_relationships(self, slide) -> list:
-        relationships = []
-        text_candidates = [
-            element
-            for element in slide.elements
-            if element.text
-            and element.element_type not in {"connector", "arrow"}
-        ]
-        connector_candidates = [
-            element
-            for element in slide.elements
-            if element.element_type in {"connector", "arrow"}
-        ]
-        if not text_candidates or not connector_candidates:
-            return relationships
-
-        for connector in connector_candidates:
-            connector_center = self._element_center(connector)
-            is_horizontal = connector.position.width >= connector.position.height
-            if is_horizontal:
-                left = self._find_nearest(
-                    text_candidates,
-                    connector_center,
-                    predicate=lambda candidate: self._element_center(candidate)["x"]
-                    < connector_center["x"],
-                )
-                right = self._find_nearest(
-                    text_candidates,
-                    connector_center,
-                    predicate=lambda candidate: self._element_center(candidate)["x"]
-                    > connector_center["x"],
-                )
-                direction = "left_to_right"
-            else:
-                left = self._find_nearest(
-                    text_candidates,
-                    connector_center,
-                    predicate=lambda candidate: self._element_center(candidate)["y"]
-                    < connector_center["y"],
-                )
-                right = self._find_nearest(
-                    text_candidates,
-                    connector_center,
-                    predicate=lambda candidate: self._element_center(candidate)["y"]
-                    > connector_center["y"],
-                )
-                direction = "top_to_bottom"
-
-            if left and right:
-                relationships.append(
-                    {
-                        "type": "flow",
-                        "from": self._element_label(left),
-                        "to": self._element_label(right),
-                        "from_element_id": left.element_id,
-                        "to_element_id": right.element_id,
-                        "direction": direction,
-                    }
-                )
-        return relationships
-
-    def _build_bullet_relationships(self, slide) -> list:
-        relationships = []
-        for element in slide.elements:
-            bullet_items = element.metadata.get("bullet_hierarchy") or []
-            if len(bullet_items) < 2:
-                continue
-            previous_text = None
-            for item in bullet_items:
-                text = (item.get("text") or "").strip()
-                if not text:
-                    continue
-                if previous_text:
-                    relationships.append(
-                        {
-                            "type": "sequence",
-                            "from": previous_text,
-                            "to": text,
-                            "container_element_id": element.element_id,
-                        }
-                    )
-                previous_text = text
-            stack = []
-            for item in bullet_items:
-                text = (item.get("text") or "").strip()
-                if not text:
-                    continue
-                level = int(item.get("level", 0))
-                while stack and stack[-1]["level"] >= level:
-                    stack.pop()
-                if stack:
-                    parent = stack[-1]
-                    relationships.append(
-                        {
-                            "type": "hierarchy",
-                            "from": parent["text"],
-                            "to": text,
-                            "container_element_id": element.element_id,
-                            "from_level": parent["level"],
-                            "to_level": level,
-                        }
-                    )
-                stack.append({"level": level, "text": text})
-        return relationships
-
-    def _build_reading_order_relationships(self, slide) -> list:
-        candidates = [element for element in slide.elements if element.text]
-        if len(candidates) < 2:
-            return []
-        sorted_elements = sorted(
-            candidates, key=lambda element: (element.position.y, element.position.x)
-        )
-        relationships = []
-        for index in range(len(sorted_elements) - 1):
-            current_element = sorted_elements[index]
-            next_element = sorted_elements[index + 1]
-            relationships.append(
-                {
-                    "type": "reading_order",
-                    "from": self._element_label(current_element),
-                    "to": self._element_label(next_element),
-                    "from_element_id": current_element.element_id,
-                    "to_element_id": next_element.element_id,
-                    "direction": "top_to_bottom",
-                }
-            )
-        return relationships
-
-    def _build_slide_summary(self, slide) -> str:
-        title = (slide.title or "").strip()
-        summary_parts = []
-        if title:
-            summary_parts.append(f"{title}.")
-        key_points = self._collect_key_points(slide)
-        if key_points:
-            summary_parts.append(f"Key points: {'; '.join(key_points)}.")
-        if not summary_parts:
-            return "Slide contains no extractable text."
-        return " ".join(summary_parts)
-
-    def _collect_key_points(self, slide) -> list:
-        key_points = []
-        seen = set()
-        for element in slide.elements:
-            for bullet in element.metadata.get("bullet_hierarchy", []) or []:
-                text = (bullet.get("text") or "").strip()
-                if not text or text in seen:
-                    continue
-                seen.add(text)
-                key_points.append(text)
-                if len(key_points) >= 3:
-                    return key_points
-        if key_points:
-            return key_points
-        for element in slide.elements:
-            if not element.text:
-                continue
-            text = self._truncate_text(element.text)
-            if text and text not in seen and text != (slide.title or ""):
-                seen.add(text)
-                key_points.append(text)
-            if len(key_points) >= 2:
-                break
-        return key_points
-
-    def _build_document_summary(self, extracted_document, slides_payload) -> str:
-        titles = [
-            (slide.title or "").strip()
-            for slide in extracted_document.slides
-            if (slide.title or "").strip()
-        ]
-        if titles:
-            title_sample = "; ".join(titles[:5])
-            return f"Slides cover: {title_sample}."
-        summaries = [
-            slide_payload.get("summary")
-            for slide_payload in slides_payload
-            if slide_payload.get("summary")
-        ]
-        if summaries:
-            return " ".join(summaries[:3])
-        return "Document contains no extractable text."
-
-    @staticmethod
-    def _element_center(element) -> dict:
         return {
-            "x": element.position.x + (element.position.width / 2),
-            "y": element.position.y + (element.position.height / 2),
+            k: v for k, v in metadata.items()
+            if not k.startswith("__")
         }
-
-    @staticmethod
-    def _distance_squared(a: dict, b: dict) -> float:
-        dx = a["x"] - b["x"]
-        dy = a["y"] - b["y"]
-        return (dx * dx) + (dy * dy)
-
-    def _find_nearest(self, candidates, origin: dict, predicate) -> Optional[object]:
-        best_candidate = None
-        best_distance = None
-        for candidate in candidates:
-            if not predicate(candidate):
-                continue
-            distance = self._distance_squared(origin, self._element_center(candidate))
-            if best_distance is None or distance < best_distance:
-                best_distance = distance
-                best_candidate = candidate
-        return best_candidate
-
-    @staticmethod
-    def _element_label(element) -> str:
-        if element.text:
-            cleaned = " ".join(element.text.split())
-            if cleaned:
-                return cleaned[:120]
-        return element.element_id
-
-    @staticmethod
-    def _truncate_text(text: str, limit: int = 120) -> str:
-        cleaned = " ".join(text.split())
-        if len(cleaned) <= limit:
-            return cleaned
-        return f"{cleaned[:limit].rstrip()}..."
