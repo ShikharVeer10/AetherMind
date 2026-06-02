@@ -54,13 +54,14 @@ class ExtractionService:
         for slide_model, raw_slide in zip(
             document_model.slides, raw_slides
         ):
-            slide_model.slide_summary = self._build_fallback_summary(
-                slide_model
-            )
             await orchestrator.process_slide(
                 slide_model=slide_model,
                 raw_slide=raw_slide,
             )
+            if not slide_model.slide_summary:
+                slide_model.slide_summary = self._build_fallback_summary(
+                    slide_model
+                )
 
         return document_model
 
@@ -248,29 +249,87 @@ class ExtractionService:
 
     @staticmethod
     def _build_fallback_summary(slide) -> str:
-        title = (slide.title or "").strip()
-        text_fragments = []
-
-        for element in slide.elements:
-            if element.text:
-                cleaned = " ".join(element.text.split())
-                if cleaned:
-                    text_fragments.append(cleaned)
-
-        if text_fragments:
-            unique = []
-            for frag in text_fragments:
-                if frag not in unique:
-                    unique.append(frag)
-            body = "; ".join(unique[:3])
-            if title and title not in body:
-                return f"{title}. Key points: {body}."
-            return f"Key points: {body}."
-
+        title = (slide.title or "").strip().replace("\n", " ")
+        
+        # Gather layout and inventory info
+        layout_type = "standard"
+        if slide.layout_structure and slide.layout_structure.layout_type:
+            layout_type = slide.layout_structure.layout_type
+            
+        inv = slide.visual_inventory
+        elements_desc = []
+        if inv:
+            if inv.image_count > 0:
+                elements_desc.append(f"{inv.image_count} image(s)")
+            if inv.table_count > 0:
+                elements_desc.append(f"{inv.table_count} table(s)")
+            if inv.chart_count > 0:
+                elements_desc.append(f"{inv.chart_count} chart(s)")
+            if inv.arrow_count > 0 or inv.connector_count > 0:
+                elements_desc.append("diagrammatic connectors")
+                
+        # Flowchart specific details
+        flowchart_desc = ""
+        if slide.flowchart and slide.flowchart.is_flowchart:
+            flowchart_desc = f" a process flowchart outlining a sequence of {slide.flowchart.box_count} steps"
+            
+        # Get key topics (truncated clean phrases)
+        concepts = []
+        
+        # Try to use text_points first
+        points_to_use = slide.text_points if slide.text_points else []
+        if not points_to_use:
+            # fallback to extracting text from elements if text_points is not populated
+            for element in slide.elements:
+                if element.text:
+                    cleaned = " ".join(element.text.split())
+                    if cleaned:
+                        concepts.append(cleaned)
+        else:
+            for p in points_to_use:
+                # focus on high-level points (level 0) or just take them if there are few
+                if p.level == 0 and p.text:
+                    cleaned = p.text.strip().replace("\n", " ")
+                    if title and cleaned.lower() == title.lower():
+                        continue
+                    concepts.append(cleaned)
+                    
+        # Filter duplicates and empty strings
+        unique_concepts = []
+        for c in concepts:
+            if c and c not in unique_concepts:
+                unique_concepts.append(c)
+                
+        # Truncate concepts to sound like conceptual summaries instead of verbatim blocks
+        summarized_concepts = []
+        for c in unique_concepts:
+            if len(c) > 80:
+                words = c.split()
+                # take first 8 words
+                phrase = " ".join(words[:8]) + "..."
+                summarized_concepts.append(phrase)
+            else:
+                summarized_concepts.append(c)
+                
+        # Build sentences
+        parts = []
         if title:
-            return f"{title}."
-
-        return f"Slide {slide.slide_number} contains no extracted text."
+            parts.append(f"This slide, titled '{title}', explains key concepts on this topic.")
+        else:
+            parts.append(f"This slide presents information in a {layout_type} layout.")
+            
+        if flowchart_desc:
+            parts.append(f"It depicts{flowchart_desc} to illustrate the workflow.")
+        elif elements_desc:
+            parts.append(f"The slide utilizes a visual layout featuring {', '.join(elements_desc)} to support the explanation.")
+        else:
+            parts.append(f"The layout is structured as a {layout_type} presentation.")
+            
+        if summarized_concepts:
+            themes = "; ".join(summarized_concepts[:3])
+            parts.append(f"It covers the following points: {themes}.")
+            
+        return " ".join(parts)
 
     @staticmethod
     def _sanitize_metadata(metadata: dict) -> dict:

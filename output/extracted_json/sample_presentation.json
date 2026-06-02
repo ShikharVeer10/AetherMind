@@ -1,0 +1,2508 @@
+{
+    "document_type": "ppt",
+    "document_name": "sample_presentation.pptx",
+    "total_slides": 5,
+    "slides": [
+        {
+            "slide_number": 1,
+            "title": "AetherMind: Enterprise Document AI",
+            "header_footer": {
+                "header": "Click to edit Master title style",
+                "footer": null,
+                "slide_number": "‹#›",
+                "date": "1/27/13"
+            },
+            "visual_inventory": {
+                "text_box_count": 0,
+                "shape_count": 0,
+                "arrow_count": 0,
+                "connector_count": 0,
+                "image_count": 0,
+                "table_count": 0,
+                "group_count": 0,
+                "chart_count": 0,
+                "placeholder_count": 2,
+                "unknown_count": 0,
+                "total_elements": 2
+            },
+            "layout": {
+                "type": "title_slide",
+                "regions": [
+                    {
+                        "name": "body_left",
+                        "element_ids": [
+                            "slide_1_shape_0",
+                            "slide_1_shape_1"
+                        ]
+                    }
+                ]
+            },
+            "elements": [
+                {
+                    "id": "slide_1_shape_0",
+                    "type": "placeholder",
+                    "text": "AetherMind: Enterprise Document AI",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "AetherMind: Enterprise Document AI",
+                            "runs": [
+                                {
+                                    "text": "AetherMind: Enterprise Document AI",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 685800.0,
+                        "y": 2130425.0,
+                        "width": 7772400.0,
+                        "height": 1470025.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "AetherMind: Enterprise Document AI"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_1_shape_1",
+                    "type": "placeholder",
+                    "text": "Quarterly Strategy Review — Q3 2026",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Quarterly Strategy Review — Q3 2026",
+                            "runs": [
+                                {
+                                    "text": "Quarterly Strategy Review — Q3 2026",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 1371600.0,
+                        "y": 3886200.0,
+                        "width": 6400800.0,
+                        "height": 1752600.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Quarterly Strategy Review — Q3 2026"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "flowchart": null,
+            "context": {
+                "header_footer": {
+                    "header_text": "Click to edit Master title style",
+                    "footer_text": null,
+                    "slide_number_text": "‹#›",
+                    "date_text": "1/27/13"
+                },
+                "title": "AetherMind: Enterprise Document AI",
+                "visual_inventory": {
+                    "text_box_count": 0,
+                    "shape_count": 0,
+                    "arrow_count": 0,
+                    "connector_count": 0,
+                    "image_count": 0,
+                    "table_count": 0,
+                    "group_count": 0,
+                    "chart_count": 0,
+                    "placeholder_count": 2,
+                    "unknown_count": 0,
+                    "total_elements": 2
+                },
+                "layout_structure": {
+                    "layout_type": "title_slide",
+                    "regions": [
+                        {
+                            "name": "body_left",
+                            "x_start": 0.0,
+                            "y_start": 1234440.0,
+                            "x_end": 6096000.0,
+                            "y_end": 5829300.0,
+                            "element_ids": [
+                                "slide_1_shape_0",
+                                "slide_1_shape_1"
+                            ]
+                        }
+                    ]
+                },
+                "flowchart": {
+                    "is_flowchart": false,
+                    "box_count": 2,
+                    "arrow_count": 0,
+                    "boxes": [
+                        {
+                            "element_id": "slide_1_shape_0",
+                            "text": "AetherMind: Enterprise Document AI",
+                            "x": 685800.0,
+                            "y": 2130425.0
+                        },
+                        {
+                            "element_id": "slide_1_shape_1",
+                            "text": "Quarterly Strategy Review — Q3 2026",
+                            "x": 1371600.0,
+                            "y": 3886200.0
+                        }
+                    ],
+                    "arrows": [],
+                    "relationships": [],
+                    "reading_order": [
+                        "slide_1_shape_1",
+                        "slide_1_shape_0"
+                    ]
+                },
+                "text_points": [
+                    {
+                        "element_id": "slide_1_shape_0",
+                        "level": 0,
+                        "text": "AetherMind: Enterprise Document AI"
+                    },
+                    {
+                        "element_id": "slide_1_shape_1",
+                        "level": 0,
+                        "text": "Quarterly Strategy Review — Q3 2026"
+                    }
+                ],
+                "position_mapping": [
+                    {
+                        "element_id": "slide_1_shape_0",
+                        "element_type": "placeholder",
+                        "x": 685800.0,
+                        "y": 2130425.0,
+                        "width": 7772400.0,
+                        "height": 1470025.0
+                    },
+                    {
+                        "element_id": "slide_1_shape_1",
+                        "element_type": "placeholder",
+                        "x": 1371600.0,
+                        "y": 3886200.0,
+                        "width": 6400800.0,
+                        "height": 1752600.0
+                    }
+                ],
+                "relationship_mapping": [],
+                "diagram_understanding": {
+                    "is_diagram": false,
+                    "diagram_type": "none",
+                    "node_count": 2,
+                    "edge_count": 0,
+                    "nodes": [
+                        {
+                            "element_id": "slide_1_shape_0",
+                            "type": "placeholder",
+                            "text": "AetherMind: Enterprise Document AI"
+                        },
+                        {
+                            "element_id": "slide_1_shape_1",
+                            "type": "placeholder",
+                            "text": "Quarterly Strategy Review — Q3 2026"
+                        }
+                    ],
+                    "edges": [],
+                    "summary": "No diagram detected."
+                },
+                "outline": "Title: \"AetherMind: Enterprise Document AI\". Boxes: 2, Arrows: 0. Layout: title_slide. Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
+            },
+            "text_points": [
+                {
+                    "element_id": "slide_1_shape_0",
+                    "level": 0,
+                    "text": "AetherMind: Enterprise Document AI"
+                },
+                {
+                    "element_id": "slide_1_shape_1",
+                    "level": 0,
+                    "text": "Quarterly Strategy Review — Q3 2026"
+                }
+            ],
+            "position_mapping": [
+                {
+                    "element_id": "slide_1_shape_0",
+                    "element_type": "placeholder",
+                    "x": 685800.0,
+                    "y": 2130425.0,
+                    "width": 7772400.0,
+                    "height": 1470025.0
+                },
+                {
+                    "element_id": "slide_1_shape_1",
+                    "element_type": "placeholder",
+                    "x": 1371600.0,
+                    "y": 3886200.0,
+                    "width": 6400800.0,
+                    "height": 1752600.0
+                }
+            ],
+            "diagram_understanding": {
+                "is_diagram": false,
+                "diagram_type": "none",
+                "node_count": 2,
+                "edge_count": 0,
+                "nodes": [
+                    {
+                        "element_id": "slide_1_shape_0",
+                        "type": "placeholder",
+                        "text": "AetherMind: Enterprise Document AI"
+                    },
+                    {
+                        "element_id": "slide_1_shape_1",
+                        "type": "placeholder",
+                        "text": "Quarterly Strategy Review — Q3 2026"
+                    }
+                ],
+                "edges": [],
+                "summary": "No diagram detected."
+            },
+            "table_markdowns": [],
+            "summary": "This slide, titled 'AetherMind: Enterprise Document AI', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Quarterly Strategy Review — Q3 2026."
+        },
+        {
+            "slide_number": 2,
+            "title": "Key Highlights",
+            "header_footer": {
+                "header": "Key Highlights",
+                "footer": null,
+                "slide_number": "‹#›",
+                "date": "1/27/13"
+            },
+            "visual_inventory": {
+                "text_box_count": 0,
+                "shape_count": 0,
+                "arrow_count": 0,
+                "connector_count": 0,
+                "image_count": 0,
+                "table_count": 0,
+                "group_count": 0,
+                "chart_count": 0,
+                "placeholder_count": 2,
+                "unknown_count": 0,
+                "total_elements": 2
+            },
+            "layout": {
+                "type": "title_slide",
+                "regions": [
+                    {
+                        "name": "header",
+                        "element_ids": [
+                            "slide_2_shape_0"
+                        ]
+                    },
+                    {
+                        "name": "body_left",
+                        "element_ids": [
+                            "slide_2_shape_1"
+                        ]
+                    }
+                ]
+            },
+            "elements": [
+                {
+                    "id": "slide_2_shape_0",
+                    "type": "placeholder",
+                    "text": "Key Highlights",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Key Highlights",
+                            "runs": [
+                                {
+                                    "text": "Key Highlights",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 457200.0,
+                        "y": 274638.0,
+                        "width": 8229600.0,
+                        "height": 1143000.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Key Highlights"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_2_shape_1",
+                    "type": "placeholder",
+                    "text": "Revenue grew 23% YoY to $4.2B\nActive users surpassed 150 million\nLaunched 3 new AI-powered features\nNPS score improved from 62 to 71",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Revenue grew 23% YoY to $4.2B",
+                            "runs": [
+                                {
+                                    "text": "Revenue grew 23% YoY to $4.2B",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        },
+                        {
+                            "level": 1,
+                            "text": "Active users surpassed 150 million",
+                            "runs": [
+                                {
+                                    "text": "Active users surpassed 150 million",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        },
+                        {
+                            "level": 1,
+                            "text": "Launched 3 new AI-powered features",
+                            "runs": [
+                                {
+                                    "text": "Launched 3 new AI-powered features",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        },
+                        {
+                            "level": 1,
+                            "text": "NPS score improved from 62 to 71",
+                            "runs": [
+                                {
+                                    "text": "NPS score improved from 62 to 71",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 457200.0,
+                        "y": 1600200.0,
+                        "width": 8229600.0,
+                        "height": 4525963.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Revenue grew 23% YoY to $4.2B"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Active users surpassed 150 million"
+                            },
+                            {
+                                "level": 1,
+                                "text": "Launched 3 new AI-powered features"
+                            },
+                            {
+                                "level": 1,
+                                "text": "NPS score improved from 62 to 71"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "flowchart": null,
+            "context": {
+                "header_footer": {
+                    "header_text": "Key Highlights",
+                    "footer_text": null,
+                    "slide_number_text": "‹#›",
+                    "date_text": "1/27/13"
+                },
+                "title": "Key Highlights",
+                "visual_inventory": {
+                    "text_box_count": 0,
+                    "shape_count": 0,
+                    "arrow_count": 0,
+                    "connector_count": 0,
+                    "image_count": 0,
+                    "table_count": 0,
+                    "group_count": 0,
+                    "chart_count": 0,
+                    "placeholder_count": 2,
+                    "unknown_count": 0,
+                    "total_elements": 2
+                },
+                "layout_structure": {
+                    "layout_type": "title_slide",
+                    "regions": [
+                        {
+                            "name": "header",
+                            "x_start": 0.0,
+                            "y_start": 0.0,
+                            "x_end": 12192000.0,
+                            "y_end": 1234440.0,
+                            "element_ids": [
+                                "slide_2_shape_0"
+                            ]
+                        },
+                        {
+                            "name": "body_left",
+                            "x_start": 0.0,
+                            "y_start": 1234440.0,
+                            "x_end": 6096000.0,
+                            "y_end": 5829300.0,
+                            "element_ids": [
+                                "slide_2_shape_1"
+                            ]
+                        }
+                    ]
+                },
+                "flowchart": {
+                    "is_flowchart": false,
+                    "box_count": 2,
+                    "arrow_count": 0,
+                    "boxes": [
+                        {
+                            "element_id": "slide_2_shape_0",
+                            "text": "Key Highlights",
+                            "x": 457200.0,
+                            "y": 274638.0
+                        },
+                        {
+                            "element_id": "slide_2_shape_1",
+                            "text": "Revenue grew 23% YoY to $4.2B\nActive users surpassed 150 million\nLaunched 3 new AI-powered features\nNPS score improved from 62 to 71",
+                            "x": 457200.0,
+                            "y": 1600200.0
+                        }
+                    ],
+                    "arrows": [],
+                    "relationships": [],
+                    "reading_order": [
+                        "slide_2_shape_0",
+                        "slide_2_shape_1"
+                    ]
+                },
+                "text_points": [
+                    {
+                        "element_id": "slide_2_shape_0",
+                        "level": 0,
+                        "text": "Key Highlights"
+                    },
+                    {
+                        "element_id": "slide_2_shape_1",
+                        "level": 0,
+                        "text": "Revenue grew 23% YoY to $4.2B"
+                    },
+                    {
+                        "element_id": "slide_2_shape_1",
+                        "level": 1,
+                        "text": "Active users surpassed 150 million"
+                    },
+                    {
+                        "element_id": "slide_2_shape_1",
+                        "level": 1,
+                        "text": "Launched 3 new AI-powered features"
+                    },
+                    {
+                        "element_id": "slide_2_shape_1",
+                        "level": 1,
+                        "text": "NPS score improved from 62 to 71"
+                    }
+                ],
+                "position_mapping": [
+                    {
+                        "element_id": "slide_2_shape_0",
+                        "element_type": "placeholder",
+                        "x": 457200.0,
+                        "y": 274638.0,
+                        "width": 8229600.0,
+                        "height": 1143000.0
+                    },
+                    {
+                        "element_id": "slide_2_shape_1",
+                        "element_type": "placeholder",
+                        "x": 457200.0,
+                        "y": 1600200.0,
+                        "width": 8229600.0,
+                        "height": 4525963.0
+                    }
+                ],
+                "relationship_mapping": [],
+                "diagram_understanding": {
+                    "is_diagram": false,
+                    "diagram_type": "none",
+                    "node_count": 2,
+                    "edge_count": 0,
+                    "nodes": [
+                        {
+                            "element_id": "slide_2_shape_0",
+                            "type": "placeholder",
+                            "text": "Key Highlights"
+                        },
+                        {
+                            "element_id": "slide_2_shape_1",
+                            "type": "placeholder",
+                            "text": "Revenue grew 23% YoY to $4.2B\nActive users surpassed 150 million\nLaunched 3 new AI-powered features\nNPS score improved from 62 to 71"
+                        }
+                    ],
+                    "edges": [],
+                    "summary": "No diagram detected."
+                },
+                "outline": "Title: \"Key Highlights\". Boxes: 2, Arrows: 0. Layout: title_slide. Header: \"Key Highlights\" | Slide #: ‹#› | Date: 1/27/13."
+            },
+            "text_points": [
+                {
+                    "element_id": "slide_2_shape_0",
+                    "level": 0,
+                    "text": "Key Highlights"
+                },
+                {
+                    "element_id": "slide_2_shape_1",
+                    "level": 0,
+                    "text": "Revenue grew 23% YoY to $4.2B"
+                },
+                {
+                    "element_id": "slide_2_shape_1",
+                    "level": 1,
+                    "text": "Active users surpassed 150 million"
+                },
+                {
+                    "element_id": "slide_2_shape_1",
+                    "level": 1,
+                    "text": "Launched 3 new AI-powered features"
+                },
+                {
+                    "element_id": "slide_2_shape_1",
+                    "level": 1,
+                    "text": "NPS score improved from 62 to 71"
+                }
+            ],
+            "position_mapping": [
+                {
+                    "element_id": "slide_2_shape_0",
+                    "element_type": "placeholder",
+                    "x": 457200.0,
+                    "y": 274638.0,
+                    "width": 8229600.0,
+                    "height": 1143000.0
+                },
+                {
+                    "element_id": "slide_2_shape_1",
+                    "element_type": "placeholder",
+                    "x": 457200.0,
+                    "y": 1600200.0,
+                    "width": 8229600.0,
+                    "height": 4525963.0
+                }
+            ],
+            "diagram_understanding": {
+                "is_diagram": false,
+                "diagram_type": "none",
+                "node_count": 2,
+                "edge_count": 0,
+                "nodes": [
+                    {
+                        "element_id": "slide_2_shape_0",
+                        "type": "placeholder",
+                        "text": "Key Highlights"
+                    },
+                    {
+                        "element_id": "slide_2_shape_1",
+                        "type": "placeholder",
+                        "text": "Revenue grew 23% YoY to $4.2B\nActive users surpassed 150 million\nLaunched 3 new AI-powered features\nNPS score improved from 62 to 71"
+                    }
+                ],
+                "edges": [],
+                "summary": "No diagram detected."
+            },
+            "table_markdowns": [],
+            "summary": "This slide, titled 'Key Highlights', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Revenue grew 23% YoY to $4.2B."
+        },
+        {
+            "slide_number": 3,
+            "title": "Regional Revenue Breakdown",
+            "header_footer": {
+                "header": "Click to edit Master title style",
+                "footer": null,
+                "slide_number": "‹#›",
+                "date": "1/27/13"
+            },
+            "visual_inventory": {
+                "text_box_count": 1,
+                "shape_count": 0,
+                "arrow_count": 0,
+                "connector_count": 0,
+                "image_count": 0,
+                "table_count": 1,
+                "group_count": 0,
+                "chart_count": 0,
+                "placeholder_count": 0,
+                "unknown_count": 0,
+                "total_elements": 2
+            },
+            "layout": {
+                "type": "single_column",
+                "regions": [
+                    {
+                        "name": "header",
+                        "element_ids": [
+                            "slide_3_shape_0"
+                        ]
+                    },
+                    {
+                        "name": "body_left",
+                        "element_ids": [
+                            "slide_3_shape_1"
+                        ]
+                    }
+                ]
+            },
+            "elements": [
+                {
+                    "id": "slide_3_shape_0",
+                    "type": "text_box",
+                    "text": "Regional Revenue Breakdown",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Regional Revenue Breakdown",
+                            "runs": [
+                                {
+                                    "text": "Regional Revenue Breakdown",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 457200.0,
+                        "y": 274320.0,
+                        "width": 8229600.0,
+                        "height": 731520.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Regional Revenue Breakdown"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_1",
+                    "type": "table",
+                    "text": null,
+                    "paragraphs": [],
+                    "position": {
+                        "x": 914400.0,
+                        "y": 1371600.0,
+                        "width": 7315200.0,
+                        "height": 2743200.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": "| Region | Q1 ($M) | Q2 ($M) | Q3 ($M) |\n| --- | --- | --- | --- |\n| North America | 1,200 | 1,350 | 1,420 |\n| Europe | 680 | 720 | 810 |\n| Asia-Pacific | 450 | 510 | 590 |\n| Rest of World | 280 | 320 | 380 |",
+                    "metadata": {
+                        "table_data": [
+                            [
+                                "Region",
+                                "Q1 ($M)",
+                                "Q2 ($M)",
+                                "Q3 ($M)"
+                            ],
+                            [
+                                "North America",
+                                "1,200",
+                                "1,350",
+                                "1,420"
+                            ],
+                            [
+                                "Europe",
+                                "680",
+                                "720",
+                                "810"
+                            ],
+                            [
+                                "Asia-Pacific",
+                                "450",
+                                "510",
+                                "590"
+                            ],
+                            [
+                                "Rest of World",
+                                "280",
+                                "320",
+                                "380"
+                            ]
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "flowchart": null,
+            "context": {
+                "header_footer": {
+                    "header_text": "Click to edit Master title style",
+                    "footer_text": null,
+                    "slide_number_text": "‹#›",
+                    "date_text": "1/27/13"
+                },
+                "title": "Regional Revenue Breakdown",
+                "visual_inventory": {
+                    "text_box_count": 1,
+                    "shape_count": 0,
+                    "arrow_count": 0,
+                    "connector_count": 0,
+                    "image_count": 0,
+                    "table_count": 1,
+                    "group_count": 0,
+                    "chart_count": 0,
+                    "placeholder_count": 0,
+                    "unknown_count": 0,
+                    "total_elements": 2
+                },
+                "layout_structure": {
+                    "layout_type": "single_column",
+                    "regions": [
+                        {
+                            "name": "header",
+                            "x_start": 0.0,
+                            "y_start": 0.0,
+                            "x_end": 12192000.0,
+                            "y_end": 1234440.0,
+                            "element_ids": [
+                                "slide_3_shape_0"
+                            ]
+                        },
+                        {
+                            "name": "body_left",
+                            "x_start": 0.0,
+                            "y_start": 1234440.0,
+                            "x_end": 6096000.0,
+                            "y_end": 5829300.0,
+                            "element_ids": [
+                                "slide_3_shape_1"
+                            ]
+                        }
+                    ]
+                },
+                "flowchart": {
+                    "is_flowchart": false,
+                    "box_count": 1,
+                    "arrow_count": 0,
+                    "boxes": [
+                        {
+                            "element_id": "slide_3_shape_0",
+                            "text": "Regional Revenue Breakdown",
+                            "x": 457200.0,
+                            "y": 274320.0
+                        }
+                    ],
+                    "arrows": [],
+                    "relationships": [],
+                    "reading_order": [
+                        "slide_3_shape_0"
+                    ]
+                },
+                "text_points": [
+                    {
+                        "element_id": "slide_3_shape_0",
+                        "level": 0,
+                        "text": "Regional Revenue Breakdown"
+                    }
+                ],
+                "position_mapping": [
+                    {
+                        "element_id": "slide_3_shape_0",
+                        "element_type": "text_box",
+                        "x": 457200.0,
+                        "y": 274320.0,
+                        "width": 8229600.0,
+                        "height": 731520.0
+                    },
+                    {
+                        "element_id": "slide_3_shape_1",
+                        "element_type": "table",
+                        "x": 914400.0,
+                        "y": 1371600.0,
+                        "width": 7315200.0,
+                        "height": 2743200.0
+                    }
+                ],
+                "relationship_mapping": [],
+                "diagram_understanding": {
+                    "is_diagram": false,
+                    "diagram_type": "none",
+                    "node_count": 2,
+                    "edge_count": 0,
+                    "nodes": [
+                        {
+                            "element_id": "slide_3_shape_0",
+                            "type": "text_box",
+                            "text": "Regional Revenue Breakdown"
+                        },
+                        {
+                            "element_id": "slide_3_shape_1",
+                            "type": "table",
+                            "text": null
+                        }
+                    ],
+                    "edges": [],
+                    "summary": "No diagram detected."
+                },
+                "outline": "Title: \"Regional Revenue Breakdown\". Elements: 1 text box(es), 1 table(s). Boxes: 1, Arrows: 0. Layout: single_column. Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
+            },
+            "text_points": [
+                {
+                    "element_id": "slide_3_shape_0",
+                    "level": 0,
+                    "text": "Regional Revenue Breakdown"
+                }
+            ],
+            "position_mapping": [
+                {
+                    "element_id": "slide_3_shape_0",
+                    "element_type": "text_box",
+                    "x": 457200.0,
+                    "y": 274320.0,
+                    "width": 8229600.0,
+                    "height": 731520.0
+                },
+                {
+                    "element_id": "slide_3_shape_1",
+                    "element_type": "table",
+                    "x": 914400.0,
+                    "y": 1371600.0,
+                    "width": 7315200.0,
+                    "height": 2743200.0
+                }
+            ],
+            "diagram_understanding": {
+                "is_diagram": false,
+                "diagram_type": "none",
+                "node_count": 2,
+                "edge_count": 0,
+                "nodes": [
+                    {
+                        "element_id": "slide_3_shape_0",
+                        "type": "text_box",
+                        "text": "Regional Revenue Breakdown"
+                    },
+                    {
+                        "element_id": "slide_3_shape_1",
+                        "type": "table",
+                        "text": null
+                    }
+                ],
+                "edges": [],
+                "summary": "No diagram detected."
+            },
+            "table_markdowns": [
+                "| Region | Q1 ($M) | Q2 ($M) | Q3 ($M) |\n| --- | --- | --- | --- |\n| North America | 1,200 | 1,350 | 1,420 |\n| Europe | 680 | 720 | 810 |\n| Asia-Pacific | 450 | 510 | 590 |\n| Rest of World | 280 | 320 | 380 |"
+            ],
+            "summary": "This slide, titled 'Regional Revenue Breakdown', explains key concepts on this topic. The slide utilizes a visual layout featuring 1 table(s) to support the explanation."
+        },
+        {
+            "slide_number": 4,
+            "title": "Data Processing Pipeline",
+            "header_footer": {
+                "header": "Click to edit Master title style",
+                "footer": null,
+                "slide_number": "‹#›",
+                "date": "1/27/13"
+            },
+            "visual_inventory": {
+                "text_box_count": 1,
+                "shape_count": 4,
+                "arrow_count": 0,
+                "connector_count": 3,
+                "image_count": 0,
+                "table_count": 0,
+                "group_count": 0,
+                "chart_count": 0,
+                "placeholder_count": 0,
+                "unknown_count": 0,
+                "total_elements": 8
+            },
+            "layout": {
+                "type": "flowchart",
+                "regions": [
+                    {
+                        "name": "header",
+                        "element_ids": [
+                            "slide_4_shape_0"
+                        ]
+                    },
+                    {
+                        "name": "body_left",
+                        "element_ids": [
+                            "slide_4_shape_1",
+                            "slide_4_shape_2",
+                            "slide_4_shape_4",
+                            "slide_4_shape_5",
+                            "slide_4_shape_6",
+                            "slide_4_shape_7"
+                        ]
+                    },
+                    {
+                        "name": "body_right",
+                        "element_ids": [
+                            "slide_4_shape_3"
+                        ]
+                    }
+                ]
+            },
+            "elements": [
+                {
+                    "id": "slide_4_shape_0",
+                    "type": "text_box",
+                    "text": "Data Processing Pipeline",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Data Processing Pipeline",
+                            "runs": [
+                                {
+                                    "text": "Data Processing Pipeline",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 457200.0,
+                        "y": 274320.0,
+                        "width": 8229600.0,
+                        "height": 731520.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Data Processing Pipeline"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_1",
+                    "type": "shape",
+                    "text": "Ingest",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Ingest",
+                            "runs": [
+                                {
+                                    "text": "Ingest",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": 14.0,
+                                    "font_name": null,
+                                    "font_color": "#ffffff"
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 914400.0,
+                        "y": 1828800.0,
+                        "width": 1645920.0,
+                        "height": 822960.0
+                    },
+                    "style": {
+                        "font_size": 14.0,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#ffffff",
+                        "background_color": "#407bce"
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Ingest"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_2",
+                    "type": "shape",
+                    "text": "Validate",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Validate",
+                            "runs": [
+                                {
+                                    "text": "Validate",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": 14.0,
+                                    "font_name": null,
+                                    "font_color": "#ffffff"
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 3657600.0,
+                        "y": 1828800.0,
+                        "width": 1645920.0,
+                        "height": 822960.0
+                    },
+                    "style": {
+                        "font_size": 14.0,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#ffffff",
+                        "background_color": "#407bce"
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Validate"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_3",
+                    "type": "shape",
+                    "text": "Transform",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Transform",
+                            "runs": [
+                                {
+                                    "text": "Transform",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": 14.0,
+                                    "font_name": null,
+                                    "font_color": "#ffffff"
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 6400800.0,
+                        "y": 1828800.0,
+                        "width": 1645920.0,
+                        "height": 822960.0
+                    },
+                    "style": {
+                        "font_size": 14.0,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#ffffff",
+                        "background_color": "#407bce"
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Transform"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_4",
+                    "type": "shape",
+                    "text": "Store",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Store",
+                            "runs": [
+                                {
+                                    "text": "Store",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": 14.0,
+                                    "font_name": null,
+                                    "font_color": "#ffffff"
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 3657600.0,
+                        "y": 4114800.0,
+                        "width": 1645920.0,
+                        "height": 822960.0
+                    },
+                    "style": {
+                        "font_size": 14.0,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#ffffff",
+                        "background_color": "#407bce"
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Store"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_5",
+                    "type": "connector",
+                    "text": null,
+                    "paragraphs": [],
+                    "position": {
+                        "x": 2560320.0,
+                        "y": 2240280.0,
+                        "width": 1097280.0,
+                        "height": 0.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "connector_endpoints": {
+                            "begin_x": 2560320.0,
+                            "begin_y": 2240280.0,
+                            "end_x": 3657600.0,
+                            "end_y": 2240280.0
+                        }
+                    }
+                },
+                {
+                    "id": "slide_4_shape_6",
+                    "type": "connector",
+                    "text": null,
+                    "paragraphs": [],
+                    "position": {
+                        "x": 5303520.0,
+                        "y": 2240280.0,
+                        "width": 1097280.0,
+                        "height": 0.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "connector_endpoints": {
+                            "begin_x": 5303520.0,
+                            "begin_y": 2240280.0,
+                            "end_x": 6400800.0,
+                            "end_y": 2240280.0
+                        }
+                    }
+                },
+                {
+                    "id": "slide_4_shape_7",
+                    "type": "connector",
+                    "text": null,
+                    "paragraphs": [],
+                    "position": {
+                        "x": 3657600.0,
+                        "y": 2240280.0,
+                        "width": 1645920.0,
+                        "height": 2286000.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "connector_endpoints": {
+                            "begin_x": 5303520.0,
+                            "begin_y": 2240280.0,
+                            "end_x": 3657600.0,
+                            "end_y": 4526280.0
+                        }
+                    }
+                }
+            ],
+            "relationships": [
+                {
+                    "type": "connector",
+                    "source": "slide_4_shape_1",
+                    "target": "slide_4_shape_2",
+                    "label": null,
+                    "confidence": 1.0
+                },
+                {
+                    "type": "connector",
+                    "source": "slide_4_shape_2",
+                    "target": "slide_4_shape_3",
+                    "label": null,
+                    "confidence": 1.0
+                },
+                {
+                    "type": "connector",
+                    "source": "slide_4_shape_2",
+                    "target": "slide_4_shape_4",
+                    "label": null,
+                    "confidence": 1.0
+                }
+            ],
+            "flowchart": {
+                "box_count": 5,
+                "arrow_count": 3,
+                "boxes": [
+                    {
+                        "element_id": "slide_4_shape_0",
+                        "text": "Data Processing Pipeline",
+                        "x": 457200.0,
+                        "y": 274320.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_1",
+                        "text": "Ingest",
+                        "x": 914400.0,
+                        "y": 1828800.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_2",
+                        "text": "Validate",
+                        "x": 3657600.0,
+                        "y": 1828800.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_3",
+                        "text": "Transform",
+                        "x": 6400800.0,
+                        "y": 1828800.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_4",
+                        "text": "Store",
+                        "x": 3657600.0,
+                        "y": 4114800.0
+                    }
+                ],
+                "arrows": [
+                    {
+                        "element_id": "slide_4_shape_5",
+                        "text": null,
+                        "type": "connector"
+                    },
+                    {
+                        "element_id": "slide_4_shape_6",
+                        "text": null,
+                        "type": "connector"
+                    },
+                    {
+                        "element_id": "slide_4_shape_7",
+                        "text": null,
+                        "type": "connector"
+                    }
+                ],
+                "relationships": [
+                    {
+                        "type": "connector",
+                        "source": "slide_4_shape_1",
+                        "target": "slide_4_shape_2",
+                        "label": null,
+                        "confidence": 1.0
+                    },
+                    {
+                        "type": "connector",
+                        "source": "slide_4_shape_2",
+                        "target": "slide_4_shape_3",
+                        "label": null,
+                        "confidence": 1.0
+                    },
+                    {
+                        "type": "connector",
+                        "source": "slide_4_shape_2",
+                        "target": "slide_4_shape_4",
+                        "label": null,
+                        "confidence": 1.0
+                    }
+                ],
+                "reading_order": [
+                    "slide_4_shape_1",
+                    "slide_4_shape_0",
+                    "slide_4_shape_2",
+                    "slide_4_shape_3",
+                    "slide_4_shape_4"
+                ]
+            },
+            "context": {
+                "header_footer": {
+                    "header_text": "Click to edit Master title style",
+                    "footer_text": null,
+                    "slide_number_text": "‹#›",
+                    "date_text": "1/27/13"
+                },
+                "title": "Data Processing Pipeline",
+                "visual_inventory": {
+                    "text_box_count": 1,
+                    "shape_count": 4,
+                    "arrow_count": 0,
+                    "connector_count": 3,
+                    "image_count": 0,
+                    "table_count": 0,
+                    "group_count": 0,
+                    "chart_count": 0,
+                    "placeholder_count": 0,
+                    "unknown_count": 0,
+                    "total_elements": 8
+                },
+                "layout_structure": {
+                    "layout_type": "flowchart",
+                    "regions": [
+                        {
+                            "name": "header",
+                            "x_start": 0.0,
+                            "y_start": 0.0,
+                            "x_end": 12192000.0,
+                            "y_end": 1234440.0,
+                            "element_ids": [
+                                "slide_4_shape_0"
+                            ]
+                        },
+                        {
+                            "name": "body_left",
+                            "x_start": 0.0,
+                            "y_start": 1234440.0,
+                            "x_end": 6096000.0,
+                            "y_end": 5829300.0,
+                            "element_ids": [
+                                "slide_4_shape_1",
+                                "slide_4_shape_2",
+                                "slide_4_shape_4",
+                                "slide_4_shape_5",
+                                "slide_4_shape_6",
+                                "slide_4_shape_7"
+                            ]
+                        },
+                        {
+                            "name": "body_right",
+                            "x_start": 6096000.0,
+                            "y_start": 1234440.0,
+                            "x_end": 12192000.0,
+                            "y_end": 5829300.0,
+                            "element_ids": [
+                                "slide_4_shape_3"
+                            ]
+                        }
+                    ]
+                },
+                "flowchart": {
+                    "is_flowchart": true,
+                    "box_count": 5,
+                    "arrow_count": 3,
+                    "boxes": [
+                        {
+                            "element_id": "slide_4_shape_0",
+                            "text": "Data Processing Pipeline",
+                            "x": 457200.0,
+                            "y": 274320.0
+                        },
+                        {
+                            "element_id": "slide_4_shape_1",
+                            "text": "Ingest",
+                            "x": 914400.0,
+                            "y": 1828800.0
+                        },
+                        {
+                            "element_id": "slide_4_shape_2",
+                            "text": "Validate",
+                            "x": 3657600.0,
+                            "y": 1828800.0
+                        },
+                        {
+                            "element_id": "slide_4_shape_3",
+                            "text": "Transform",
+                            "x": 6400800.0,
+                            "y": 1828800.0
+                        },
+                        {
+                            "element_id": "slide_4_shape_4",
+                            "text": "Store",
+                            "x": 3657600.0,
+                            "y": 4114800.0
+                        }
+                    ],
+                    "arrows": [
+                        {
+                            "element_id": "slide_4_shape_5",
+                            "text": null,
+                            "type": "connector"
+                        },
+                        {
+                            "element_id": "slide_4_shape_6",
+                            "text": null,
+                            "type": "connector"
+                        },
+                        {
+                            "element_id": "slide_4_shape_7",
+                            "text": null,
+                            "type": "connector"
+                        }
+                    ],
+                    "relationships": [
+                        {
+                            "relationship_type": "connector",
+                            "source_element_id": "slide_4_shape_1",
+                            "target_element_id": "slide_4_shape_2",
+                            "label": null,
+                            "confidence": 1.0
+                        },
+                        {
+                            "relationship_type": "connector",
+                            "source_element_id": "slide_4_shape_2",
+                            "target_element_id": "slide_4_shape_3",
+                            "label": null,
+                            "confidence": 1.0
+                        },
+                        {
+                            "relationship_type": "connector",
+                            "source_element_id": "slide_4_shape_2",
+                            "target_element_id": "slide_4_shape_4",
+                            "label": null,
+                            "confidence": 1.0
+                        }
+                    ],
+                    "reading_order": [
+                        "slide_4_shape_1",
+                        "slide_4_shape_0",
+                        "slide_4_shape_2",
+                        "slide_4_shape_3",
+                        "slide_4_shape_4"
+                    ]
+                },
+                "text_points": [
+                    {
+                        "element_id": "slide_4_shape_0",
+                        "level": 0,
+                        "text": "Data Processing Pipeline"
+                    },
+                    {
+                        "element_id": "slide_4_shape_1",
+                        "level": 0,
+                        "text": "Ingest"
+                    },
+                    {
+                        "element_id": "slide_4_shape_2",
+                        "level": 0,
+                        "text": "Validate"
+                    },
+                    {
+                        "element_id": "slide_4_shape_3",
+                        "level": 0,
+                        "text": "Transform"
+                    },
+                    {
+                        "element_id": "slide_4_shape_4",
+                        "level": 0,
+                        "text": "Store"
+                    }
+                ],
+                "position_mapping": [
+                    {
+                        "element_id": "slide_4_shape_0",
+                        "element_type": "text_box",
+                        "x": 457200.0,
+                        "y": 274320.0,
+                        "width": 8229600.0,
+                        "height": 731520.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_1",
+                        "element_type": "shape",
+                        "x": 914400.0,
+                        "y": 1828800.0,
+                        "width": 1645920.0,
+                        "height": 822960.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_2",
+                        "element_type": "shape",
+                        "x": 3657600.0,
+                        "y": 1828800.0,
+                        "width": 1645920.0,
+                        "height": 822960.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_3",
+                        "element_type": "shape",
+                        "x": 6400800.0,
+                        "y": 1828800.0,
+                        "width": 1645920.0,
+                        "height": 822960.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_4",
+                        "element_type": "shape",
+                        "x": 3657600.0,
+                        "y": 4114800.0,
+                        "width": 1645920.0,
+                        "height": 822960.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_5",
+                        "element_type": "connector",
+                        "x": 2560320.0,
+                        "y": 2240280.0,
+                        "width": 1097280.0,
+                        "height": 0.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_6",
+                        "element_type": "connector",
+                        "x": 5303520.0,
+                        "y": 2240280.0,
+                        "width": 1097280.0,
+                        "height": 0.0
+                    },
+                    {
+                        "element_id": "slide_4_shape_7",
+                        "element_type": "connector",
+                        "x": 3657600.0,
+                        "y": 2240280.0,
+                        "width": 1645920.0,
+                        "height": 2286000.0
+                    }
+                ],
+                "relationship_mapping": [
+                    {
+                        "relationship_type": "connector",
+                        "source_element_id": "slide_4_shape_1",
+                        "target_element_id": "slide_4_shape_2",
+                        "label": null,
+                        "confidence": 1.0
+                    },
+                    {
+                        "relationship_type": "connector",
+                        "source_element_id": "slide_4_shape_2",
+                        "target_element_id": "slide_4_shape_3",
+                        "label": null,
+                        "confidence": 1.0
+                    },
+                    {
+                        "relationship_type": "connector",
+                        "source_element_id": "slide_4_shape_2",
+                        "target_element_id": "slide_4_shape_4",
+                        "label": null,
+                        "confidence": 1.0
+                    }
+                ],
+                "diagram_understanding": {
+                    "is_diagram": true,
+                    "diagram_type": "flowchart",
+                    "node_count": 5,
+                    "edge_count": 3,
+                    "nodes": [
+                        {
+                            "element_id": "slide_4_shape_0",
+                            "type": "text_box",
+                            "text": "Data Processing Pipeline"
+                        },
+                        {
+                            "element_id": "slide_4_shape_1",
+                            "type": "shape",
+                            "text": "Ingest"
+                        },
+                        {
+                            "element_id": "slide_4_shape_2",
+                            "type": "shape",
+                            "text": "Validate"
+                        },
+                        {
+                            "element_id": "slide_4_shape_3",
+                            "type": "shape",
+                            "text": "Transform"
+                        },
+                        {
+                            "element_id": "slide_4_shape_4",
+                            "type": "shape",
+                            "text": "Store"
+                        }
+                    ],
+                    "edges": [
+                        {
+                            "type": "connector",
+                            "source": "slide_4_shape_1",
+                            "target": "slide_4_shape_2",
+                            "label": null
+                        },
+                        {
+                            "type": "connector",
+                            "source": "slide_4_shape_2",
+                            "target": "slide_4_shape_3",
+                            "label": null
+                        },
+                        {
+                            "type": "connector",
+                            "source": "slide_4_shape_2",
+                            "target": "slide_4_shape_4",
+                            "label": null
+                        }
+                    ],
+                    "summary": "flowchart with 5 node(s) and 3 relationship(s)."
+                },
+                "outline": "Title: \"Data Processing Pipeline\". Elements: 1 text box(es), 4 shape(s), 3 connector(s). Boxes: 5, Arrows: 0. Layout: flowchart. Flowchart detected — 5 box(es), 3 arrow(s). Reading order: slide_4_shape_1 → slide_4_shape_0 → slide_4_shape_2 → slide_4_shape_3 → slide_4_shape_4. Relationships: slide_4_shape_1 -> slide_4_shape_2 (connector); slide_4_shape_2 -> slide_4_shape_3 (connector); slide_4_shape_2 -> slide_4_shape_4 (connector). Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
+            },
+            "text_points": [
+                {
+                    "element_id": "slide_4_shape_0",
+                    "level": 0,
+                    "text": "Data Processing Pipeline"
+                },
+                {
+                    "element_id": "slide_4_shape_1",
+                    "level": 0,
+                    "text": "Ingest"
+                },
+                {
+                    "element_id": "slide_4_shape_2",
+                    "level": 0,
+                    "text": "Validate"
+                },
+                {
+                    "element_id": "slide_4_shape_3",
+                    "level": 0,
+                    "text": "Transform"
+                },
+                {
+                    "element_id": "slide_4_shape_4",
+                    "level": 0,
+                    "text": "Store"
+                }
+            ],
+            "position_mapping": [
+                {
+                    "element_id": "slide_4_shape_0",
+                    "element_type": "text_box",
+                    "x": 457200.0,
+                    "y": 274320.0,
+                    "width": 8229600.0,
+                    "height": 731520.0
+                },
+                {
+                    "element_id": "slide_4_shape_1",
+                    "element_type": "shape",
+                    "x": 914400.0,
+                    "y": 1828800.0,
+                    "width": 1645920.0,
+                    "height": 822960.0
+                },
+                {
+                    "element_id": "slide_4_shape_2",
+                    "element_type": "shape",
+                    "x": 3657600.0,
+                    "y": 1828800.0,
+                    "width": 1645920.0,
+                    "height": 822960.0
+                },
+                {
+                    "element_id": "slide_4_shape_3",
+                    "element_type": "shape",
+                    "x": 6400800.0,
+                    "y": 1828800.0,
+                    "width": 1645920.0,
+                    "height": 822960.0
+                },
+                {
+                    "element_id": "slide_4_shape_4",
+                    "element_type": "shape",
+                    "x": 3657600.0,
+                    "y": 4114800.0,
+                    "width": 1645920.0,
+                    "height": 822960.0
+                },
+                {
+                    "element_id": "slide_4_shape_5",
+                    "element_type": "connector",
+                    "x": 2560320.0,
+                    "y": 2240280.0,
+                    "width": 1097280.0,
+                    "height": 0.0
+                },
+                {
+                    "element_id": "slide_4_shape_6",
+                    "element_type": "connector",
+                    "x": 5303520.0,
+                    "y": 2240280.0,
+                    "width": 1097280.0,
+                    "height": 0.0
+                },
+                {
+                    "element_id": "slide_4_shape_7",
+                    "element_type": "connector",
+                    "x": 3657600.0,
+                    "y": 2240280.0,
+                    "width": 1645920.0,
+                    "height": 2286000.0
+                }
+            ],
+            "diagram_understanding": {
+                "is_diagram": true,
+                "diagram_type": "flowchart",
+                "node_count": 5,
+                "edge_count": 3,
+                "nodes": [
+                    {
+                        "element_id": "slide_4_shape_0",
+                        "type": "text_box",
+                        "text": "Data Processing Pipeline"
+                    },
+                    {
+                        "element_id": "slide_4_shape_1",
+                        "type": "shape",
+                        "text": "Ingest"
+                    },
+                    {
+                        "element_id": "slide_4_shape_2",
+                        "type": "shape",
+                        "text": "Validate"
+                    },
+                    {
+                        "element_id": "slide_4_shape_3",
+                        "type": "shape",
+                        "text": "Transform"
+                    },
+                    {
+                        "element_id": "slide_4_shape_4",
+                        "type": "shape",
+                        "text": "Store"
+                    }
+                ],
+                "edges": [
+                    {
+                        "type": "connector",
+                        "source": "slide_4_shape_1",
+                        "target": "slide_4_shape_2",
+                        "label": null
+                    },
+                    {
+                        "type": "connector",
+                        "source": "slide_4_shape_2",
+                        "target": "slide_4_shape_3",
+                        "label": null
+                    },
+                    {
+                        "type": "connector",
+                        "source": "slide_4_shape_2",
+                        "target": "slide_4_shape_4",
+                        "label": null
+                    }
+                ],
+                "summary": "flowchart with 5 node(s) and 3 relationship(s)."
+            },
+            "table_markdowns": [],
+            "summary": "This slide, titled 'Data Processing Pipeline', explains key concepts on this topic. It depicts a process flowchart outlining a sequence of 5 steps to illustrate the workflow. It covers the following points: Ingest; Validate; Transform."
+        },
+        {
+            "slide_number": 5,
+            "title": "Product Roadmap vs. Actuals",
+            "header_footer": {
+                "header": "Click to edit Master title style",
+                "footer": null,
+                "slide_number": "‹#›",
+                "date": "1/27/13"
+            },
+            "visual_inventory": {
+                "text_box_count": 3,
+                "shape_count": 0,
+                "arrow_count": 0,
+                "connector_count": 0,
+                "image_count": 0,
+                "table_count": 0,
+                "group_count": 0,
+                "chart_count": 0,
+                "placeholder_count": 0,
+                "unknown_count": 0,
+                "total_elements": 3
+            },
+            "layout": {
+                "type": "two_column",
+                "regions": [
+                    {
+                        "name": "header",
+                        "element_ids": [
+                            "slide_5_shape_0"
+                        ]
+                    },
+                    {
+                        "name": "body_left",
+                        "element_ids": [
+                            "slide_5_shape_1"
+                        ]
+                    },
+                    {
+                        "name": "body_right",
+                        "element_ids": [
+                            "slide_5_shape_2"
+                        ]
+                    }
+                ]
+            },
+            "elements": [
+                {
+                    "id": "slide_5_shape_0",
+                    "type": "text_box",
+                    "text": "Product Roadmap vs. Actuals",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Product Roadmap vs. Actuals",
+                            "runs": [
+                                {
+                                    "text": "Product Roadmap vs. Actuals",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 457200.0,
+                        "y": 274320.0,
+                        "width": 8229600.0,
+                        "height": 731520.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Product Roadmap vs. Actuals"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_1",
+                    "type": "text_box",
+                    "text": "Planned Features\n• Real-time analytics dashboard\n• Multi-language support\n• API v3 launch",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Planned Features",
+                            "runs": [
+                                {
+                                    "text": "Planned Features",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        },
+                        {
+                            "level": 0,
+                            "text": "• Real-time analytics dashboard",
+                            "runs": [
+                                {
+                                    "text": "• Real-time analytics dashboard",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        },
+                        {
+                            "level": 0,
+                            "text": "• Multi-language support",
+                            "runs": [
+                                {
+                                    "text": "• Multi-language support",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        },
+                        {
+                            "level": 0,
+                            "text": "• API v3 launch",
+                            "runs": [
+                                {
+                                    "text": "• API v3 launch",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 457200.0,
+                        "y": 1371600.0,
+                        "width": 4114800.0,
+                        "height": 3657600.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Planned Features"
+                            },
+                            {
+                                "level": 0,
+                                "text": "• Real-time analytics dashboard"
+                            },
+                            {
+                                "level": 0,
+                                "text": "• Multi-language support"
+                            },
+                            {
+                                "level": 0,
+                                "text": "• API v3 launch"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_2",
+                    "type": "text_box",
+                    "text": "Delivered\n✓ Analytics dashboard (beta)\n✓ French & German added\n✓ API v3 on track for Q4",
+                    "paragraphs": [
+                        {
+                            "level": 0,
+                            "text": "Delivered",
+                            "runs": [
+                                {
+                                    "text": "Delivered",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        },
+                        {
+                            "level": 0,
+                            "text": "✓ Analytics dashboard (beta)",
+                            "runs": [
+                                {
+                                    "text": "✓ Analytics dashboard (beta)",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        },
+                        {
+                            "level": 0,
+                            "text": "✓ French & German added",
+                            "runs": [
+                                {
+                                    "text": "✓ French & German added",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        },
+                        {
+                            "level": 0,
+                            "text": "✓ API v3 on track for Q4",
+                            "runs": [
+                                {
+                                    "text": "✓ API v3 on track for Q4",
+                                    "bold": false,
+                                    "italic": false,
+                                    "font_size": null,
+                                    "font_name": null,
+                                    "font_color": null
+                                }
+                            ]
+                        }
+                    ],
+                    "position": {
+                        "x": 5029200.0,
+                        "y": 1371600.0,
+                        "width": 4114800.0,
+                        "height": 3657600.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "font_name": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "table_markdown": null,
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Delivered"
+                            },
+                            {
+                                "level": 0,
+                                "text": "✓ Analytics dashboard (beta)"
+                            },
+                            {
+                                "level": 0,
+                                "text": "✓ French & German added"
+                            },
+                            {
+                                "level": 0,
+                                "text": "✓ API v3 on track for Q4"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "flowchart": null,
+            "context": {
+                "header_footer": {
+                    "header_text": "Click to edit Master title style",
+                    "footer_text": null,
+                    "slide_number_text": "‹#›",
+                    "date_text": "1/27/13"
+                },
+                "title": "Product Roadmap vs. Actuals",
+                "visual_inventory": {
+                    "text_box_count": 3,
+                    "shape_count": 0,
+                    "arrow_count": 0,
+                    "connector_count": 0,
+                    "image_count": 0,
+                    "table_count": 0,
+                    "group_count": 0,
+                    "chart_count": 0,
+                    "placeholder_count": 0,
+                    "unknown_count": 0,
+                    "total_elements": 3
+                },
+                "layout_structure": {
+                    "layout_type": "two_column",
+                    "regions": [
+                        {
+                            "name": "header",
+                            "x_start": 0.0,
+                            "y_start": 0.0,
+                            "x_end": 12192000.0,
+                            "y_end": 1234440.0,
+                            "element_ids": [
+                                "slide_5_shape_0"
+                            ]
+                        },
+                        {
+                            "name": "body_left",
+                            "x_start": 0.0,
+                            "y_start": 1234440.0,
+                            "x_end": 6096000.0,
+                            "y_end": 5829300.0,
+                            "element_ids": [
+                                "slide_5_shape_1"
+                            ]
+                        },
+                        {
+                            "name": "body_right",
+                            "x_start": 6096000.0,
+                            "y_start": 1234440.0,
+                            "x_end": 12192000.0,
+                            "y_end": 5829300.0,
+                            "element_ids": [
+                                "slide_5_shape_2"
+                            ]
+                        }
+                    ]
+                },
+                "flowchart": {
+                    "is_flowchart": false,
+                    "box_count": 3,
+                    "arrow_count": 0,
+                    "boxes": [
+                        {
+                            "element_id": "slide_5_shape_0",
+                            "text": "Product Roadmap vs. Actuals",
+                            "x": 457200.0,
+                            "y": 274320.0
+                        },
+                        {
+                            "element_id": "slide_5_shape_1",
+                            "text": "Planned Features\n• Real-time analytics dashboard\n• Multi-language support\n• API v3 launch",
+                            "x": 457200.0,
+                            "y": 1371600.0
+                        },
+                        {
+                            "element_id": "slide_5_shape_2",
+                            "text": "Delivered\n✓ Analytics dashboard (beta)\n✓ French & German added\n✓ API v3 on track for Q4",
+                            "x": 5029200.0,
+                            "y": 1371600.0
+                        }
+                    ],
+                    "arrows": [],
+                    "relationships": [],
+                    "reading_order": [
+                        "slide_5_shape_1",
+                        "slide_5_shape_0",
+                        "slide_5_shape_2"
+                    ]
+                },
+                "text_points": [
+                    {
+                        "element_id": "slide_5_shape_0",
+                        "level": 0,
+                        "text": "Product Roadmap vs. Actuals"
+                    },
+                    {
+                        "element_id": "slide_5_shape_1",
+                        "level": 0,
+                        "text": "Planned Features"
+                    },
+                    {
+                        "element_id": "slide_5_shape_1",
+                        "level": 0,
+                        "text": "• Real-time analytics dashboard"
+                    },
+                    {
+                        "element_id": "slide_5_shape_1",
+                        "level": 0,
+                        "text": "• Multi-language support"
+                    },
+                    {
+                        "element_id": "slide_5_shape_1",
+                        "level": 0,
+                        "text": "• API v3 launch"
+                    },
+                    {
+                        "element_id": "slide_5_shape_2",
+                        "level": 0,
+                        "text": "Delivered"
+                    },
+                    {
+                        "element_id": "slide_5_shape_2",
+                        "level": 0,
+                        "text": "✓ Analytics dashboard (beta)"
+                    },
+                    {
+                        "element_id": "slide_5_shape_2",
+                        "level": 0,
+                        "text": "✓ French & German added"
+                    },
+                    {
+                        "element_id": "slide_5_shape_2",
+                        "level": 0,
+                        "text": "✓ API v3 on track for Q4"
+                    }
+                ],
+                "position_mapping": [
+                    {
+                        "element_id": "slide_5_shape_0",
+                        "element_type": "text_box",
+                        "x": 457200.0,
+                        "y": 274320.0,
+                        "width": 8229600.0,
+                        "height": 731520.0
+                    },
+                    {
+                        "element_id": "slide_5_shape_1",
+                        "element_type": "text_box",
+                        "x": 457200.0,
+                        "y": 1371600.0,
+                        "width": 4114800.0,
+                        "height": 3657600.0
+                    },
+                    {
+                        "element_id": "slide_5_shape_2",
+                        "element_type": "text_box",
+                        "x": 5029200.0,
+                        "y": 1371600.0,
+                        "width": 4114800.0,
+                        "height": 3657600.0
+                    }
+                ],
+                "relationship_mapping": [],
+                "diagram_understanding": {
+                    "is_diagram": false,
+                    "diagram_type": "none",
+                    "node_count": 3,
+                    "edge_count": 0,
+                    "nodes": [
+                        {
+                            "element_id": "slide_5_shape_0",
+                            "type": "text_box",
+                            "text": "Product Roadmap vs. Actuals"
+                        },
+                        {
+                            "element_id": "slide_5_shape_1",
+                            "type": "text_box",
+                            "text": "Planned Features\n• Real-time analytics dashboard\n• Multi-language support\n• API v3 launch"
+                        },
+                        {
+                            "element_id": "slide_5_shape_2",
+                            "type": "text_box",
+                            "text": "Delivered\n✓ Analytics dashboard (beta)\n✓ French & German added\n✓ API v3 on track for Q4"
+                        }
+                    ],
+                    "edges": [],
+                    "summary": "No diagram detected."
+                },
+                "outline": "Title: \"Product Roadmap vs. Actuals\". Elements: 3 text box(es). Boxes: 3, Arrows: 0. Layout: two_column. Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
+            },
+            "text_points": [
+                {
+                    "element_id": "slide_5_shape_0",
+                    "level": 0,
+                    "text": "Product Roadmap vs. Actuals"
+                },
+                {
+                    "element_id": "slide_5_shape_1",
+                    "level": 0,
+                    "text": "Planned Features"
+                },
+                {
+                    "element_id": "slide_5_shape_1",
+                    "level": 0,
+                    "text": "• Real-time analytics dashboard"
+                },
+                {
+                    "element_id": "slide_5_shape_1",
+                    "level": 0,
+                    "text": "• Multi-language support"
+                },
+                {
+                    "element_id": "slide_5_shape_1",
+                    "level": 0,
+                    "text": "• API v3 launch"
+                },
+                {
+                    "element_id": "slide_5_shape_2",
+                    "level": 0,
+                    "text": "Delivered"
+                },
+                {
+                    "element_id": "slide_5_shape_2",
+                    "level": 0,
+                    "text": "✓ Analytics dashboard (beta)"
+                },
+                {
+                    "element_id": "slide_5_shape_2",
+                    "level": 0,
+                    "text": "✓ French & German added"
+                },
+                {
+                    "element_id": "slide_5_shape_2",
+                    "level": 0,
+                    "text": "✓ API v3 on track for Q4"
+                }
+            ],
+            "position_mapping": [
+                {
+                    "element_id": "slide_5_shape_0",
+                    "element_type": "text_box",
+                    "x": 457200.0,
+                    "y": 274320.0,
+                    "width": 8229600.0,
+                    "height": 731520.0
+                },
+                {
+                    "element_id": "slide_5_shape_1",
+                    "element_type": "text_box",
+                    "x": 457200.0,
+                    "y": 1371600.0,
+                    "width": 4114800.0,
+                    "height": 3657600.0
+                },
+                {
+                    "element_id": "slide_5_shape_2",
+                    "element_type": "text_box",
+                    "x": 5029200.0,
+                    "y": 1371600.0,
+                    "width": 4114800.0,
+                    "height": 3657600.0
+                }
+            ],
+            "diagram_understanding": {
+                "is_diagram": false,
+                "diagram_type": "none",
+                "node_count": 3,
+                "edge_count": 0,
+                "nodes": [
+                    {
+                        "element_id": "slide_5_shape_0",
+                        "type": "text_box",
+                        "text": "Product Roadmap vs. Actuals"
+                    },
+                    {
+                        "element_id": "slide_5_shape_1",
+                        "type": "text_box",
+                        "text": "Planned Features\n• Real-time analytics dashboard\n• Multi-language support\n• API v3 launch"
+                    },
+                    {
+                        "element_id": "slide_5_shape_2",
+                        "type": "text_box",
+                        "text": "Delivered\n✓ Analytics dashboard (beta)\n✓ French & German added\n✓ API v3 on track for Q4"
+                    }
+                ],
+                "edges": [],
+                "summary": "No diagram detected."
+            },
+            "table_markdowns": [],
+            "summary": "This slide, titled 'Product Roadmap vs. Actuals', explains key concepts on this topic. The layout is structured as a two_column presentation. It covers the following points: Planned Features; • Real-time analytics dashboard; • Multi-language support."
+        }
+    ]
+}

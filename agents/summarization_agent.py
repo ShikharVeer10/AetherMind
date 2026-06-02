@@ -15,24 +15,24 @@ class SlideSummaryResponse(BaseModel):
 
 
 slide_summary_agent = Agent(
-    model="google-gla:gemini-2.0-flash",
+    model="google:gemini-2.0-flash",
     output_type=SlideSummaryResponse,
     system_prompt=(
         "You are an enterprise document analysis assistant. "
-        "Generate concise, accurate slide summaries that describe "
-        "what the slide DEPICTS — not just its text. "
-        "Consider the visual layout, element counts, relationships, "
-        "flowcharts, and images when summarising. "
-        "Focus on key information, decisions, and action items. "
-        "Do not repeat the same information across summaries."
+        "Generate concise, accurate slide summaries that explain in your own words "
+        "what the slide DEPICTS, explains, or illustrates. "
+        "CRITICAL: Do NOT copy exact sentences, statements, or bullet points from the slide text verbatim. "
+        "Instead, synthesize the visual layout, element counts, relationships, flowcharts, "
+        "tables, images, and text to explain the core concept, purpose, and intent of the slide "
+        "in your own original phrasing."
     ),
 )
 
 
 class SummarizationAgent:
     system_prompt = (
-        "Summarize slide intent and visuals using verbatim text, layout, "
-        "relationships, and image descriptions."
+        "Summarize slide intent, visuals, and structure in original words, "
+        "avoiding verbatim text copying."
     )
 
     async def summarize_slide(
@@ -72,7 +72,8 @@ Title: {slide.title or '(none)'}
 --- Image Descriptions ---
 {image_summaries or '(no images)'}
 
-Generate a concise enterprise-style summary of what this slide depicts.
+Explain in your own words what this slide depicts, explains, or illustrates.
+CRITICAL: Do NOT repeat the exact statements or copy-paste verbatim sentences from the extracted text. Use original phrasing to synthesize the slide's main concept, intent, visual layout, and diagrams/images.
 Include:
 - The main message or purpose of the slide
 - Key data, statistics, or figures mentioned

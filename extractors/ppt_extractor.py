@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import List, Optional
 from pptx import Presentation
 from pptx.enum.shapes import MSO_SHAPE_TYPE
+from pptx.enum.dml import MSO_COLOR_TYPE
 from pptx.dml.color import RGBColor
 from models.document_model import (
     DocumentModel,
@@ -98,7 +99,7 @@ class PPTExtractor:
                             float(run.font.size.pt) if run.font.size else None
                         ),
                         font_name=run.font.name,
-                        font_color=self._safe_font_color(run),
+                        font_color=self._get_safe_color_hex(run.font.color),
                     )
                     runs.append(run_model)
 
@@ -224,6 +225,17 @@ class PPTExtractor:
             "end_x": None,
             "end_y": None,
         }
+        # Prefer python-pptx Connector properties (reliable)
+        if hasattr(shape, "begin_x"):
+            try:
+                endpoints["begin_x"] = float(shape.begin_x)
+                endpoints["begin_y"] = float(shape.begin_y)
+                endpoints["end_x"] = float(shape.end_x)
+                endpoints["end_y"] = float(shape.end_y)
+                return endpoints
+            except Exception:
+                pass
+        # Fallback to XML parsing
         try:
             sp_element = shape._element
             xfrm = sp_element.find(
@@ -304,6 +316,17 @@ class PPTExtractor:
         parts = [header, separator] + body_lines
         return "\n".join(parts)
 
+    def _get_safe_color_hex(self, color_obj) -> Optional[str]:
+        """Safely extract hex color, avoiding ValueError on scheme colors."""
+        if not color_obj:
+            return None
+        try:
+            if color_obj.type == MSO_COLOR_TYPE.RGB and color_obj.rgb:
+                return self.convert_rgb_to_hex(color_obj.rgb)
+        except Exception:
+            pass
+        return None
+
     def _extract_text_style(self, shape) -> StyleModel:
         font_size: Optional[float] = None
         font_name: Optional[str] = None
@@ -326,8 +349,7 @@ class PPTExtractor:
                         is_bold = True
                     if font.italic:
                         is_italic = True
-                    if font.color and font.color.rgb:
-                        text_color = self.convert_rgb_to_hex(font.color.rgb)
+                    text_color = self._get_safe_color_hex(font.color)
         except Exception:
             pass
 
@@ -345,14 +367,6 @@ class PPTExtractor:
             text_color=text_color,
             background_color=background_color,
         )
-
-    def _safe_font_color(self, run) -> Optional[str]:
-        try:
-            if run.font.color and run.font.color.rgb:
-                return self.convert_rgb_to_hex(run.font.color.rgb)
-        except AttributeError:
-            return None
-        return None
 
     def sort_elements_by_reading_order(self, slide):
         """Sort elements top-to-bottom, then left-to-right."""

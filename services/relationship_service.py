@@ -87,7 +87,7 @@ class RelationshipService:
         begin = (endpoints.get("begin_x"), endpoints.get("begin_y"))
         end = (endpoints.get("end_x"), endpoints.get("end_y"))
 
-        if begin[0] is None or end[0] is None:
+        if begin[0] is None or begin[1] is None or end[0] is None or end[1] is None:
             return None
 
         source = self._closest_box(begin, boxes)
