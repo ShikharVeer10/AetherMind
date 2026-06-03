@@ -47,6 +47,7 @@ class SlideModel(BaseModel):
     slide_number: int
     title: Optional[str] = None
     elements: List[DocumentElementModel] = Field(default_factory=list)
+    relationships: List[RelationshipModel] = Field(default_factory=list)
     slide_summary: Optional[str] = None
 
 
@@ -58,3 +59,4 @@ class DocumentModel(BaseModel):
     slides: List[SlideModel] = Field(default_factory=list)
     relationships: List[RelationshipModel] = Field(default_factory=list)
     metadata: Dict[str, Any] = Field(default_factory=dict)
+    document_summary: Optional[str] = None

@@ -1,0 +1,2954 @@
+{
+    "document_type": "ppt",
+    "slides": [
+        {
+            "slide_number": 1,
+            "title": "E-Commerce Recommendation System",
+            "elements": [
+                {
+                    "id": "slide_1_shape_0",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 1002.7299212598425,
+                        "y": 569.2388188976378,
+                        "width": 147.76992125984253,
+                        "height": 78.76086614173228
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_1_shape_1",
+                    "type": "unknown",
+                    "text": "E-Commerce Recommendation System",
+                    "position": {
+                        "x": 493.54,
+                        "y": 185.8359842519685,
+                        "width": 574.9,
+                        "height": 111.55
+                    },
+                    "style": {
+                        "font_size": 44.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "E-Commerce Recommendation System"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_1_shape_2",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 494.5,
+                        "y": 327.75,
+                        "width": 113.3,
+                        "height": 33.6
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#242428"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_1_shape_3",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 0.0,
+                        "y": -7.874015748031496e-05,
+                        "width": 431.9999212598425,
+                        "height": 647.9999212598425
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_1_shape_4",
+                    "type": "text_box",
+                    "text": "FIRST REVIEW\nContent-Based Product Recommendation Using Machine Learning \nVEERAMACHINENI SHIKHAR· 23BCE9278",
+                    "position": {
+                        "x": 493.54,
+                        "y": 335.41,
+                        "width": 583.1,
+                        "height": 168.0099212598425
+                    },
+                    "style": {
+                        "font_size": 14.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "FIRST REVIEW"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Content-Based Product Recommendation Using Machine Learning"
+                            },
+                            {
+                                "level": 0,
+                                "text": "VEERAMACHINENI SHIKHAR· 23BCE9278"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "E-Commerce Recommendation System: FIRST REVIEW; Content-Based Product Recommendation Using Machine Learning; VEERAMACHINENI SHIKHAR· 23BCE9278"
+        },
+        {
+            "slide_number": 2,
+            "title": "PROJECT OVERVIEW",
+            "elements": [
+                {
+                    "id": "slide_2_shape_0",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 62.20299212598425,
+                        "y": 59.33,
+                        "width": 177.95,
+                        "height": 35.4
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_2_shape_1",
+                    "type": "text_box",
+                    "text": "PROJECT OVERVIEW",
+                    "position": {
+                        "x": 94.2559842519685,
+                        "y": 67.82992125984252,
+                        "width": 133.65,
+                        "height": 18.85
+                    },
+                    "style": {
+                        "font_size": 14.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#f1f1f3",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "PROJECT OVERVIEW"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_2_shape_2",
+                    "type": "unknown",
+                    "text": "Personalizing the Shopping Experience",
+                    "position": {
+                        "x": 61.52,
+                        "y": 98.05,
+                        "width": 845.75,
+                        "height": 55.45
+                    },
+                    "style": {
+                        "font_size": 44.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Personalizing the Shopping Experience"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_2_shape_3",
+                    "type": "text_box",
+                    "text": "Modern e-commerce platforms host thousands of products, making personalized discovery essential for user engagement. This project builds a Content-Based Recommendation System that helps users find products matching their interests and preferences.\nThe first review phase focuses on designing and implementing Content- Based Filtering (CBF) as the foundation for more advanced recommendation techniques.",
+                    "position": {
+                        "x": 758.0499212598426,
+                        "y": 202.49795275590552,
+                        "width": 332.75,
+                        "height": 381.5
+                    },
+                    "style": {
+                        "font_size": 20.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Modern e-commerce platforms host thousands of products, making personalized discovery essential for user engagement. This project builds a Content-Based Recommendation System that helps users find products matching their interests and preferences."
+                            },
+                            {
+                                "level": 0,
+                                "text": "The first review phase focuses on designing and implementing Content- Based Filtering (CBF) as the foundation for more advanced recommendation techniques."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_2_shape_4",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 999.89,
+                        "y": 565.7342519685039,
+                        "width": 147.77,
+                        "height": 78.76094488188977
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_2_shape_5",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 58.970944881889764,
+                        "y": 176.83496062992126,
+                        "width": 642.4299212598426,
+                        "height": 428.28
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "PROJECT OVERVIEW: Personalizing the Shopping Experience; Modern e-commerce platforms host thousands of products, making personalized discovery essential for user engagement....; The first review phase focuses on designing and implementing Content- Based Filtering (CBF) as the foundation for mor..."
+        },
+        {
+            "slide_number": 3,
+            "title": "The Challenge We're Solving",
+            "elements": [
+                {
+                    "id": "slide_3_shape_0",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 1004.2299212598425,
+                        "y": 560.0623622047244,
+                        "width": 147.76992125984253,
+                        "height": 78.76094488188977
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_3_shape_1",
+                    "type": "unknown",
+                    "text": "The Challenge We're Solving",
+                    "position": {
+                        "x": 61.52,
+                        "y": 139.7159842519685,
+                        "width": 621.4,
+                        "height": 55.5
+                    },
+                    "style": {
+                        "font_size": 44.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "The Challenge We're Solving"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_2",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 60.10299212598425,
+                        "y": 233.55992125984253,
+                        "width": 334.05,
+                        "height": 223.75
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_3_shape_3",
+                    "type": "text_box",
+                    "text": "Overwhelming Product Catalogs\nUsers face decision paralysis when browsing through massive product inventories without personalized guidance.",
+                    "position": {
+                        "x": 88.9759842519685,
+                        "y": 251.501968503937,
+                        "width": 269.8,
+                        "height": 183.35
+                    },
+                    "style": {
+                        "font_size": 22.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Overwhelming Product Catalogs"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Users face decision paralysis when browsing through massive product inventories without personalized guidance."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_4",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 408.38,
+                        "y": 233.55992125984253,
+                        "width": 334.05,
+                        "height": 223.75
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_3_shape_5",
+                    "type": "text_box",
+                    "text": "Lack of Personalization\nTraditional search systems return generic results that don't consider individual user preferences and shopping history.",
+                    "position": {
+                        "x": 437.29,
+                        "y": 253.11,
+                        "width": 260.89992125984253,
+                        "height": 153.85
+                    },
+                    "style": {
+                        "font_size": 22.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Lack of Personalization"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Traditional search systems return generic results that don't consider individual user preferences and shopping history."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_6",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 756.6699212598426,
+                        "y": 233.55992125984253,
+                        "width": 334.05,
+                        "height": 223.75
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_3_shape_7",
+                    "type": "text_box",
+                    "text": "Reduced Engagement\nGeneric recommendations fail to capture user interest, leading to lower conversion rates and customer satisfaction.",
+                    "position": {
+                        "x": 785.5999212598425,
+                        "y": 253.11,
+                        "width": 251.65,
+                        "height": 153.85
+                    },
+                    "style": {
+                        "font_size": 22.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Reduced Engagement"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Generic recommendations fail to capture user interest, leading to lower conversion rates and customer satisfaction."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_3_shape_8",
+                    "type": "text_box",
+                    "text": "Our Goal: Recommend products based on user interests and product characteristics to create a personalized shopping journey.",
+                    "position": {
+                        "x": 25.063937007874017,
+                        "y": 507.51,
+                        "width": 1110.25,
+                        "height": 26.05
+                    },
+                    "style": {
+                        "font_size": 20.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Our Goal: Recommend products based on user interests and product characteristics to create a personalized shopping journey."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "The Challenge We're Solving: Overwhelming Product Catalogs; Users face decision paralysis when browsing through massive product inventories without personalized guidance.; Lack of Personalization"
+        },
+        {
+            "slide_number": 4,
+            "title": "Understanding Recommendation Systems",
+            "elements": [
+                {
+                    "id": "slide_4_shape_0",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 998.34,
+                        "y": 565.8963779527559,
+                        "width": 147.77,
+                        "height": 78.76086614173228
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_4_shape_1",
+                    "type": "unknown",
+                    "text": "Understanding Recommendation Systems",
+                    "position": {
+                        "x": 61.52,
+                        "y": 84.5159842519685,
+                        "width": 936.4,
+                        "height": 55.5
+                    },
+                    "style": {
+                        "font_size": 44.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Understanding Recommendation Systems"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 62.50299212598425,
+                        "y": 218.52,
+                        "width": 652.29,
+                        "height": 293.5299212598425
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_4_shape_3",
+                    "type": "text_box",
+                    "text": "Content-Based\nPhase 1 — current item profiling",
+                    "position": {
+                        "x": 187.57,
+                        "y": 221.88858267716535,
+                        "width": 113.15,
+                        "height": 59.25
+                    },
+                    "style": {
+                        "font_size": 14.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Content-Based"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Phase 1 — current item profiling"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_4",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 234.3803937007874,
+                        "y": 309.45377952755905,
+                        "width": 308.25,
+                        "height": 118.2
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_4_shape_5",
+                    "type": "text_box",
+                    "text": "Collaborative\nPhase 2 — user similarity & neighbors",
+                    "position": {
+                        "x": 335.7,
+                        "y": 442.08866141732284,
+                        "width": 105.9,
+                        "height": 59.25
+                    },
+                    "style": {
+                        "font_size": 14.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Collaborative"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Phase 2 — user similarity & neighbors"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_6",
+                    "type": "text_box",
+                    "text": "Hybrid Systems\nPhase 3 — combined models final",
+                    "position": {
+                        "x": 474.01,
+                        "y": 219.72133858267716,
+                        "width": 108.6,
+                        "height": 59.2
+                    },
+                    "style": {
+                        "font_size": 14.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Hybrid Systems"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Phase 3 — combined models final"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_7",
+                    "type": "text_box",
+                    "text": "A recommendation system predicts",
+                    "position": {
+                        "x": 758.0499212598426,
+                        "y": 189.93992125984252,
+                        "width": 275.1,
+                        "height": 23.05
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "A recommendation system predicts"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_8",
+                    "type": "text_box",
+                    "text": "products a user may prefer based on past interactions and patterns. This project follows a phased approach to build increasingly sophisticated recommendation capabilities.",
+                    "position": {
+                        "x": 758.0499212598426,
+                        "y": 210.99889763779527,
+                        "width": 320.95,
+                        "height": 147.1
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "products a user may prefer based on past interactions and patterns. This project follows a phased approach to build increasingly sophisticated recommendation capabilities."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_9",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 758.9699212598425,
+                        "y": 378.2399212598425,
+                        "width": 331.15,
+                        "height": 161.65
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_4_shape_10",
+                    "type": "text_box",
+                    "text": "Current Phase: Content-Based",
+                    "position": {
+                        "x": 816.08,
+                        "y": 403.86,
+                        "width": 230.5,
+                        "height": 23.05
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#ffffff",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Current Phase: Content-Based"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_4_shape_11",
+                    "type": "text_box",
+                    "text": "Filtering analyzes product attributes to find similar items users might like.",
+                    "position": {
+                        "x": 816.08,
+                        "y": 424.883937007874,
+                        "width": 230.9,
+                        "height": 89.0
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#ffffff",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Filtering analyzes product attributes to find similar items users might like."
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "Understanding Recommendation Systems: Content-Based; Phase 1 — current item profiling; Collaborative"
+        },
+        {
+            "slide_number": 5,
+            "title": "DATA FOUNDATION",
+            "elements": [
+                {
+                    "id": "slide_5_shape_0",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 121.43,
+                        "y": 63.74,
+                        "width": 123.25,
+                        "height": 22.55
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_5_shape_1",
+                    "type": "text_box",
+                    "text": "DATA FOUNDATION",
+                    "position": {
+                        "x": 144.14992125984253,
+                        "y": 67.41992125984252,
+                        "width": 95.75,
+                        "height": 14.7
+                    },
+                    "style": {
+                        "font_size": 10.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "DATA FOUNDATION"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_2",
+                    "type": "unknown",
+                    "text": "Dataset & Preprocessing Pipeline",
+                    "position": {
+                        "x": 61.52,
+                        "y": 84.5159842519685,
+                        "width": 936.4,
+                        "height": 55.5
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Dataset & Preprocessing Pipeline"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_3",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 111.94992125984253,
+                        "y": 145.91,
+                        "width": 316.3,
+                        "height": 269.95
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_5_shape_4",
+                    "type": "text_box",
+                    "text": "Dataset Components",
+                    "position": {
+                        "x": 124.13992125984252,
+                        "y": 154.4199212598425,
+                        "width": 172.5,
+                        "height": 21.2
+                    },
+                    "style": {
+                        "font_size": 16.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Dataset Components"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_5",
+                    "type": "text_box",
+                    "text": "Product ID\nProduct Category\nBrand Information\nPrice Range\nProduct Description\nUser Interaction History",
+                    "position": {
+                        "x": 124.13992125984252,
+                        "y": 166.4544094488189,
+                        "width": 236.15,
+                        "height": 218.15
+                    },
+                    "style": {
+                        "font_size": 20.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Product ID"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Product Category"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Brand Information"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Price Range"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Product Description"
+                            },
+                            {
+                                "level": 0,
+                                "text": "User Interaction History"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_6",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 451.47,
+                        "y": 207.7299212598425,
+                        "width": 579.7,
+                        "height": 1.8
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_5_shape_7",
+                    "type": "text_box",
+                    "text": "Preprocessing Steps: 01\nData Cleaning",
+                    "position": {
+                        "x": 440.4299212598425,
+                        "y": 145.5,
+                        "width": 247.2,
+                        "height": 94.0
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#f1f1f3",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Preprocessing Steps: 01"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Data Cleaning"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_8",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 451.47,
+                        "y": 306.7,
+                        "width": 579.7,
+                        "height": 1.8
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_5_shape_9",
+                    "type": "text_box",
+                    "text": "Handle missing values and remove duplicate records\n02\nFeature Encoding",
+                    "position": {
+                        "x": 450.51,
+                        "y": 227.7,
+                        "width": 555.95,
+                        "height": 110.8
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Handle missing values and remove duplicate records"
+                            },
+                            {
+                                "level": 0,
+                                "text": "02"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Feature Encoding"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_10",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 451.47,
+                        "y": 405.67,
+                        "width": 579.7,
+                        "height": 1.8
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_5_shape_11",
+                    "type": "text_box",
+                    "text": "Encode categorical features for machine learning\n03\nText Processing",
+                    "position": {
+                        "x": 450.51,
+                        "y": 326.7629921259842,
+                        "width": 516.9,
+                        "height": 110.7
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Encode categorical features for machine learning"
+                            },
+                            {
+                                "level": 0,
+                                "text": "03"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Text Processing"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_12",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 451.47,
+                        "y": 504.64992125984253,
+                        "width": 579.7,
+                        "height": 1.8
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_5_shape_13",
+                    "type": "text_box",
+                    "text": "Clean product descriptions and extract keywords\n04\nNormalization",
+                    "position": {
+                        "x": 450.51,
+                        "y": 425.6416535433071,
+                        "width": 514.5499212598426,
+                        "height": 110.85
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Clean product descriptions and extract keywords"
+                            },
+                            {
+                                "level": 0,
+                                "text": "04"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Normalization"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_14",
+                    "type": "text_box",
+                    "text": "Normalize features and create product vectors",
+                    "position": {
+                        "x": 450.51,
+                        "y": 533.791968503937,
+                        "width": 490.2,
+                        "height": 30.8
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Normalize features and create product vectors"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_5_shape_15",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 996.4199212598426,
+                        "y": 568.8323622047244,
+                        "width": 147.77,
+                        "height": 78.76086614173228
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "DATA FOUNDATION: Dataset & Preprocessing Pipeline; Dataset Components; Product ID"
+        },
+        {
+            "slide_number": 6,
+            "title": "Content-Based Filtering Approach",
+            "elements": [
+                {
+                    "id": "slide_6_shape_0",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 720.0,
+                        "y": -7.874015748031496e-05,
+                        "width": 432.0,
+                        "height": 648.0
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_6_shape_1",
+                    "type": "unknown",
+                    "text": "Content-Based Filtering Approach",
+                    "position": {
+                        "x": 58.80795275590551,
+                        "y": 61.615984251968506,
+                        "width": 499.75,
+                        "height": 106.1
+                    },
+                    "style": {
+                        "font_size": 42.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Content-Based Filtering Approach"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_6_shape_2",
+                    "type": "text_box",
+                    "text": "Content-Based Filtering (CBF) recommends products by analyzing their attributes, user interaction history, and calculating similarity between product features.",
+                    "position": {
+                        "x": 58.80795275590551,
+                        "y": 192.4179527559055,
+                        "width": 573.5499212598426,
+                        "height": 83.05
+                    },
+                    "style": {
+                        "font_size": 17.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Content-Based Filtering (CBF) recommends products by analyzing their attributes, user interaction history, and calculating similarity between product features."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_6_shape_3",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 59.49393700787402,
+                        "y": 294.95992125984253,
+                        "width": 189.85,
+                        "height": 179.35
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_6_shape_4",
+                    "type": "text_box",
+                    "text": "Product Attributes\nCategory, brand, keywords, and description features",
+                    "position": {
+                        "x": 76.471968503937,
+                        "y": 309.49,
+                        "width": 150.85,
+                        "height": 145.4499212598425
+                    },
+                    "style": {
+                        "font_size": 21.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Product Attributes"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Category, brand, keywords, and description features"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_6_shape_5",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 265.07992125984254,
+                        "y": 294.95992125984253,
+                        "width": 189.85,
+                        "height": 179.35
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_6_shape_6",
+                    "type": "text_box",
+                    "text": "User History\nPast interactions and preference patterns",
+                    "position": {
+                        "x": 282.07992125984254,
+                        "y": 311.29,
+                        "width": 128.0,
+                        "height": 116.95
+                    },
+                    "style": {
+                        "font_size": 21.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "User History"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Past interactions and preference patterns"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_6_shape_7",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 470.66,
+                        "y": 294.95992125984253,
+                        "width": 189.85,
+                        "height": 179.35
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_6_shape_8",
+                    "type": "text_box",
+                    "text": "Feature Similarity\nMathematical comparison of product vectors",
+                    "position": {
+                        "x": 487.69,
+                        "y": 309.49,
+                        "width": 119.15,
+                        "height": 145.4499212598425
+                    },
+                    "style": {
+                        "font_size": 21.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Feature Similarity"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Mathematical comparison of product vectors"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_6_shape_9",
+                    "type": "text_box",
+                    "text": "Core Principle: Recommend items similar to products previously preferred by the user.",
+                    "position": {
+                        "x": 84.41598425196851,
+                        "y": 506.54393700787404,
+                        "width": 569.9,
+                        "height": 56.05
+                    },
+                    "style": {
+                        "font_size": 17.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Core Principle: Recommend items similar to products previously preferred by the user."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_6_shape_10",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 59.793937007874014,
+                        "y": 492.37496062992125,
+                        "width": 2.4,
+                        "height": 90.25
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "Content-Based Filtering Approach: Content-Based Filtering (CBF) recommends products by analyzing their attributes, user interaction history, and calcul...; Product Attributes; Category, brand, keywords, and description features"
+        },
+        {
+            "slide_number": 7,
+            "title": "How CBF Works: The Recommendation Pipeline",
+            "elements": [
+                {
+                    "id": "slide_7_shape_0",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 1001.63,
+                        "y": 559.3193700787401,
+                        "width": 147.77,
+                        "height": 78.76094488188977
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_7_shape_1",
+                    "type": "unknown",
+                    "text": "How CBF Works: The Recommendation Pipeline",
+                    "position": {
+                        "x": 63.871968503937005,
+                        "y": 62.98,
+                        "width": 854.8,
+                        "height": 46.4
+                    },
+                    "style": {
+                        "font_size": 37.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "How CBF Works: The Recommendation Pipeline"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_7_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 64.87496062992126,
+                        "y": 137.2259842519685,
+                        "width": 74.07196850393701,
+                        "height": 444.4179527559055
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_7_shape_3",
+                    "type": "text_box",
+                    "text": "Extract Features\nParse product attributes\n\n\nVectorize\nConvert to numerical vectors\n\n\nMeasure Similarity\nCalculate cosine similarity\n\n\nRank Items\nSort by relevance score\n\n\nRecommend\nReturn Top-N products",
+                    "position": {
+                        "x": 150.25,
+                        "y": 149.86,
+                        "width": 184.8,
+                        "height": 408.8
+                    },
+                    "style": {
+                        "font_size": 18.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Extract Features"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Parse product attributes"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Vectorize"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Convert to numerical vectors"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Measure Similarity"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Calculate cosine similarity"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Rank Items"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Sort by relevance score"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Recommend"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Return Top-N products"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "How CBF Works: The Recommendation Pipeline: Extract Features; Parse product attributes; Vectorize"
+        },
+        {
+            "slide_number": 8,
+            "title": "Feature Engineering & Similarity Computation",
+            "elements": [
+                {
+                    "id": "slide_8_shape_0",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 995.95,
+                        "y": 569.2388188976378,
+                        "width": 147.76992125984253,
+                        "height": 78.76086614173228
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_8_shape_1",
+                    "type": "unknown",
+                    "text": "Feature Engineering & Similarity Computation",
+                    "position": {
+                        "x": 61.52,
+                        "y": 107.71992125984252,
+                        "width": 1002.45,
+                        "height": 55.45
+                    },
+                    "style": {
+                        "font_size": 44.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Feature Engineering & Similarity Computation"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_2",
+                    "type": "text_box",
+                    "text": "Features Extracted",
+                    "position": {
+                        "x": 61.52,
+                        "y": 209.74,
+                        "width": 203.4,
+                        "height": 28.4
+                    },
+                    "style": {
+                        "font_size": 22.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#f1f1f3",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Features Extracted"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_3",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 63.253543307086616,
+                        "y": 260.8820472440945,
+                        "width": 34.25,
+                        "height": 33.29992125984252
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_8_shape_4",
+                    "type": "text_box",
+                    "text": "Product Category: Primary classification",
+                    "position": {
+                        "x": 119.55,
+                        "y": 262.9,
+                        "width": 306.1,
+                        "height": 23.05
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Product Category: Primary classification"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_5",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 63.25448818897638,
+                        "y": 332.1436220472441,
+                        "width": 34.25590551181102,
+                        "height": 33.65291338582677
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_8_shape_6",
+                    "type": "text_box",
+                    "text": "Brand: Manufacturer identity",
+                    "position": {
+                        "x": 119.55,
+                        "y": 334.35,
+                        "width": 218.55,
+                        "height": 23.05
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Brand: Manufacturer identity"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_7",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 66.41897637795276,
+                        "y": 403.26692913385824,
+                        "width": 27.95,
+                        "height": 34.25
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_8_shape_8",
+                    "type": "text_box",
+                    "text": "Description: Textual content analysis",
+                    "position": {
+                        "x": 119.55,
+                        "y": 405.8,
+                        "width": 280.8,
+                        "height": 23.05
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Description: Textual content analysis"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_9",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 71.92330708661417,
+                        "y": 475.4387401574803,
+                        "width": 16.899921259842518,
+                        "height": 33.54992125984252
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_8_shape_10",
+                    "type": "text_box",
+                    "text": "Price Range: Cost segmentation",
+                    "position": {
+                        "x": 119.55,
+                        "y": 477.25,
+                        "width": 245.85,
+                        "height": 23.05
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Price Range: Cost segmentation"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_11",
+                    "type": "text_box",
+                    "text": "Similarity Techniques",
+                    "position": {
+                        "x": 597.44,
+                        "y": 209.74,
+                        "width": 230.9,
+                        "height": 28.4
+                    },
+                    "style": {
+                        "font_size": 22.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#f1f1f3",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Similarity Techniques"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_12",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 597.19,
+                        "y": 258.45,
+                        "width": 239.35,
+                        "height": 259.45
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_8_shape_13",
+                    "type": "text_box",
+                    "text": "TF-IDF\nVectorization\nTransforms text into weighted numerical vectors based on term frequency and importance",
+                    "position": {
+                        "x": 602.6535433070866,
+                        "y": 276.4176377952756,
+                        "width": 228.7,
+                        "height": 219.55
+                    },
+                    "style": {
+                        "font_size": 22.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "TF-IDF"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Vectorization"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Transforms text into weighted numerical vectors based on term frequency and importance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_8_shape_14",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 851.9699212598425,
+                        "y": 258.45,
+                        "width": 239.35,
+                        "height": 259.45
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_8_shape_15",
+                    "type": "text_box",
+                    "text": "Cosine Similarity\nMeasures angle between\nvectors: higher similarity\n→ higher recommendation priority",
+                    "position": {
+                        "x": 872.5,
+                        "y": 278.0,
+                        "width": 193.4,
+                        "height": 161.0
+                    },
+                    "style": {
+                        "font_size": 22.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Cosine Similarity"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Measures angle between"
+                            },
+                            {
+                                "level": 0,
+                                "text": "vectors: higher similarity"
+                            },
+                            {
+                                "level": 0,
+                                "text": "→ higher recommendation priority"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "Feature Engineering & Similarity Computation: Features Extracted; Product Category: Primary classification; Brand: Manufacturer identity"
+        },
+        {
+            "slide_number": 9,
+            "title": "System Architecture & Trade-offs",
+            "elements": [
+                {
+                    "id": "slide_9_shape_0",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 995.63,
+                        "y": 563.8123622047244,
+                        "width": 147.77,
+                        "height": 78.76086614173228
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_9_shape_1",
+                    "type": "unknown",
+                    "text": "System Architecture & Trade-offs",
+                    "position": {
+                        "x": 184.2299212598425,
+                        "y": 29.525984251968502,
+                        "width": 460.75,
+                        "height": 35.6
+                    },
+                    "style": {
+                        "font_size": 28.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "System Architecture & Trade-offs"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_2",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 213.9499212598425,
+                        "y": 82.0,
+                        "width": 724.0999212598425,
+                        "height": 441.68
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_9_shape_3",
+                    "type": "text_box",
+                    "text": "Product Dataset",
+                    "position": {
+                        "x": 242.55,
+                        "y": 166.4199212598425,
+                        "width": 142.6,
+                        "height": 23.05
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Product Dataset"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_4",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 295.6155905511811,
+                        "y": 235.12937007874015,
+                        "width": 530.0,
+                        "height": 133.75
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_9_shape_5",
+                    "type": "text_box",
+                    "text": "Feature Extraction",
+                    "position": {
+                        "x": 350.82,
+                        "y": 362.26,
+                        "width": 157.35,
+                        "height": 23.05
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Feature Extraction"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_6",
+                    "type": "text_box",
+                    "text": "Vector Representation",
+                    "position": {
+                        "x": 505.8599212598425,
+                        "y": 165.5099212598425,
+                        "width": 133.9,
+                        "height": 45.0
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Vector Representation"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_7",
+                    "type": "text_box",
+                    "text": "Recommendation Output",
+                    "position": {
+                        "x": 751.38,
+                        "y": 211.52,
+                        "width": 159.25,
+                        "height": 45.0
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Recommendation Output"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_8",
+                    "type": "text_box",
+                    "text": "Key Advantages",
+                    "position": {
+                        "x": 184.2299212598425,
+                        "y": 450.7999212598425,
+                        "width": 194.6,
+                        "height": 30.8
+                    },
+                    "style": {
+                        "font_size": 24.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#f1f1f3",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Key Advantages"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_9",
+                    "type": "text_box",
+                    "text": "to individual preferences",
+                    "position": {
+                        "x": 210.63,
+                        "y": 519.7299212598425,
+                        "width": 215.95,
+                        "height": 26.05
+                    },
+                    "style": {
+                        "font_size": 20.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "to individual preferences"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_10",
+                    "type": "text_box",
+                    "text": "community data",
+                    "position": {
+                        "x": 210.63,
+                        "y": 549.7279527559056,
+                        "width": 145.55,
+                        "height": 26.05
+                    },
+                    "style": {
+                        "font_size": 20.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "community data"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_11",
+                    "type": "text_box",
+                    "text": "Personalized recommendations tailored\nUser-independent — doesn't require\nCold-start resilient — works well for new",
+                    "position": {
+                        "x": 183.63,
+                        "y": 498.7799212598425,
+                        "width": 373.8,
+                        "height": 92.0
+                    },
+                    "style": {
+                        "font_size": 20.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Personalized recommendations tailored"
+                            },
+                            {
+                                "level": 0,
+                                "text": "User-independent — doesn't require"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Cold-start resilient — works well for new"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_12",
+                    "type": "text_box",
+                    "text": "users",
+                    "position": {
+                        "x": 210.63,
+                        "y": 579.7279527559056,
+                        "width": 50.45,
+                        "height": 26.05
+                    },
+                    "style": {
+                        "font_size": 20.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "users"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_13",
+                    "type": "text_box",
+                    "text": "Similarity Computation\nCurrent Limitations",
+                    "position": {
+                        "x": 589.4699212598425,
+                        "y": 413.45992125984253,
+                        "width": 225.65,
+                        "height": 91.15
+                    },
+                    "style": {
+                        "font_size": 17.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Similarity Computation"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Current Limitations"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_9_shape_14",
+                    "type": "text_box",
+                    "text": "Limited diversity in recommendations\nOver-specialization — may create filter\nbubbles\nNo community insights — misses trending patterns",
+                    "position": {
+                        "x": 589.1799212598426,
+                        "y": 523.5,
+                        "width": 357.1,
+                        "height": 83.65
+                    },
+                    "style": {
+                        "font_size": 18.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Limited diversity in recommendations"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Over-specialization — may create filter"
+                            },
+                            {
+                                "level": 0,
+                                "text": "bubbles"
+                            },
+                            {
+                                "level": 0,
+                                "text": "No community insights — misses trending patterns"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "relationships": [],
+            "summary": "System Architecture & Trade-offs: Product Dataset; Feature Extraction; Vector Representation"
+        },
+        {
+            "slide_number": 10,
+            "title": "PROGRESS",
+            "elements": [
+                {
+                    "id": "slide_10_shape_0",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 122.66992125984252,
+                        "y": 69.55,
+                        "width": 84.05,
+                        "height": 22.5
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_10_shape_1",
+                    "type": "text_box",
+                    "text": "PROGRESS",
+                    "position": {
+                        "x": 145.33,
+                        "y": 73.22992125984251,
+                        "width": 54.85,
+                        "height": 14.7
+                    },
+                    "style": {
+                        "font_size": 10.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "PROGRESS"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_2",
+                    "type": "unknown",
+                    "text": "Milestones & Future Roadmap",
+                    "position": {
+                        "x": 121.69,
+                        "y": 93.09992125984252,
+                        "width": 483.15,
+                        "height": 41.04992125984252
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Milestones & Future Roadmap"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_3",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 122.66992125984252,
+                        "y": 199.7299212598425,
+                        "width": 6.55992125984252,
+                        "height": 6.56992125984252
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_10_shape_4",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 122.66992125984252,
+                        "y": 237.30992125984253,
+                        "width": 6.55992125984252,
+                        "height": 6.56
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_10_shape_5",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 122.66992125984252,
+                        "y": 274.88,
+                        "width": 6.55992125984252,
+                        "height": 6.56992125984252
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_10_shape_6",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 122.66992125984252,
+                        "y": 312.45992125984253,
+                        "width": 6.55992125984252,
+                        "height": 6.56
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_10_shape_7",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 122.66992125984252,
+                        "y": 350.0299212598425,
+                        "width": 6.55992125984252,
+                        "height": 6.57
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                },
+                {
+                    "id": "slide_10_shape_8",
+                    "type": "text_box",
+                    "text": "Work Completed\nProblem formulation and scope definition\nDataset preparation and cleaning Comprehensive data preprocessing Feature engineering pipeline\nContent-Based Filtering implementation",
+                    "position": {
+                        "x": 121.69,
+                        "y": 152.7551968503937,
+                        "width": 344.1,
+                        "height": 208.3
+                    },
+                    "style": {
+                        "font_size": 16.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#f1f1f3",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Work Completed"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Problem formulation and scope definition"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Dataset preparation and cleaning Comprehensive data preprocessing Feature engineering pipeline"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Content-Based Filtering implementation"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_9",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 581.0999212598425,
+                        "y": 148.14992125984253,
+                        "width": 448.25,
+                        "height": 262.2
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_10_shape_10",
+                    "type": "text_box",
+                    "text": "Next Steps",
+                    "position": {
+                        "x": 595.3499212598425,
+                        "y": 159.89992125984253,
+                        "width": 84.15,
+                        "height": 21.2
+                    },
+                    "style": {
+                        "font_size": 16.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Next Steps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_11",
+                    "type": "text_box",
+                    "text": "01",
+                    "position": {
+                        "x": 595.3499212598425,
+                        "y": 192.14992125984253,
+                        "width": 13.9,
+                        "height": 17.6
+                    },
+                    "style": {
+                        "font_size": 13.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "01"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_12",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 596.2899212598426,
+                        "y": 213.02992125984252,
+                        "width": 429.95,
+                        "height": 1.8
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_10_shape_13",
+                    "type": "text_box",
+                    "text": "Collaborative Filtering",
+                    "position": {
+                        "x": 621.6099212598425,
+                        "y": 191.64992125984253,
+                        "width": 173.55,
+                        "height": 21.2
+                    },
+                    "style": {
+                        "font_size": 16.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Collaborative Filtering"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_14",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 596.29,
+                        "y": 311.6699212598425,
+                        "width": 429.95,
+                        "height": 100.45
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_10_shape_15",
+                    "type": "text_box",
+                    "text": "Implement user-based recommendations\n02 Hybrid System\nCombine CBF and collaborative approaches",
+                    "position": {
+                        "x": 593.3499212598425,
+                        "y": 221.74,
+                        "width": 312.39992125984253,
+                        "height": 81.59992125984252
+                    },
+                    "style": {
+                        "font_size": 16.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "Implement user-based recommendations"
+                            },
+                            {
+                                "level": 0,
+                                "text": "02 Hybrid System"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Combine CBF and collaborative approaches"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_16",
+                    "type": "text_box",
+                    "text": "03\tEvaluation\nCompare model performance metrics",
+                    "position": {
+                        "x": 595.3499212598425,
+                        "y": 316.16,
+                        "width": 265.45,
+                        "height": 59.65
+                    },
+                    "style": {
+                        "font_size": 19.5,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "03\tEvaluation"
+                            },
+                            {
+                                "level": 0,
+                                "text": "Compare model performance metrics"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_17",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 122.66992125984252,
+                        "y": 507.08937007874016,
+                        "width": 906.65,
+                        "height": 2.25
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#e4dfdf"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_10_shape_18",
+                    "type": "text_box",
+                    "text": "The first phase establishes a functional Content-Based Recommendation System, forming the\nfoundation for advanced recommendation models in subsequent reviews.",
+                    "position": {
+                        "x": 141.3899212598425,
+                        "y": 523.6659842519686,
+                        "width": 822.5,
+                        "height": 44.1
+                    },
+                    "style": {
+                        "font_size": 20.0,
+                        "bold": false,
+                        "italic": false,
+                        "color": "#e4dfdf",
+                        "background_color": null
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": [
+                            {
+                                "level": 0,
+                                "text": "The first phase establishes a functional Content-Based Recommendation System, forming the"
+                            },
+                            {
+                                "level": 0,
+                                "text": "foundation for advanced recommendation models in subsequent reviews."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "slide_10_shape_19",
+                    "type": "unknown",
+                    "text": null,
+                    "position": {
+                        "x": 122.66992125984252,
+                        "y": 520.2,
+                        "width": 1.8,
+                        "height": 58.25
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": "#f1f1f3"
+                    },
+                    "metadata": {
+                        "bullet_hierarchy": []
+                    }
+                },
+                {
+                    "id": "slide_10_shape_20",
+                    "type": "image",
+                    "text": null,
+                    "position": {
+                        "x": 993.9699212598425,
+                        "y": 569.2388188976378,
+                        "width": 147.76992125984253,
+                        "height": 78.76086614173228
+                    },
+                    "style": {
+                        "font_size": null,
+                        "bold": false,
+                        "italic": false,
+                        "color": null,
+                        "background_color": null
+                    },
+                    "metadata": {}
+                }
+            ],
+            "relationships": [],
+            "summary": "PROGRESS: Milestones & Future Roadmap; Work Completed; Problem formulation and scope definition"
+        }
+    ],
+    "summary": "E-Commerce Recommendation System: FIRST REVIEW; Content-Based Product Recommendation Using Machine Learning; VEERAMACHINENI SHIKHAR· 23BCE9278 PROJECT OVERVIEW: Personalizing the Shopping Experience; Modern e-commerce platforms host thousands of products, making personalized discovery essential for user engagement....; The first review phase focuses on designing and implementing Content- Based Filtering (CBF) as the foundation for mor... The Challenge We're Solving: Overwhelming Product Catalogs; Users face decision paralysis when browsing through massive product inventories without personalized guidance.; Lack of Personalization Understanding Recommendation Systems: Content-Based; Phase 1 — current item profiling; Collaborative DATA FOUNDATION: Dataset & Preprocessing Pipeline; Dataset Components; Product ID Content-Based Filtering Approach: Content-Based Filtering (CBF) recommends products by analyzing their attributes, user interaction history, and calcul...; Product Attributes; Category, brand, keywords, and description features How CBF Works: The Recommendation Pipeline: Extract Features; Parse product attributes; Vectorize Feature Engineering & Similarity Computation: Features Extracted; Product Category: Primary classification; Brand: Manufacturer identity System Architecture & Trade-offs: Product Dataset; Feature Extraction; Vector Representation PROGRESS: Milestones & Future Roadmap; Work Completed; Problem formulation and scope definition"
+}

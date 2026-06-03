@@ -1,6 +1,5 @@
 {
     "document_type": "ppt",
-    "document_name": "MODULE6 1 Hierarchical Reinforcement Learning.pptx",
     "slides": [
         {
             "slide_number": 1,
@@ -11,10 +10,10 @@
                     "type": "unknown",
                     "text": "CSE4037 \nREINFORCEMENT LEARNING\n\nHIERARCHICAL REINFORCEMENT LEARNING",
                     "position": {
-                        "x": 1320800.0,
-                        "y": 1341120.0,
-                        "width": 10454640.0,
-                        "height": 4003040.0
+                        "x": 104.0,
+                        "y": 105.6,
+                        "width": 823.2,
+                        "height": 315.2
                     },
                     "style": {
                         "font_size": 40.0,
@@ -45,10 +44,10 @@
                     "type": "text_box",
                     "text": null,
                     "position": {
-                        "x": 1493520.0,
-                        "y": 5100320.0,
-                        "width": 6493336.0,
-                        "height": 1497032.0
+                        "x": 117.6,
+                        "y": 401.6,
+                        "width": 511.2862992125984,
+                        "height": 117.87653543307087
                     },
                     "style": {
                         "font_size": null,
@@ -66,10 +65,10 @@
                     "type": "image",
                     "text": null,
                     "position": {
-                        "x": 8351798.0,
-                        "y": 75643.0,
-                        "width": 3738880.0,
-                        "height": 2103120.0
+                        "x": 657.6218897637796,
+                        "y": 5.956141732283465,
+                        "width": 294.4,
+                        "height": 165.6
                     },
                     "style": {
                         "font_size": null,
@@ -82,7 +81,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "CSE4037 \nREINFORCEMENT LEARNING\n\nHIERARCHICAL REINFORCEMENT LEARNING: CSE4037; REINFORCEMENT LEARNING; HIERARCHICAL REINFORCEMENT LEARNING"
         },
         {
             "slide_number": 2,
@@ -93,10 +92,10 @@
                     "type": "unknown",
                     "text": "Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours",
                     "position": {
-                        "x": 955040.0,
-                        "y": 162560.0,
-                        "width": 11054080.0,
-                        "height": 2009140.0
+                        "x": 75.2,
+                        "y": 12.8,
+                        "width": 870.4,
+                        "height": 158.2
                     },
                     "style": {
                         "font_size": null,
@@ -119,10 +118,10 @@
                     "type": "unknown",
                     "text": "Hierarchical Reinforcement Learning\nTypes of Optimality\nSemi MDP Model\nOptions\nLearning with Options\nHierarchical Abstract Machines\nA partially observable Markov decision process.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 10048240.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 791.2,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": 24.0,
@@ -166,7 +165,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours: Module No. 6; Hierarchical Reinforcement Learning; 8 Hours"
         },
         {
             "slide_number": 3,
@@ -177,10 +176,10 @@
                     "type": "unknown",
                     "text": "Hierarchical Reinforcement Learning",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -203,10 +202,10 @@
                     "type": "unknown",
                     "text": "Hierarchical Reinforcement Learning decomposes long horizon decision making process into simpler sub-tasks. \n\nThis idea is very similar to breaking down large number of lines of code to smaller functions each performing a very specific task.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 9601200.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 756.0,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": 28.0,
@@ -230,7 +229,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Hierarchical Reinforcement Learning: Hierarchical Reinforcement Learning decomposes long horizon decision making process into simpler sub-tasks.; This idea is very similar to breaking down large number of lines of code to smaller functions each performing a very..."
         },
         {
             "slide_number": 4,
@@ -241,10 +240,10 @@
                     "type": "unknown",
                     "text": "Hierarchical Reinforcement Learning",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -267,10 +266,10 @@
                     "type": "unknown",
                     "text": "Let’s look at an example, Suppose the agent has to clear or set a dining table. This includes the task of reaching and grasping dishes. These are high level tasks. \nOn a lower level, it requires the task of controlling and moving the limbs and then the fingers to reach out and grasp objects and subsequently put them in the proper place. \nHierarchical Reinforcement Learning is designed with the same logic. There are multiple levels of policies with each policy handling a lower level task like moving the fingers and the higher level policies handling tasks like grasping the objects.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 1696720.0,
-                        "width": 9601200.0,
-                        "height": 4988560.0
+                        "x": 108.0,
+                        "y": 133.6,
+                        "width": 756.0,
+                        "height": 392.8
                     },
                     "style": {
                         "font_size": 26.0,
@@ -298,7 +297,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Hierarchical Reinforcement Learning: Let’s look at an example, Suppose the agent has to clear or set a dining table. This includes the task of reaching an...; On a lower level, it requires the task of controlling and moving the limbs and then the fingers to reach out and gras...; Hierarchical Rei..."
         },
         {
             "slide_number": 5,
@@ -309,10 +308,10 @@
                     "type": "unknown",
                     "text": null,
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -330,10 +329,10 @@
                     "type": "unknown",
                     "text": null,
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 9601200.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 756.0,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": null,
@@ -351,10 +350,10 @@
                     "type": "image",
                     "text": null,
                     "position": {
-                        "x": 1128712.0,
-                        "y": 833437.0,
-                        "width": 9934575.0,
-                        "height": 5191125.0
+                        "x": 88.87496062992126,
+                        "y": 65.62496062992126,
+                        "width": 782.25,
+                        "height": 408.75
                     },
                     "style": {
                         "font_size": null,
@@ -378,10 +377,10 @@
                     "type": "unknown",
                     "text": "Hierarchical Reinforcement Learning",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 274320.0,
-                        "width": 9601200.0,
-                        "height": 1897380.0
+                        "x": 108.0,
+                        "y": 21.6,
+                        "width": 756.0,
+                        "height": 149.4
                     },
                     "style": {
                         "font_size": null,
@@ -404,10 +403,10 @@
                     "type": "unknown",
                     "text": "State-of-the-art deep RL algorithms require enormous amounts of interaction with the environment, before learning a satisfying control policy. Human intelligence in contrast, typically only requires a fraction of the required training experience, in order to solve the same tasks.\nThe idea that new representations can be constructed through the combination of primitives, as one of the core building blocks of human intelligence, and suggested that it will also be of typical importance in order to advance artificial learning systems. \nCompositionality can be seen as a way to facilitate lifelong learning, learning new concepts, by combining previously learned primitives. \nHRL aims to achieve compositionality, by learning reusable sub-behaviors together with a composition strategy. While compositionality in HRL can be achieved in low-dimensional state-spaces, deep neural networks have been demonstrated to be capable of automatically discovering composable representations, which offer significant opportunities for HRL, to facilitate compositionality directly using high-dimensional inputs.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 1361440.0,
-                        "width": 10576560.0,
-                        "height": 5323840.0
+                        "x": 108.0,
+                        "y": 107.2,
+                        "width": 832.8,
+                        "height": 419.2
                     },
                     "style": {
                         "font_size": null,
@@ -439,7 +438,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Hierarchical Reinforcement Learning: State-of-the-art deep RL algorithms require enormous amounts of interaction with the environment, before learning a s...; The idea that new representations can be constructed through the combination of primitives, as one of the core buildi...; Compositionality..."
         },
         {
             "slide_number": 7,
@@ -450,10 +449,10 @@
                     "type": "unknown",
                     "text": "Mechanisms\u000bTemporal Abstractions",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": 49.0,
@@ -476,10 +475,10 @@
                     "type": "unknown",
                     "text": "One of the core mechanisms of HRL are temporal abstractions. Solving complex problems often involves reasoning on multiple time scales. For example, when driving to work you typically do not start planning about whether you should steer left or right. You start on a much higher level, by planning for example about what roads to take, and whether you should stop to refuel.\nA temporally extended action (sub-behavior), consists of a sequence of primitive actions and possibly other temporally extended actions. These temporal abstractions can be utilized by a learning agent in order to make decisions on a higher level of abstraction. The sequence of actions that make up a temporally extended action can be fixed, or governed by a policy.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 10251440.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 807.2,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": 24.0,
@@ -503,7 +502,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Mechanisms\u000bTemporal Abstractions: Mechanisms; Temporal Abstractions; One of the core mechanisms of HRL are temporal abstractions. Solving complex problems often involves reasoning on mul..."
         },
         {
             "slide_number": 8,
@@ -514,10 +513,10 @@
                     "type": "unknown",
                     "text": "State Abstractions",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -540,10 +539,10 @@
                     "type": "unknown",
                     "text": "A second form of abstraction that is common in HRL, are abstractions imposed on the state-space. It is not feasible to learn the best action in every possible state in a high-dimensional input space. Instead, we use state abstractions, to reason about what action to take. Appropriate state abstractions have been demonstrated to significantly increase learning performance in RL problems.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2082800.0,
-                        "width": 10474960.0,
-                        "height": 3784600.0
+                        "x": 108.0,
+                        "y": 164.0,
+                        "width": 824.8,
+                        "height": 298.0
                     },
                     "style": {
                         "font_size": 23.0,
@@ -563,7 +562,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "State Abstractions: A second form of abstraction that is common in HRL, are abstractions imposed on the state-space. It is not feasible t..."
         },
         {
             "slide_number": 9,
@@ -574,10 +573,10 @@
                     "type": "unknown",
                     "text": "State Abstractions",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -600,10 +599,10 @@
                     "type": "unknown",
                     "text": null,
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 9601200.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 756.0,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": null,
@@ -621,10 +620,10 @@
                     "type": "image",
                     "text": null,
                     "position": {
-                        "x": 2105025.0,
-                        "y": 1928813.0,
-                        "width": 8630370.0,
-                        "height": 3938587.0
+                        "x": 165.75,
+                        "y": 151.87503937007875,
+                        "width": 679.5566929133859,
+                        "height": 310.12496062992125
                     },
                     "style": {
                         "font_size": null,
@@ -637,7 +636,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "State Abstractions"
         },
         {
             "slide_number": 10,
@@ -648,10 +647,10 @@
                     "type": "unknown",
                     "text": "State Abstractions",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 335280.0,
-                        "width": 9601200.0,
-                        "height": 1836420.0
+                        "x": 108.0,
+                        "y": 26.4,
+                        "width": 756.0,
+                        "height": 144.6
                     },
                     "style": {
                         "font_size": null,
@@ -674,10 +673,10 @@
                     "type": "unknown",
                     "text": "Current deep RL algorithms are capable of learning their own state abstractions from raw high dimensional state-spaces. These algorithms are for example capable of detecting doors, and learn that it is beneficial to walk through these doors. Unfortunately, these learned state representations are often not sufficiently expressive to reason about complex environments, and develop long-horizon plans.\nGiven abstractions over the state-space, and linked temporally extended actions, the agent can reason on a higher-level about the decisions it can make. Instead of learning a behavior for controlling the entire raw state-space, a hierarchy of different systems is able to control various abstracted parts of the state-space through temporally extended actions.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 1696720.0,
-                        "width": 10474960.0,
-                        "height": 4826000.0
+                        "x": 108.0,
+                        "y": 133.6,
+                        "width": 824.8,
+                        "height": 380.0
                     },
                     "style": {
                         "font_size": 23.0,
@@ -701,7 +700,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "State Abstractions: Current deep RL algorithms are capable of learning their own state abstractions from raw high dimensional state-space...; Given abstractions over the state-space, and linked temporally extended actions, the agent can reason on a higher-lev..."
         },
         {
             "slide_number": 11,
@@ -712,10 +711,10 @@
                     "type": "unknown",
                     "text": "State Abstractions",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -738,10 +737,10 @@
                     "type": "unknown",
                     "text": "Later, it is identified the benefit of utilizing different state abstractions for different sub-behaviors. The intuition behind this idea is that when performing different sub-behaviors, other aspects of the state-space become relevant. Ignoring irrelevant features to the sub-behavior, allows for more efficient exploration, and learning of the different temporal abstractions.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 9601200.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 756.0,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": 25.0,
@@ -761,7 +760,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "State Abstractions: Later, it is identified the benefit of utilizing different state abstractions for different sub-behaviors. The intuit..."
         },
         {
             "slide_number": 12,
@@ -772,10 +771,10 @@
                     "type": "unknown",
                     "text": "HRL Advantages\u000bCredit Assignment",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 152400.0,
-                        "width": 9601200.0,
-                        "height": 2019300.0
+                        "x": 108.0,
+                        "y": 12.0,
+                        "width": 756.0,
+                        "height": 159.0
                     },
                     "style": {
                         "font_size": null,
@@ -798,10 +797,10 @@
                     "type": "unknown",
                     "text": "The issue of credit assignment is a long-standing challenge in RL. Credit assignment is tasked with figuring out which action had which impact on the overall perceived reward.\nTemporal and state abstractions can greatly increase the sample efficiency of RL by making credit assignment less challenging. Given a set of temporal abstractions, the agent is freed from the complexity of having to reason about which action to take on every individual step. The agent instead activates temporal abstractions which can run for multiple steps. When performing credit assignment by learning a value function, this has a profound effect on the efficiency of the value-backups. While utilizing primitive actions only, a value backup only goes back one step, thus when reaching a goal-state, only the expected future value of the previously visited state gets updated. Using temporal abstractions, this reward gets propagated further back, allowing faster learning of a value function.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 1595120.0,
-                        "width": 10454640.0,
-                        "height": 5110480.0
+                        "x": 108.0,
+                        "y": 125.6,
+                        "width": 823.2,
+                        "height": 402.4
                     },
                     "style": {
                         "font_size": 22.0,
@@ -825,7 +824,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "HRL Advantages\u000bCredit Assignment: HRL Advantages; Credit Assignment; The issue of credit assignment is a long-standing challenge in RL. Credit assignment is tasked with figuring out whic..."
         },
         {
             "slide_number": 13,
@@ -836,10 +835,10 @@
                     "type": "unknown",
                     "text": "HRL Advantages\u000bCredit Assignment",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 152400.0,
-                        "width": 9601200.0,
-                        "height": 2019300.0
+                        "x": 108.0,
+                        "y": 12.0,
+                        "width": 756.0,
+                        "height": 159.0
                     },
                     "style": {
                         "font_size": null,
@@ -862,10 +861,10 @@
                     "type": "unknown",
                     "text": "Value backups, (a) using primitive actions, and (b) using temporal abstractions. With temporal abstractions an optimal policy can be found using less value backups.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 9601200.0,
-                        "height": 4358640.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 756.0,
+                        "height": 343.2
                     },
                     "style": {
                         "font_size": null,
@@ -888,10 +887,10 @@
                     "type": "image",
                     "text": null,
                     "position": {
-                        "x": 3476625.0,
-                        "y": 1943100.0,
-                        "width": 5238750.0,
-                        "height": 2971800.0
+                        "x": 273.75,
+                        "y": 153.0,
+                        "width": 412.5,
+                        "height": 234.0
                     },
                     "style": {
                         "font_size": null,
@@ -904,7 +903,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "HRL Advantages\u000bCredit Assignment: HRL Advantages; Credit Assignment; Value backups, (a) using primitive actions, and (b) using temporal abstractions. With temporal abstractions an optima..."
         },
         {
             "slide_number": 14,
@@ -915,10 +914,10 @@
                     "type": "unknown",
                     "text": "HRL Advantages\u000bExploration",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 223520.0,
-                        "width": 9601200.0,
-                        "height": 1948180.0
+                        "x": 108.0,
+                        "y": 17.6,
+                        "width": 756.0,
+                        "height": 153.4
                     },
                     "style": {
                         "font_size": 49.0,
@@ -941,10 +940,10 @@
                     "type": "unknown",
                     "text": "While improved sample efficiency through more structured credit assignment is capable of solving RL problems which previous flat RL algorithms could not solve. A recent ablation study, empirically demonstrated that the most significant contribution of current HRL architectures, lies in its capability to explore in a semantically meaningful and temporally extended fashion. \nExploration, using only primitive actions often results in over-exploration of states near the starting state of the agent. Using temporal abstractions for exploration allows the agent to explore the environment in a more structural way, which allows the agent to also explore more difficult to reach states.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 1676400.0,
-                        "width": 9601200.0,
-                        "height": 4191000.0
+                        "x": 108.0,
+                        "y": 132.0,
+                        "width": 756.0,
+                        "height": 330.0
                     },
                     "style": {
                         "font_size": 25.0,
@@ -968,7 +967,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "HRL Advantages\u000bExploration: HRL Advantages; Exploration; While improved sample efficiency through more structured credit assignment is capable of solving RL problems which pr..."
         },
         {
             "slide_number": 15,
@@ -979,10 +978,10 @@
                     "type": "unknown",
                     "text": "HRL Advantages\u000bExploration",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 223520.0,
-                        "width": 9601200.0,
-                        "height": 1948180.0
+                        "x": 108.0,
+                        "y": 17.6,
+                        "width": 756.0,
+                        "height": 153.4
                     },
                     "style": {
                         "font_size": 49.0,
@@ -1005,10 +1004,10 @@
                     "type": "unknown",
                     "text": "Exploration using only primitive actions, mostly explores states near the starting position of the agent (state visitation counts are represented using a red gradient). Temporal abstractions can help the agent to explore more distant states.\nHowever, the opposite has also been observed. Given a suboptimal set of sub-behaviors, pathological exploration can easily worsen learning performance",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 1788160.0,
-                        "width": 10424160.0,
-                        "height": 4947920.0
+                        "x": 108.0,
+                        "y": 140.8,
+                        "width": 820.8,
+                        "height": 389.6
                     },
                     "style": {
                         "font_size": null,
@@ -1035,10 +1034,10 @@
                     "type": "image",
                     "text": null,
                     "position": {
-                        "x": 5581650.0,
-                        "y": 933450.0,
-                        "width": 5238750.0,
-                        "height": 2857500.0
+                        "x": 439.5,
+                        "y": 73.5,
+                        "width": 412.5,
+                        "height": 225.0
                     },
                     "style": {
                         "font_size": null,
@@ -1051,7 +1050,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "HRL Advantages\u000bExploration: HRL Advantages; Exploration; Exploration using only primitive actions, mostly explores states near the starting position of the agent (state visit..."
         },
         {
             "slide_number": 16,
@@ -1062,10 +1061,10 @@
                     "type": "unknown",
                     "text": "Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\nA policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\nThe ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 1757680.0,
-                        "width": 10535920.0,
-                        "height": 4805680.0
+                        "x": 108.0,
+                        "y": 138.4,
+                        "width": 829.6,
+                        "height": 378.4
                     },
                     "style": {
                         "font_size": null,
@@ -1096,10 +1095,10 @@
                     "type": "text_box",
                     "text": "HRL Advantages\u000bContinual Learning",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 223520.0,
-                        "width": 9601200.0,
-                        "height": 1948180.0
+                        "x": 108.0,
+                        "y": 17.6,
+                        "width": 756.0,
+                        "height": 153.4
                     },
                     "style": {
                         "font_size": 49.0,
@@ -1119,7 +1118,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficienc..."
         },
         {
             "slide_number": 17,
@@ -1130,10 +1129,10 @@
                     "type": "unknown",
                     "text": "Hierarchical Reinforcement Learning",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1156,10 +1155,10 @@
                     "type": "unknown",
                     "text": "HRL gives us multiple benefits during training and exploration:\nTraining : Since high level correspond to multiple environmental steps, episodes are relatively shorter, thus propagating rewards faster and improving learning.\nSince Exploration happens at a higher level, it is able to learn more meaningful policies and thus take more meaningful actions than those taken on an atomic level. Example, agent would learn better policies to reach the goal at the level of grasping objects than at the level of understanding joint movements of fingers.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 1656080.0,
-                        "width": 9601200.0,
-                        "height": 4211320.0
+                        "x": 108.0,
+                        "y": 130.4,
+                        "width": 756.0,
+                        "height": 331.6
                     },
                     "style": {
                         "font_size": 26.0,
@@ -1187,7 +1186,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Hierarchical Reinforcement Learning: HRL gives us multiple benefits during training and exploration:; Training : Since high level correspond to multiple environmental steps, episodes are relatively shorter, thus propaga...; Since Exploration happens at a higher level, it is able to learn more mea..."
         },
         {
             "slide_number": 18,
@@ -1198,10 +1197,10 @@
                     "type": "unknown",
                     "text": "HRL Challenges",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1224,10 +1223,10 @@
                     "type": "unknown",
                     "text": "Learning algorithms that utilize hierarchical compositions of temporally extended actions will have to define how these sub-behaviors should be discovered, how they can be developed, how efficient state-abstractions can be learned and how they can be composed\nAutomatic Discovery of Abstractions\nDevelopment of Abstractions\nDecomposing Example Trajectories\nComposition",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 9601200.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 756.0,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": 26.0,
@@ -1263,7 +1262,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "HRL Challenges: Learning algorithms that utilize hierarchical compositions of temporally extended actions will have to define how the...; Automatic Discovery of Abstractions; Development of Abstractions"
         },
         {
             "slide_number": 19,
@@ -1274,10 +1273,10 @@
                     "type": "unknown",
                     "text": "HRL Challenges\u000bAutomatic Discovery of Abstractions",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1300,10 +1299,10 @@
                     "type": "unknown",
                     "text": "A lot of empirical research has been conducted on algorithms that are capable of automatically learning meaningful sub-behaviors, from interaction with the environment, without any knowledge provided by an external expert, in a sample efficient way. \nfinding a small set of sub-behaviors in a limited number of steps is an NP-hard problem. \nsets of state abstractions and temporal abstractions are capable of preserving representation of near-optimal policies, method requires MDP.\nThe most commonly used techniques to automatically discover temporal abstractions, either utilize special properties of different states, or correlate trajectories with a sub-behavior random variable.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2021840.0,
-                        "width": 10515600.0,
-                        "height": 3845560.0
+                        "x": 108.0,
+                        "y": 159.2,
+                        "width": 828.0,
+                        "height": 302.8
                     },
                     "style": {
                         "font_size": 23.0,
@@ -1335,7 +1334,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "HRL Challenges\u000bAutomatic Discovery of Abstractions: HRL Challenges; Automatic Discovery of Abstractions; A lot of empirical research has been conducted on algorithms that are capable of automatically learning meaningful su..."
         },
         {
             "slide_number": 20,
@@ -1346,10 +1345,10 @@
                     "type": "unknown",
                     "text": "HRL Challenges\u000bDevelopment of Abstractions",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1372,10 +1371,10 @@
                     "type": "unknown",
                     "text": "In order to use temporally extended actions, they need to receive enough suitable samples from the environment in order to become sufficiently developed.\nIn the most promising HRL approaches, sub-behaviors are developed end-to-end, while they are also being discovered.\nFor example: the state-space could be split in a few equal parts, with a sub-behavior assigned to each part. In a second phase, the sub-behaviors can be developed by for example randomly activating them. \nIf multiple sub-behaviors are generalized by a single parameterized function, samples can be used to train multiple sub-behaviors at the same time. Similarly, off-policy methods can be used to simultaneously develop multiple abstractions.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 1930400.0,
-                        "width": 10474960.0,
-                        "height": 4673600.0
+                        "x": 108.0,
+                        "y": 152.0,
+                        "width": 824.8,
+                        "height": 368.0
                     },
                     "style": {
                         "font_size": 24.0,
@@ -1407,7 +1406,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "HRL Challenges\u000bDevelopment of Abstractions: HRL Challenges; Development of Abstractions; In order to use temporally extended actions, they need to receive enough suitable samples from the environment in ord..."
         },
         {
             "slide_number": 21,
@@ -1418,10 +1417,10 @@
                     "type": "unknown",
                     "text": "HRL Challenges\u000bDecomposing Example Trajectories",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1444,10 +1443,10 @@
                     "type": "unknown",
                     "text": "HRL can maximize the utility of demonstrations by decomposing them into sub-behaviors. Instead of learning a single task from demonstrations, the discovered sub-behaviors can be used as building blocks to solve a range of related tasks, potentially without the need of additional demonstrations.\nWhile imitation learning typically is used to solve a single problem, if imitation learning is used to discover temporal abstractions, these abstractions might be re-used to solve multiple similar problems.\nProviding a reward-function for a control problem is often a complex issue in itself",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 10546080.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 830.4,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": 24.0,
@@ -1475,7 +1474,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "HRL Challenges\u000bDecomposing Example Trajectories: HRL Challenges; Decomposing Example Trajectories; HRL can maximize the utility of demonstrations by decomposing them into sub-behaviors. Instead of learning a single t..."
         },
         {
             "slide_number": 22,
@@ -1486,10 +1485,10 @@
                     "type": "unknown",
                     "text": "HRL Challenges\u000bComposition",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1512,10 +1511,10 @@
                     "type": "unknown",
                     "text": "Sub-behaviors alone are not enough to solve HRL problems. They need to be composed in order to form complex plans. There are two major approaches which are commonly used to learn compositions:\nBottom-up training: the sub-behaviors are discovered and developed first. Once they have been sufficiently developed, they are frozen, and a composition-policy is learned by sampling different sub-behaviors. Sub-behaviors learned using a bottom-up approach, can often also be transferred to solve similar problems\nTop-down training: the higher-level first selects a subgoal 𝑔∈𝑆 it deems interesting in order to reach the overall goal. Once selected, the lower-level is trained to reach the proposed subgoal. This approach is often more efficient in solving a single control problem.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2082800.0,
-                        "width": 10312400.0,
-                        "height": 3784600.0
+                        "x": 108.0,
+                        "y": 164.0,
+                        "width": 812.0,
+                        "height": 298.0
                     },
                     "style": {
                         "font_size": 23.0,
@@ -1543,7 +1542,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "HRL Challenges\u000bComposition: HRL Challenges; Composition; Sub-behaviors alone are not enough to solve HRL problems. They need to be composed in order to form complex plans. Th..."
         },
         {
             "slide_number": 23,
@@ -1554,10 +1553,10 @@
                     "type": "unknown",
                     "text": "Hierarchical Reinforcement Learning",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1580,10 +1579,10 @@
                     "type": "unknown",
                     "text": "A few common architectures for HRL are-\nOption — Critic Framework\nFeudal Reinforcement Learning",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 9601200.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 756.0,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": 28.0,
@@ -1611,7 +1610,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Hierarchical Reinforcement Learning: A few common architectures for HRL are-; Option — Critic Framework; Feudal Reinforcement Learning"
         },
         {
             "slide_number": 24,
@@ -1622,10 +1621,10 @@
                     "type": "unknown",
                     "text": "Option-Critic framework",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1648,10 +1647,10 @@
                     "type": "unknown",
                     "text": null,
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 9601200.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 756.0,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": null,
@@ -1669,10 +1668,10 @@
                     "type": "image",
                     "text": null,
                     "position": {
-                        "x": 3646170.0,
-                        "y": 1585595.0,
-                        "width": 5426802.0,
-                        "height": 4926965.0
+                        "x": 287.1,
+                        "y": 124.85,
+                        "width": 427.30724409448817,
+                        "height": 387.95
                     },
                     "style": {
                         "font_size": null,
@@ -1685,7 +1684,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Option-Critic framework"
         },
         {
             "slide_number": 25,
@@ -1696,10 +1695,10 @@
                     "type": "unknown",
                     "text": "Feudal Reinforcement Learning",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1722,10 +1721,10 @@
                     "type": "unknown",
                     "text": "The Grid Task. This shows how the maze is divided up at different levels in the hierarchy. The 'u' shape is the barrier, and the shaded square is the goal. Each high level state is divided into four low level ones at every step.",
                     "position": {
-                        "x": 6339878.0,
-                        "y": 2286000.0,
-                        "width": 4632921.0,
-                        "height": 3581400.0
+                        "x": 499.2029921259842,
+                        "y": 180.0,
+                        "width": 364.79692913385827,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": 25.0,
@@ -1748,10 +1747,10 @@
                     "type": "image",
                     "text": null,
                     "position": {
-                        "x": 1729105.0,
-                        "y": 1757680.0,
-                        "width": 4253269.0,
-                        "height": 4828222.0
+                        "x": 136.15,
+                        "y": 138.4,
+                        "width": 334.9030708661417,
+                        "height": 380.17496062992126
                     },
                     "style": {
                         "font_size": null,
@@ -1764,7 +1763,7 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Feudal Reinforcement Learning: The Grid Task. This shows how the maze is divided up at different levels in the hierarchy. The 'u' shape is the barri..."
         },
         {
             "slide_number": 26,
@@ -1775,10 +1774,10 @@
                     "type": "unknown",
                     "text": "Feudal Reinforcement Learning",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 685800.0,
-                        "width": 9601200.0,
-                        "height": 1485900.0
+                        "x": 108.0,
+                        "y": 54.0,
+                        "width": 756.0,
+                        "height": 117.0
                     },
                     "style": {
                         "font_size": null,
@@ -1801,10 +1800,10 @@
                     "type": "unknown",
                     "text": "The Learned Actions. The area of the boxes and the radius of the central circle give the probabilities of taking action NSEW and * respectively.",
                     "position": {
-                        "x": 1371600.0,
-                        "y": 2286000.0,
-                        "width": 5029200.0,
-                        "height": 3581400.0
+                        "x": 108.0,
+                        "y": 180.0,
+                        "width": 396.0,
+                        "height": 282.0
                     },
                     "style": {
                         "font_size": 25.0,
@@ -1827,10 +1826,10 @@
                     "type": "image",
                     "text": null,
                     "position": {
-                        "x": 6741567.0,
-                        "y": 1757680.0,
-                        "width": 4365242.0,
-                        "height": 4828222.0
+                        "x": 530.8320472440945,
+                        "y": 138.4,
+                        "width": 343.719842519685,
+                        "height": 380.17496062992126
                     },
                     "style": {
                         "font_size": null,
@@ -1843,7 +1842,8 @@
                 }
             ],
             "relationships": [],
-            "summary": null
+            "summary": "Feudal Reinforcement Learning: The Learned Actions. The area of the boxes and the radius of the central circle give the probabilities of taking acti..."
         }
-    ]
+    ],
+    "summary": "CSE4037 \nREINFORCEMENT LEARNING\n\nHIERARCHICAL REINFORCEMENT LEARNING: CSE4037; REINFORCEMENT LEARNING; HIERARCHICAL REINFORCEMENT LEARNING Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours: Module No. 6; Hierarchical Reinforcement Learning; 8 Hours Hierarchical Reinforcement Learning: Hierarchical Reinforcement Learning decomposes long horizon decision making process into simpler sub-tasks.; This idea is very similar to breaking down large number of lines of code to smaller functions each performing a very... Hierarchical Reinforcement Learning: Let’s look at an example, Suppose the agent has to clear or set a dining table. This includes the task of reaching an...; On a lower level, it requires the task of controlling and moving the limbs and then the fingers to reach out and gras...; Hierarchical Rei... Hierarchical Reinforcement Learning: State-of-the-art deep RL algorithms require enormous amounts of interaction with the environment, before learning a s...; The idea that new representations can be constructed through the combination of primitives, as one of the core buildi...; Compositionality... Mechanisms\u000bTemporal Abstractions: Mechanisms; Temporal Abstractions; One of the core mechanisms of HRL are temporal abstractions. Solving complex problems often involves reasoning on mul... State Abstractions: A second form of abstraction that is common in HRL, are abstractions imposed on the state-space. It is not feasible t... State Abstractions State Abstractions: Current deep RL algorithms are capable of learning their own state abstractions from raw high dimensional state-space...; Given abstractions over the state-space, and linked temporally extended actions, the agent can reason on a higher-lev... State Abstractions: Later, it is identified the benefit of utilizing different state abstractions for different sub-behaviors. The intuit... HRL Advantages\u000bCredit Assignment: HRL Advantages; Credit Assignment; The issue of credit assignment is a long-standing challenge in RL. Credit assignment is tasked with figuring out whic... HRL Advantages\u000bCredit Assignment: HRL Advantages; Credit Assignment; Value backups, (a) using primitive actions, and (b) using temporal abstractions. With temporal abstractions an optima... HRL Advantages\u000bExploration: HRL Advantages; Exploration; While improved sample efficiency through more structured credit assignment is capable of solving RL problems which pr... HRL Advantages\u000bExploration: HRL Advantages; Exploration; Exploration using only primitive actions, mostly explores states near the starting position of the agent (state visit... Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficienc... Hierarchical Reinforcement Learning: HRL gives us multiple benefits during training and exploration:; Training : Since high level correspond to multiple environmental steps, episodes are relatively shorter, thus propaga...; Since Exploration happens at a higher level, it is able to learn more mea... HRL Challenges: Learning algorithms that utilize hierarchical compositions of temporally extended actions will have to define how the...; Automatic Discovery of Abstractions; Development of Abstractions HRL Challenges\u000bAutomatic Discovery of Abstractions: HRL Challenges; Automatic Discovery of Abstractions; A lot of empirical research has been conducted on algorithms that are capable of automatically learning meaningful su... HRL Challenges\u000bDevelopment of Abstractions: HRL Challenges; Development of Abstractions; In order to use temporally extended actions, they need to receive enough suitable samples from the environment in ord... HRL Challenges\u000bDecomposing Example Trajectories: HRL Challenges; Decomposing Example Trajectories; HRL can maximize the utility of demonstrations by decomposing them into sub-behaviors. Instead of learning a single t... HRL Challenges\u000bComposition: HRL Challenges; Composition; Sub-behaviors alone are not enough to solve HRL problems. They need to be composed in order to form complex plans. Th... Hierarchical Reinforcement Learning: A few common architectures for HRL are-; Option — Critic Framework; Feudal Reinforcement Learning Option-Critic framework Feudal Reinforcement Learning: The Grid Task. This shows how the maze is divided up at different levels in the hierarchy. The 'u' shape is the barri... Feudal Reinforcement Learning: The Learned Actions. The area of the boxes and the radius of the central circle give the probabilities of taking acti..."
 }

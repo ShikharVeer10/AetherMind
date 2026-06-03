@@ -3,9 +3,9 @@
 Extract structured data from PowerPoint (.pptx) files and export JSON suitable for downstream search, analysis, or summarization. Optional AI summaries can be enabled for slides and images.
 
 ## Features
-- Extracts slide text, tables, images, positions, and styling metadata
+- Extracts slide text, tables, images, positions, styling metadata, and basic flow relationships
 - Exports a clean JSON schema for each document
-- Optional slide summaries via Gemini (pydantic-ai)
+- Optional slide summaries via Gemini (pydantic-ai), with a local rule-based fallback when the API is unavailable
 - Optional image summaries via Ollama vision models
 
 ## Requirements
@@ -60,3 +60,4 @@ app/
 ## Notes
 - Only `.pptx` files are supported currently.
 - Image bytes are removed from output JSON by default for size and privacy.
+- Element positions are exported in points.
