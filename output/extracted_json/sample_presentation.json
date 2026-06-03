@@ -73,6 +73,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -117,6 +118,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -187,8 +189,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_1_shape_1",
-                        "slide_1_shape_0"
+                        "slide_1_shape_0",
+                        "slide_1_shape_1"
                     ]
                 },
                 "text_points": [
@@ -240,9 +242,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"AetherMind: Enterprise Document AI\". Boxes: 2, Arrows: 0. Layout: title_slide. Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
+                "outline": "Title: \"AetherMind: Enterprise Document AI\". Boxes: 2, Arrows: 0. Layout: title_slide. Diagram analysis: No diagram detected.. Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
             },
             "text_points": [
                 {
@@ -292,10 +295,11 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'AetherMind: Enterprise Document AI', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Quarterly Strategy Review — Q3 2026."
+            "summary": "### Visual Element Counts\nNo specific visual elements detected.\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] AetherMind: Enterprise Document AI\n- [L0] Quarterly Strategy Review — Q3 2026\n\n### Interpretation\nThis slide titled 'AetherMind: Enterprise Document AI' is structured as a standard layout."
         },
         {
             "slide_number": 2,
@@ -372,6 +376,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -458,6 +463,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -617,9 +623,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Key Highlights\". Boxes: 2, Arrows: 0. Layout: title_slide. Header: \"Key Highlights\" | Slide #: ‹#› | Date: 1/27/13."
+                "outline": "Title: \"Key Highlights\". Boxes: 2, Arrows: 0. Layout: title_slide. Diagram analysis: No diagram detected.. Header: \"Key Highlights\" | Slide #: ‹#› | Date: 1/27/13."
             },
             "text_points": [
                 {
@@ -684,10 +691,11 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Key Highlights', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Revenue grew 23% YoY to $4.2B."
+            "summary": "### Visual Element Counts\nNo specific visual elements detected.\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Key Highlights\n- [L0] Revenue grew 23% YoY to $4.2B\n- [L1] Active users surpassed 150 million\n- [L1] Launched 3 new AI-powered features\n- [L1] NPS score improved from 62 to 71\n\n### Interpretation\nThis slide titled 'Key Highlights' is structured as a standard layout."
         },
         {
             "slide_number": 3,
@@ -764,6 +772,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -793,6 +802,7 @@
                         "background_color": null
                     },
                     "table_markdown": "| Region | Q1 ($M) | Q2 ($M) | Q3 ($M) |\n| --- | --- | --- | --- |\n| North America | 1,200 | 1,350 | 1,420 |\n| Europe | 680 | 720 | 810 |\n| Asia-Pacific | 450 | 510 | 590 |\n| Rest of World | 280 | 320 | 380 |",
+                    "image_summary": null,
                     "metadata": {
                         "table_data": [
                             [
@@ -939,9 +949,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Regional Revenue Breakdown\". Elements: 1 text box(es), 1 table(s). Boxes: 1, Arrows: 0. Layout: single_column. Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
+                "outline": "Title: \"Regional Revenue Breakdown\". Elements: 1 text box(es), 1 table(s). Boxes: 1, Arrows: 0. Layout: single_column. Diagram analysis: No diagram detected.. Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
             },
             "text_points": [
                 {
@@ -986,12 +997,13 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [
                 "| Region | Q1 ($M) | Q2 ($M) | Q3 ($M) |\n| --- | --- | --- | --- |\n| North America | 1,200 | 1,350 | 1,420 |\n| Europe | 680 | 720 | 810 |\n| Asia-Pacific | 450 | 510 | 590 |\n| Rest of World | 280 | 320 | 380 |"
             ],
-            "summary": "This slide, titled 'Regional Revenue Breakdown', explains key concepts on this topic. The slide utilizes a visual layout featuring 1 table(s) to support the explanation."
+            "summary": "### Visual Element Counts\nNo specific visual elements detected.\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Regional Revenue Breakdown\n\n### Interpretation\nThis slide titled 'Regional Revenue Breakdown' is structured as a standard layout."
         },
         {
             "slide_number": 4,
@@ -1079,6 +1091,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -1123,6 +1136,7 @@
                         "background_color": "#407bce"
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -1167,6 +1181,7 @@
                         "background_color": "#407bce"
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -1211,6 +1226,7 @@
                         "background_color": "#407bce"
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -1255,6 +1271,7 @@
                         "background_color": "#407bce"
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -1284,6 +1301,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "connector_endpoints": {
                             "begin_x": 2560320.0,
@@ -1313,6 +1331,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "connector_endpoints": {
                             "begin_x": 5303520.0,
@@ -1342,6 +1361,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "connector_endpoints": {
                             "begin_x": 5303520.0,
@@ -1451,8 +1471,8 @@
                     }
                 ],
                 "reading_order": [
-                    "slide_4_shape_1",
                     "slide_4_shape_0",
+                    "slide_4_shape_1",
                     "slide_4_shape_2",
                     "slide_4_shape_3",
                     "slide_4_shape_4"
@@ -1596,8 +1616,8 @@
                         }
                     ],
                     "reading_order": [
-                        "slide_4_shape_1",
                         "slide_4_shape_0",
+                        "slide_4_shape_1",
                         "slide_4_shape_2",
                         "slide_4_shape_3",
                         "slide_4_shape_4"
@@ -1771,9 +1791,10 @@
                             "label": null
                         }
                     ],
-                    "summary": "flowchart with 5 node(s) and 3 relationship(s)."
+                    "flow_description": "Step 1: Data Processing Pipeline → Step 2: Ingest → Step 3: Validate → Step 4: Transform → Step 5: Store",
+                    "summary": "[Counts] Flowchart with 5 box(es), 3 arrow(s), 5 node(s), and 3 relationship(s). [Connections] \"Ingest\" → \"Validate\" (connector); \"Validate\" → \"Transform\" (connector); \"Validate\" → \"Store\" (connector). [Flow] Step 1: Data Processing Pipeline → Step 2: Ingest → Step 3: Validate → Step 4: Transform → Step 5: Store. [Interpretation] This flowchart illustrates a process that begins with \"Data Processing Pipeline\" and concludes with \"Store\", progressing through 5 stage(s)."
                 },
-                "outline": "Title: \"Data Processing Pipeline\". Elements: 1 text box(es), 4 shape(s), 3 connector(s). Boxes: 5, Arrows: 0. Layout: flowchart. Flowchart detected — 5 box(es), 3 arrow(s). Reading order: slide_4_shape_1 → slide_4_shape_0 → slide_4_shape_2 → slide_4_shape_3 → slide_4_shape_4. Relationships: slide_4_shape_1 -> slide_4_shape_2 (connector); slide_4_shape_2 -> slide_4_shape_3 (connector); slide_4_shape_2 -> slide_4_shape_4 (connector). Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
+                "outline": "Title: \"Data Processing Pipeline\". Elements: 1 text box(es), 4 shape(s), 3 connector(s). Boxes: 5, Arrows: 0. Layout: flowchart. Flowchart detected — 5 box(es), 3 arrow(s). Reading order: slide_4_shape_0 → slide_4_shape_1 → slide_4_shape_2 → slide_4_shape_3 → slide_4_shape_4. Flow mapping: Step 1: Data Processing Pipeline → Step 2: Ingest → Step 3: Validate → Step 4: Transform → Step 5: Store. Diagram analysis: [Counts] Flowchart with 5 box(es), 3 arrow(s), 5 node(s), and 3 relationship(s). [Connections] \"Ingest\" → \"Validate\" (connector); \"Validate\" → \"Transform\" (connector); \"Validate\" → \"Store\" (connector). [Flow] Step 1: Data Processing Pipeline → Step 2: Ingest → Step 3: Validate → Step 4: Transform → Step 5: Store. [Interpretation] This flowchart illustrates a process that begins with \"Data Processing Pipeline\" and concludes with \"Store\", progressing through 5 stage(s).. Relationships: slide_4_shape_1 -> slide_4_shape_2 (connector); slide_4_shape_2 -> slide_4_shape_3 (connector); slide_4_shape_2 -> slide_4_shape_4 (connector). Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
             },
             "text_points": [
                 {
@@ -1920,10 +1941,11 @@
                         "label": null
                     }
                 ],
-                "summary": "flowchart with 5 node(s) and 3 relationship(s)."
+                "flow_description": "Step 1: Data Processing Pipeline → Step 2: Ingest → Step 3: Validate → Step 4: Transform → Step 5: Store",
+                "summary": "[Counts] Flowchart with 5 box(es), 3 arrow(s), 5 node(s), and 3 relationship(s). [Connections] \"Ingest\" → \"Validate\" (connector); \"Validate\" → \"Transform\" (connector); \"Validate\" → \"Store\" (connector). [Flow] Step 1: Data Processing Pipeline → Step 2: Ingest → Step 3: Validate → Step 4: Transform → Step 5: Store. [Interpretation] This flowchart illustrates a process that begins with \"Data Processing Pipeline\" and concludes with \"Store\", progressing through 5 stage(s)."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Data Processing Pipeline', explains key concepts on this topic. It depicts a process flowchart outlining a sequence of 5 steps to illustrate the workflow. It covers the following points: Ingest; Validate; Transform."
+            "summary": "### Visual Element Counts\nVisual elements detected: 4 box(es), 3 arrow(s).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Data Processing Pipeline\n- [L0] Ingest\n- [L0] Validate\n- [L0] Transform\n- [L0] Store\n\n### Interpretation\nThis slide titled 'Data Processing Pipeline' is structured as a standard layout. It visually represents 4 box(es), 3 arrow(s) to communicate its core concept."
         },
         {
             "slide_number": 5,
@@ -2006,6 +2028,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -2092,6 +2115,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -2190,6 +2214,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -2297,9 +2322,9 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
+                        "slide_5_shape_2",
                         "slide_5_shape_1",
-                        "slide_5_shape_0",
-                        "slide_5_shape_2"
+                        "slide_5_shape_0"
                     ]
                 },
                 "text_points": [
@@ -2399,9 +2424,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Product Roadmap vs. Actuals\". Elements: 3 text box(es). Boxes: 3, Arrows: 0. Layout: two_column. Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
+                "outline": "Title: \"Product Roadmap vs. Actuals\". Elements: 3 text box(es). Boxes: 3, Arrows: 0. Layout: two_column. Diagram analysis: No diagram detected.. Header: \"Click to edit Master title style\" | Slide #: ‹#› | Date: 1/27/13."
             },
             "text_points": [
                 {
@@ -2499,10 +2525,11 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Product Roadmap vs. Actuals', explains key concepts on this topic. The layout is structured as a two_column presentation. It covers the following points: Planned Features; • Real-time analytics dashboard; • Multi-language support."
+            "summary": "### Visual Element Counts\nNo specific visual elements detected.\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Product Roadmap vs. Actuals\n- [L0] Planned Features\n- [L0] • Real-time analytics dashboard\n- [L0] • Multi-language support\n- [L0] • API v3 launch\n\n### Interpretation\nThis slide titled 'Product Roadmap vs. Actuals' is structured as a standard layout."
         }
     ]
 }

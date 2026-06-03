@@ -1,8 +1,3 @@
-"""
-Builds a lightweight diagram understanding summary from elements
-and their relationships.
-"""
-
 from typing import Dict, List
 
 from models.document_model import (
@@ -47,14 +42,10 @@ class DiagramUnderstandingService:
             else "diagram" if is_diagram
             else "none"
         )
-
-        # Build an element lookup for resolving IDs to text labels
         element_lookup: Dict[str, str] = {
             e.element_id: (e.text or "").strip().replace("\n", " ") or f"[{e.element_id}]"
             for e in elements
         }
-
-        # --- Build flow_description from reading order ---
         flow_description = ""
         if flowchart.is_flowchart and flowchart.reading_order:
             flow_steps = []
@@ -63,7 +54,6 @@ class DiagramUnderstandingService:
                 flow_steps.append(f"Step {i}: {label}")
             flow_description = " → ".join(flow_steps)
 
-        # --- Build rich summary ---
         summary_parts: List[str] = []
 
         if not is_diagram:
@@ -77,8 +67,6 @@ class DiagramUnderstandingService:
                 f"{box_count} box(es), {arrow_count} arrow(s), "
                 f"{len(nodes)} node(s), and {len(edges)} relationship(s)."
             )
-
-            # Section: Edges / connections
             if edges:
                 edge_descriptions = []
                 for e in edges:

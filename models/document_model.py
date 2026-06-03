@@ -124,6 +124,29 @@ class FlowchartModel(BaseModel):
     relationships: List[RelationshipModel] = Field(default_factory=list)
     reading_order: List[str] = Field(default_factory=list)
 
+class VisualDesignModel(BaseModel):
+    color_scheme: List[str] = Field(default_factory=list)
+    shapes: List[str] = Field(default_factory=list)
+    connector_types: List[str] = Field(default_factory=list)
+    layout_pattern: Optional[str] = None
+    spatial_structure: Optional[str] = None
+
+class ImageUnderstandingModel(BaseModel):
+    scene_description:str=""
+    objects_detected:List[str]=Field(default_factory=list)
+    actions_detected:List[str]=Field(default_factory=list)
+    relationships:List[str]=Field(default_factory=list)
+    semantic_meaning:str=""
+    visual_design:Optional[VisualDesignModel]=None
+
+class SemanticFlowModel(BaseModel):
+    overall_flow:str=""
+    step_by_step_explanation:List[str]=Field(default_factory=list)
+    conceptual_layers:List[str]=Field(default_factory=list)
+    visual_design_details:List[str]=Field(default_factory=list)
+    plain_english_summary:str=""
+
+
 
 class SlideContextModel(BaseModel):
     header_footer: Optional[HeaderFooterModel] = None
@@ -136,6 +159,8 @@ class SlideContextModel(BaseModel):
     relationship_mapping: List[RelationshipModel] = Field(default_factory=list)
     diagram_understanding: Optional[DiagramUnderstandingModel] = None
     outline: str = ""
+    image_understanding:Optional[ImageUnderstandingModel]=None
+    semantic_flow:Optional[SemanticFlowModel]=None
 
 
 class SlideModel(BaseModel):
@@ -147,14 +172,16 @@ class SlideModel(BaseModel):
     visual_inventory: Optional[VisualInventoryModel] = None
     layout_structure: Optional[LayoutStructureModel] = None
     flowchart: Optional[FlowchartModel] = None
+    diagram_understanding: Optional[DiagramUnderstandingModel] = None
+    image_understanding:Optional[ImageUnderstandingModel]=None
+    semantic_flow:Optional[SemanticFlowModel]=None
     context: Optional[SlideContextModel] = None
     table_markdowns: List[str] = Field(default_factory=list)
     slide_summary: Optional[str] = None
     text_points: List[TextPointModel] = Field(default_factory=list)
     position_mapping: List[PositionMapModel] = Field(default_factory=list)
-    diagram_understanding: Optional[DiagramUnderstandingModel] = None
-
-
+    image_reconstruction:Optional[ImageReconstructionModel]=None
+    
 class DocumentModel(BaseModel):
     document_name: str
     document_type: str
@@ -166,3 +193,10 @@ class DocumentModel(BaseModel):
         default_factory=dict,
         description="Top-level presentation metadata: author, slide dimensions, theme, etc.",
     )
+
+class ImageReconstructionModel(BaseModel):
+    layout_description:str=""
+    color_palette:List[str]=Field(default_factory=list)
+    object_location:List[str]=Field(default_factory=list)
+    connector_layout:List[str]=Field(default_factory=list)
+    recreation_prompt:str=""

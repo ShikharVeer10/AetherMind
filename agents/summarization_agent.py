@@ -105,11 +105,10 @@ class SummarizationAgent:
             if hf_parts:
                 hf_info = "\n".join(hf_parts)
 
-        # Check if API key is available. If not, generate a structured fallback summary.
-        api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-        if not api_key:
-            print("[SummarizationAgent] No API key (GEMINI_API_KEY/GOOGLE_API_KEY) found. Generating programmatic fallback.")
-            return self._build_fallback(slide, text_lines, image_summaries, hf_info)
+        # Check if API key is available.
+        gemini_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+        groq_key = os.getenv("GROQ_API_KEY")
+        openai_key = os.getenv("OPENAI_API_KEY")
 
         prompt = f"""\
 Slide {slide.slide_number}
@@ -149,9 +148,56 @@ If no flow is present, write "No flowchart or process flow detected."
 Explain what this slide is trying to communicate, explain, or illustrate as a whole, including its visual layout, diagrams/images, header/footer context, and the relationship mapping between elements.
 """
 
-        agent = _get_slide_summary_agent()
-        result = await agent.run(prompt)
-        return result.output.summary
+        if gemini_key:
+            try:
+                agent = _get_slide_summary_agent()
+                result = await agent.run(prompt)
+                return result.output.summary
+            except Exception as e:
+                print(f"[SummarizationAgent] Gemini summary generation failed: {e}")
+
+        # Fallback to Groq if key is available
+        if groq_key:
+            try:
+                from groq import Groq
+                client = Groq(api_key=groq_key)
+                response = client.chat.completions.create(
+                    messages=[
+                        {
+                            "role": "user",
+                            "content": prompt,
+                        }
+                    ],
+                    model="llama-3.3-70b-versatile",
+                )
+                if response.choices[0].message.content:
+                    return response.choices[0].message.content.strip()
+            except Exception as e:
+                print(f"[SummarizationAgent] Groq summary generation failed: {e}")
+
+        # Fallback to OpenAI if key is available
+        if openai_key:
+            try:
+                from openai import OpenAI
+                client = OpenAI(api_key=openai_key)
+                response = client.chat.completions.create(
+                    messages=[
+                        {
+                            "role": "user",
+                            "content": prompt,
+                        }
+                    ],
+                    model="gpt-4o-mini",
+                )
+                if response.choices[0].message.content:
+                    return response.choices[0].message.content.strip()
+            except Exception as e:
+                print(f"[SummarizationAgent] OpenAI summary generation failed: {e}")
+
+        # Programmatic fallback if all else fails
+        print("[SummarizationAgent] No LLM API succeeded. Generating programmatic fallback.")
+        return self._build_fallback(slide, text_lines, image_summaries, hf_info)
+
 
     @staticmethod
     def _build_fallback(

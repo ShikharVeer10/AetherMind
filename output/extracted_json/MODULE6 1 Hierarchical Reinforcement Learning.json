@@ -112,6 +112,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -149,6 +150,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": []
                     }
@@ -173,7 +175,10 @@
                         "background_color": null
                     },
                     "table_markdown": null,
-                    "metadata": {}
+                    "image_summary": "1. Visual element counts: 2 (boxes), 1 (arrows), 3 (panels), 1 (icon), 1 (panel)",
+                    "metadata": {
+                        "image_summary": "1. Visual element counts: 2 (boxes), 1 (arrows), 3 (panels), 1 (icon), 1 (panel)"
+                    }
                 }
             ],
             "relationships": [],
@@ -255,8 +260,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_1_shape_1",
-                        "slide_1_shape_0"
+                        "slide_1_shape_0",
+                        "slide_1_shape_1"
                     ]
                 },
                 "text_points": [
@@ -326,9 +331,10 @@
                         }
                     ],
                     "edges": [],
-                    "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                    "flow_description": "",
+                    "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
                 },
-                "outline": "Title: \"CSE4037\nREINFORCEMENT LEARNING\nHIERARCHICAL REINFORCEMENT LEARNING\". Elements: 1 text box(es), 1 image(s). Boxes: 2, Arrows: 0. Layout: single_column. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"CSE4037\nREINFORCEMENT LEARNING\nHIERARCHICAL REINFORCEMENT LEARNING\". Elements: 1 text box(es), 1 image(s), 1 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: single_column. Regions: header, body_right, footer. Diagram analysis: [Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them.. Text Points (3 total):\n• CSE4037\n• REINFORCEMENT LEARNING\n• HIERARCHICAL REINFORCEMENT LEARNING. Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -396,10 +402,11 @@
                     }
                 ],
                 "edges": [],
-                "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                "flow_description": "",
+                "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'CSE4037 REINFORCEMENT LEARNING HIERARCHICAL REINFORCEMENT LEARNING', explains key concepts on this topic. The slide utilizes a visual layout featuring 1 image(s) to support the explanation. It covers the following points: CSE4037; REINFORCEMENT LEARNING; HIERARCHICAL REINFORCEMENT LEARNING."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es), 1 image(s).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] CSE4037\n- [L0] REINFORCEMENT LEARNING\n- [L0] HIERARCHICAL REINFORCEMENT LEARNING\n\n### Interpretation\nThis slide titled 'CSE4037\nREINFORCEMENT LEARNING\nHIERARCHICAL REINFORCEMENT LEARNING' is structured as a standard layout. It visually presents 2 box(es), 1 image(s) to communicate its core concept.\n\nImage Analysis:\n1. Visual element counts: 2 (boxes), 1 (arrows), 3 (panels), 1 (icon), 1 (panel)"
         },
         {
             "slide_number": 2,
@@ -492,6 +499,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -620,6 +628,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -723,8 +732,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_2_shape_1",
-                        "slide_2_shape_0"
+                        "slide_2_shape_0",
+                        "slide_2_shape_1"
                     ]
                 },
                 "text_points": [
@@ -806,9 +815,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours\". Boxes: 2, Arrows: 0. Layout: title_slide. Header: \"Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours\" | Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: header, body_right. Diagram analysis: No diagram detected.. Text Points (8 total):\n• Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours\n• Hierarchical Reinforcement Learning\n• Types of Optimality\n• Semi MDP Model\n• Options\n• Learning with Options\n• Hierarchical Abstract Machines\n• A partially observable Markov decision process.. Header: \"Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -888,16 +898,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Hierarchical Reinforcement Learning; Types of Optimality; Semi MDP Model."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours\n- [L0] Hierarchical Reinforcement Learning\n- [L0] Types of Optimality\n- [L0] Semi MDP Model\n- [L0] Options\n- [L0] Learning with Options\n- [L0] Hierarchical Abstract Machines\n- [L0] A partially observable Markov decision process.\n\n### Interpretation\nThis slide titled 'Module No. 6\u000bHierarchical Reinforcement Learning\u000b8 Hours' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 3,
             "title": "Hierarchical Reinforcement Learning",
             "header_footer": {
-                "header": null,
+                "header": "Hierarchical Reinforcement Learning",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -963,6 +974,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -1037,6 +1049,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -1055,7 +1068,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "Hierarchical Reinforcement Learning",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -1111,8 +1124,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_3_shape_1",
-                        "slide_3_shape_0"
+                        "slide_3_shape_0",
+                        "slide_3_shape_1"
                     ]
                 },
                 "text_points": [
@@ -1169,9 +1182,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Hierarchical Reinforcement Learning\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Hierarchical Reinforcement Learning\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (3 total):\n• Hierarchical Reinforcement Learning\n• Hierarchical Reinforcement Learning decomposes long horizon decision making process into simpler sub-tasks.\n• This idea is very similar to breaking down large number of lines of code to smaller functions each performing a very specific task.. Header: \"Hierarchical Reinforcement Learning\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -1226,17 +1240,18 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Hierarchical Reinforcement Learning', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Hierarchical Reinforcement Learning decomposes long horizon decision making...; This idea is very similar to breaking down...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Hierarchical Reinforcement Learning\n- [L0] Hierarchical Reinforcement Learning decomposes long horizon decision making process into simpler sub-tasks.\n- [L0] This idea is very similar to breaking down large number of lines of code to smaller functions each performing a very specific task.\n\n### Interpretation\nThis slide titled 'Hierarchical Reinforcement Learning' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 4,
             "title": "Hierarchical Reinforcement Learning",
             "header_footer": {
-                "header": null,
-                "footer": null,
+                "header": "Hierarchical Reinforcement Learning",
+                "footer": "Let’s look at an example, Suppose the agent has to clear or set a dining table. This includes the task of reaching and grasping dishes. These are high level tasks. \nOn a lower level, it requires the task of controlling and moving the limbs and then the fingers to reach out and grasp objects and subsequently put them in the proper place. \nHierarchical Reinforcement Learning is designed with the same logic. There are multiple levels of policies with each policy handling a lower level task like moving the fingers and the higher level policies handling tasks like grasping the objects.",
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
             },
@@ -1301,6 +1316,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -1389,6 +1405,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -1411,8 +1428,8 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
-                    "footer_text": null,
+                    "header_text": "Hierarchical Reinforcement Learning",
+                    "footer_text": "Let’s look at an example, Suppose the agent has to clear or set a dining table. This includes the task of reaching and grasping dishes. These are high level tasks. \nOn a lower level, it requires the task of controlling and moving the limbs and then the fingers to reach out and grasp objects and subsequently put them in the proper place. \nHierarchical Reinforcement Learning is designed with the same logic. There are multiple levels of policies with each policy handling a lower level task like moving the fingers and the higher level policies handling tasks like grasping the objects.",
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
                 },
@@ -1530,9 +1547,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Hierarchical Reinforcement Learning\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Hierarchical Reinforcement Learning\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (4 total):\n• Hierarchical Reinforcement Learning\n• Let’s look at an example, Suppose the agent has to clear or set a dining table. This includes the task of reaching and grasping dishes. These are high level tasks.\n• On a lower level, it requires the task of controlling and moving the limbs and then the fingers to reach out and grasp objects and subsequently put them in the proper place.\n• Hierarchical Reinforcement Learning is designed with the same logic. There are multiple levels of policies with each policy handling a lower level task like moving the fingers and the higher level policies handling tasks like grasping the objects.. Header: \"Hierarchical Reinforcement Learning\" | Footer: \"Let’s look at an example, Suppose the agent has to clear or set a dining table. This includes the task of reaching and grasping dishes. These are high level tasks. \nOn a lower level, it requires the task of controlling and moving the limbs and then the fingers to reach out and grasp objects and subsequently put them in the proper place. \nHierarchical Reinforcement Learning is designed with the same logic. There are multiple levels of policies with each policy handling a lower level task like moving the fingers and the higher level policies handling tasks like grasping the objects.\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -1592,10 +1610,11 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Hierarchical Reinforcement Learning', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Let’s look at an example, Suppose the agent...; On a lower level, it requires the task...; Hierarchical Reinforcement Learning is designed with the same...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Hierarchical Reinforcement Learning\n- [L0] Let’s look at an example, Suppose the agent has to clear or set a dining table. This includes the task of reaching and grasping dishes. These are high level tasks.\n- [L0] On a lower level, it requires the task of controlling and moving the limbs and then the fingers to reach out and grasp objects and subsequently put them in the proper place.\n- [L0] Hierarchical Reinforcement Learning is designed with the same logic. There are multiple levels of policies with each policy handling a lower level task like moving the fingers and the higher level policies handling tasks like grasping the objects.\n\n### Interpretation\nThis slide titled 'Hierarchical Reinforcement Learning' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 5,
@@ -1658,6 +1677,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": []
                     }
@@ -1682,6 +1702,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": []
                     }
@@ -1706,7 +1727,10 @@
                         "background_color": null
                     },
                     "table_markdown": null,
-                    "metadata": {}
+                    "image_summary": "1. Visual Element Counts",
+                    "metadata": {
+                        "image_summary": "1. Visual Element Counts"
+                    }
                 }
             ],
             "relationships": [
@@ -1857,9 +1881,10 @@
                             "label": null
                         }
                     ],
-                    "summary": "diagram with 3 node(s) and 1 relationship(s)."
+                    "flow_description": "",
+                    "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 1 relationship(s). [Connections] \"[slide_5_shape_2]\" → \"[slide_5_shape_1]\" (contains). [Interpretation] This diagram presents 3 visual component(s) with 1 relationship(s) between them."
                 },
-                "outline": "Elements: 1 image(s). Boxes: 2, Arrows: 0. Layout: two_column. Relationships: slide_5_shape_2 -> slide_5_shape_1 (contains). Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Elements: 1 image(s), 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: two_column. Regions: body_left, body_right. Diagram analysis: [Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 1 relationship(s). [Connections] \"[slide_5_shape_2]\" → \"[slide_5_shape_1]\" (contains). [Interpretation] This diagram presents 3 visual component(s) with 1 relationship(s) between them.. Relationships: slide_5_shape_2 -> slide_5_shape_1 (contains). Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [],
             "position_mapping": [
@@ -1918,17 +1943,18 @@
                         "label": null
                     }
                 ],
-                "summary": "diagram with 3 node(s) and 1 relationship(s)."
+                "flow_description": "",
+                "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 1 relationship(s). [Connections] \"[slide_5_shape_2]\" → \"[slide_5_shape_1]\" (contains). [Interpretation] This diagram presents 3 visual component(s) with 1 relationship(s) between them."
             },
             "table_markdowns": [],
-            "summary": "This slide presents information in a two_column layout. The slide utilizes a visual layout featuring 1 image(s) to support the explanation."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es), 1 image(s).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nNo text content detected.\n\n### Interpretation\nThis slide titled '(none)' is structured as a standard layout. It visually presents 2 box(es), 1 image(s) to communicate its core concept.\n\nImage Analysis:\n1. Visual Element Counts"
         },
         {
             "slide_number": 6,
             "title": "Hierarchical Reinforcement Learning",
             "header_footer": {
                 "header": "Hierarchical Reinforcement Learning",
-                "footer": null,
+                "footer": "State-of-the-art deep RL algorithms require enormous amounts of interaction with the environment, before learning a satisfying control policy. Human intelligence in contrast, typically only requires a fraction of the required training experience, in order to solve the same tasks.\nThe idea that new representations can be constructed through the combination of primitives, as one of the core building blocks of human intelligence, and suggested that it will also be of typical importance in order to advance artificial learning systems. \nCompositionality can be seen as a way to facilitate lifelong learning, learning new concepts, by combining previously learned primitives. \nHRL aims to achieve compositionality, by learning reusable sub-behaviors together with a composition strategy. While compositionality in HRL can be achieved in low-dimensional state-spaces, deep neural networks have been demonstrated to be capable of automatically discovering composable representations, which offer significant opportunities for HRL, to facilitate compositionality directly using high-dimensional inputs.",
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
             },
@@ -1998,6 +2024,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -2172,6 +2199,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -2199,7 +2227,7 @@
             "context": {
                 "header_footer": {
                     "header_text": "Hierarchical Reinforcement Learning",
-                    "footer_text": null,
+                    "footer_text": "State-of-the-art deep RL algorithms require enormous amounts of interaction with the environment, before learning a satisfying control policy. Human intelligence in contrast, typically only requires a fraction of the required training experience, in order to solve the same tasks.\nThe idea that new representations can be constructed through the combination of primitives, as one of the core building blocks of human intelligence, and suggested that it will also be of typical importance in order to advance artificial learning systems. \nCompositionality can be seen as a way to facilitate lifelong learning, learning new concepts, by combining previously learned primitives. \nHRL aims to achieve compositionality, by learning reusable sub-behaviors together with a composition strategy. While compositionality in HRL can be achieved in low-dimensional state-spaces, deep neural networks have been demonstrated to be capable of automatically discovering composable representations, which offer significant opportunities for HRL, to facilitate compositionality directly using high-dimensional inputs.",
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
                 },
@@ -2331,9 +2359,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Hierarchical Reinforcement Learning\". Boxes: 2, Arrows: 0. Layout: title_slide. Header: \"Hierarchical Reinforcement Learning\" | Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Hierarchical Reinforcement Learning\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: header, body_right. Diagram analysis: No diagram detected.. Text Points (5 total):\n• Hierarchical Reinforcement Learning\n• State-of-the-art deep RL algorithms require enormous amounts of interaction with the environment, before learning a satisfying control policy. Human intelligence in contrast, typically only requires a fraction of the required training experience, in order to solve the same tasks.\n• The idea that new representations can be constructed through the combination of primitives, as one of the core building blocks of human intelligence, and suggested that it will also be of typical importance in order to advance artificial learning systems.\n• Compositionality can be seen as a way to facilitate lifelong learning, learning new concepts, by combining previously learned primitives.\n• HRL aims to achieve compositionality, by learning reusable sub-behaviors together with a composition strategy. While compositionality in HRL can be achieved in low-dimensional state-spaces, deep neural networks have been demonstrated to be capable of automatically discovering composable representations, which offer significant opportunities for HRL, to facilitate compositionality directly using high-dimensional inputs.. Header: \"Hierarchical Reinforcement Learning\" | Footer: \"State-of-the-art deep RL algorithms require enormous amounts of interaction with the environment, before learning a satisfying control policy. Human intelligence in contrast, typically only requires a fraction of the required training experience, in order to solve the same tasks.\nThe idea that new representations can be constructed through the combination of primitives, as one of the core building blocks of human intelligence, and suggested that it will also be of typical importance in order to advance artificial learning systems. \nCompositionality can be seen as a way to facilitate lifelong learning, learning new concepts, by combining previously learned primitives. \nHRL aims to achieve compositionality, by learning reusable sub-behaviors together with a composition strategy. While compositionality in HRL can be achieved in low-dimensional state-spaces, deep neural networks have been demonstrated to be capable of automatically discovering composable representations, which offer significant opportunities for HRL, to facilitate compositionality directly using high-dimensional inputs.\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -2398,16 +2427,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Hierarchical Reinforcement Learning', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: State-of-the-art deep RL algorithms require enormous amounts of...; The idea that new representations can be constructed...; Compositionality can be seen as a way to...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Hierarchical Reinforcement Learning\n- [L0] State-of-the-art deep RL algorithms require enormous amounts of interaction with the environment, before learning a satisfying control policy. Human intelligence in contrast, typically only requires a fraction of the required training experience, in order to solve the same tasks.\n- [L0] The idea that new representations can be constructed through the combination of primitives, as one of the core building blocks of human intelligence, and suggested that it will also be of typical importance in order to advance artificial learning systems.\n- [L0] Compositionality can be seen as a way to facilitate lifelong learning, learning new concepts, by combining previously learned primitives.\n- [L0] HRL aims to achieve compositionality, by learning reusable sub-behaviors together with a composition strategy. While compositionality in HRL can be achieved in low-dimensional state-spaces, deep neural networks have been demonstrated to be capable of automatically discovering composable representations, which offer significant opportunities for HRL, to facilitate compositionality directly using high-dimensional inputs.\n\n### Interpretation\nThis slide titled 'Hierarchical Reinforcement Learning' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 7,
             "title": "Mechanisms\u000bTemporal Abstractions",
             "header_footer": {
-                "header": null,
+                "header": "Mechanisms\u000bTemporal Abstractions",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -2481,6 +2511,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -2571,6 +2602,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -2589,7 +2621,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "Mechanisms\u000bTemporal Abstractions",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -2703,9 +2735,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Mechanisms\u000bTemporal Abstractions\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Mechanisms\u000bTemporal Abstractions\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (3 total):\n• Mechanisms\u000bTemporal Abstractions\n• One of the core mechanisms of HRL are temporal abstractions. Solving complex problems often involves reasoning on multiple time scales. For example, when driving to work you typically do not start planning about whether you should steer left or right. You start on a much higher level, by planning for example about what roads to take, and whether you should stop to refuel.\n• A temporally extended action (sub-behavior), consists of a sequence of primitive actions and possibly other temporally extended actions. These temporal abstractions can be utilized by a learning agent in order to make decisions on a higher level of abstraction. The sequence of actions that make up a temporally extended action can be fixed, or governed by a policy.. Header: \"Mechanisms\u000bTemporal Abstractions\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -2760,16 +2793,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Mechanisms\u000bTemporal Abstractions', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: One of the core mechanisms of HRL are...; A temporally extended action (sub-behavior), consists of a...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Mechanisms\u000bTemporal Abstractions\n- [L0] One of the core mechanisms of HRL are temporal abstractions. Solving complex problems often involves reasoning on multiple time scales. For example, when driving to work you typically do not start planning about whether you should steer left or right. You start on a much higher level, by planning for example about what roads to take, and whether you should stop to refuel.\n- [L0] A temporally extended action (sub-behavior), consists of a sequence of primitive actions and possibly other temporally extended actions. These temporal abstractions can be utilized by a learning agent in order to make decisions on a higher level of abstraction. The sequence of actions that make up a temporally extended action can be fixed, or governed by a policy.\n\n### Interpretation\nThis slide titled 'Mechanisms\u000bTemporal Abstractions' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 8,
             "title": "State Abstractions",
             "header_footer": {
-                "header": null,
+                "header": "State Abstractions",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -2835,6 +2869,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -2911,6 +2946,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -2925,7 +2961,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "State Abstractions",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -2981,8 +3017,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_8_shape_1",
-                        "slide_8_shape_0"
+                        "slide_8_shape_0",
+                        "slide_8_shape_1"
                     ]
                 },
                 "text_points": [
@@ -3034,9 +3070,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"State Abstractions\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"State Abstractions\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (2 total):\n• State Abstractions\n• A second form of abstraction that is common in HRL, are abstractions imposed on the state-space. It is not feasible to learn the best action in every possible state in a high-dimensional input space. Instead, we use state abstractions, to reason about what action to take. Appropriate state abstractions have been demonstrated to significantly increase learning performance in RL problems.. Header: \"State Abstractions\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -3086,16 +3123,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'State Abstractions', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: A second form of abstraction that is common...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] State Abstractions\n- [L0] A second form of abstraction that is common in HRL, are abstractions imposed on the state-space. It is not feasible to learn the best action in every possible state in a high-dimensional input space. Instead, we use state abstractions, to reason about what action to take. Appropriate state abstractions have been demonstrated to significantly increase learning performance in RL problems.\n\n### Interpretation\nThis slide titled 'State Abstractions' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 9,
             "title": "State Abstractions",
             "header_footer": {
-                "header": null,
+                "header": "State Abstractions",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -3162,6 +3200,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -3191,6 +3230,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": []
                     }
@@ -3215,7 +3255,10 @@
                         "background_color": null
                     },
                     "table_markdown": null,
-                    "metadata": {}
+                    "image_summary": "1. Visual element counts: 2 boxes, 3 arrows, 4 icons, 5 panels, 6 icons, 7 icons, 8 icons, 9 icons, 10 icons, 11 icons, 12 icons, 13 icons, 14 icons, 15 icons, 16 icons, 17 icons, 18 icons, 19 icons, 20 icons, 21 icons, 22 icons.",
+                    "metadata": {
+                        "image_summary": "1. Visual element counts: 2 boxes, 3 arrows, 4 icons, 5 panels, 6 icons, 7 icons, 8 icons, 9 icons, 10 icons, 11 icons, 12 icons, 13 icons, 14 icons, 15 icons, 16 icons, 17 icons, 18 icons, 19 icons, 20 icons, 21 icons, 22 icons."
+                    }
                 }
             ],
             "relationships": [
@@ -3230,7 +3273,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "State Abstractions",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -3287,8 +3330,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_9_shape_1",
-                        "slide_9_shape_0"
+                        "slide_9_shape_0",
+                        "slide_9_shape_1"
                     ]
                 },
                 "text_points": [
@@ -3363,9 +3406,10 @@
                             "label": null
                         }
                     ],
-                    "summary": "diagram with 3 node(s) and 1 relationship(s)."
+                    "flow_description": "",
+                    "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 1 relationship(s). [Connections] \"[slide_9_shape_1]\" → \"[slide_9_shape_2]\" (proximity). [Interpretation] This diagram presents 3 visual component(s) with 1 relationship(s) between them."
                 },
-                "outline": "Title: \"State Abstractions\". Elements: 1 image(s). Boxes: 2, Arrows: 0. Layout: single_column. Relationships: slide_9_shape_1 -> slide_9_shape_2 (proximity). Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"State Abstractions\". Elements: 1 image(s), 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: single_column. Regions: body_right. Diagram analysis: [Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 1 relationship(s). [Connections] \"[slide_9_shape_1]\" → \"[slide_9_shape_2]\" (proximity). [Interpretation] This diagram presents 3 visual component(s) with 1 relationship(s) between them.. Relationships: slide_9_shape_1 -> slide_9_shape_2 (proximity). Text Points (1 total):\n• State Abstractions. Header: \"State Abstractions\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -3430,17 +3474,18 @@
                         "label": null
                     }
                 ],
-                "summary": "diagram with 3 node(s) and 1 relationship(s)."
+                "flow_description": "",
+                "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 1 relationship(s). [Connections] \"[slide_9_shape_1]\" → \"[slide_9_shape_2]\" (proximity). [Interpretation] This diagram presents 3 visual component(s) with 1 relationship(s) between them."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'State Abstractions', explains key concepts on this topic. The slide utilizes a visual layout featuring 1 image(s) to support the explanation."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es), 1 image(s).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] State Abstractions\n\n### Interpretation\nThis slide titled 'State Abstractions' is structured as a standard layout. It visually presents 2 box(es), 1 image(s) to communicate its core concept.\n\nImage Analysis:\n1. Visual element counts: 2 boxes, 3 arrows, 4 icons, 5 panels, 6 icons, 7 icons, 8 icons, 9 icons, 10 icons, 11 icons, 12 icons, 13 icons, 14 icons, 15 icons, 16 icons, 17 icons, 18 icons, 19 icons, 20 icons, 21 icons, 22 icons."
         },
         {
             "slide_number": 10,
             "title": "State Abstractions",
             "header_footer": {
                 "header": "State Abstractions",
-                "footer": null,
+                "footer": "Current deep RL algorithms are capable of learning their own state abstractions from raw high dimensional state-spaces. These algorithms are for example capable of detecting doors, and learn that it is beneficial to walk through these doors. Unfortunately, these learned state representations are often not sufficiently expressive to reason about complex environments, and develop long-horizon plans.\nGiven abstractions over the state-space, and linked temporally extended actions, the agent can reason on a higher-level about the decisions it can make. Instead of learning a behavior for controlling the entire raw state-space, a hierarchy of different systems is able to control various abstracted parts of the state-space through temporally extended actions.",
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
             },
@@ -3505,6 +3550,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -3595,6 +3641,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -3614,7 +3661,7 @@
             "context": {
                 "header_footer": {
                     "header_text": "State Abstractions",
-                    "footer_text": null,
+                    "footer_text": "Current deep RL algorithms are capable of learning their own state abstractions from raw high dimensional state-spaces. These algorithms are for example capable of detecting doors, and learn that it is beneficial to walk through these doors. Unfortunately, these learned state representations are often not sufficiently expressive to reason about complex environments, and develop long-horizon plans.\nGiven abstractions over the state-space, and linked temporally extended actions, the agent can reason on a higher-level about the decisions it can make. Instead of learning a behavior for controlling the entire raw state-space, a hierarchy of different systems is able to control various abstracted parts of the state-space through temporally extended actions.",
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
                 },
@@ -3727,9 +3774,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"State Abstractions\". Boxes: 2, Arrows: 0. Layout: title_slide. Header: \"State Abstractions\" | Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"State Abstractions\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (3 total):\n• State Abstractions\n• Current deep RL algorithms are capable of learning their own state abstractions from raw high dimensional state-spaces. These algorithms are for example capable of detecting doors, and learn that it is beneficial to walk through these doors. Unfortunately, these learned state representations are often not sufficiently expressive to reason about complex environments, and develop long-horizon plans.\n• Given abstractions over the state-space, and linked temporally extended actions, the agent can reason on a higher-level about the decisions it can make. Instead of learning a behavior for controlling the entire raw state-space, a hierarchy of different systems is able to control various abstracted parts of the state-space through temporally extended actions.. Header: \"State Abstractions\" | Footer: \"Current deep RL algorithms are capable of learning their own state abstractions from raw high dimensional state-spaces. These algorithms are for example capable of detecting doors, and learn that it is beneficial to walk through these doors. Unfortunately, these learned state representations are often not sufficiently expressive to reason about complex environments, and develop long-horizon plans.\nGiven abstractions over the state-space, and linked temporally extended actions, the agent can reason on a higher-level about the decisions it can make. Instead of learning a behavior for controlling the entire raw state-space, a hierarchy of different systems is able to control various abstracted parts of the state-space through temporally extended actions.\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -3784,16 +3832,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'State Abstractions', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Current deep RL algorithms are capable of learning...; Given abstractions over the state-space, and linked temporally...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] State Abstractions\n- [L0] Current deep RL algorithms are capable of learning their own state abstractions from raw high dimensional state-spaces. These algorithms are for example capable of detecting doors, and learn that it is beneficial to walk through these doors. Unfortunately, these learned state representations are often not sufficiently expressive to reason about complex environments, and develop long-horizon plans.\n- [L0] Given abstractions over the state-space, and linked temporally extended actions, the agent can reason on a higher-level about the decisions it can make. Instead of learning a behavior for controlling the entire raw state-space, a hierarchy of different systems is able to control various abstracted parts of the state-space through temporally extended actions.\n\n### Interpretation\nThis slide titled 'State Abstractions' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 11,
             "title": "State Abstractions",
             "header_footer": {
-                "header": null,
+                "header": "State Abstractions",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -3859,6 +3908,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -3919,6 +3969,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -3933,7 +3984,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "State Abstractions",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -4042,9 +4093,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"State Abstractions\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"State Abstractions\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (2 total):\n• State Abstractions\n• Later, it is identified the benefit of utilizing different state abstractions for different sub-behaviors. The intuition behind this idea is that when performing different sub-behaviors, other aspects of the state-space become relevant. Ignoring irrelevant features to the sub-behavior, allows for more efficient exploration, and learning of the different temporal abstractions.. Header: \"State Abstractions\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -4094,17 +4146,18 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'State Abstractions', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Later, it is identified the benefit of utilizing...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] State Abstractions\n- [L0] Later, it is identified the benefit of utilizing different state abstractions for different sub-behaviors. The intuition behind this idea is that when performing different sub-behaviors, other aspects of the state-space become relevant. Ignoring irrelevant features to the sub-behavior, allows for more efficient exploration, and learning of the different temporal abstractions.\n\n### Interpretation\nThis slide titled 'State Abstractions' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 12,
             "title": "HRL Advantages\u000bCredit Assignment",
             "header_footer": {
                 "header": "HRL Advantages\u000bCredit Assignment",
-                "footer": null,
+                "footer": "The issue of credit assignment is a long-standing challenge in RL. Credit assignment is tasked with figuring out which action had which impact on the overall perceived reward.\nTemporal and state abstractions can greatly increase the sample efficiency of RL by making credit assignment less challenging. Given a set of temporal abstractions, the agent is freed from the complexity of having to reason about which action to take on every individual step. The agent instead activates temporal abstractions which can run for multiple steps. When performing credit assignment by learning a value function, this has a profound effect on the efficiency of the value-backups. While utilizing primitive actions only, a value backup only goes back one step, thus when reaching a goal-state, only the expected future value of the previously visited state gets updated. Using temporal abstractions, this reward gets propagated further back, allowing faster learning of a value function.",
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
             },
@@ -4182,6 +4235,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -4272,6 +4326,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -4291,7 +4346,7 @@
             "context": {
                 "header_footer": {
                     "header_text": "HRL Advantages\u000bCredit Assignment",
-                    "footer_text": null,
+                    "footer_text": "The issue of credit assignment is a long-standing challenge in RL. Credit assignment is tasked with figuring out which action had which impact on the overall perceived reward.\nTemporal and state abstractions can greatly increase the sample efficiency of RL by making credit assignment less challenging. Given a set of temporal abstractions, the agent is freed from the complexity of having to reason about which action to take on every individual step. The agent instead activates temporal abstractions which can run for multiple steps. When performing credit assignment by learning a value function, this has a profound effect on the efficiency of the value-backups. While utilizing primitive actions only, a value backup only goes back one step, thus when reaching a goal-state, only the expected future value of the previously visited state gets updated. Using temporal abstractions, this reward gets propagated further back, allowing faster learning of a value function.",
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
                 },
@@ -4413,9 +4468,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"HRL Advantages\u000bCredit Assignment\". Boxes: 2, Arrows: 0. Layout: title_slide. Header: \"HRL Advantages\u000bCredit Assignment\" | Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"HRL Advantages\u000bCredit Assignment\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: header, body_right. Diagram analysis: No diagram detected.. Text Points (3 total):\n• HRL Advantages\u000bCredit Assignment\n• The issue of credit assignment is a long-standing challenge in RL. Credit assignment is tasked with figuring out which action had which impact on the overall perceived reward.\n• Temporal and state abstractions can greatly increase the sample efficiency of RL by making credit assignment less challenging. Given a set of temporal abstractions, the agent is freed from the complexity of having to reason about which action to take on every individual step. The agent instead activates temporal abstractions which can run for multiple steps. When performing credit assignment by learning a value function, this has a profound effect on the efficiency of the value-backups. While utilizing primitive actions only, a value backup only goes back one step, thus when reaching a goal-state, only the expected future value of the previously visited state gets updated. Using temporal abstractions, this reward gets propagated further back, allowing faster learning of a value function.. Header: \"HRL Advantages\u000bCredit Assignment\" | Footer: \"The issue of credit assignment is a long-standing challenge in RL. Credit assignment is tasked with figuring out which action had which impact on the overall perceived reward.\nTemporal and state abstractions can greatly increase the sample efficiency of RL by making credit assignment less challenging. Given a set of temporal abstractions, the agent is freed from the complexity of having to reason about which action to take on every individual step. The agent instead activates temporal abstractions which can run for multiple steps. When performing credit assignment by learning a value function, this has a profound effect on the efficiency of the value-backups. While utilizing primitive actions only, a value backup only goes back one step, thus when reaching a goal-state, only the expected future value of the previously visited state gets updated. Using temporal abstractions, this reward gets propagated further back, allowing faster learning of a value function.\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -4470,17 +4526,18 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'HRL Advantages\u000bCredit Assignment', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: The issue of credit assignment is a long-standing...; Temporal and state abstractions can greatly increase the...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Advantages\u000bCredit Assignment\n- [L0] The issue of credit assignment is a long-standing challenge in RL. Credit assignment is tasked with figuring out which action had which impact on the overall perceived reward.\n- [L0] Temporal and state abstractions can greatly increase the sample efficiency of RL by making credit assignment less challenging. Given a set of temporal abstractions, the agent is freed from the complexity of having to reason about which action to take on every individual step. The agent instead activates temporal abstractions which can run for multiple steps. When performing credit assignment by learning a value function, this has a profound effect on the efficiency of the value-backups. While utilizing primitive actions only, a value backup only goes back one step, thus when reaching a goal-state, only the expected future value of the previously visited state gets updated. Using temporal abstractions, this reward gets propagated further back, allowing faster learning of a value function.\n\n### Interpretation\nThis slide titled 'HRL Advantages\u000bCredit Assignment' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 13,
             "title": "HRL Advantages\u000bCredit Assignment",
             "header_footer": {
                 "header": "HRL Advantages\u000bCredit Assignment",
-                "footer": null,
+                "footer": "Value backups, (a) using primitive actions, and (b) using temporal abstractions. With temporal abstractions an optimal policy can be found using less value backups.",
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
             },
@@ -4559,6 +4616,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -4603,6 +4661,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -4632,7 +4691,10 @@
                         "background_color": null
                     },
                     "table_markdown": null,
-                    "metadata": {}
+                    "image_summary": "1. [0.12, 0.38, 0.3, 0.5]",
+                    "metadata": {
+                        "image_summary": "1. [0.12, 0.38, 0.3, 0.5]"
+                    }
                 }
             ],
             "relationships": [],
@@ -4640,7 +4702,7 @@
             "context": {
                 "header_footer": {
                     "header_text": "HRL Advantages\u000bCredit Assignment",
-                    "footer_text": null,
+                    "footer_text": "Value backups, (a) using primitive actions, and (b) using temporal abstractions. With temporal abstractions an optimal policy can be found using less value backups.",
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
                 },
@@ -4771,9 +4833,10 @@
                         }
                     ],
                     "edges": [],
-                    "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                    "flow_description": "",
+                    "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
                 },
-                "outline": "Title: \"HRL Advantages\u000bCredit Assignment\". Elements: 1 image(s). Boxes: 2, Arrows: 0. Layout: single_column. Header: \"HRL Advantages\u000bCredit Assignment\" | Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"HRL Advantages\u000bCredit Assignment\". Elements: 1 image(s), 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: single_column. Regions: header, body_right. Diagram analysis: [Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them.. Text Points (2 total):\n• HRL Advantages\u000bCredit Assignment\n• Value backups, (a) using primitive actions, and (b) using temporal abstractions. With temporal abstractions an optimal policy can be found using less value backups.. Header: \"HRL Advantages\u000bCredit Assignment\" | Footer: \"Value backups, (a) using primitive actions, and (b) using temporal abstractions. With temporal abstractions an optimal policy can be found using less value backups.\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -4836,10 +4899,11 @@
                     }
                 ],
                 "edges": [],
-                "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                "flow_description": "",
+                "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'HRL Advantages\u000bCredit Assignment', explains key concepts on this topic. The slide utilizes a visual layout featuring 1 image(s) to support the explanation. It covers the following points: Value backups, (a) using primitive actions, and (b)...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es), 1 image(s).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Advantages\u000bCredit Assignment\n- [L0] Value backups, (a) using primitive actions, and (b) using temporal abstractions. With temporal abstractions an optimal policy can be found using less value backups.\n\n### Interpretation\nThis slide titled 'HRL Advantages\u000bCredit Assignment' is structured as a standard layout. It visually presents 2 box(es), 1 image(s) to communicate its core concept.\n\nImage Analysis:\n1. [0.12, 0.38, 0.3, 0.5]"
         },
         {
             "slide_number": 14,
@@ -4924,6 +4988,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -4982,6 +5047,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -5123,9 +5189,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"HRL Advantages\u000bExploration\". Boxes: 2, Arrows: 0. Layout: title_slide. Header: \"HRL Advantages\u000bExploration\" | Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"HRL Advantages\u000bExploration\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: header, body_right. Diagram analysis: No diagram detected.. Text Points (3 total):\n• HRL Advantages\u000bExploration\n• While improved sample efficiency through more structured credit assignment is capable of solving RL problems which previous flat RL algorithms could not solve. A recent ablation study, empirically demonstrated that the most significant contribution of current HRL architectures, lies in its capability to explore in a semantically meaningful and temporally extended fashion.\n• Exploration, using only primitive actions often results in over-exploration of states near the starting state of the agent. Using temporal abstractions for exploration allows the agent to explore the environment in a more structural way, which allows the agent to also explore more difficult to reach states.. Header: \"HRL Advantages\u000bExploration\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -5180,17 +5247,18 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'HRL Advantages\u000bExploration', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: While improved sample efficiency through more structured credit...; Exploration, using only primitive actions often results in...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Advantages\u000bExploration\n- [L0] While improved sample efficiency through more structured credit assignment is capable of solving RL problems which previous flat RL algorithms could not solve. A recent ablation study, empirically demonstrated that the most significant contribution of current HRL architectures, lies in its capability to explore in a semantically meaningful and temporally extended fashion.\n- [L0] Exploration, using only primitive actions often results in over-exploration of states near the starting state of the agent. Using temporal abstractions for exploration allows the agent to explore the environment in a more structural way, which allows the agent to also explore more difficult to reach states.\n\n### Interpretation\nThis slide titled 'HRL Advantages\u000bExploration' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 15,
             "title": "HRL Advantages\u000bExploration",
             "header_footer": {
                 "header": "HRL Advantages\u000bExploration",
-                "footer": null,
+                "footer": "Exploration using only primitive actions, mostly explores states near the starting position of the agent (state visitation counts are represented using a red gradient). Temporal abstractions can help the agent to explore more distant states.\nHowever, the opposite has also been observed. Given a suboptimal set of sub-behaviors, pathological exploration can easily worsen learning performance",
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
             },
@@ -5269,6 +5337,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -5327,6 +5396,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -5360,7 +5430,10 @@
                         "background_color": null
                     },
                     "table_markdown": null,
-                    "metadata": {}
+                    "image_summary": "1. Visual Element Counts",
+                    "metadata": {
+                        "image_summary": "1. Visual Element Counts"
+                    }
                 }
             ],
             "relationships": [],
@@ -5368,7 +5441,7 @@
             "context": {
                 "header_footer": {
                     "header_text": "HRL Advantages\u000bExploration",
-                    "footer_text": null,
+                    "footer_text": "Exploration using only primitive actions, mostly explores states near the starting position of the agent (state visitation counts are represented using a red gradient). Temporal abstractions can help the agent to explore more distant states.\nHowever, the opposite has also been observed. Given a suboptimal set of sub-behaviors, pathological exploration can easily worsen learning performance",
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
                 },
@@ -5433,8 +5506,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_15_shape_1",
-                        "slide_15_shape_0"
+                        "slide_15_shape_0",
+                        "slide_15_shape_1"
                     ]
                 },
                 "text_points": [
@@ -5504,9 +5577,10 @@
                         }
                     ],
                     "edges": [],
-                    "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                    "flow_description": "",
+                    "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
                 },
-                "outline": "Title: \"HRL Advantages\u000bExploration\". Elements: 1 image(s). Boxes: 2, Arrows: 0. Layout: single_column. Header: \"HRL Advantages\u000bExploration\" | Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"HRL Advantages\u000bExploration\". Elements: 1 image(s), 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: single_column. Regions: header, body_right. Diagram analysis: [Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them.. Text Points (3 total):\n• HRL Advantages\u000bExploration\n• Exploration using only primitive actions, mostly explores states near the starting position of the agent (state visitation counts are represented using a red gradient). Temporal abstractions can help the agent to explore more distant states.\n• However, the opposite has also been observed. Given a suboptimal set of sub-behaviors, pathological exploration can easily worsen learning performance. Header: \"HRL Advantages\u000bExploration\" | Footer: \"Exploration using only primitive actions, mostly explores states near the starting position of the agent (state visitation counts are represented using a red gradient). Temporal abstractions can help the agent to explore more distant states.\nHowever, the opposite has also been observed. Given a suboptimal set of sub-behaviors, pathological exploration can easily worsen learning performance\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -5574,17 +5648,18 @@
                     }
                 ],
                 "edges": [],
-                "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                "flow_description": "",
+                "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'HRL Advantages\u000bExploration', explains key concepts on this topic. The slide utilizes a visual layout featuring 1 image(s) to support the explanation. It covers the following points: Exploration using only primitive actions, mostly explores states...; However, the opposite has also been observed. Given...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es), 1 image(s).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Advantages\u000bExploration\n- [L0] Exploration using only primitive actions, mostly explores states near the starting position of the agent (state visitation counts are represented using a red gradient). Temporal abstractions can help the agent to explore more distant states.\n- [L0] However, the opposite has also been observed. Given a suboptimal set of sub-behaviors, pathological exploration can easily worsen learning performance\n\n### Interpretation\nThis slide titled 'HRL Advantages\u000bExploration' is structured as a standard layout. It visually presents 2 box(es), 1 image(s) to communicate its core concept.\n\nImage Analysis:\n1. Visual Element Counts"
         },
         {
             "slide_number": 16,
             "title": "Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\nA policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\nThe ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.",
             "header_footer": {
-                "header": null,
-                "footer": null,
+                "header": "HRL Advantages\u000bContinual Learning",
+                "footer": "Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\nA policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\nThe ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.",
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
             },
@@ -5682,6 +5757,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -5742,6 +5818,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -5756,8 +5833,8 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
-                    "footer_text": null,
+                    "header_text": "HRL Advantages\u000bContinual Learning",
+                    "footer_text": "Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\nA policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\nThe ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.",
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
                 },
@@ -5821,8 +5898,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_16_shape_1",
-                        "slide_16_shape_0"
+                        "slide_16_shape_0",
+                        "slide_16_shape_1"
                     ]
                 },
                 "text_points": [
@@ -5884,9 +5961,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\nA policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\nThe ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.\". Elements: 1 text box(es). Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\nA policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\nThe ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.\". Elements: 1 text box(es), 1 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: header, body_right. Diagram analysis: No diagram detected.. Text Points (4 total):\n• HRL Advantages\u000bContinual Learning\n• Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\n• A policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\n• The ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.. Header: \"HRL Advantages\u000bContinual Learning\" | Footer: \"Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\nA policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\nThe ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -5946,16 +6024,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge. A policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks. The ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: HRL Advantages\u000bContinual Learning; Problems in RL are most of the time...; A policy learned without any abstractions is very...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Advantages\u000bContinual Learning\n- [L0] Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\n- [L0] A policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\n- [L0] The ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.\n\n### Interpretation\nThis slide titled 'Problems in RL are most of the time solved from scratch, starting without any prior information. While finding a learning algorithm, capable of solving problems requiring long-term planning, without any priors, is certainly an interesting research direction. In the short-term the sample efficiency of RL can greatly be improved by building upon previously learned knowledge.\nA policy learned without any abstractions is very difficult to transfer to a new problem (e.g., use a set of steering directions to navigate to a different location). In contrast, once learned, sub-behaviors can be transferred to solve different problems in similar environments. Thus, the cost associated with learning sub-behaviors should not only be weighted on a single task, but should possibly be considered over multiple tasks.\nThe ability of sub-behavior re-use is an important stepping stone towards agents which are capable of continual learning. More complex problems can be solved if an agent is efficiently able to improve upon what it already has learned from previous problems.' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 17,
             "title": "Hierarchical Reinforcement Learning",
             "header_footer": {
-                "header": null,
+                "header": "Hierarchical Reinforcement Learning",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -6021,6 +6100,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -6125,6 +6205,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -6147,7 +6228,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "Hierarchical Reinforcement Learning",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -6203,8 +6284,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_17_shape_1",
-                        "slide_17_shape_0"
+                        "slide_17_shape_0",
+                        "slide_17_shape_1"
                     ]
                 },
                 "text_points": [
@@ -6266,9 +6347,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Hierarchical Reinforcement Learning\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Hierarchical Reinforcement Learning\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (4 total):\n• Hierarchical Reinforcement Learning\n• HRL gives us multiple benefits during training and exploration:\n• Training : Since high level correspond to multiple environmental steps, episodes are relatively shorter, thus propagating rewards faster and improving learning.\n• Since Exploration happens at a higher level, it is able to learn more meaningful policies and thus take more meaningful actions than those taken on an atomic level. Example, agent would learn better policies to reach the goal at the level of grasping objects than at the level of understanding joint movements of fingers.. Header: \"Hierarchical Reinforcement Learning\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -6328,16 +6410,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Hierarchical Reinforcement Learning', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: HRL gives us multiple benefits during training and exploration:; Training : Since high level correspond to multiple...; Since Exploration happens at a higher level, it...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Hierarchical Reinforcement Learning\n- [L0] HRL gives us multiple benefits during training and exploration:\n- [L0] Training : Since high level correspond to multiple environmental steps, episodes are relatively shorter, thus propagating rewards faster and improving learning.\n- [L0] Since Exploration happens at a higher level, it is able to learn more meaningful policies and thus take more meaningful actions than those taken on an atomic level. Example, agent would learn better policies to reach the goal at the level of grasping objects than at the level of understanding joint movements of fingers.\n\n### Interpretation\nThis slide titled 'Hierarchical Reinforcement Learning' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 18,
             "title": "HRL Challenges",
             "header_footer": {
-                "header": null,
+                "header": "HRL Challenges",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -6403,6 +6486,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -6503,6 +6587,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -6533,7 +6618,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "HRL Challenges",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -6662,9 +6747,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"HRL Challenges\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"HRL Challenges\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (6 total):\n• HRL Challenges\n• Learning algorithms that utilize hierarchical compositions of temporally extended actions will have to define how these sub-behaviors should be discovered, how they can be developed, how efficient state-abstractions can be learned and how they can be composed\n• Automatic Discovery of Abstractions\n• Development of Abstractions\n• Decomposing Example Trajectories\n• Composition. Header: \"HRL Challenges\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -6734,16 +6820,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'HRL Challenges', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Learning algorithms that utilize hierarchical compositions of temporally...; Automatic Discovery of Abstractions; Development of Abstractions."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Challenges\n- [L0] Learning algorithms that utilize hierarchical compositions of temporally extended actions will have to define how these sub-behaviors should be discovered, how they can be developed, how efficient state-abstractions can be learned and how they can be composed\n- [L0] Automatic Discovery of Abstractions\n- [L0] Development of Abstractions\n- [L0] Decomposing Example Trajectories\n- [L0] Composition\n\n### Interpretation\nThis slide titled 'HRL Challenges' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 19,
             "title": "HRL Challenges\u000bAutomatic Discovery of Abstractions",
             "header_footer": {
-                "header": null,
+                "header": "HRL Challenges\u000bAutomatic Discovery of Abstractions",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -6817,6 +6904,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -6951,6 +7039,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -6977,7 +7066,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "HRL Challenges\u000bAutomatic Discovery of Abstractions",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -7101,9 +7190,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"HRL Challenges\u000bAutomatic Discovery of Abstractions\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"HRL Challenges\u000bAutomatic Discovery of Abstractions\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (5 total):\n• HRL Challenges\u000bAutomatic Discovery of Abstractions\n• A lot of empirical research has been conducted on algorithms that are capable of automatically learning meaningful sub-behaviors, from interaction with the environment, without any knowledge provided by an external expert, in a sample efficient way.\n• finding a small set of sub-behaviors in a limited number of steps is an NP-hard problem.\n• sets of state abstractions and temporal abstractions are capable of preserving representation of near-optimal policies, method requires MDP.\n• The most commonly used techniques to automatically discover temporal abstractions, either utilize special properties of different states, or correlate trajectories with a sub-behavior random variable.. Header: \"HRL Challenges\u000bAutomatic Discovery of Abstractions\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -7168,17 +7258,18 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'HRL Challenges\u000bAutomatic Discovery of Abstractions', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: A lot of empirical research has been conducted...; finding a small set of sub-behaviors in a...; sets of state abstractions and temporal abstractions are...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Challenges\u000bAutomatic Discovery of Abstractions\n- [L0] A lot of empirical research has been conducted on algorithms that are capable of automatically learning meaningful sub-behaviors, from interaction with the environment, without any knowledge provided by an external expert, in a sample efficient way.\n- [L0] finding a small set of sub-behaviors in a limited number of steps is an NP-hard problem.\n- [L0] sets of state abstractions and temporal abstractions are capable of preserving representation of near-optimal policies, method requires MDP.\n- [L0] The most commonly used techniques to automatically discover temporal abstractions, either utilize special properties of different states, or correlate trajectories with a sub-behavior random variable.\n\n### Interpretation\nThis slide titled 'HRL Challenges\u000bAutomatic Discovery of Abstractions' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 20,
             "title": "HRL Challenges\u000bDevelopment of Abstractions",
             "header_footer": {
-                "header": null,
-                "footer": null,
+                "header": "HRL Challenges\u000bDevelopment of Abstractions",
+                "footer": "In order to use temporally extended actions, they need to receive enough suitable samples from the environment in order to become sufficiently developed.\nIn the most promising HRL approaches, sub-behaviors are developed end-to-end, while they are also being discovered.\nFor example: the state-space could be split in a few equal parts, with a sub-behavior assigned to each part. In a second phase, the sub-behaviors can be developed by for example randomly activating them. \nIf multiple sub-behaviors are generalized by a single parameterized function, samples can be used to train multiple sub-behaviors at the same time. Similarly, off-policy methods can be used to simultaneously develop multiple abstractions.",
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
             },
@@ -7251,6 +7342,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -7369,6 +7461,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -7395,8 +7488,8 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
-                    "footer_text": null,
+                    "header_text": "HRL Challenges\u000bDevelopment of Abstractions",
+                    "footer_text": "In order to use temporally extended actions, they need to receive enough suitable samples from the environment in order to become sufficiently developed.\nIn the most promising HRL approaches, sub-behaviors are developed end-to-end, while they are also being discovered.\nFor example: the state-space could be split in a few equal parts, with a sub-behavior assigned to each part. In a second phase, the sub-behaviors can be developed by for example randomly activating them. \nIf multiple sub-behaviors are generalized by a single parameterized function, samples can be used to train multiple sub-behaviors at the same time. Similarly, off-policy methods can be used to simultaneously develop multiple abstractions.",
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
                 },
@@ -7519,9 +7612,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"HRL Challenges\u000bDevelopment of Abstractions\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"HRL Challenges\u000bDevelopment of Abstractions\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (5 total):\n• HRL Challenges\u000bDevelopment of Abstractions\n• In order to use temporally extended actions, they need to receive enough suitable samples from the environment in order to become sufficiently developed.\n• In the most promising HRL approaches, sub-behaviors are developed end-to-end, while they are also being discovered.\n• For example: the state-space could be split in a few equal parts, with a sub-behavior assigned to each part. In a second phase, the sub-behaviors can be developed by for example randomly activating them.\n• If multiple sub-behaviors are generalized by a single parameterized function, samples can be used to train multiple sub-behaviors at the same time. Similarly, off-policy methods can be used to simultaneously develop multiple abstractions.. Header: \"HRL Challenges\u000bDevelopment of Abstractions\" | Footer: \"In order to use temporally extended actions, they need to receive enough suitable samples from the environment in order to become sufficiently developed.\nIn the most promising HRL approaches, sub-behaviors are developed end-to-end, while they are also being discovered.\nFor example: the state-space could be split in a few equal parts, with a sub-behavior assigned to each part. In a second phase, the sub-behaviors can be developed by for example randomly activating them. \nIf multiple sub-behaviors are generalized by a single parameterized function, samples can be used to train multiple sub-behaviors at the same time. Similarly, off-policy methods can be used to simultaneously develop multiple abstractions.\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -7586,16 +7680,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'HRL Challenges\u000bDevelopment of Abstractions', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: In order to use temporally extended actions, they...; In the most promising HRL approaches, sub-behaviors are...; For example: the state-space could be split in...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Challenges\u000bDevelopment of Abstractions\n- [L0] In order to use temporally extended actions, they need to receive enough suitable samples from the environment in order to become sufficiently developed.\n- [L0] In the most promising HRL approaches, sub-behaviors are developed end-to-end, while they are also being discovered.\n- [L0] For example: the state-space could be split in a few equal parts, with a sub-behavior assigned to each part. In a second phase, the sub-behaviors can be developed by for example randomly activating them.\n- [L0] If multiple sub-behaviors are generalized by a single parameterized function, samples can be used to train multiple sub-behaviors at the same time. Similarly, off-policy methods can be used to simultaneously develop multiple abstractions.\n\n### Interpretation\nThis slide titled 'HRL Challenges\u000bDevelopment of Abstractions' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 21,
             "title": "HRL Challenges\u000bDecomposing Example Trajectories",
             "header_footer": {
-                "header": null,
+                "header": "HRL Challenges\u000bDecomposing Example Trajectories",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -7669,6 +7764,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -7773,6 +7869,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -7795,7 +7892,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "HRL Challenges\u000bDecomposing Example Trajectories",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -7851,8 +7948,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_21_shape_1",
-                        "slide_21_shape_0"
+                        "slide_21_shape_0",
+                        "slide_21_shape_1"
                     ]
                 },
                 "text_points": [
@@ -7914,9 +8011,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"HRL Challenges\u000bDecomposing Example Trajectories\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"HRL Challenges\u000bDecomposing Example Trajectories\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (4 total):\n• HRL Challenges\u000bDecomposing Example Trajectories\n• HRL can maximize the utility of demonstrations by decomposing them into sub-behaviors. Instead of learning a single task from demonstrations, the discovered sub-behaviors can be used as building blocks to solve a range of related tasks, potentially without the need of additional demonstrations.\n• While imitation learning typically is used to solve a single problem, if imitation learning is used to discover temporal abstractions, these abstractions might be re-used to solve multiple similar problems.\n• Providing a reward-function for a control problem is often a complex issue in itself. Header: \"HRL Challenges\u000bDecomposing Example Trajectories\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -7976,16 +8074,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'HRL Challenges\u000bDecomposing Example Trajectories', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: HRL can maximize the utility of demonstrations by...; While imitation learning typically is used to solve...; Providing a reward-function for a control problem is...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Challenges\u000bDecomposing Example Trajectories\n- [L0] HRL can maximize the utility of demonstrations by decomposing them into sub-behaviors. Instead of learning a single task from demonstrations, the discovered sub-behaviors can be used as building blocks to solve a range of related tasks, potentially without the need of additional demonstrations.\n- [L0] While imitation learning typically is used to solve a single problem, if imitation learning is used to discover temporal abstractions, these abstractions might be re-used to solve multiple similar problems.\n- [L0] Providing a reward-function for a control problem is often a complex issue in itself\n\n### Interpretation\nThis slide titled 'HRL Challenges\u000bDecomposing Example Trajectories' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 22,
             "title": "HRL Challenges\u000bComposition",
             "header_footer": {
-                "header": null,
+                "header": "HRL Challenges\u000bComposition",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -8059,6 +8158,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -8155,6 +8255,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -8177,7 +8278,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "HRL Challenges\u000bComposition",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -8233,8 +8334,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_22_shape_1",
-                        "slide_22_shape_0"
+                        "slide_22_shape_0",
+                        "slide_22_shape_1"
                     ]
                 },
                 "text_points": [
@@ -8296,9 +8397,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"HRL Challenges\u000bComposition\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"HRL Challenges\u000bComposition\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (4 total):\n• HRL Challenges\u000bComposition\n• Sub-behaviors alone are not enough to solve HRL problems. They need to be composed in order to form complex plans. There are two major approaches which are commonly used to learn compositions:\n• Bottom-up training: the sub-behaviors are discovered and developed first. Once they have been sufficiently developed, they are frozen, and a composition-policy is learned by sampling different sub-behaviors. Sub-behaviors learned using a bottom-up approach, can often also be transferred to solve similar problems\n• Top-down training: the higher-level first selects a subgoal 𝑔∈𝑆 it deems interesting in order to reach the overall goal. Once selected, the lower-level is trained to reach the proposed subgoal. This approach is often more efficient in solving a single control problem.. Header: \"HRL Challenges\u000bComposition\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -8358,16 +8460,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'HRL Challenges\u000bComposition', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: Sub-behaviors alone are not enough to solve HRL...; Bottom-up training: the sub-behaviors are discovered and developed...; Top-down training: the higher-level first selects a subgoal...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] HRL Challenges\u000bComposition\n- [L0] Sub-behaviors alone are not enough to solve HRL problems. They need to be composed in order to form complex plans. There are two major approaches which are commonly used to learn compositions:\n- [L0] Bottom-up training: the sub-behaviors are discovered and developed first. Once they have been sufficiently developed, they are frozen, and a composition-policy is learned by sampling different sub-behaviors. Sub-behaviors learned using a bottom-up approach, can often also be transferred to solve similar problems\n- [L0] Top-down training: the higher-level first selects a subgoal 𝑔∈𝑆 it deems interesting in order to reach the overall goal. Once selected, the lower-level is trained to reach the proposed subgoal. This approach is often more efficient in solving a single control problem.\n\n### Interpretation\nThis slide titled 'HRL Challenges\u000bComposition' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 23,
             "title": "Hierarchical Reinforcement Learning",
             "header_footer": {
-                "header": null,
+                "header": "Hierarchical Reinforcement Learning",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -8433,6 +8536,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -8505,6 +8609,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -8527,7 +8632,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "Hierarchical Reinforcement Learning",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -8583,8 +8688,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_23_shape_1",
-                        "slide_23_shape_0"
+                        "slide_23_shape_0",
+                        "slide_23_shape_1"
                     ]
                 },
                 "text_points": [
@@ -8646,9 +8751,10 @@
                         }
                     ],
                     "edges": [],
+                    "flow_description": "",
                     "summary": "No diagram detected."
                 },
-                "outline": "Title: \"Hierarchical Reinforcement Learning\". Boxes: 2, Arrows: 0. Layout: title_slide. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Hierarchical Reinforcement Learning\". Elements: 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: title_slide. Regions: body_right. Diagram analysis: No diagram detected.. Text Points (4 total):\n• Hierarchical Reinforcement Learning\n• A few common architectures for HRL are-\n• Option — Critic Framework\n• Feudal Reinforcement Learning. Header: \"Hierarchical Reinforcement Learning\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -8708,16 +8814,17 @@
                     }
                 ],
                 "edges": [],
+                "flow_description": "",
                 "summary": "No diagram detected."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Hierarchical Reinforcement Learning', explains key concepts on this topic. The layout is structured as a title_slide presentation. It covers the following points: A few common architectures for HRL are-; Option — Critic Framework; Feudal Reinforcement Learning."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Hierarchical Reinforcement Learning\n- [L0] A few common architectures for HRL are-\n- [L0] Option — Critic Framework\n- [L0] Feudal Reinforcement Learning\n\n### Interpretation\nThis slide titled 'Hierarchical Reinforcement Learning' is structured as a standard layout. It visually presents 2 box(es) to communicate its core concept."
         },
         {
             "slide_number": 24,
             "title": "Option-Critic framework",
             "header_footer": {
-                "header": null,
+                "header": "Option-Critic framework",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -8784,6 +8891,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -8813,6 +8921,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": []
                     }
@@ -8837,7 +8946,10 @@
                         "background_color": null
                     },
                     "table_markdown": null,
-                    "metadata": {}
+                    "image_summary": "1. Visual element counts: 2, 3, 4, 5, 6, 7",
+                    "metadata": {
+                        "image_summary": "1. Visual element counts: 2, 3, 4, 5, 6, 7"
+                    }
                 }
             ],
             "relationships": [
@@ -8852,7 +8964,7 @@
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "Option-Critic framework",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -8909,8 +9021,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_24_shape_1",
-                        "slide_24_shape_0"
+                        "slide_24_shape_0",
+                        "slide_24_shape_1"
                     ]
                 },
                 "text_points": [
@@ -8985,9 +9097,10 @@
                             "label": null
                         }
                     ],
-                    "summary": "diagram with 3 node(s) and 1 relationship(s)."
+                    "flow_description": "",
+                    "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 1 relationship(s). [Connections] \"[slide_24_shape_1]\" → \"[slide_24_shape_2]\" (proximity). [Interpretation] This diagram presents 3 visual component(s) with 1 relationship(s) between them."
                 },
-                "outline": "Title: \"Option-Critic framework\". Elements: 1 image(s). Boxes: 2, Arrows: 0. Layout: single_column. Relationships: slide_24_shape_1 -> slide_24_shape_2 (proximity). Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Option-Critic framework\". Elements: 1 image(s), 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: single_column. Regions: body_right. Diagram analysis: [Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 1 relationship(s). [Connections] \"[slide_24_shape_1]\" → \"[slide_24_shape_2]\" (proximity). [Interpretation] This diagram presents 3 visual component(s) with 1 relationship(s) between them.. Relationships: slide_24_shape_1 -> slide_24_shape_2 (proximity). Text Points (1 total):\n• Option-Critic framework. Header: \"Option-Critic framework\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -9052,16 +9165,17 @@
                         "label": null
                     }
                 ],
-                "summary": "diagram with 3 node(s) and 1 relationship(s)."
+                "flow_description": "",
+                "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 1 relationship(s). [Connections] \"[slide_24_shape_1]\" → \"[slide_24_shape_2]\" (proximity). [Interpretation] This diagram presents 3 visual component(s) with 1 relationship(s) between them."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Option-Critic framework', explains key concepts on this topic. The slide utilizes a visual layout featuring 1 image(s) to support the explanation."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es), 1 image(s).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Option-Critic framework\n\n### Interpretation\nThis slide titled 'Option-Critic framework' is structured as a standard layout. It visually presents 2 box(es), 1 image(s) to communicate its core concept.\n\nImage Analysis:\n1. Visual element counts: 2, 3, 4, 5, 6, 7"
         },
         {
             "slide_number": 25,
             "title": "Feudal Reinforcement Learning",
             "header_footer": {
-                "header": null,
+                "header": "Feudal Reinforcement Learning",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -9133,6 +9247,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -9177,6 +9292,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -9206,14 +9322,17 @@
                         "background_color": null
                     },
                     "table_markdown": null,
-                    "metadata": {}
+                    "image_summary": "1. Visual Element Counts",
+                    "metadata": {
+                        "image_summary": "1. Visual Element Counts"
+                    }
                 }
             ],
             "relationships": [],
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "Feudal Reinforcement Learning",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -9279,8 +9398,8 @@
                     "arrows": [],
                     "relationships": [],
                     "reading_order": [
-                        "slide_25_shape_1",
-                        "slide_25_shape_0"
+                        "slide_25_shape_0",
+                        "slide_25_shape_1"
                     ]
                 },
                 "text_points": [
@@ -9345,9 +9464,10 @@
                         }
                     ],
                     "edges": [],
-                    "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                    "flow_description": "",
+                    "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
                 },
-                "outline": "Title: \"Feudal Reinforcement Learning\". Elements: 1 image(s). Boxes: 2, Arrows: 0. Layout: two_column. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Feudal Reinforcement Learning\". Elements: 1 image(s), 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: two_column. Regions: body_left, body_right. Diagram analysis: [Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them.. Text Points (2 total):\n• Feudal Reinforcement Learning\n• The Grid Task. This shows how the maze is divided up at different levels in the hierarchy. The 'u' shape is the barrier, and the shaded square is the goal. Each high level state is divided into four low level ones at every step.. Header: \"Feudal Reinforcement Learning\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -9410,16 +9530,17 @@
                     }
                 ],
                 "edges": [],
-                "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                "flow_description": "",
+                "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Feudal Reinforcement Learning', explains key concepts on this topic. The slide utilizes a visual layout featuring 1 image(s) to support the explanation. It covers the following points: The Grid Task. This shows how the maze...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es), 1 image(s).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Feudal Reinforcement Learning\n- [L0] The Grid Task. This shows how the maze is divided up at different levels in the hierarchy. The 'u' shape is the barrier, and the shaded square is the goal. Each high level state is divided into four low level ones at every step.\n\n### Interpretation\nThis slide titled 'Feudal Reinforcement Learning' is structured as a standard layout. It visually presents 2 box(es), 1 image(s) to communicate its core concept.\n\nImage Analysis:\n1. Visual Element Counts"
         },
         {
             "slide_number": 26,
             "title": "Feudal Reinforcement Learning",
             "header_footer": {
-                "header": null,
+                "header": "Feudal Reinforcement Learning",
                 "footer": null,
                 "slide_number": "‹#›",
                 "date": "5/14/2026"
@@ -9491,6 +9612,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -9535,6 +9657,7 @@
                         "background_color": null
                     },
                     "table_markdown": null,
+                    "image_summary": null,
                     "metadata": {
                         "bullet_hierarchy": [
                             {
@@ -9564,14 +9687,17 @@
                         "background_color": null
                     },
                     "table_markdown": null,
-                    "metadata": {}
+                    "image_summary": "1. [0.12, 0.46, 0.32, 0.61]",
+                    "metadata": {
+                        "image_summary": "1. [0.12, 0.46, 0.32, 0.61]"
+                    }
                 }
             ],
             "relationships": [],
             "flowchart": null,
             "context": {
                 "header_footer": {
-                    "header_text": null,
+                    "header_text": "Feudal Reinforcement Learning",
                     "footer_text": null,
                     "slide_number_text": "‹#›",
                     "date_text": "5/14/2026"
@@ -9703,9 +9829,10 @@
                         }
                     ],
                     "edges": [],
-                    "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                    "flow_description": "",
+                    "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
                 },
-                "outline": "Title: \"Feudal Reinforcement Learning\". Elements: 1 image(s). Boxes: 2, Arrows: 0. Layout: two_column. Slide #: ‹#› | Date: 5/14/2026."
+                "outline": "Title: \"Feudal Reinforcement Learning\". Elements: 1 image(s), 2 placeholder(s). Boxes: 2, Arrows/Connectors: 0. Layout: two_column. Regions: body_left, body_right. Diagram analysis: [Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them.. Text Points (2 total):\n• Feudal Reinforcement Learning\n• The Learned Actions. The area of the boxes and the radius of the central circle give the probabilities of taking action NSEW and * respectively.. Header: \"Feudal Reinforcement Learning\" | Slide #: ‹#› | Date: 5/14/2026."
             },
             "text_points": [
                 {
@@ -9768,10 +9895,11 @@
                     }
                 ],
                 "edges": [],
-                "summary": "diagram with 3 node(s) and 0 relationship(s)."
+                "flow_description": "",
+                "summary": "[Counts] Diagram with 3 box(es), 0 arrow(s), 3 node(s), and 0 relationship(s). [Interpretation] This diagram presents 3 visual component(s) with 0 relationship(s) between them."
             },
             "table_markdowns": [],
-            "summary": "This slide, titled 'Feudal Reinforcement Learning', explains key concepts on this topic. The slide utilizes a visual layout featuring 1 image(s) to support the explanation. It covers the following points: The Learned Actions. The area of the boxes...."
+            "summary": "### Visual Element Counts\nVisual elements detected: 2 box(es), 1 image(s).\n\n### Flow Mapping\nNo flowchart or process flow detected.\n\n### Key Content\nExtracted key points:\n- [L0] Feudal Reinforcement Learning\n- [L0] The Learned Actions. The area of the boxes and the radius of the central circle give the probabilities of taking action NSEW and * respectively.\n\n### Interpretation\nThis slide titled 'Feudal Reinforcement Learning' is structured as a standard layout. It visually presents 2 box(es), 1 image(s) to communicate its core concept.\n\nImage Analysis:\n1. [0.12, 0.46, 0.32, 0.61]"
         }
     ]
 }

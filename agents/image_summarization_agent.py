@@ -48,8 +48,16 @@ If not applicable, write "N/A".
 ## 7. Plain-language Summary
 Provide a 2–4 sentence, human-friendly summary of what the image depicts in your own words.
 
+## 8. Reconstructed Diagram Code (Mermaid.js)
+Generate complete, valid Mermaid.js markup that visually reconstructs this diagram or flowchart.
+- Use appropriate shapes (e.g., `id1[Text]`, `id2([Text])`, `id3{Decision}`) matching the original shapes.
+- Use explicit arrow connections with labels if visible (e.g., `id1 -->|Action| id2`).
+- Include subgraphs if there are panels or sections.
+- Make sure the Mermaid code is self-contained and free of any markdown wrapper other than standard code fences. If the image is a plain picture and not a diagram or flowchart, represent its main entities and their relationships as a conceptual node graph.
+
 Be extremely detailed, precise, and structured. Use numbered lists or bullet points within each section.
 """
+
 
 class _LocalVisionAnalyzer:
     def __init__(self):
@@ -193,6 +201,12 @@ class _LocalVisionAnalyzer:
             f"\n"
             f"## 7. Plain-language Summary\n"
             f"{answers.get('explanation', 'N/A')}\n"
+            f"\n"
+            f"## 8. Reconstructed Diagram Code (Mermaid.js)\n"
+            f"```mermaid\n"
+            f"graph TD\n"
+            f"    A[\"{topic}\"] --> B[\"{caption}\"]\n"
+            f"```\n"
         )
 
 
@@ -307,6 +321,77 @@ class ImageSummaryAgent:
                     return response.text
             except Exception as e:
                 print(f"Gemini image summarization failed: {e}")
+
+        # 2a. Groq Llama-3.2 Vision fallback — if GROQ_API_KEY is set
+        groq_key = os.getenv("GROQ_API_KEY")
+        if groq_key:
+            try:
+                from groq import Groq
+                client = Groq(api_key=groq_key)
+                img_b64 = base64.b64encode(image_bytes).decode("ascii")
+
+                mime_type = "image/png"
+                if image_bytes.startswith(b"\xff\xd8"):
+                    mime_type = "image/jpeg"
+                elif image_bytes.startswith(b"GIF8"):
+                    mime_type = "image/gif"
+
+                image_url = f"data:{mime_type};base64,{img_b64}"
+                response = client.chat.completions.create(
+                    messages=[
+                        {
+                            "role": "user",
+                            "content": [
+                                {"type": "text", "text": vision_prompt},
+                                {
+                                    "type": "image_url",
+                                    "image_url": {"url": image_url},
+                                },
+                            ],
+                        }
+                    ],
+                    model="llama-3.2-11b-vision-preview",
+                )
+                if response.choices[0].message.content:
+                    return response.choices[0].message.content
+            except Exception as e:
+                print(f"Groq vision image summarization failed: {e}")
+
+        # 2b. OpenAI GPT-4o-mini Vision fallback — if OPENAI_API_KEY is set
+        openai_key = os.getenv("OPENAI_API_KEY")
+        if openai_key:
+            try:
+                from openai import OpenAI
+                client = OpenAI(api_key=openai_key)
+                img_b64 = base64.b64encode(image_bytes).decode("ascii")
+
+                mime_type = "image/png"
+                if image_bytes.startswith(b"\xff\xd8"):
+                    mime_type = "image/jpeg"
+                elif image_bytes.startswith(b"GIF8"):
+                    mime_type = "image/gif"
+
+                image_url = f"data:{mime_type};base64,{img_b64}"
+                response = client.chat.completions.create(
+                    messages=[
+                        {
+                            "role": "user",
+                            "content": [
+                                {"type": "text", "text": vision_prompt},
+                                {
+                                    "type": "image_url",
+                                    "image_url": {"url": image_url},
+                                },
+                            ],
+                        }
+                    ],
+                    model="gpt-4o-mini",
+                )
+                if response.choices[0].message.content:
+                    return response.choices[0].message.content
+            except Exception as e:
+                print(f"OpenAI vision image summarization failed: {e}")
+
 
         # 3. Local BLIP models via transformers (fallback if Ollama / Gemini is not available)
         print("[ImageSummary] Local Ollama and Gemini unavailable. Falling back to local BLIP models...")
