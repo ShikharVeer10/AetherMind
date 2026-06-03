@@ -28,15 +28,50 @@ class PPTExtractor:
             )
             extracted_slides.append(extracted_slide)
 
+        # Extract presentation-level metadata
+        pres_meta = self._extract_presentation_metadata()
+
         return DocumentModel(
             document_name=Path(self.pptx_file_path).name,
             document_type="ppt",
             total_slides=len(extracted_slides),
             slides=extracted_slides,
+            presentation_metadata=pres_meta,
         )
+
+    def _extract_presentation_metadata(self) -> dict:
+        """Extract top-level presentation metadata (author, dimensions, etc.)"""
+        meta: dict = {}
+        try:
+            core = self.presentation.core_properties
+            if core.author:
+                meta["author"] = core.author
+            if core.title:
+                meta["presentation_title"] = core.title
+            if core.subject:
+                meta["subject"] = core.subject
+            if core.created:
+                meta["created"] = str(core.created)
+            if core.modified:
+                meta["modified"] = str(core.modified)
+        except Exception:
+            pass
+        try:
+            meta["slide_width"] = float(self.presentation.slide_width)
+            meta["slide_height"] = float(self.presentation.slide_height)
+        except Exception:
+            pass
+        return meta
     def extract_slide(self, slide, slide_number: int) -> SlideModel:
         extracted_elements = []
         slide_title: Optional[str] = None
+
+        # 1. Try to get the real title from placeholders
+        try:
+            if slide.shapes.title and slide.shapes.title.has_text_frame:
+                slide_title = slide.shapes.title.text_frame.text.strip() or None
+        except Exception:
+            pass
 
         for index, shape in enumerate(slide.shapes):
             elements = self._extract_shape_recursive(
@@ -47,8 +82,13 @@ class PPTExtractor:
             )
             for element in elements:
                 extracted_elements.append(element)
-                if slide_title is None and element.text:
-                    slide_title = element.text
+
+        # 2. Fallback: if no placeholder title, use the first element text
+        if slide_title is None:
+            for element in extracted_elements:
+                if element.text:
+                    slide_title = element.text.strip()
+                    break
 
         return SlideModel(
             slide_number=slide_number,
@@ -149,8 +189,19 @@ class PPTExtractor:
 
         if st == MSO_SHAPE_TYPE.AUTO_SHAPE:
             name = shape.name.lower()
+            # Detect arrows from shape name
             if "arrow" in name:
                 return "arrow"
+            # Detect process/decision shapes common in flowcharts
+            auto_shape_type = getattr(shape, 'auto_shape_type', None)
+            if auto_shape_type is not None:
+                auto_name = str(auto_shape_type).lower()
+                if 'arrow' in auto_name:
+                    return "arrow"
+                if 'diamond' in auto_name or 'decision' in auto_name:
+                    return "shape"  # decision diamond
+                if 'chevron' in auto_name or 'pentagon' in auto_name:
+                    return "shape"  # process chevron
             return "shape"
 
         if st == MSO_SHAPE_TYPE.GROUP:

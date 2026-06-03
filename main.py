@@ -18,9 +18,9 @@ def main():
     if not document_path_object.exists():
         raise FileNotFoundError("Document not found")
 
-    enable_summaries = os.getenv("ENABLE_SUMMARIES", "false").lower() in {"1", "true"}
+    enable_summaries = os.getenv("ENABLE_SUMMARIES", "true").lower() in {"1", "true"}
     enable_image_summaries = (
-        os.getenv("ENABLE_IMAGE_SUMMARIES", "false").lower() in {"1", "true"}
+        os.getenv("ENABLE_IMAGE_SUMMARIES", "true").lower() in {"1", "true"}
     )
 
     extraction_service = ExtractionService(

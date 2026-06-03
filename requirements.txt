@@ -3,3 +3,6 @@ python-pptx
 pydantic-ai
 google-genai
 requests
+torch
+transformers
+Pillow

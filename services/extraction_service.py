@@ -54,6 +54,7 @@ class ExtractionService:
         for slide_model, raw_slide in zip(
             document_model.slides, raw_slides
         ):
+            print(f"[ExtractionService] Processing slide {slide_model.slide_number}...")
             await orchestrator.process_slide(
                 slide_model=slide_model,
                 raw_slide=raw_slide,
@@ -131,6 +132,7 @@ class ExtractionService:
                         },
                         "style": style,
                         "table_markdown": element.table_markdown,
+                        "image_summary": element.metadata.get("image_summary"),
                         "metadata": self._sanitize_metadata(element.metadata),
                     }
                 )

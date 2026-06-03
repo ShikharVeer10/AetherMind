@@ -64,6 +64,7 @@ class DiagramUnderstandingModel(BaseModel):
     edge_count: int = 0
     nodes: List[Dict[str, Any]] = Field(default_factory=list)
     edges: List[Dict[str, Any]] = Field(default_factory=list)
+    flow_description: str = ""
     summary: str = ""
 
 
@@ -161,3 +162,7 @@ class DocumentModel(BaseModel):
     slides: List[SlideModel] = Field(default_factory=list)
     relationships: List[RelationshipModel] = Field(default_factory=list)
     metadata: Dict[str, Any] = Field(default_factory=dict)
+    presentation_metadata: Dict[str, Any] = Field(
+        default_factory=dict,
+        description="Top-level presentation metadata: author, slide dimensions, theme, etc.",
+    )

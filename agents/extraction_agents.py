@@ -29,7 +29,15 @@ from services.visual_inventory_service import VisualInventoryService
 
 
 class TextExtractionAgent:
-    system_prompt = "Extract verbatim text points without paraphrasing."
+    system_prompt = (
+        "You are the Text Extraction Agent. Your sole responsibility is to extract "
+        "every text point from the slide EXACTLY as it appears — verbatim, without "
+        "paraphrasing, rewriting, or summarizing. Preserve the original wording, "
+        "punctuation, capitalization, and bullet hierarchy (indentation level). "
+        "Each paragraph or bullet point must be emitted as a separate TextPointModel "
+        "with its element_id, indentation level, and exact text. "
+        "Sort output in reading order (top-to-bottom, then left-to-right)."
+    )
 
     def __init__(self):
         self.service = TextExtractionService()
@@ -39,7 +47,16 @@ class TextExtractionAgent:
 
 
 class HeaderFooterAgent:
-    system_prompt = "Extract header, footer, slide number, and date placeholders."
+    system_prompt = (
+        "You are the Header & Footer Extraction Agent. Extract the header text, "
+        "footer text, slide number, and date from the slide. Check all three layers: "
+        "(1) the slide itself, (2) the slide layout, and (3) the slide master. "
+        "For the header, look for a TITLE placeholder positioned in the top 18% of the slide. "
+        "For the footer, look for FOOTER-type placeholders. For slide number and date, "
+        "look for SLIDE_NUMBER and DATE placeholder types respectively. "
+        "Return a HeaderFooterModel with header_text, footer_text, slide_number_text, and date_text. "
+        "If any field is not found, return None for that field."
+    )
 
     def __init__(self):
         self.service = HeaderFooterService()
@@ -49,7 +66,13 @@ class HeaderFooterAgent:
 
 
 class VisualInventoryAgent:
-    system_prompt = "Count all visual elements on the slide."
+    system_prompt = (
+        "You are the Visual Inventory Agent. Count every visual element on the slide, "
+        "grouped by type: text_box, shape, arrow, connector, image, table, group, chart, "
+        "placeholder, and unknown. Also compute total_elements as the sum of all counts. "
+        "This inventory is used downstream for context assembly and summary generation. "
+        "Be precise — every element must be counted exactly once."
+    )
 
     def __init__(self):
         self.service = VisualInventoryService()
@@ -59,7 +82,15 @@ class VisualInventoryAgent:
 
 
 class LayoutStructureAgent:
-    system_prompt = "Classify layout regions and overall layout type."
+    system_prompt = (
+        "You are the Layout Structure Agent. Analyse the spatial arrangement of all "
+        "elements on the slide to determine: (1) the overall layout type — one of: "
+        "title_slide, single_column, two_column, flowchart, diagram, or blank; "
+        "(2) named spatial regions — header (top 18%), body_left, body_right, footer (bottom 15%). "
+        "Assign each element to exactly one region based on its center point. "
+        "If a flowchart has been detected, override layout_type to 'flowchart'. "
+        "Return a LayoutStructureModel with layout_type and a list of RegionModel entries."
+    )
 
     def __init__(self):
         self.service = LayoutAnalysisService()
@@ -74,7 +105,12 @@ class LayoutStructureAgent:
 
 
 class PositionMappingAgent:
-    system_prompt = "Map positions for every element on the slide."
+    system_prompt = (
+        "You are the Position Mapping Agent. For every element on the slide, emit a "
+        "PositionMapModel containing: element_id, element_type, x, y, width, height "
+        "(all in EMU coordinates). This mapping is consumed by relationship detection "
+        "and flowchart analysis to determine spatial proximity and containment."
+    )
 
     def __init__(self):
         self.service = PositionMappingService()
@@ -84,7 +120,18 @@ class PositionMappingAgent:
 
 
 class RelationshipMappingAgent:
-    system_prompt = "Detect spatial and connector relationships between elements."
+    system_prompt = (
+        "You are the Relationship Mapping Agent. Detect all relationships between elements "
+        "on the slide using three strategies: \n"
+        "1. CONNECTOR relationships: For each arrow/connector element, find the closest \n"
+        "   box to its start-point (source) and end-point (target). Emit a 'connector' relationship.\n"
+        "2. CONTAINMENT relationships: If one element is spatially inside another, \n"
+        "   emit a 'contains' relationship (outer → inner).\n"
+        "3. PROXIMITY relationships: If two non-connector elements are within 500,000 EMU \n"
+        "   of each other (center-to-center), emit a 'proximity' relationship with confidence 0.7.\n"
+        "Each relationship has: relationship_type, source_element_id, target_element_id, "
+        "optional label (connector text), and confidence score."
+    )
 
     def __init__(self):
         self.service = RelationshipService()
@@ -94,7 +141,19 @@ class RelationshipMappingAgent:
 
 
 class FlowchartAnalysisAgent:
-    system_prompt = "Identify flowcharts and reconstruct box-arrow structure."
+    system_prompt = (
+        "You are the Flowchart Analysis Agent. Determine if the slide contains a flowchart \n"
+        "by checking: (1) at least 2 box-like elements (shape, text_box, placeholder) AND \n"
+        "(2) at least 1 arrow/connector element. If both conditions are met, it IS a flowchart.\n"
+        "For each detected flowchart, extract: \n"
+        "- box_count: total number of boxes \n"
+        "- arrow_count: total number of arrows/connectors \n"
+        "- boxes: list of {element_id, text, x, y} for each box \n"
+        "- arrows: list of {element_id, text, type} for each arrow \n"
+        "- relationships: directed edges between boxes (filtered from the relationship map) \n"
+        "- reading_order: topological sort of the directed box graph (dependency order). \n"
+        "   If cycles exist, append remaining nodes in arbitrary order."
+    )
 
     def __init__(self):
         self.service = FlowchartService()
@@ -108,7 +167,18 @@ class FlowchartAnalysisAgent:
 
 
 class DiagramUnderstandingAgent:
-    system_prompt = "Summarize diagram structure using nodes and relationships."
+    system_prompt = (
+        "You are the Diagram Understanding Agent. Build a high-level semantic understanding \n"
+        "of the slide's visual structure by: \n"
+        "1. Listing all non-connector elements as NODES (with element_id, type, text). \n"
+        "2. Listing all relationships as EDGES (with type, source, target, label). \n"
+        "3. Classifying diagram_type as 'flowchart', 'diagram', or 'none'. \n"
+        "4. Building a flow_description: Step-by-step sequence from reading_order (e.g. \n"
+        "   'Step 1: [label] → Step 2: [label] → ...'). \n"
+        "5. Generating a structured summary with sections: [Counts], [Connections], \n"
+        "   [Flow], and [Interpretation]. Resolve element IDs to their text labels \n"
+        "   for human readability."
+    )
 
     def __init__(self):
         self.service = DiagramUnderstandingService()
@@ -123,7 +193,14 @@ class DiagramUnderstandingAgent:
 
 
 class TableExtractionAgent:
-    system_prompt = "Extract tables and convert to markdown format."
+    system_prompt = (
+        "You are the Table Extraction Agent. For every table element on the slide, \n"
+        "convert its cell data into GitHub-Flavored Markdown (GFM) format. \n"
+        "The first row is always treated as the header row. Escape pipe characters \n"
+        "within cell text. If a data row has fewer cells than the header, pad with empty cells. \n"
+        "Attach the markdown string to the element's table_markdown field and also \n"
+        "return a list of all table markdowns for the slide."
+    )
 
     def __init__(self):
         self.service = TableService()
@@ -142,7 +219,19 @@ class TableExtractionAgent:
 
 
 class ContextAssemblyAgent:
-    system_prompt = "Build a structured context block for the slide."
+    system_prompt = (
+        "You are the Context Assembly Agent. Combine ALL analysis outputs into a single \n"
+        "SlideContextModel that provides a complete structural description of the slide. \n"
+        "The context must include: header/footer, title, visual inventory counts, \n"
+        "layout structure (type + regions), flowchart info (if detected), verbatim text points, \n"
+        "position mapping, relationship mapping, and diagram understanding. \n"
+        "Additionally, generate a human-readable 'outline' string that reads like: \n"
+        "'Title: \"...\". Elements: 6 text box(es), 3 shape(s), 2 arrow(s). \n"
+        " Boxes: 9, Arrows: 2. Layout: flowchart. \n"
+        " Flowchart detected — 6 box(es), 2 arrow(s). Reading order: A → B → C. \n"
+        " Relationships: elem_1 -> elem_2 (connector); ... \n"
+        " Header: \"...\" | Footer: \"...\" | Slide #: 5 | Date: 2024-01-01.'"
+    )
 
     def __init__(self):
         self.builder = ContextBuilder()

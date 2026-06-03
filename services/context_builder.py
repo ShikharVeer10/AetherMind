@@ -7,6 +7,9 @@ The context combines:
     - Visual inventory counts
     - Layout structure
     - Flowchart info (if present)
+    - Text points summary
+    - Relationship mappings
+    - Diagram understanding
     - A human-readable outline string
 """
 
@@ -39,9 +42,11 @@ class ContextBuilder:
         """
         outline_parts: list[str] = []
 
+        # --- Title ---
         if title:
-            outline_parts.append(f"Title: \"{title}\"")
+            outline_parts.append(f'Title: "{title}"')
 
+        # --- Visual Inventory ---
         inv_parts: list[str] = []
         if inventory.text_box_count:
             inv_parts.append(f"{inventory.text_box_count} text box(es)")
@@ -59,18 +64,27 @@ class ContextBuilder:
             inv_parts.append(f"{inventory.group_count} group(s)")
         if inventory.chart_count:
             inv_parts.append(f"{inventory.chart_count} chart(s)")
+        if inventory.placeholder_count:
+            inv_parts.append(f"{inventory.placeholder_count} placeholder(s)")
         if inv_parts:
             outline_parts.append("Elements: " + ", ".join(inv_parts))
 
+        # --- Box & Arrow aggregate counts ---
         box_count = (
             inventory.text_box_count
             + inventory.shape_count
             + inventory.placeholder_count
         )
-        outline_parts.append(f"Boxes: {box_count}, Arrows: {inventory.arrow_count}")
+        arrow_total = inventory.arrow_count + inventory.connector_count
+        outline_parts.append(f"Boxes: {box_count}, Arrows/Connectors: {arrow_total}")
 
+        # --- Layout ---
         outline_parts.append(f"Layout: {layout.layout_type}")
+        if layout.regions:
+            region_names = [r.name for r in layout.regions]
+            outline_parts.append(f"Regions: {', '.join(region_names)}")
 
+        # --- Flowchart ---
         if flowchart.is_flowchart:
             flow_str = (
                 f"Flowchart detected — {flowchart.box_count} box(es), "
@@ -83,6 +97,18 @@ class ContextBuilder:
                 )
             outline_parts.append(flow_str)
 
+        # --- Diagram Understanding ---
+        if diagram_understanding:
+            if diagram_understanding.flow_description:
+                outline_parts.append(
+                    f"Flow mapping: {diagram_understanding.flow_description}"
+                )
+            if diagram_understanding.summary:
+                outline_parts.append(
+                    f"Diagram analysis: {diagram_understanding.summary}"
+                )
+
+        # --- Relationships ---
         if relationships:
             rel_strings = [
                 f"{r.source_element_id} -> {r.target_element_id} ({r.relationship_type})"
@@ -90,11 +116,23 @@ class ContextBuilder:
             ]
             outline_parts.append("Relationships: " + "; ".join(rel_strings))
 
+        # --- Text Points Summary ---
+        if text_points:
+            tp_summary_lines = []
+            for tp in text_points[:15]:  # cap at 15 for outline readability
+                indent = "  " * tp.level
+                tp_summary_lines.append(f"{indent}• {tp.text}")
+            outline_parts.append(
+                "Text Points (" + str(len(text_points)) + " total):\n"
+                + "\n".join(tp_summary_lines)
+            )
+
+        # --- Header / Footer ---
         hf_parts: list[str] = []
         if header_footer.header_text:
-            hf_parts.append(f"Header: \"{header_footer.header_text}\"")
+            hf_parts.append(f'Header: "{header_footer.header_text}"')
         if header_footer.footer_text:
-            hf_parts.append(f"Footer: \"{header_footer.footer_text}\"")
+            hf_parts.append(f'Footer: "{header_footer.footer_text}"')
         if header_footer.slide_number_text:
             hf_parts.append(f"Slide #: {header_footer.slide_number_text}")
         if header_footer.date_text:

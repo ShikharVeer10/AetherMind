@@ -44,6 +44,7 @@ class AgentOrchestrator:
     ):
         self.summarization_agent = summarization_agent
         self.image_summarization_agent = image_summarization_agent
+        self.last_slide_title = None
 
         self.text_agent = TextExtractionAgent()
         self.header_footer_agent = HeaderFooterAgent()
@@ -69,40 +70,52 @@ class AgentOrchestrator:
             raw_slide:    The raw python-pptx slide object (needed for
                           header/footer placeholder access).
         """
+        if slide_model.title:
+            self.last_slide_title = slide_model.title
 
         # 1) Exact text extraction (verbatim)
+        print("    [Orchestrator] Step 1: Text extraction...")
         slide_model.text_points = self.text_agent.run(slide_model)
 
         # 2) Header/footer extraction
+        print("    [Orchestrator] Step 2: Header/footer...")
         header_footer = self.header_footer_agent.run(raw_slide)
 
         # 3) Visual inventory counts
+        print("    [Orchestrator] Step 3: Visual inventory...")
         visual_inventory = self.inventory_agent.run(slide_model)
 
         # 4) Layout structure identification
+        print("    [Orchestrator] Step 4: Layout structure...")
         layout = self.layout_agent.run(slide_model)
 
         # 5) Position mapping
+        print("    [Orchestrator] Step 5: Position mapping...")
         position_mapping = self.position_agent.run(slide_model)
 
         # 6) Relationship mapping
+        print("    [Orchestrator] Step 6: Relationship mapping...")
         relationships = self.relationship_agent.run(slide_model)
         slide_model.relationships = relationships
 
         # 7) Flowchart analysis
+        print("    [Orchestrator] Step 7: Flowchart analysis...")
         flowchart = self.flowchart_agent.run(slide_model, relationships)
         if flowchart.is_flowchart and layout.layout_type != "flowchart":
             layout.layout_type = "flowchart"
 
         # 8) Diagram understanding
+        print("    [Orchestrator] Step 8: Diagram understanding...")
         diagram_understanding = self.diagram_agent.run(
             slide_model, relationships, flowchart
         )
 
         # 9) Image understanding and depiction
+        print("    [Orchestrator] Step 9: Image summaries...")
         image_summary_text = await self._run_image_summaries(slide_model)
 
         # 10) Slide summary
+        print("    [Orchestrator] Step 10: Slide context & summary...")
         context = self.context_agent.run(
             title=slide_model.title,
             header_footer=header_footer or HeaderFooterModel(),
@@ -120,9 +133,11 @@ class AgentOrchestrator:
         )
 
         # 11) Table extraction (markdown)
+        print("    [Orchestrator] Step 11: Table extraction...")
         table_markdowns = self.table_agent.run(slide_model)
 
         # Final assembly
+        print("    [Orchestrator] Final assembly...")
         slide_model.header_footer = header_footer or HeaderFooterModel()
         slide_model.visual_inventory = visual_inventory or VisualInventoryModel()
         slide_model.layout_structure = layout
@@ -147,6 +162,16 @@ class AgentOrchestrator:
         if not self.image_summarization_agent:
             return ""
 
+        # Extract all text from slide to use as context
+        text_lines = []
+        if getattr(slide_model, "text_points", None):
+            for p in slide_model.text_points:
+                if getattr(p, "text", None):
+                    text_lines.append(p.text)
+        
+        slide_text = "\n".join(text_lines) if text_lines else None
+        slide_title = getattr(slide_model, "title", None) or self.last_slide_title
+
         summaries = []
         for element in slide_model.elements:
             if element.element_type != "image":
@@ -156,7 +181,9 @@ class AgentOrchestrator:
                 continue
             try:
                 desc = await self.image_summarization_agent.summarize_image(
-                    image_bytes
+                    image_bytes,
+                    slide_title=slide_title,
+                    slide_text=slide_text,
                 )
             except Exception:
                 desc = None
@@ -165,6 +192,7 @@ class AgentOrchestrator:
                 summaries.append(desc)
 
         return "\n\n".join(summaries)
+
 
     async def _run_slide_summary(
         self,

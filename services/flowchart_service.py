@@ -71,7 +71,7 @@ class FlowchartService:
             and r.target_element_id in box_ids
         ]
 
-        reading_order = self._topological_sort(box_ids, flow_rels)
+        reading_order = self._topological_sort(box_ids, flow_rels, elements)
 
         return FlowchartModel(
             is_flowchart=is_flowchart,
@@ -89,10 +89,13 @@ class FlowchartService:
     def _topological_sort(
         node_ids: Set[str],
         edges: List[RelationshipModel],
+        elements: List[DocumentElementModel] = None,
     ) -> List[str]:
         """
-        Returns nodes in dependency order.  If the graph has cycles
-        (not a true DAG), remaining nodes are appended in arbitrary order.
+        Returns nodes in dependency order. If the graph has cycles
+        (not a true DAG), remaining nodes are appended sorted by their
+        spatial position (top-to-bottom, left-to-right) for a stable
+        reading order.
         """
         adj: Dict[str, List[str]] = {nid: [] for nid in node_ids}
         in_degree: Dict[str, int] = {nid: 0 for nid in node_ids}
@@ -104,7 +107,9 @@ class FlowchartService:
             if tgt in in_degree:
                 in_degree[tgt] += 1
 
-        queue = [nid for nid, deg in in_degree.items() if deg == 0]
+        queue = sorted(
+            [nid for nid, deg in in_degree.items() if deg == 0]
+        )
         result: List[str] = []
 
         while queue:
@@ -115,8 +120,14 @@ class FlowchartService:
                 if in_degree[neighbour] == 0:
                     queue.append(neighbour)
 
-        for nid in node_ids:
-            if nid not in result:
-                result.append(nid)
+        # Append remaining nodes (cycles or disconnected) sorted by position
+        remaining = [nid for nid in node_ids if nid not in result]
+        if remaining and elements:
+            pos_lookup = {
+                e.element_id: (e.position.y, e.position.x)
+                for e in elements
+            }
+            remaining.sort(key=lambda nid: pos_lookup.get(nid, (0, 0)))
+        result.extend(remaining)
 
         return result
