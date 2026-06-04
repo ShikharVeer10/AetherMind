@@ -266,6 +266,9 @@ class ExtractionService:
                     "image_understanding": image_understanding,
                     "image_reconstruction": image_reconstruction,
                     "slide_reconstruction_context": slide_reconstruction_context,
+                    "llm_reconstruction_payload": self._build_llm_reconstruction_payload(
+                        slide
+                    ),
                     "table_markdowns": slide.table_markdowns,
                     "summary": slide.slide_summary,
                 }
@@ -362,6 +365,283 @@ class ExtractionService:
             parts.append(f"It covers the following points: {themes}.")
             
         return " ".join(parts)
+
+    def _build_llm_reconstruction_payload(self, slide):
+        """Build a single downstream-LLM friendly payload for slide recreation."""
+        width, height = self._slide_canvas_size(slide)
+        elements = [
+            self._build_reconstruction_element(element, width, height)
+            for element in slide.elements
+        ]
+        relationships = [
+            {
+                "type": r.relationship_type,
+                "source": r.source_element_id,
+                "target": r.target_element_id,
+                "label": r.label,
+                "confidence": r.confidence,
+                "instruction": self._relationship_instruction(r),
+            }
+            for r in slide.relationships
+        ]
+        colors = self._extract_slide_colors(slide)
+        reconstruction_context = (
+            slide.slide_reconstruction_context.model_dump()
+            if slide.slide_reconstruction_context
+            else None
+        )
+
+        return {
+            "purpose": (
+                slide.slide_reconstruction_context.purpose
+                if slide.slide_reconstruction_context
+                else self._infer_reconstruction_purpose(slide)
+            ),
+            "canvas": {
+                "width_emu": width,
+                "height_emu": height,
+                "aspect_ratio": self._aspect_ratio_label(width, height),
+                "coordinate_system": "percentages are relative to this slide canvas",
+            },
+            "visual_style": {
+                "background_color": slide.background_color,
+                "color_palette": colors,
+                "layout_type": (
+                    slide.layout_structure.layout_type
+                    if slide.layout_structure
+                    else "mixed"
+                ),
+                "design_style": (
+                    slide.image_reconstruction.design_style
+                    if slide.image_reconstruction
+                    else "presentation"
+                ),
+            },
+            "semantic_context": {
+                "summary": slide.slide_summary or "",
+                "semantic_flow": (
+                    slide.semantic_flow.model_dump()
+                    if slide.semantic_flow
+                    else None
+                ),
+                "semantic_slide_description": (
+                    slide.semantic_slide_description.model_dump()
+                    if slide.semantic_slide_description
+                    else None
+                ),
+            },
+            "layout": {
+                "regions": (
+                    [
+                        {
+                            "name": r.name,
+                            "bounds": {
+                                "x_start": r.x_start,
+                                "y_start": r.y_start,
+                                "x_end": r.x_end,
+                                "y_end": r.y_end,
+                            },
+                            "element_ids": r.element_ids,
+                        }
+                        for r in slide.layout_structure.regions
+                    ]
+                    if slide.layout_structure
+                    else []
+                ),
+                "reading_order": self._reading_order(slide),
+                "visual_hierarchy": (
+                    slide.image_reconstruction.visual_hierarchy
+                    if slide.image_reconstruction
+                    else []
+                ),
+            },
+            "elements": elements,
+            "relationships": relationships,
+            "image_reconstruction": (
+                slide.image_reconstruction.model_dump()
+                if slide.image_reconstruction
+                else None
+            ),
+            "slide_reconstruction_context": reconstruction_context,
+            "reconstruction_prompt": self._build_downstream_reconstruction_prompt(
+                slide=slide,
+                elements=elements,
+                relationships=relationships,
+                colors=colors,
+            ),
+        }
+
+    @staticmethod
+    def _build_reconstruction_element(element, width: float, height: float):
+        left = (element.position.x / width) * 100 if width else 0
+        top = (element.position.y / height) * 100 if height else 0
+        elem_width = (element.position.width / width) * 100 if width else 0
+        elem_height = (element.position.height / height) * 100 if height else 0
+        style = element.style.model_dump() if element.style else {}
+        text = element.text.strip().replace("\n", " ") if element.text else ""
+        image_summary = (
+            element.metadata.get("image_summary")
+            or element.metadata.get("summary")
+            or ""
+        )
+
+        return {
+            "id": element.element_id,
+            "type": element.element_type,
+            "content": {
+                "text": text,
+                "table_markdown": element.table_markdown,
+                "image_description": image_summary,
+            },
+            "position_percent": {
+                "left": round(left, 2),
+                "top": round(top, 2),
+                "width": round(elem_width, 2),
+                "height": round(elem_height, 2),
+            },
+            "position_emu": {
+                "x": element.position.x,
+                "y": element.position.y,
+                "width": element.position.width,
+                "height": element.position.height,
+            },
+            "style": style,
+            "shape": {
+                "shape_type": element.shape_type,
+                "auto_shape_type": element.metadata.get("auto_shape_type"),
+                "border_color": element.metadata.get("border_color"),
+                "border_width": element.metadata.get("border_width"),
+                "rotation": element.metadata.get("rotation", 0),
+                "name": element.metadata.get("name", ""),
+            },
+            "z_order": element.metadata.get("z_order", 0),
+            "rendering_instruction": (
+                "Render this element at the given percentage bounds. Preserve text, "
+                "fill, typography, and relative size. For image elements, recreate "
+                "the described image content in the same region."
+            ),
+        }
+
+    @staticmethod
+    def _slide_canvas_size(slide) -> tuple[float, float]:
+        width = 12192000.0
+        height = 6858000.0
+        for element in slide.elements:
+            if element.position:
+                width = max(width, element.position.x + element.position.width)
+                height = max(height, element.position.y + element.position.height)
+        return width, height
+
+    @staticmethod
+    def _aspect_ratio_label(width: float, height: float) -> str:
+        if not height:
+            return "unknown"
+        ratio = width / height
+        if abs(ratio - 16 / 9) < 0.05:
+            return "16:9"
+        if abs(ratio - 4 / 3) < 0.05:
+            return "4:3"
+        if abs(ratio - 16 / 10) < 0.05:
+            return "16:10"
+        return f"{width:.0f}:{height:.0f}"
+
+    @staticmethod
+    def _extract_slide_colors(slide) -> list[str]:
+        colors = set()
+        if slide.background_color:
+            colors.add(slide.background_color)
+        for element in slide.elements:
+            if not element.style:
+                continue
+            if element.style.background_color:
+                colors.add(element.style.background_color)
+            if element.style.text_color:
+                colors.add(element.style.text_color)
+        if slide.image_reconstruction:
+            colors.update(slide.image_reconstruction.color_palette)
+        return sorted(c for c in colors if c)
+
+    @staticmethod
+    def _reading_order(slide) -> list[str]:
+        if slide.flowchart and slide.flowchart.reading_order:
+            return slide.flowchart.reading_order
+        return [
+            element.element_id
+            for element in sorted(
+                slide.elements,
+                key=lambda e: (e.position.y, e.position.x),
+            )
+        ]
+
+    @staticmethod
+    def _relationship_instruction(relationship) -> str:
+        label = f" with visible label '{relationship.label}'" if relationship.label else ""
+        return (
+            f"Draw a connector from {relationship.source_element_id} to "
+            f"{relationship.target_element_id}{label}."
+        )
+
+    @staticmethod
+    def _infer_reconstruction_purpose(slide) -> str:
+        if slide.semantic_flow and slide.semantic_flow.plain_english_summary:
+            return slide.semantic_flow.plain_english_summary
+        if slide.slide_summary:
+            first_line = slide.slide_summary.strip().splitlines()[0]
+            return first_line.replace("#", "").strip()
+        if slide.title:
+            return f"Recreate a slide explaining {slide.title}."
+        return "Recreate the presentation slide from extracted visual and semantic structure."
+
+    @staticmethod
+    def _build_downstream_reconstruction_prompt(
+        slide,
+        elements,
+        relationships,
+        colors,
+    ) -> str:
+        lines = [
+            "Recreate a presentation slide that is visually and semantically similar to the source slide.",
+            f"Slide title: {slide.title or '(none)'}",
+            f"Background color: {slide.background_color or 'not explicitly detected'}",
+            f"Color palette: {', '.join(colors) if colors else 'not explicitly detected'}",
+        ]
+
+        if slide.slide_summary:
+            lines.extend(["", "Semantic summary:", slide.slide_summary])
+        if slide.image_reconstruction and slide.image_reconstruction.layout_description:
+            lines.extend(["", "Layout description:", slide.image_reconstruction.layout_description])
+
+        lines.append("")
+        lines.append("Place these elements on a 100% x 100% slide canvas:")
+        for element in elements:
+            pos = element["position_percent"]
+            content = element["content"]
+            text = content["text"] or content["image_description"] or content["table_markdown"] or ""
+            lines.append(
+                "- {id} ({type}) at left {left}%, top {top}%, width {width}%, height {height}%: {text}".format(
+                    id=element["id"],
+                    type=element["type"],
+                    left=pos["left"],
+                    top=pos["top"],
+                    width=pos["width"],
+                    height=pos["height"],
+                    text=text,
+                )
+            )
+
+        if relationships:
+            lines.append("")
+            lines.append("Connectors and logic:")
+            for relationship in relationships:
+                lines.append(f"- {relationship['instruction']}")
+
+        lines.append("")
+        lines.append(
+            "Preserve the relative layout, visual hierarchy, text content, shape styling, "
+            "colors, and information flow. If an exact asset cannot be reproduced, generate "
+            "a visually similar asset that communicates the same concept."
+        )
+        return "\n".join(lines)
 
     @staticmethod
     def _sanitize_metadata(metadata: dict) -> dict:

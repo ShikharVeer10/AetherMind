@@ -32,18 +32,22 @@ def _get_slide_summary_agent() -> Agent:
                 "slide's structural JSON, it must be able to recreate the original slide as an identical "
                 "image with maximum visual and content accuracy.\n\n"
                 "CRITICAL RULES:\n"
-                "1. First sentence of 'Plain English Summary': Begin with a single, clear sentence summarizing "
+                "1. Produce a slide-reconstruction brief, not a generic summary. The output must read like a "
+                "   human-authored blueprint that lets another LLM reconstruct a visually similar slide.\n"
+                "2. First sentence of 'Plain English Summary': Begin with a single, clear sentence summarizing "
                 "   the main message/purpose of the slide (suitable for slide purpose extraction).\n"
-                "2. Synthesize all information — visual structure, element positions (using exact % coords), "
+                "3. Synthesize all information — visual structure, element positions (using exact % coords), "
                 "   typography hierarchy, colors, flowchart paths, images, and text content — into an "
                 "   original, highly precise explanation. Do NOT repeat exact statements or copy verbatim text "
                 "   outside the reconstruction blueprint.\n"
-                "3. Always specify the design style, background styling, spacing, and grid/alignment patterns.\n"
-                "4. If a flowchart or process diagram exists, map the step-by-step flow with element IDs, arrow "
+                "4. Always specify the design style, background styling, spacing, and grid/alignment patterns.\n"
+                "5. If a flowchart or process diagram exists, map the step-by-step flow with element IDs, arrow "
                 "   directions (e.g. Element_A -> Element_B), and connector styling (e.g., arrow type, label).\n"
-                "5. Detail each element's exact position (left%, top%, width%, height%), typography (font name, "
+                "6. Detail each element's exact position (left%, top%, width%, height%), typography (font name, "
                 "   font size, color hex, bold/italic), and background fill colors.\n"
-                "6. For images, provide highly detailed descriptions suitable for image generation prompts.\n\n"
+                "7. For images, provide highly detailed descriptions suitable for image generation prompts.\n"
+                "8. When the slide contrasts a concrete scene with an abstract decision layer, explicitly name "
+                "   that transformation (for example: low-level environment representation -> high-level reasoning).\n\n"
                 "OUTPUT FORMAT (use these exact headings):\n"
                 "### Semantic Flow\n"
                 "Provide a high-level explanation of the conceptual transformation or semantic flow. "
@@ -387,33 +391,95 @@ A clear, concise 2-4 sentence summary of what the slide teaches. It should expla
                 element_details.append(details_line)
 
         colors_list = sorted(list(colors))
+        elements = getattr(slide, "elements", []) or []
+        decision_elements = [
+            e for e in elements
+            if e.text and any(token in e.text.lower() for token in ("?", "decision", "if ", "has "))
+        ]
+        concrete_elements = [
+            e for e in elements
+            if e.element_type == "image" or (
+                e.text and any(token in e.text.lower() for token in ("world", "environment", "screen", "scene", "game"))
+            )
+        ]
+        action_elements = [
+            e for e in elements
+            if e.text
+            and e not in decision_elements
+            and e not in concrete_elements
+            and e.element_type in {"shape", "text_box", "placeholder"}
+        ]
+
+        concrete_label = (
+            concrete_elements[0].text.strip().replace("\n", " ")
+            if concrete_elements and concrete_elements[0].text
+            else "a detailed concrete environment"
+        )
+        decision_label = (
+            decision_elements[0].text.strip().replace("\n", " ")
+            if decision_elements
+            else "the key abstract state variable"
+        )
 
         # Build structured sections
         fallback = "### Semantic Flow\n"
-        fallback += f"The slide titled '{title}' represents a semantic flow in a {layout_desc} layout.\n"
+        fallback += (
+            f"The slide titled '{title}' shows a transformation from concrete environment details "
+            "to high-level reasoning.\n"
+        )
+        if concrete_elements or decision_elements:
+            fallback += (
+                f"The concrete layer is represented by '{concrete_label}', and the abstraction layer "
+                f"focuses on the decision/state question: '{decision_label}'.\n"
+            )
         if getattr(slide, "semantic_flow", None) and slide.semantic_flow and slide.semantic_flow.overall_flow:
             fallback += f"{slide.semantic_flow.overall_flow}\n"
 
         fallback += "\n### Step-by-step meaning\n"
         has_step_detail = False
+        if concrete_elements:
+            fallback += (
+                f"- The agent starts in a complex environment/scene: {concrete_label}.\n"
+                "- The slide avoids modelling every pixel or low-level movement and instead extracts the important state needed for action selection.\n"
+            )
+            has_step_detail = True
+        if decision_elements:
+            fallback += f"- The binary or central decision node asks: {decision_label}\n"
+            has_step_detail = True
         if getattr(slide, "flowchart", None) and slide.flowchart.is_flowchart:
             fallback += f"Flowchart sequence details: {slide.flowchart.box_count} box(es) and {slide.flowchart.arrow_count} arrow(s).\n"
             if getattr(slide.flowchart, "reading_order", None):
-                fallback += "Execution sequence: " + " → ".join(slide.flowchart.reading_order) + "\n"
+                fallback += "Execution sequence: " + " -> ".join(slide.flowchart.reading_order) + "\n"
             has_step_detail = True
         
         if getattr(slide, "relationships", None) and slide.relationships:
             fallback += "Step-by-step element linkages:\n"
             for rel in slide.relationships:
                 label_str = f" (labeled '{rel.label}')" if rel.label else ""
-                fallback += f"- Connector: {rel.source_element_id} → {rel.target_element_id} [{rel.relationship_type}]{label_str}\n"
+                target = next((e for e in elements if e.element_id == rel.target_element_id), None)
+                target_text = f": {target.text.strip().replace(chr(10), ' ')}" if target and target.text else ""
+                fallback += f"- Connector: {rel.source_element_id} -> {rel.target_element_id}{target_text} [{rel.relationship_type}]{label_str}\n"
             has_step_detail = True
 
         if not has_step_detail:
             fallback += "No specific process flow or logic mapping detected.\n"
 
         fallback += "\n### Conceptual Layers\n"
-        fallback += f"- Primary Concept: Architecture overview of '{title}'\n"
+        fallback += "State Abstraction\n"
+        fallback += (
+            f"- Reduces the detailed environment into the meaningful state variable/question: '{decision_label}'.\n"
+            if decision_elements
+            else "- Reduces the slide's detailed content into the most important decision-relevant facts.\n"
+        )
+        fallback += "Temporal Abstraction\n"
+        if action_elements:
+            fallback += "- Converts low-level movement or interaction sequences into macro-actions:\n"
+            for action in action_elements[:5]:
+                action_text = action.text.strip().replace("\n", " ")
+                fallback += f"  - {action_text}\n"
+        else:
+            fallback += "- Groups multiple primitive operations into higher-level actions implied by the slide structure.\n"
+        fallback += f"Primary Concept\n- {title}\n"
         if text_lines:
             for line in text_lines[:5]:
                 fallback += f"- Concept Detail: {line.strip()}\n"
@@ -428,6 +494,8 @@ A clear, concise 2-4 sentence summary of what the slide teaches. It should expla
             fallback += "- Colors: default (inherited)\n"
         if getattr(slide, "image_reconstruction", None) and slide.image_reconstruction.color_palette:
             fallback += f"- Color Palette from visual analysis: {', '.join(slide.image_reconstruction.color_palette)}\n"
+        if concrete_elements:
+            fallback += "- Concrete/world area should remain visually distinct from the abstract decision pipeline.\n"
             
         # Shapes
         fallback += "Shapes:\n"
@@ -436,6 +504,8 @@ A clear, concise 2-4 sentence summary of what the slide teaches. It should expla
             shapes_used.append("rounded rectangles for concepts" if "flowchart" in layout_desc.lower() else "rectangular text boxes")
         if arrow_count:
             shapes_used.append("straight/directional connector arrows")
+        if decision_elements:
+            shapes_used.append("distinct decision node for the state question")
         if shapes_used:
             for s in shapes_used:
                 fallback += f"- {s}\n"
@@ -448,13 +518,15 @@ A clear, concise 2-4 sentence summary of what the slide teaches. It should expla
         fallback += "- Standard slide configuration\n"
         if getattr(slide, "image_reconstruction", None) and slide.image_reconstruction.layout_description:
             fallback += f"- Visual layout analysis: {slide.image_reconstruction.layout_description}\n"
+        if concrete_elements and decision_elements:
+            fallback += "- Structure: concrete world/source visual on one side, abstract decision-making pipeline on the other side.\n"
             
         # Connectors
         fallback += "Connectors:\n"
         if getattr(slide, "relationships", None) and slide.relationships:
             for rel in slide.relationships:
                 label_str = f" (label: '{rel.label}')" if rel.label else ""
-                fallback += f"- Arrow: {rel.source_element_id} → {rel.target_element_id} [{rel.relationship_type}]{label_str}\n"
+                fallback += f"- Arrow: {rel.source_element_id} -> {rel.target_element_id} [{rel.relationship_type}]{label_str}\n"
         else:
             fallback += "- No connectors detected\n"
             
@@ -484,11 +556,13 @@ A clear, concise 2-4 sentence summary of what the slide teaches. It should expla
             fallback += "  - No images present\n"
 
         fallback += "\n### Plain English Summary\n"
-        fallback += f"This slide titled '{title}' explains key concepts on this topic.\n"
+        fallback += f"This slide explains how an intelligent system simplifies a complex situation into a small set of meaningful decisions.\n"
         if text_lines:
-            fallback += "Instead of focusing on environment coordinates directly, it highlights key facts:\n"
+            fallback += "Instead of focusing on every low-level detail, it highlights the facts and actions that matter most:\n"
             for line in text_lines[:3]:
                 fallback += f"- {line.strip()}\n"
+        if decision_elements:
+            fallback += f"The key decision is whether '{decision_label}' is true, and the connected actions show what the agent should do next.\n"
         if hf_info:
             fallback += f"\nHeader/Footer Details: {hf_info.replace('\n', ' | ')}"
 

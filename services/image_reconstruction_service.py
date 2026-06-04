@@ -137,13 +137,8 @@ class ImageReconstructionService:
 
         return connectors
 
-    def _extract_object_inventory(
-        self,
-        slide: SlideModel
-    ) -> list[str]:
-
+    def _extract_object_inventory(self,slide: SlideModel) -> list[str]:
         inventory = []
-
         for element in slide.elements:
             desc = f"ID: {element.element_id} | Type: {element.element_type}"
             if element.text:
@@ -160,11 +155,7 @@ class ImageReconstructionService:
 
         return inventory
 
-    def _build_visual_hierarchy(
-        self,
-        slide: SlideModel
-    ) -> list[str]:
-
+    def _build_visual_hierarchy(self,slide: SlideModel) -> list[str]:
         hierarchy = []
 
         if slide.title:
@@ -183,10 +174,7 @@ class ImageReconstructionService:
 
         return hierarchy
 
-    def _extract_layout_regions(
-        self,
-        slide: SlideModel
-    ) -> list[str]:
+    def _extract_layout_regions(self,slide: SlideModel) -> list[str]:
 
         if not slide.layout_structure:
             return []
@@ -201,10 +189,7 @@ class ImageReconstructionService:
 
         return regions
 
-    def _detect_design_style(
-        self,
-        slide: SlideModel
-    ) -> str:
+    def _detect_design_style(self,slide: SlideModel) -> str:
 
         if (
             slide.flowchart
@@ -222,10 +207,7 @@ class ImageReconstructionService:
 
         return "presentation"
 
-    def _build_recreation_prompt(
-        self,
-        slide: SlideModel
-    ) -> str:
+    def _build_recreation_prompt(self,slide: SlideModel) -> str:
 
         title = slide.title or "Untitled Slide"
         width = 12192000.0

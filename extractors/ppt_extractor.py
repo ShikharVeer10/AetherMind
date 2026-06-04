@@ -78,6 +78,7 @@ class PPTExtractor:
                 shape=shape,
                 slide_number=slide_number,
                 shape_index=index,
+                z_order=index,
                 prefix=f"slide_{slide_number}",
             )
             for element in elements:
@@ -107,7 +108,14 @@ class PPTExtractor:
             background_color=slide_bg_color,
         )
 
-    def _extract_shape_recursive(self,shape,slide_number: int,shape_index: int,prefix: str,) -> List[DocumentElementModel]:
+    def _extract_shape_recursive(
+        self,
+        shape,
+        slide_number: int,
+        shape_index: int,
+        prefix: str,
+        z_order: int = 0,
+    ) -> List[DocumentElementModel]:
         if shape.shape_type == MSO_SHAPE_TYPE.GROUP:
             child_elements = []
             group_shapes = getattr(shape, "shapes", [])
@@ -118,15 +126,20 @@ class PPTExtractor:
                         shape=child_shape,
                         slide_number=slide_number,
                         shape_index=child_idx,
+                        z_order=z_order + child_idx,
                         prefix=child_prefix,
                     )
                 )
             return child_elements
-        element = self._extract_single_shape(shape=shape,element_id=f"{prefix}_shape_{shape_index}",)
+        element = self._extract_single_shape(
+            shape=shape,
+            element_id=f"{prefix}_shape_{shape_index}",
+            z_order=z_order,
+        )
         return [element] if element is not None else []
 
     def _extract_single_shape(
-        self, shape, element_id: str
+        self, shape, element_id: str, z_order: int = 0
     ) -> Optional[DocumentElementModel]:
         paragraphs: List[ParagraphModel] = []
         full_text: Optional[str] = None
@@ -188,6 +201,7 @@ class PPTExtractor:
         style = self._extract_text_style(shape)
         element_type = self._get_shape_type(shape)
         metadata = self._extract_shape_metadata(shape, element_type)
+        metadata["z_order"] = z_order
         table_md: Optional[str] = None
         if element_type == "table":
             table_md = self.extract_table_as_markdown(shape)
@@ -255,6 +269,20 @@ class PPTExtractor:
 
     def _extract_shape_metadata(self, shape, element_type: str) -> dict:
         metadata: dict = {}
+        metadata["name"] = getattr(shape, "name", "")
+        try:
+            metadata["rotation"] = float(shape.rotation or 0)
+        except Exception:
+            metadata["rotation"] = 0
+        try:
+            metadata["visible"] = bool(getattr(shape, "visible", True))
+        except Exception:
+            metadata["visible"] = True
+        try:
+            metadata["is_placeholder"] = bool(getattr(shape, "is_placeholder", False))
+        except Exception:
+            metadata["is_placeholder"] = False
+
         if element_type == "table":
             metadata["table_data"] = self._extract_table_data(shape)
         if element_type == "image":
