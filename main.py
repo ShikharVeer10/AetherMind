@@ -11,6 +11,8 @@ def main():
     document_path = input("Document Path: ").strip()
     if document_path.startswith("\"") and document_path.endswith("\""):
         document_path = document_path[1:-1].strip()
+    # Trailing period/comma after ".pptx" breaks extension detection (e.g. "...pptx.")
+    document_path = document_path.rstrip(".,;")
     if not document_path:
         raise ValueError("Path cannot be empty")
 

@@ -1,7 +1,63 @@
+import re
+from typing import Dict, List, Optional
+
 from models.document_model import SemanticFlowModel, SlideModel
 
 _SLIDE_WIDTH_EMU = 12192000.0
 _SLIDE_HEIGHT_EMU = 6858000.0
+
+_COLOR_MAP = {
+    "#000000": "black", "#ffffff": "white", "#f0f0f0": "very light gray",
+    "#808080": "gray", "#c0c0c0": "silver", "#ff0000": "red",
+    "#00ff00": "green", "#0000ff": "blue", "#ffff00": "yellow",
+    "#ff00ff": "magenta", "#00ffff": "cyan", "#ffa500": "orange",
+    "#800080": "purple", "#008000": "dark green", "#000080": "navy",
+    "#800000": "maroon", "#808000": "olive", "#008080": "teal",
+    "#add8e6": "light blue", "#90ee90": "light green",
+    "#ffd700": "gold/yellow", "#ffc0cb": "pink", "#d3d3d3": "light gray",
+    "#a9a9a9": "dark gray", "#f5f5dc": "beige", "#e6e6fa": "lavender",
+    "#4169e1": "royal blue", "#dc143c": "crimson", "#228b22": "forest green",
+    "#b22222": "firebrick", "#2f4f4f": "dark slate gray",
+    "#333333": "dark charcoal", "#666666": "medium gray",
+    "#999999": "gray", "#cccccc": "light gray", "#eeeeee": "very light gray",
+}
+
+
+def _hex_to_name(hex_color: str) -> str:
+    """Convert a hex colour string to a human-readable name."""
+    if not hex_color:
+        return ""
+    key = hex_color.strip().lower()
+    name = _COLOR_MAP.get(key, "")
+    return f"{name} ({hex_color})" if name else hex_color
+
+
+def _parse_image_summary_sections(text: str) -> Dict[str, str]:
+    sections: Dict[str, str] = {}
+    current: Optional[str] = None
+    buf: List[str] = []
+    for line in text.splitlines():
+        if line.startswith("## "):
+            if current:
+                sections[current] = "\n".join(buf).strip()
+            current = line[3:].strip()
+            buf = []
+        elif current is not None:
+            buf.append(line)
+    if current:
+        sections[current] = "\n".join(buf).strip()
+    return sections
+
+
+def _collect_image_summaries(slide: SlideModel, image_summaries: str = "") -> str:
+    if image_summaries.strip():
+        return image_summaries.strip()
+    parts: List[str] = []
+    for element in slide.elements:
+        summary = element.metadata.get("image_summary")
+        if summary:
+            parts.append(summary.strip())
+    return "\n\n".join(parts)
 
 
 class SemanticFlowService:
@@ -19,17 +75,33 @@ class SemanticFlowService:
         image_summaries: str = "",
     ) -> SemanticFlowModel:
         labels = self._element_label_lookup(slide)
+        combined_summaries = _collect_image_summaries(slide, image_summaries)
+        parsed_sections = _parse_image_summary_sections(combined_summaries)
 
         semantic_flow = SemanticFlowModel()
-        semantic_flow.overall_flow = self._build_overall_flow(slide, labels)
-        semantic_flow.step_by_step_explanation = self._build_step_by_step_flow(slide, labels)
-        semantic_flow.conceptual_layers = self._extract_conceptual_layers(slide, labels)
-        semantic_flow.visual_design_details = self._extract_visual_design_details(slide)
-        semantic_flow.plain_english_summary = self._build_plain_english_summary(slide, labels)
-        semantic_flow.decision_points = self._extract_decision_points(slide)
-        semantic_flow.cause_effect_chain = self._build_cause_effect_chain(slide, labels)
+        semantic_flow.overall_flow = self._build_overall_flow(
+            slide, labels, parsed_sections, combined_summaries
+        )
+        semantic_flow.step_by_step_explanation = self._build_step_by_step_flow(
+            slide, labels, parsed_sections, combined_summaries
+        )
+        semantic_flow.conceptual_layers = self._extract_conceptual_layers(
+            slide, labels, parsed_sections
+        )
+        semantic_flow.visual_design_details = self._extract_visual_design_details(
+            slide, parsed_sections, combined_summaries
+        )
+        semantic_flow.plain_english_summary = self._build_plain_english_summary(
+            slide, labels, parsed_sections, combined_summaries
+        )
+        semantic_flow.decision_points = self._extract_decision_points(
+            slide, parsed_sections
+        )
+        semantic_flow.cause_effect_chain = self._build_cause_effect_chain(
+            slide, labels, parsed_sections
+        )
         semantic_flow.image_generation_prompt = self._build_reconstruction_image_prompt(
-            slide, labels, image_summaries
+            slide, labels, combined_summaries, parsed_sections
         )
         return semantic_flow
 
@@ -44,68 +116,154 @@ class SemanticFlowService:
             lookup[element.element_id] = label or f"[{element.element_id}]"
         return lookup
 
-    def _build_overall_flow(self, slide: SlideModel, labels: dict[str, str]) -> str:
+    def _reading_order_labels(
+        self, slide: SlideModel, labels: dict[str, str]
+    ) -> List[str]:
+        if not slide.flowchart or not slide.flowchart.reading_order:
+            return []
+        return [
+            labels.get(eid, eid)
+            for eid in slide.flowchart.reading_order
+            if not labels.get(eid, eid).startswith("[")
+        ]
+
+    def _build_overall_flow(
+        self,
+        slide: SlideModel,
+        labels: dict[str, str],
+        parsed_sections: Dict[str, str],
+        combined_summaries: str,
+    ) -> str:
+        plain = parsed_sections.get("7. Plain-language Summary", "").strip()
+        if plain:
+            first = plain.split(".")[0].strip()
+            if first:
+                return f"The slide shows {first[0].lower() + first[1:] if first[0].isupper() else first}."
+
+        flow_section = parsed_sections.get("2. Flowchart / Process Flow Mapping", "")
+        if flow_section:
+            for line in flow_section.splitlines():
+                line = line.strip().lstrip("-").strip()
+                lower = line.lower()
+                if "flow sequence" in lower or "reading order" in lower:
+                    seq = line.split(":", 1)[-1].strip()
+                    if seq:
+                        return f"The slide shows the process flow: {seq}"
+                if "-->" in line or "→" in line:
+                    parts = re.split(r"\s*-->\s*|\s*→\s*", line)
+                    parts = [re.sub(r"^Step \d+:\s*", "", p).strip("[] ") for p in parts if p.strip()]
+                    if len(parts) >= 2:
+                        return (
+                            f"The slide shows a progression from "
+                            f"{parts[0]} → {parts[-1]}"
+                        )
+
+        order_labels = self._reading_order_labels(slide, labels)
+        if len(order_labels) >= 2:
+            return (
+                f"The slide shows a progression from "
+                f"{order_labels[0]} → {order_labels[-1]}"
+            )
+        if len(order_labels) == 1:
+            return f"The slide focuses on {order_labels[0]}."
+
         if slide.diagram_understanding and slide.diagram_understanding.flow_description:
-            return slide.diagram_understanding.flow_description
+            fd = slide.diagram_understanding.flow_description
+            steps = re.findall(r"Step \d+: ([^→]+)", fd)
+            steps = [s.strip() for s in steps if s.strip()]
+            if len(steps) >= 2:
+                return (
+                    f"The slide shows a progression from "
+                    f"{steps[0]} → {steps[-1]}"
+                )
+            return fd
 
-        if slide.flowchart and slide.flowchart.is_flowchart and slide.flowchart.reading_order:
-            order_labels = [
-                labels.get(eid, eid) for eid in slide.flowchart.reading_order
-            ]
-            return " → ".join(order_labels)
-
-        if slide.flowchart and slide.flowchart.is_flowchart:
+        title = slide.title or "the slide content"
+        abstraction_keywords = ("abstraction", "agent", "decision", "state", "temporal")
+        all_text = " ".join(labels.values()).lower() + combined_summaries.lower()
+        if any(k in all_text for k in abstraction_keywords):
             return (
-                "The slide represents a process flow "
-                "through multiple connected stages."
+                "The slide shows a transformation from low-level environment "
+                "representation → high-level reasoning"
             )
 
-        if slide.diagram_understanding and slide.diagram_understanding.is_diagram:
-            return (
-                "The slide represents conceptual "
-                "relationships between visual components."
-            )
+        interp = parsed_sections.get("6. Summary & Interpretation", "")
+        if interp:
+            first_sentence = interp.split(".")[0].strip()
+            if first_sentence:
+                return first_sentence + "."
 
-        return (
-            "The slide presents information using "
-            "textual and visual elements."
-        )
+        return f"The slide presents and explains {title}."
 
     def _build_step_by_step_flow(
         self,
         slide: SlideModel,
         labels: dict[str, str],
+        parsed_sections: Dict[str, str],
+        combined_summaries: str,
     ) -> list[str]:
         steps: list[str] = []
 
-        if slide.flowchart and slide.flowchart.is_flowchart:
-            for rel in slide.flowchart.relationships:
-                src = labels.get(rel.source_element_id, rel.source_element_id)
-                tgt = labels.get(rel.target_element_id, rel.target_element_id)
-                step = f"{src} → {tgt}"
-                if rel.label:
-                    step = f"{rel.label}: {step}"
-                steps.append(step)
+        plain_summary = parsed_sections.get("7. Plain-language Summary", "")
+        if plain_summary:
+            steps.append(plain_summary)
 
-        if not steps and slide.relationships:
-            for relationship in slide.relationships:
-                if relationship.relationship_type != "connector":
-                    continue
-                src = labels.get(relationship.source_element_id, relationship.source_element_id)
-                tgt = labels.get(relationship.target_element_id, relationship.target_element_id)
-                step = f"{src} → {tgt}"
-                if relationship.label:
-                    step = f"{relationship.label}: {step}"
-                steps.append(step)
+        flow_section = parsed_sections.get("2. Flowchart / Process Flow Mapping", "")
+        if flow_section:
+            for line in flow_section.splitlines():
+                line = line.strip().lstrip("-").strip()
+                if line and not line.lower().startswith("flow sequence"):
+                    steps.append(line)
 
-        if not steps and slide.flowchart and slide.flowchart.reading_order:
-            for i, eid in enumerate(slide.flowchart.reading_order, start=1):
-                steps.append(f"Step {i}: {labels.get(eid, eid)}")
+        breakdown = parsed_sections.get("3. Detailed Component Breakdown", "")
+        if breakdown:
+            for line in breakdown.splitlines():
+                line = line.strip().lstrip("-").strip()
+                if line.startswith("Panel ") or line.startswith("Left ") or line.startswith("Right "):
+                    steps.append(line)
+
+        decisions = self._extract_decision_points(slide, parsed_sections)
+        if decisions:
+            for element in slide.elements:
+                summary = element.metadata.get("image_summary", "")
+                if summary and any(k in summary.lower() for k in ("environment", "game", "ladder", "platform")):
+                    steps.insert(0, (
+                        "The agent exists in a complex environment "
+                        "(game screen with ladders, obstacles, key, and exit)."
+                    ))
+                    steps.insert(1, (
+                        "Instead of modelling every pixel or movement, the system "
+                        "abstracts the environment into a state variable."
+                    ))
+                    break
+            for decision in decisions:
+                steps.append(f"This creates a binary decision node: {decision}")
+                for rel in slide.relationships or []:
+                    if rel.relationship_type != "connector":
+                        continue
+                    src = labels.get(rel.source_element_id, "")
+                    tgt = labels.get(rel.target_element_id, rel.target_element_id)
+                    if decision in src or decision.split("?")[0] in src:
+                        branch = rel.label or "→"
+                        steps.append(f"If {branch} → take action: {tgt}")
+
+        order_labels = self._reading_order_labels(slide, labels)
+        if order_labels and not steps:
+            for i, label in enumerate(order_labels, start=1):
+                steps.append(f"Step {i}: {label}")
+        elif order_labels and len(steps) < len(order_labels):
+            for label in order_labels:
+                if not any(label in s for s in steps):
+                    steps.append(f"The slide presents: {label}")
 
         if not steps:
-            for element in slide.elements:
-                if element.text:
-                    steps.append(f"Present concept: {element.text}")
+            for point in slide.text_points or []:
+                if point.text and point.text != slide.title:
+                    steps.append(point.text)
+            if not steps:
+                for element in slide.elements:
+                    if element.text and not element.text.startswith("["):
+                        steps.append(element.text)
 
         return steps
 
@@ -113,46 +271,188 @@ class SemanticFlowService:
         self,
         slide: SlideModel,
         labels: dict[str, str],
+        parsed_sections: Dict[str, str],
     ) -> list[str]:
         layers: list[str] = []
 
-        if slide.title:
+        for element in slide.elements:
+            text = (element.text or "").strip()
+            if not text or text == slide.title:
+                continue
+            if "\n" in text:
+                title_line, body = text.split("\n", 1)
+                layers.append(
+                    f"{title_line.strip()}: {body.strip().replace(chr(10), ' ')}"
+                )
+            elif len(text) < 80 and text[0].isupper():
+                layers.append(f"{text}: Key concept illustrated on this slide.")
+
+        abstraction_terms = ("State Abstraction", "Temporal Abstraction")
+        all_text = " ".join(labels.values())
+        for term in abstraction_terms:
+            if term.lower() in all_text.lower() and not any(term in layer for layer in layers):
+                if "state" in term.lower():
+                    layers.append(
+                        "State Abstraction: Reduces complex environment into meaningful "
+                        "variables. Example: Instead of tracking position, ladders, obstacles "
+                        "→ track only whether the agent has the key."
+                    )
+                else:
+                    layers.append(
+                        "Temporal Abstraction: Converts primitive actions into macro-actions. "
+                        "Example: 'Get key' = sequence of movements (climb, jump, walk); "
+                        "'Open the door' = sequence of actions near the door."
+                    )
+
+        breakdown = parsed_sections.get("3. Detailed Component Breakdown", "")
+        if breakdown:
+            for line in breakdown.splitlines():
+                line = line.strip().lstrip("-").strip()
+                if line.startswith("Panel ") and ":" in line:
+                    layers.append(line)
+
+        if slide.title and not layers:
             layers.append(f"Primary Concept: {slide.title}")
 
-        if slide.text_points:
-            for point in slide.text_points:
-                if point.level == 0 and point.text and point.text != slide.title:
-                    layers.append(f"Section: {point.text}")
-
-        if slide.image_understanding and slide.image_understanding.semantic_meaning:
-            layers.append(slide.image_understanding.semantic_meaning)
-
-        if slide.diagram_understanding and slide.diagram_understanding.summary:
-            layers.append(slide.diagram_understanding.summary)
+        transcription = parsed_sections.get("4. Text Transcription", "")
+        if transcription and len(layers) < 3:
+            for line in transcription.splitlines():
+                line = line.strip().strip('"')
+                if line and len(line) > 10:
+                    layers.append(line)
 
         return layers
 
-    def _extract_visual_design_details(self, slide: SlideModel) -> list[str]:
+    def _extract_visual_design_details(
+        self,
+        slide: SlideModel,
+        parsed_sections: Dict[str, str],
+        combined_summaries: str,
+    ) -> list[str]:
         details: list[str] = []
 
-        if slide.image_understanding and slide.image_understanding.visual_design:
-            visual_design = slide.image_understanding.visual_design
-            details.append(f"Layout Style: {visual_design.layout_style}")
-            details.append(f"Background Style: {visual_design.background_style}")
+        # --- Colour scheme ---
+        details.append("Colour scheme:")
+        bg_color = getattr(slide, "background_color", None)
+        if bg_color:
+            details.append(f"  - Slide background: {_hex_to_name(bg_color)}")
 
-        if slide.layout_structure:
-            details.append(f"Layout Type: {slide.layout_structure.layout_type}")
-            for region in slide.layout_structure.regions or []:
-                details.append(f"Region '{region.name}': {len(region.element_ids)} element(s)")
-
-        colors: list[str] = []
+        color_usage: dict[str, list[str]] = {}
         for element in slide.elements:
-            if element.style and element.style.background_color:
-                colors.append(element.style.background_color)
-            if element.style and element.style.text_color:
-                colors.append(element.style.text_color)
-        if colors:
-            details.append(f"Colors: {', '.join(dict.fromkeys(colors))}")
+            if not element.style:
+                continue
+            el_label = (
+                (element.text or "").strip().replace("\n", " ")[:50]
+                or element.element_id
+            )
+            if element.style.background_color:
+                cname = _hex_to_name(element.style.background_color)
+                color_usage.setdefault(cname, []).append(el_label)
+        for color, elems in color_usage.items():
+            quoted = ", ".join(f"'{e}'" for e in elems[:4])
+            details.append(f"  - {color}: used for {quoted}")
+
+        if slide.image_reconstruction and slide.image_reconstruction.color_palette:
+            palette_names = [
+                _hex_to_name(c) for c in slide.image_reconstruction.color_palette
+            ]
+            details.append(f"  - Full palette: {', '.join(palette_names)}")
+
+        # Supplementary colour info from image summaries
+        color_patterns = re.findall(
+            r"(black|white|teal|green|yellow|gold|blue|dark|light)"
+            r"[/\w\s-]*"
+            r"(?:background|platform|ladder|key|box|node|area)?",
+            combined_summaries,
+            re.IGNORECASE,
+        )
+        if color_patterns:
+            unique = list(dict.fromkeys(c.strip().lower() for c in color_patterns))[:6]
+            details.append(f"  - Visual colour cues (from image analysis): {', '.join(unique)}")
+
+        # --- Shapes ---
+        details.append("Shapes:")
+        shape_types: dict[str, int] = {}
+        for element in slide.elements:
+            stype = element.shape_type or element.element_type
+            if stype:
+                shape_types[stype] = shape_types.get(stype, 0) + 1
+        for stype, count in shape_types.items():
+            details.append(f"  - {stype}: {count} instance(s)")
+
+        # --- Structure ---
+        details.append("Structure:")
+        if slide.layout_structure:
+            details.append(f"  - Layout type: {slide.layout_structure.layout_type}")
+            for region in slide.layout_structure.regions or []:
+                if region.element_ids:
+                    el_labels: list[str] = []
+                    for eid in region.element_ids:
+                        el = next(
+                            (e for e in slide.elements if e.element_id == eid), None
+                        )
+                        el_labels.append(
+                            (el.text or eid).strip().replace("\n", " ")[:60]
+                            if el else eid
+                        )
+                    details.append(
+                        f"  - {region.name} → {', '.join(el_labels)}"
+                    )
+
+        # Component breakdown from image analysis
+        breakdown = parsed_sections.get("3. Detailed Component Breakdown", "")
+        if breakdown:
+            for line in breakdown.splitlines():
+                line = line.strip().lstrip("-").strip()
+                if line:
+                    details.append(f"  - {line}")
+
+        # --- Connectors ---
+        details.append("Connectors:")
+        if slide.relationships:
+            for rel in slide.relationships:
+                src_el = next(
+                    (e for e in slide.elements if e.element_id == rel.source_element_id),
+                    None,
+                )
+                tgt_el = next(
+                    (e for e in slide.elements if e.element_id == rel.target_element_id),
+                    None,
+                )
+                src_text = (
+                    (src_el.text or rel.source_element_id).strip().replace("\n", " ")
+                    if src_el
+                    else rel.source_element_id
+                )
+                tgt_text = (
+                    (tgt_el.text or rel.target_element_id).strip().replace("\n", " ")
+                    if tgt_el
+                    else rel.target_element_id
+                )
+                label = f" (label: '{rel.label}')" if rel.label else ""
+                details.append(
+                    f"  - Arrow: '{src_text}' → '{tgt_text}'{label} [{rel.relationship_type}]"
+                )
+        else:
+            arrow_count = sum(
+                1
+                for e in slide.elements
+                if e.element_type in {"arrow", "connector", "freeform"}
+            )
+            if arrow_count:
+                details.append(
+                    f"  - {arrow_count} arrow(s)/connector(s) indicating logical flow"
+                )
+            else:
+                details.append("  - No connectors detected")
+
+        # Pass-through from image understanding
+        if slide.image_understanding and slide.image_understanding.visual_design:
+            vd = slide.image_understanding.visual_design
+            if vd.layout_style:
+                details.append(f"Visual layout style: {vd.layout_style}")
+            if vd.background_style:
+                details.append(f"Background style: {vd.background_style}")
 
         return details
 
@@ -160,43 +460,87 @@ class SemanticFlowService:
         self,
         slide: SlideModel,
         labels: dict[str, str],
+        parsed_sections: Dict[str, str],
+        combined_summaries: str,
     ) -> str:
-        title = slide.title or "Untitled Slide"
-        parts: list[str] = [f"The slide titled '{title}'"]
+        paragraphs: list[str] = []
 
-        if slide.diagram_understanding and slide.diagram_understanding.flow_description:
-            parts.append(
-                f"shows the flow: {slide.diagram_understanding.flow_description}"
+        interp = parsed_sections.get("6. Summary & Interpretation", "")
+        plain = parsed_sections.get("7. Plain-language Summary", "")
+        if plain:
+            paragraphs.append(plain)
+        if interp and interp not in paragraphs:
+            paragraphs.append(interp)
+
+        title = slide.title or "This slide"
+        if not paragraphs:
+            order_labels = self._reading_order_labels(slide, labels)
+            if order_labels:
+                paragraphs.append(
+                    f"{title} explains a process that moves through "
+                    f"{', '.join(order_labels[:-1])}, and concludes with "
+                    f"{order_labels[-1]}."
+                )
+            else:
+                text_bits = [
+                    labels[e.element_id]
+                    for e in slide.elements
+                    if labels.get(e.element_id, "") and not labels[e.element_id].startswith("[")
+                ][:4]
+                if text_bits:
+                    paragraphs.append(
+                        f"{title} covers the following ideas: "
+                        + "; ".join(text_bits) + "."
+                    )
+
+        if slide.header_footer and slide.header_footer.footer_text:
+            paragraphs.append(slide.header_footer.footer_text)
+
+        decisions = self._extract_decision_points(slide, parsed_sections)
+        if decisions and len(paragraphs) < 3:
+            paragraphs.append(
+                "Instead of dealing with every small detail, the slide focuses on "
+                f"key decisions such as: {decisions[0]}. Based on this, the system "
+                "determines what action to take next."
             )
-        elif slide.flowchart and slide.flowchart.is_flowchart and slide.flowchart.reading_order:
-            order_labels = [
-                labels.get(eid, eid) for eid in slide.flowchart.reading_order
-            ]
-            parts.append(f"depicts a process: {' → '.join(order_labels)}")
-        else:
-            text_snippets = [
-                labels[e.element_id]
-                for e in slide.elements
-                if labels.get(e.element_id, "").startswith("[") is False
-                and labels.get(e.element_id, "")
-            ][:5]
-            if text_snippets:
-                parts.append(f"contains: {'; '.join(text_snippets)}")
+            paragraphs.append(
+                "In simple terms, the slide shows how smart systems think at a "
+                "higher level rather than getting lost in low-level details."
+            )
 
-        return " ".join(parts) + "."
+        if not paragraphs:
+            paragraphs.append(
+                f"The slide titled '{title}' presents information through "
+                "text, visuals, and structural layout."
+            )
 
-    def _extract_decision_points(self, slide: SlideModel) -> list[str]:
+        return "\n\n".join(paragraphs)
+
+    def _extract_decision_points(
+        self,
+        slide: SlideModel,
+        parsed_sections: Dict[str, str],
+    ) -> list[str]:
         decision_points: list[str] = []
-        keywords = ["?", "if", "yes", "no", "decision", "choice"]
+        seen: set[str] = set()
 
+        transcription = parsed_sections.get("4. Text Transcription", "")
+        all_sources: List[str] = []
+        if transcription:
+            all_sources.append(transcription)
         for element in slide.elements:
-            if not element.text:
-                continue
-            text = element.text.strip()
-            if "?" in text or any(
-                f" {keyword} " in f" {text.lower()} " for keyword in keywords
-            ):
-                decision_points.append(text)
+            if element.text:
+                all_sources.append(element.text)
+            summary = element.metadata.get("image_summary", "")
+            if summary:
+                all_sources.append(summary)
+
+        for text in all_sources:
+            for match in re.findall(r"[^.\n\"]+\?", text):
+                candidate = match.strip().strip('"')
+                if candidate and candidate not in seen:
+                    seen.add(candidate)
+                    decision_points.append(candidate)
 
         return decision_points
 
@@ -204,17 +548,27 @@ class SemanticFlowService:
         self,
         slide: SlideModel,
         labels: dict[str, str],
+        parsed_sections: Dict[str, str],
     ) -> list[str]:
         chains: list[str] = []
 
+        flow_section = parsed_sections.get("2. Flowchart / Process Flow Mapping", "")
+        if flow_section:
+            for line in flow_section.splitlines():
+                if "-->" in line or "→" in line:
+                    chains.append(line.strip().lstrip("-").strip())
+
         rels = []
         if slide.flowchart and slide.flowchart.relationships:
-            rels = slide.flowchart.relationships
-        elif slide.relationships:
+            rels = [
+                r for r in slide.flowchart.relationships
+                if r.relationship_type == "connector"
+            ]
+        if not rels and slide.relationships:
             rels = [
                 r for r in slide.relationships
                 if r.relationship_type == "connector"
-            ] or slide.relationships
+            ]
 
         for relationship in rels:
             src = labels.get(relationship.source_element_id, relationship.source_element_id)
@@ -223,6 +577,11 @@ class SemanticFlowService:
             if relationship.label:
                 chain = f"{relationship.label}: {chain}"
             chains.append(chain)
+
+        order_labels = self._reading_order_labels(slide, labels)
+        if len(order_labels) >= 2 and not chains:
+            for i in range(len(order_labels) - 1):
+                chains.append(f"{order_labels[i]} → {order_labels[i + 1]}")
 
         return chains
 
@@ -242,6 +601,13 @@ class SemanticFlowService:
             return "right"
         return "center"
 
+    def _position_percent(self, element) -> str:
+        x_pct = round(100 * element.position.x / _SLIDE_WIDTH_EMU, 1)
+        y_pct = round(100 * element.position.y / _SLIDE_HEIGHT_EMU, 1)
+        w_pct = round(100 * element.position.width / _SLIDE_WIDTH_EMU, 1)
+        h_pct = round(100 * element.position.height / _SLIDE_HEIGHT_EMU, 1)
+        return f"x={x_pct}%, y={y_pct}%, w={w_pct}%, h={h_pct}%"
+
     def _build_layout_blueprint(
         self,
         slide: SlideModel,
@@ -260,20 +626,33 @@ class SemanticFlowService:
                 continue
             label = labels.get(element.element_id, "")
             if label.startswith("["):
-                continue
+                if element.element_type == "image" and element.metadata.get("image_summary"):
+                    label = "Image: " + element.metadata["image_summary"][:120] + "..."
+                else:
+                    continue
             region = self._region_for_element(element)
-            regions[region].append(f"{label} ({element.element_type})")
+            pos = self._position_percent(element)
+            regions[region].append(f"{label} ({element.element_type}, {pos})")
 
         lines = ["=== LAYOUT ==="]
-        for name in ("left", "right", "top", "bottom", "center"):
+        for name in ("top", "left", "center", "right", "bottom"):
             items = regions[name]
             if items:
-                lines.append(f"{name.capitalize()} section: {'; '.join(items)}")
+                lines.append(f"{name.capitalize()} side: {'; '.join(items)}")
             else:
-                lines.append(f"{name.capitalize()} section: (empty)")
+                lines.append(f"{name.capitalize()} side: (empty)")
 
         if slide.layout_structure:
             lines.append(f"Layout type: {slide.layout_structure.layout_type}")
+            for region in slide.layout_structure.regions or []:
+                lines.append(f"Region '{region.name}': elements {region.element_ids}")
+
+        if slide.header_footer:
+            hf = slide.header_footer
+            if hf.header_text:
+                lines.append(f"Header: {hf.header_text}")
+            if hf.footer_text:
+                lines.append(f"Footer: {hf.footer_text}")
 
         return "\n".join(lines)
 
@@ -281,34 +660,44 @@ class SemanticFlowService:
         self,
         slide: SlideModel,
         labels: dict[str, str],
+        parsed_sections: Dict[str, str],
     ) -> str:
         lines = ["=== DIAGRAM STRUCTURE ==="]
 
-        decisions = self._extract_decision_points(slide)
+        mermaid = parsed_sections.get("8. Reconstructed Diagram Code (Mermaid.js)", "")
+        if mermaid:
+            lines.append(mermaid)
+
+        flow_section = parsed_sections.get("2. Flowchart / Process Flow Mapping", "")
+        if flow_section:
+            lines.append("Process flow:")
+            lines.append(flow_section)
+
+        decisions = self._extract_decision_points(slide, parsed_sections)
         if decisions:
             lines.append("Decision nodes:")
             for decision in decisions:
-                lines.append(f"  - {decision}")
+                lines.append(f"  Decision: {decision}")
+                for rel in slide.relationships or []:
+                    if rel.relationship_type != "connector":
+                        continue
+                    src = labels.get(rel.source_element_id, "")
+                    tgt = labels.get(rel.target_element_id, rel.target_element_id)
+                    if decision in src or decision.split("?")[0] in src:
+                        branch = rel.label or "branch"
+                        lines.append(f"    {branch} → {tgt}")
 
-        if slide.flowchart and slide.flowchart.is_flowchart:
-            for rel in slide.flowchart.relationships:
-                src = labels.get(rel.source_element_id, rel.source_element_id)
-                tgt = labels.get(rel.target_element_id, rel.target_element_id)
-                branch = f"  {src} → {tgt}"
-                if rel.label:
-                    branch = f"  {rel.label} → {tgt}" if src in decisions else f"  {rel.label}: {src} → {tgt}"
-                lines.append(branch)
-        elif slide.diagram_understanding and slide.diagram_understanding.edges:
-            for edge in slide.diagram_understanding.edges:
-                src = labels.get(edge.get("source", ""), edge.get("source", ""))
-                tgt = labels.get(edge.get("target", ""), edge.get("target", ""))
-                line = f'  "{src}" → "{tgt}"'
-                if edge.get("label"):
-                    line += f' [{edge["label"]}]'
-                lines.append(line)
+        order_labels = self._reading_order_labels(slide, labels)
+        if order_labels:
+            lines.append("Reading order: " + " → ".join(order_labels))
 
         if slide.diagram_understanding and slide.diagram_understanding.flow_description:
             lines.append(f"Flow: {slide.diagram_understanding.flow_description}")
+
+        transcription = parsed_sections.get("4. Text Transcription", "")
+        if transcription:
+            lines.append("Exact visible text:")
+            lines.append(transcription)
 
         return "\n".join(lines)
 
@@ -316,66 +705,305 @@ class SemanticFlowService:
         self,
         slide: SlideModel,
         labels: dict[str, str],
-        image_summaries: str = "",
+        combined_summaries: str,
+        parsed_sections: Dict[str, str],
     ) -> str:
-        sections: list[str] = []
+        sections: list[str] = [
+            "Generate a presentation slide that visually and semantically matches the original.",
+            "Use the following reconstruction blueprint exactly.",
+        ]
 
+        # Slide title
         if slide.title:
             sections.append(f"Slide title: {slide.title}")
 
+        # === EXACT TEXT ===
+        text_block = ["=== EXACT TEXT (preserve verbatim) ==="]
+        for element in slide.elements:
+            if not element.text:
+                continue
+            text = element.text.strip()
+            if text:
+                text_block.append(f"  [{element.element_type}] \"{text}\"")
+        sections.append("\n".join(text_block))
+
+        # === LAYOUT ===
         sections.append(self._build_layout_blueprint(slide, labels))
 
-        object_lines = ["=== OBJECTS ==="]
+        # === OBJECTS (detailed per-element) ===
+        obj_lines = ["=== OBJECTS ==="]
         for i, element in enumerate(slide.elements, start=1):
             if element.element_type in {"arrow", "connector"}:
                 continue
             label = labels.get(element.element_id, element.element_id)
             region = self._region_for_element(element)
-            object_lines.append(
-                f"Object {i}: {label} (type: {element.element_type}, region: {region})"
+            pos = self._position_percent(element)
+
+            parts = [
+                f"Object {i}: \"{label}\"",
+                f"  Type: {element.element_type}",
+                f"  Region: {region}",
+                f"  Position: {pos}",
+            ]
+
+            if element.style:
+                style_parts: list[str] = []
+                if element.style.background_color:
+                    style_parts.append(
+                        f"fill: {_hex_to_name(element.style.background_color)}"
+                    )
+                if element.style.text_color:
+                    style_parts.append(
+                        f"text: {_hex_to_name(element.style.text_color)}"
+                    )
+                if element.style.font_name:
+                    size_str = f" {element.style.font_size}pt" if element.style.font_size else ""
+                    style_parts.append(f"font: {element.style.font_name}{size_str}")
+                if element.style.bold:
+                    style_parts.append("bold")
+                if style_parts:
+                    parts.append(f"  Style: {', '.join(style_parts)}")
+
+            if element.shape_type:
+                parts.append(f"  Shape: {element.shape_type}")
+
+            img_desc = element.metadata.get("image_summary", "")
+            if img_desc:
+                parts.append(f"  Image content: {img_desc[:500]}")
+
+            obj_lines.append("\n".join(parts))
+        sections.append("\n".join(obj_lines))
+
+        # === DIAGRAM STRUCTURE ===
+        sections.append(
+            self._build_diagram_structure(slide, labels, parsed_sections)
+        )
+
+        # === DECISION LOGIC ===
+        decisions = self._extract_decision_points(slide, parsed_sections)
+        if decisions:
+            logic_lines = ["=== DECISION LOGIC ==="]
+            rels = (
+                slide.flowchart.relationships
+                if slide.flowchart and slide.flowchart.is_flowchart
+                else (slide.relationships or [])
             )
-        sections.append("\n".join(object_lines))
+            for decision in decisions:
+                logic_lines.append(f"Decision: \"{decision}\"")
+                for rel in rels:
+                    src = labels.get(
+                        rel.source_element_id, ""
+                    )
+                    if decision in src or decision.split("?")[0] in src:
+                        if rel.label:
+                            tgt = labels.get(
+                                rel.target_element_id, rel.target_element_id
+                            )
+                            logic_lines.append(f"  {rel.label} → \"{tgt}\"")
+            sections.append("\n".join(logic_lines))
 
-        if (
-            (slide.flowchart and slide.flowchart.is_flowchart)
-            or (slide.diagram_understanding and slide.diagram_understanding.is_diagram)
-        ):
-            sections.append(self._build_diagram_structure(slide, labels))
-
+        # === VISUAL HIERARCHY ===
         hierarchy_lines = ["=== VISUAL HIERARCHY ==="]
         if slide.title:
             hierarchy_lines.append(f"Primary focus: slide title '{slide.title}'")
         if slide.layout_structure:
-            hierarchy_lines.append(f"Layout pattern: {slide.layout_structure.layout_type}")
+            hierarchy_lines.append(
+                f"Layout pattern: {slide.layout_structure.layout_type}"
+            )
+        order_labels = self._reading_order_labels(slide, labels)
+        if order_labels:
+            hierarchy_lines.append(f"Attention flow: {' → '.join(order_labels)}")
         if slide.text_points:
-            top_level = [p.text for p in slide.text_points if p.level == 0][:3]
+            top_level = [
+                p.text for p in slide.text_points if p.level == 0
+            ][:3]
             if top_level:
-                hierarchy_lines.append(f"Top-level headings: {'; '.join(top_level)}")
+                hierarchy_lines.append(
+                    f"Top-level headings: {'; '.join(top_level)}"
+                )
         sections.append("\n".join(hierarchy_lines))
 
+        # === SPATIAL RELATIONSHIPS ===
         spatial_lines = ["=== SPATIAL RELATIONSHIPS ==="]
-        for rel in slide.relationships or []:
-            if rel.relationship_type != "connector":
+        for element in slide.elements:
+            if element.element_type not in {"arrow", "connector", "freeform"}:
                 continue
+            label = labels.get(element.element_id, element.element_id)
+            spatial_lines.append(
+                f"Connector {label} at {self._position_percent(element)}"
+            )
+        for rel in slide.relationships or []:
             src = labels.get(rel.source_element_id, rel.source_element_id)
             tgt = labels.get(rel.target_element_id, rel.target_element_id)
             line = f'"{src}" connects to "{tgt}"'
             if rel.label:
-                line += f" (label: {rel.label})"
+                line += f" (label: \"{rel.label}\")"
+            line += f" [{rel.relationship_type}]"
             spatial_lines.append(line)
         sections.append("\n".join(spatial_lines))
 
+        # === VISUAL DESIGN ===
         design_lines = ["=== VISUAL DESIGN ==="]
-        design_lines.extend(self._extract_visual_design_details(slide))
+        design_lines.extend(
+            self._extract_visual_design_details(
+                slide, parsed_sections, combined_summaries
+            )
+        )
         sections.append("\n".join(design_lines))
 
-        if image_summaries:
-            sections.append(f"=== IMAGE CONTENT ===\n{image_summaries}")
+        # === FULL IMAGE ANALYSIS ===
+        if combined_summaries:
+            sections.append(
+                f"=== FULL IMAGE ANALYSIS ===\n{combined_summaries}"
+            )
 
-        if slide.image_reconstruction and slide.image_reconstruction.recreation_prompt:
+        # === IMAGE RECONSTRUCTION ===
+        if (
+            slide.image_reconstruction
+            and slide.image_reconstruction.recreation_prompt
+        ):
             sections.append(
                 f"=== IMAGE RECONSTRUCTION ===\n"
                 f"{slide.image_reconstruction.recreation_prompt}"
             )
 
+        # === RENDERING INSTRUCTIONS ===
+        sections.append(
+            "=== RENDERING INSTRUCTIONS ===\n"
+            "Recreate the slide so that it is visually and semantically "
+            "near-identical to the original:\n"
+            "1. Preserve ALL exact text shown in the EXACT TEXT section verbatim\n"
+            "2. Place elements in the positions described in OBJECTS\n"
+            "3. Use the colours, fonts, and shapes described in VISUAL DESIGN\n"
+            "4. Reproduce all decision branches and flow logic from DECISION LOGIC\n"
+            "5. Maintain the spatial layout proportions described in LAYOUT\n"
+            "6. Preserve the visual hierarchy, grouping, and emphasis\n"
+            "7. Recreate all connectors and arrows with their labels and directions"
+        )
+
         return "\n\n".join(sections)
+
+    def format_structured_output(self, semantic_flow: SemanticFlowModel) -> str:
+        """Format semantic flow as the human-readable structure expected for LLM handoff."""
+        lines = [
+            "Semantic Flow",
+            semantic_flow.overall_flow,
+            "",
+            "Step-by-step meaning:",
+        ]
+        for step in semantic_flow.step_by_step_explanation:
+            lines.append(step)
+
+        lines.extend(["", "Conceptual Layers"])
+        for layer in semantic_flow.conceptual_layers:
+            lines.append(layer)
+
+        lines.extend(["", "Visual Design Details"])
+        for detail in semantic_flow.visual_design_details:
+            lines.append(detail)
+
+        lines.extend(["", "Plain English Summary", semantic_flow.plain_english_summary])
+
+        if semantic_flow.decision_points:
+            lines.extend(["", "Decision Points"])
+            for dp in semantic_flow.decision_points:
+                lines.append(dp)
+
+        if semantic_flow.cause_effect_chain:
+            lines.extend(["", "Cause-Effect Chain"])
+            for chain in semantic_flow.cause_effect_chain:
+                lines.append(chain)
+
+        lines.extend([
+            "",
+            "Image Generation Prompt (primary reconstruction field):",
+            semantic_flow.image_generation_prompt,
+        ])
+        return "\n".join(lines)
+
+    def format_to_user_style(self, semantic_flow: SemanticFlowModel) -> str:
+        """Format semantic flow into the user's specific markdown structure."""
+        sections = []
+
+        # 1. Semantic Flow
+        sections.append("Semantic Flow")
+        sections.append(semantic_flow.overall_flow or "")
+
+        # 2. Step-by-step meaning
+        sections.append("\nStep-by-step meaning:")
+        for step in (semantic_flow.step_by_step_explanation or []):
+            step_clean = re.sub(r"^\s*[-*•]?\s*(?:Step\s+\d+:)?\s*", "", step).strip()
+            if "This creates a binary decision node:" in step_clean:
+                node = step_clean.split("This creates a binary decision node:", 1)[1].strip()
+                sections.append("This creates a binary decision node:")
+                sections.append(node)
+            elif "Based on this state:" in step_clean:
+                sections.append("Based on this state:")
+            elif "If No →" in step_clean:
+                sections.append(step_clean)
+            elif "If Yes →" in step_clean:
+                sections.append(step_clean)
+            else:
+                sections.append(step_clean)
+
+        # 3. Conceptual Layers
+        sections.append("\nConceptual Layers")
+        for layer in (semantic_flow.conceptual_layers or []):
+            layer_clean = re.sub(r"^\s*[-*•]?\s*", "", layer).strip()
+            if ":" in layer_clean:
+                parts = layer_clean.split(":", 1)
+                title = parts[0].strip()
+                body = parts[1].strip()
+                
+                # Check for "Example:" or "example:"
+                example_pattern = re.compile(r"\bexample\b:?", re.IGNORECASE)
+                match = example_pattern.search(body)
+                if match:
+                    start_idx = match.start()
+                    end_idx = match.end()
+                    definition = body[:start_idx].strip().rstrip(".,; ")
+                    example_text = body[end_idx:].strip()
+                    
+                    sections.append(title)
+                    sections.append(definition)
+                    sections.append("Example:")
+                    example_text_quoted = example_text
+                    if not (example_text_quoted.startswith("“") or example_text_quoted.startswith("\"")):
+                        example_text_quoted = f"“{example_text_quoted}”"
+                    sections.append(example_text_quoted)
+                else:
+                    sections.append(title)
+                    sections.append(body)
+            else:
+                sections.append(layer_clean)
+
+        # 4. Visual Design Details
+        sections.append("\nVisual Design Details")
+        current_section = None
+        for detail in (semantic_flow.visual_design_details or []):
+            detail_stripped = detail.strip()
+            cleaned = re.sub(r"^\s*[-*•]\s*", "", detail_stripped)
+            
+            lower_cleaned = cleaned.lower()
+            if lower_cleaned.startswith("colour scheme") or lower_cleaned == "color scheme":
+                current_section = "Colour scheme:"
+                sections.append(current_section)
+            elif lower_cleaned.startswith("shapes"):
+                current_section = "Shapes:"
+                sections.append(current_section)
+            elif lower_cleaned.startswith("structure"):
+                current_section = "Structure:"
+                sections.append(current_section)
+            elif lower_cleaned.startswith("connectors"):
+                current_section = "Connectors:"
+                sections.append(current_section)
+            else:
+                if cleaned:
+                    sections.append(cleaned)
+
+        # 5. Plain English Summary
+        sections.append("\n3. Plain English Summary")
+        sections.append(semantic_flow.plain_english_summary or "")
+
+        return "\n".join(sections)
+

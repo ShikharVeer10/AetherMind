@@ -3,7 +3,6 @@ from models.document_model import SemanticSlideDescriptionModel, SlideModel
 
 class SemanticSlideService:
     def analyze_slide(self, slide: SlideModel) -> SemanticSlideDescriptionModel:
-        title = slide.title or ""
         semantic_flow = (
             slide.semantic_flow.overall_flow if slide.semantic_flow else ""
         )
@@ -48,9 +47,17 @@ class SemanticSlideService:
         )
 
     def _build_image_prompt(self, slide: SlideModel) -> str:
-        from services.semantic_flow_service import SemanticFlowService
+        from services.semantic_flow_service import (
+            SemanticFlowService,
+            _collect_image_summaries,
+            _parse_image_summary_sections,
+        )
 
+        combined = _collect_image_summaries(slide)
+        parsed = _parse_image_summary_sections(combined)
         return SemanticFlowService()._build_reconstruction_image_prompt(
             slide,
             SemanticFlowService()._element_label_lookup(slide),
+            combined,
+            parsed,
         )

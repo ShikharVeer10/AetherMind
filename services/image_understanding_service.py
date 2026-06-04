@@ -34,13 +34,36 @@ class ImageUnderstandingService:
         return "content_slide"
 
     def _build_scene_description(self, slide: SlideModel) -> str:
+        from services.semantic_flow_service import _collect_image_summaries, _parse_image_summary_sections
+
+        combined = _collect_image_summaries(slide)
+        if combined:
+            sections = _parse_image_summary_sections(combined)
+            plain = sections.get("7. Plain-language Summary", "")
+            if plain:
+                return plain
+            breakdown = sections.get("3. Detailed Component Breakdown", "")
+            if breakdown:
+                return breakdown.replace("\n", " ")[:500]
+
         title = slide.title or "Untitled Slide"
+        text_parts = [
+            (element.text or "").strip()
+            for element in slide.elements
+            if element.text and element.element_type != "image"
+        ]
+        if text_parts:
+            return f"Slide '{title}': " + "; ".join(text_parts[:4])
+
         image_count = sum(1 for element in slide.elements if element.element_type == "image")
-        shape_count = sum(1 for element in slide.elements if element.element_type == "shape")
+        visual_count = sum(
+            1 for element in slide.elements
+            if element.element_type in {"shape", "text_box", "placeholder", "freeform", "image"}
+        )
         return (
             f"Slide titled '{title}' contains "
             f"{image_count} image(s) and "
-            f"{shape_count} shape(s)."
+            f"{visual_count} visual element(s)."
         )
 
     def _extract_objects(self,slide: SlideModel) -> list[str]:
@@ -101,18 +124,29 @@ class ImageUnderstandingService:
 
         return relationships
 
-    def _build_semantic_meaning(self,slide: SlideModel) -> str:
+    def _build_semantic_meaning(self, slide: SlideModel) -> str:
+        if slide.semantic_flow and slide.semantic_flow.overall_flow:
+            return slide.semantic_flow.overall_flow
+
+        from services.semantic_flow_service import _collect_image_summaries, _parse_image_summary_sections
+
+        combined = _collect_image_summaries(slide)
+        if combined:
+            sections = _parse_image_summary_sections(combined)
+            interp = sections.get("6. Summary & Interpretation", "")
+            if interp:
+                return interp
+
+        if slide.diagram_understanding and slide.diagram_understanding.flow_description:
+            return slide.diagram_understanding.flow_description
+
         if slide.flowchart and slide.flowchart.is_flowchart:
             return "The slide explains a process flow through connected stages."
-        if (slide.diagram_understanding and slide.diagram_understanding.is_diagram):
-            return (
-                "The slide explains relationships "
-                "between concepts."
-            )
-        return (
-            "The slide presents information "
-            "through visual and textual elements."
-        )
+
+        if slide.diagram_understanding and slide.diagram_understanding.is_diagram:
+            return "The slide explains relationships between concepts."
+
+        return "The slide presents information through visual and textual elements."
 
     def _build_visual_design(
         self,
@@ -180,12 +214,9 @@ class ImageUnderstandingService:
         self,
         slide: SlideModel
     ) -> str:
+        if slide.semantic_flow and slide.semantic_flow.image_generation_prompt:
+            return slide.semantic_flow.image_generation_prompt
 
-        title = slide.title or ""
+        from services.semantic_flow_service import SemanticFlowService
 
-        return (
-            f"Create a presentation slide titled "
-            f"'{title}'. Preserve layout, visual "
-            f"structure, colors, relationships, "
-            f"flow and textual content."
-        )
+        return SemanticFlowService().analyze_slide(slide).image_generation_prompt

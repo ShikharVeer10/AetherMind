@@ -19,8 +19,8 @@ class ExtractionService:
         enable_summaries: bool = False,
         enable_image_summaries: bool = False,
     ):
-        self.document_path = document_path
-        self.document_extension = Path(document_path).suffix.lower()
+        self.document_path = self._normalize_document_path(document_path)
+        self.document_extension = self._resolve_extension(self.document_path)
         self.enable_summaries = enable_summaries
         self.enable_image_summaries = enable_image_summaries
 
@@ -34,6 +34,25 @@ class ExtractionService:
         if self.enable_image_summaries:
             from agents.image_summarization_agent import ImageSummaryAgent
             self.image_summarization_agent = ImageSummaryAgent()
+
+    @staticmethod
+    def _normalize_document_path(document_path: str) -> str:
+        path = document_path.strip()
+        if (path.startswith('"') and path.endswith('"')) or (
+            path.startswith("'") and path.endswith("'")
+        ):
+            path = path[1:-1].strip()
+        return path.rstrip(".,;")
+
+    @staticmethod
+    def _resolve_extension(document_path: str) -> str:
+        suffix = Path(document_path).suffix.lower()
+        if suffix == ".pptx":
+            return suffix
+        name = Path(document_path).name.lower().rstrip(".,;")
+        if name.endswith(".pptx"):
+            return ".pptx"
+        return suffix
 
     async def extract_document(self):
         if self.document_extension != ".pptx":
@@ -81,7 +100,28 @@ class ExtractionService:
         with open(json_output_file, "w", encoding="utf-8") as f:
             json.dump(output_payload, f, indent=4, ensure_ascii=False)
 
+        # Generate a clean human-readable text summary of all slides
+        from services.semantic_flow_service import SemanticFlowService
+        svc = SemanticFlowService()
+        
+        summary_blocks = []
+        for slide in extracted_document.slides:
+            summary_blocks.append(f"======================================================================")
+            summary_blocks.append(f"Slide {slide.slide_number}: {slide.title or '(no title)'}")
+            summary_blocks.append(f"======================================================================")
+            if slide.semantic_flow:
+                formatted = svc.format_to_user_style(slide.semantic_flow)
+                summary_blocks.append(formatted)
+            else:
+                summary_blocks.append("(No semantic flow data generated)")
+            summary_blocks.append("\n")
+
+        summary_output_file = output_path / f"{document_name}_summary.txt"
+        with open(summary_output_file, "w", encoding="utf-8") as f:
+            f.write("\n".join(summary_blocks))
+
         return json_output_file
+
 
     def _format_output(self, extracted_document):
         slides_payload = []

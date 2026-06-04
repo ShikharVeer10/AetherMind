@@ -13,6 +13,26 @@ _RECONSTRUCTION_SYSTEM_PROMPT = (
     "You are an expert presentation analyst, diagram reasoning specialist, and visual reconstruction architect.\n"
     "Your task is NOT to summarize — it is to produce a reconstruction blueprint so another AI can recreate "
     "this slide with matching meaning, flow, diagram structure, layout, and visual intent.\n\n"
+    "OUTPUT STYLE EXAMPLE (match this depth and structure):\n"
+    "overall_flow: 'The slide shows a transformation from low-level environment representation → high-level reasoning'\n"
+    "step_by_step_explanation: [\n"
+    "  'The agent exists in a complex environment (game screen with ladders, obstacles, key, and exit).',\n"
+    "  'Instead of modelling every pixel or movement, the system abstracts the environment into a state variable: Whether the agent has the key or not.',\n"
+    "  'This creates a binary decision node: Agent has key?',\n"
+    "  'If No → take a higher-level action: Get key',\n"
+    "  'If Yes → take another higher-level action: Open the door'\n"
+    "]\n"
+    "conceptual_layers: [\n"
+    "  'State Abstraction: Reduces complex environment into meaningful variables. Example: Instead of tracking position, ladders, obstacles → track only: Does the agent have the key?',\n"
+    "  'Temporal Abstraction: Converts primitive actions into macro-actions. Example: Get key = sequence of movements; Open the door = sequence of actions near the door'\n"
+    "]\n"
+    "visual_design_details: [\n"
+    "  'Colour scheme: Dark/black background, teal/green platforms and ladders, yellow/gold key, light green action boxes, light blue decision node',\n"
+    "  'Shapes: Rounded rectangles for abstract concepts, straight connectors for decision logic',\n"
+    "  'Structure: Left → Concrete world; Right → Abstract decision-making pipeline',\n"
+    "  'Connectors: Diagonal connector links game to abstraction layer; arrows indicate logical flow'\n"
+    "]\n"
+    "plain_english_summary: Multi-paragraph (3-5 paragraphs) educational explanation preserving all key terms and flow logic.\n\n"
     "CRITICAL EXTRACTION RULES — NEVER VIOLATE:\n"
     "- Do NOT summarize away diagram structure.\n"
     "- Do NOT reduce diagrams to node counts or edge counts.\n"
@@ -21,29 +41,23 @@ _RECONSTRUCTION_SYSTEM_PROMPT = (
     "- ALWAYS preserve exact visible text, decision branches, yes/no labels, connector labels, "
     "flow direction, hierarchy, object relationships, and relative positioning.\n\n"
     "FIELD INSTRUCTIONS:\n"
-    "1. overall_flow: High-level semantic flow using EXACT labels from the slide (not generic phrases).\n"
-    "2. step_by_step_explanation: Step-by-step logical flow with exact text at each step. "
-    "For flowcharts include decision branches (e.g. 'No → Get key', 'Yes → Open the door').\n"
-    "3. conceptual_layers: Named abstraction layers visible on the slide with exact labels and examples.\n"
-    "4. visual_design_details: Colors, shapes, grouping, alignment, hierarchy, styling (exact descriptors).\n"
-    "5. plain_english_summary: 2-4 sentences preserving key terms and flow meaning.\n"
-    "6. decision_points: Every decision node with EXACT question text (e.g. 'Agent has key?').\n"
+    "1. overall_flow: One sentence describing the conceptual transformation or semantic progression (use exact slide labels).\n"
+    "2. step_by_step_explanation: Narrative steps explaining meaning — NOT element IDs. Include decision branches with exact text.\n"
+    "3. conceptual_layers: Named layers with definitions and concrete examples from the slide.\n"
+    "4. visual_design_details: Colour scheme, shapes, spatial structure, connectors — specific and visual.\n"
+    "5. plain_english_summary: 3-5 paragraphs explaining what the slide teaches in plain language.\n"
+    "6. decision_points: Every decision node with EXACT question text.\n"
     "7. cause_effect_chain: Causal links using exact element text and branch labels.\n"
-    "8. image_generation_prompt: PRIMARY reconstruction field. Must be a detailed blueprint with these sections:\n"
-    "   === LAYOUT ===\n"
-    "   Left side / Right side / Top / Bottom / Center — describe what occupies each region.\n"
-    "   === OBJECTS ===\n"
-    "   List every visible object with exact text, type, and relative placement.\n"
-    "   === DIAGRAM STRUCTURE ===\n"
-    "   For flowcharts: decision nodes, process nodes, branch labels, connector directions, full logical flow.\n"
-    "   === VISUAL HIERARCHY ===\n"
-    "   Importance, grouping, alignment, emphasis.\n"
-    "   === SPATIAL RELATIONSHIPS ===\n"
-    "   Object/node placement, connector placement, arrow directions, proportions (e.g. left 60%).\n"
-    "   === VISUAL DESIGN ===\n"
-    "   Colors, shapes, backgrounds, styling.\n"
-    "If the original slide disappeared, this output alone must be enough to recreate a visually and "
-    "semantically similar version."
+    "8. image_generation_prompt: PRIMARY reconstruction field — a complete visual blueprint with sections:\n"
+    "   === LAYOUT === (left/right/top/bottom/center with contents and proportions)\n"
+    "   === OBJECTS === (every visible object with exact text, type, placement)\n"
+    "   === DIAGRAM STRUCTURE === (decisions, branches, flow, exact text, mermaid if applicable)\n"
+    "   === VISUAL HIERARCHY === (importance, grouping, emphasis)\n"
+    "   === SPATIAL RELATIONSHIPS === (placement, connectors, arrow directions)\n"
+    "   === VISUAL DESIGN === (colors, shapes, styling)\n"
+    "   === RENDERING INSTRUCTIONS === (how to recreate near-identically)\n"
+    "If the original slide disappeared, image_generation_prompt alone must be enough for another model "
+    "to generate a visually and semantically near-identical slide."
 )
 
 _JSON_SCHEMA_HINT = (
@@ -159,6 +173,38 @@ def _build_reconstruction_context(slide) -> str:
                     line += f' [connector label: {rel.label}]'
                 rel_lines.append(line)
             sections.append("--- Connector Relationships ---\n" + "\n".join(rel_lines))
+
+    # Element-level visual details
+    elem_lines = []
+    for element in slide.elements:
+        if element.element_type in {"arrow", "connector"}:
+            continue
+        label = labels.get(element.element_id, element.element_id)
+        parts = [f"  - [{element.element_type}] \"{label}\""]
+        if hasattr(element, "style") and element.style:
+            if element.style.background_color:
+                parts.append(f"    fill: {element.style.background_color}")
+            if element.style.text_color:
+                parts.append(f"    text colour: {element.style.text_color}")
+            if element.style.font_name:
+                size = f" {element.style.font_size}pt" if element.style.font_size else ""
+                parts.append(f"    font: {element.style.font_name}{size}")
+            if element.style.bold:
+                parts.append("    bold: yes")
+        if hasattr(element, "shape_type") and element.shape_type:
+            parts.append(f"    shape: {element.shape_type}")
+        if hasattr(element, "position") and element.position:
+            left_pct = round(100 * element.position.x / 12192000, 1)
+            top_pct = round(100 * element.position.y / 6858000, 1)
+            w_pct = round(100 * element.position.width / 12192000, 1)
+            h_pct = round(100 * element.position.height / 6858000, 1)
+            parts.append(f"    position: left {left_pct}%, top {top_pct}%, width {w_pct}%, height {h_pct}%")
+        elem_lines.append("\n".join(parts))
+    if elem_lines:
+        sections.append(
+            "--- Element Visual Details (position, style, shape) ---\n"
+            + "\n".join(elem_lines)
+        )
 
     return "\n\n".join(sections)
 

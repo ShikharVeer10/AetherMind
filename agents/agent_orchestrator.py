@@ -174,13 +174,19 @@ class AgentOrchestrator:
                 image_summaries=image_summary_text or "",
             )
 
-        # 12.5) Slide summary (moved after semantic services to access rich layout, color, and design variables)
+        if slide_model.semantic_flow:
+            slide_model.slide_summary = SemanticFlowService().format_structured_output(
+                slide_model.semantic_flow
+            )
+
+        # 12.5) Slide summary (fallback if semantic flow did not produce structured output)
         print("    [Orchestrator] Step 12.5: Slide summary generation...")
-        slide_summary = await self._run_slide_summary(
-            slide_model, context.outline, image_summary_text or ""
-        )
-        if slide_summary:
-            slide_model.slide_summary = slide_summary
+        if not slide_model.slide_summary:
+            slide_summary = await self._run_slide_summary(
+                slide_model, context.outline, image_summary_text or ""
+            )
+            if slide_summary:
+                slide_model.slide_summary = slide_summary
 
         sem_slide_service = SemanticSlideService()
         slide_model.semantic_slide_description = sem_slide_service.analyze_slide(slide_model)
