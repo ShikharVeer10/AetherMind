@@ -149,7 +149,6 @@ class AgentOrchestrator:
         print("    [Orchestrator] Step 12: Semantic services...")
         from services.image_understanding_service import ImageUnderstandingService
         from services.image_reconstruction_service import ImageReconstructionService
-        from services.semantic_flow_service import SemanticFlowService
         from services.semantic_slide_service import SemanticSlideService
 
         img_und_service = ImageUnderstandingService()
@@ -158,10 +157,22 @@ class AgentOrchestrator:
         img_rec_service = ImageReconstructionService()
         slide_model.image_reconstruction = img_rec_service.analyze_slide(slide_model)
 
-        sem_flow_service = SemanticFlowService()
-        slide_model.semantic_flow = await sem_flow_service.analyze_slide_async(
-            slide_model, image_summary_text or ""
-        )
+        print("    [Orchestrator] Step 12.1: Slide interpretation (semantic flow)...")
+        from agents.slide_interpretation_agent import SlideInterpretationAgent
+        from services.semantic_flow_service import SemanticFlowService
+
+        try:
+            interpretation_agent = SlideInterpretationAgent()
+            slide_model.semantic_flow = await interpretation_agent.interpret_slide(
+                slide_model,
+                image_summaries=image_summary_text or "",
+            )
+        except Exception as e:
+            print(f"    [Orchestrator] Slide interpretation failed: {e}")
+            slide_model.semantic_flow = SemanticFlowService().analyze_slide(
+                slide_model,
+                image_summaries=image_summary_text or "",
+            )
 
         # 12.5) Slide summary (moved after semantic services to access rich layout, color, and design variables)
         print("    [Orchestrator] Step 12.5: Slide summary generation...")
@@ -176,30 +187,14 @@ class AgentOrchestrator:
 
         # 13) Slide Reconstruction Context
         print("    [Orchestrator] Step 13: Slide reconstruction context...")
+
         from services.slide_reconstruction_service import SlideReconstructionService
-        from agents.slide_reconstruction_agent import SlideReconstructionAgent
-
-        recon_service = SlideReconstructionService()
-        recon_context = recon_service.build_context(
-            slide_model, presentation_metadata=self.presentation_metadata
-        )
-
-        # Attempt LLM enrichment
-        try:
-            recon_agent = SlideReconstructionAgent()
-            enriched = await recon_agent.enrich_context(recon_context)
-            if enriched:
-                recon_context = enriched
-        except Exception as e:
-            print(f"    [Orchestrator] Reconstruction LLM enrichment skipped: {e}")
-
+        recon_service = SlideReconstructionService()    
+        recon_context = recon_service.build_context(slide_model,presentation_metadata=self.presentation_metadata)
         slide_model.slide_reconstruction_context = recon_context
-
         return slide_model
 
-    async def _run_image_summaries(
-        self, slide_model: SlideModel
-    ) -> Optional[str]:
+    async def _run_image_summaries(self, slide_model: SlideModel) -> Optional[str]:
         if not self.image_summarization_agent:
             return ""
 
@@ -235,12 +230,7 @@ class AgentOrchestrator:
         return "\n\n".join(summaries)
 
 
-    async def _run_slide_summary(
-        self,
-        slide_model: SlideModel,
-        context_outline: str,
-        image_summaries: str,
-    ) -> Optional[str]:
+    async def _run_slide_summary(self,slide_model: SlideModel,context_outline: str,image_summaries: str,) -> Optional[str]:
         if not self.summarization_agent:
             return None
         try:

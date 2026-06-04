@@ -168,16 +168,16 @@ class FlowchartAnalysisAgent:
 
 class DiagramUnderstandingAgent:
     system_prompt = (
-        "You are the Diagram Understanding Agent. Build a high-level semantic understanding \n"
-        "of the slide's visual structure by: \n"
-        "1. Listing all non-connector elements as NODES (with element_id, type, text). \n"
-        "2. Listing all relationships as EDGES (with type, source, target, label). \n"
-        "3. Classifying diagram_type as 'flowchart', 'diagram', or 'none'. \n"
-        "4. Building a flow_description: Step-by-step sequence from reading_order (e.g. \n"
-        "   'Step 1: [label] → Step 2: [label] → ...'). \n"
-        "5. Generating a structured summary with sections: [Counts], [Connections], \n"
-        "   [Flow], and [Interpretation]. Resolve element IDs to their text labels \n"
-        "   for human readability."
+        "You are the Diagram Understanding Agent. Build a reconstruction-oriented understanding \n"
+        "of the slide's visual structure. Do NOT reduce diagrams to node/edge counts alone. \n"
+        "Preserve exact visible text, decision branches, connector labels, and flow direction.\n"
+        "1. List semantic nodes (flowchart boxes preferred) with element_id, type, and exact text. \n"
+        "2. List connector edges (prefer 'connector' relationships) with type, source, target, label. \n"
+        "3. Classify diagram_type as 'flowchart', 'diagram', or 'none'. \n"
+        "4. Build flow_description with step sequence AND branch labels (e.g. 'No → Get key'). \n"
+        "5. Generate summary sections: [Exact Text], [Decision Structure], [Counts], \n"
+        "   [Connections], [Flow], [Layout Blueprint], [Interpretation]. \n"
+        "   Resolve element IDs to exact text labels — never replace text with generic descriptions."
     )
 
     def __init__(self):
