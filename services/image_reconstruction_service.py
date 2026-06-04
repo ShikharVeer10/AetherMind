@@ -97,16 +97,27 @@ class ImageReconstructionService:
     ) -> list[str]:
 
         locations = []
+        width = 12192000.0
+        height = 6858000.0
+
+        # Estimate layout boundaries dynamically
+        for e in slide.elements:
+            if e.position:
+                width = max(width, e.position.x + e.position.width)
+                height = max(height, e.position.y + e.position.height)
 
         for element in slide.elements:
-
-            location = (
-                f"{element.element_id}"
-                f" at "
-                f"({element.position.x},"
-                f"{element.position.y})"
-            )
-
+            if element.position:
+                left_pct = (element.position.x / width) * 100
+                top_pct = (element.position.y / height) * 100
+                w_pct = (element.position.width / width) * 100
+                h_pct = (element.position.height / height) * 100
+                location = (
+                    f"Element '{element.element_id}' ({element.element_type}) is positioned at: "
+                    f"left: {left_pct:.1f}%, top: {top_pct:.1f}%, width: {w_pct:.1f}%, height: {h_pct:.1f}%"
+                )
+            else:
+                location = f"Element '{element.element_id}' ({element.element_type}) has undefined position"
             locations.append(location)
 
         return locations
@@ -119,11 +130,9 @@ class ImageReconstructionService:
         connectors = []
 
         for relationship in slide.relationships:
-
+            label_str = f" labeled '{relationship.label}'" if relationship.label else ""
             connectors.append(
-                f"{relationship.source_element_id}"
-                f" -> "
-                f"{relationship.target_element_id}"
+                f"Arrow connection: '{relationship.source_element_id}' points to '{relationship.target_element_id}'{label_str}"
             )
 
         return connectors
@@ -136,19 +145,18 @@ class ImageReconstructionService:
         inventory = []
 
         for element in slide.elements:
-
+            desc = f"ID: {element.element_id} | Type: {element.element_type}"
             if element.text:
-
-                inventory.append(
-                    f"{element.element_type}: "
-                    f"{element.text}"
-                )
-
-            else:
-
-                inventory.append(
-                    element.element_type
-                )
+                desc += f" | Text content: '{element.text.strip().replace('\n', ' ')}'"
+            if element.element_type == "image":
+                img_sum = element.metadata.get("image_summary") or element.metadata.get("summary")
+                if img_sum:
+                    desc += f" | Visual details: {img_sum}"
+            if element.style and element.style.background_color:
+                desc += f" | Background color: {element.style.background_color}"
+            if element.style and element.style.text_color:
+                desc += f" | Text color: {element.style.text_color}"
+            inventory.append(desc)
 
         return inventory
 
@@ -201,7 +209,7 @@ class ImageReconstructionService:
         if (
             slide.flowchart
             and
-            slide.flowchart.flow_detected
+            slide.flowchart.is_flowchart
         ):
             return "flowchart"
 
@@ -220,31 +228,57 @@ class ImageReconstructionService:
     ) -> str:
 
         title = slide.title or "Untitled Slide"
+        width = 12192000.0
+        height = 6858000.0
 
-        prompt = (
-            f"Create a presentation slide titled "
-            f"'{title}'. "
-        )
+        for e in slide.elements:
+            if e.position:
+                width = max(width, e.position.x + e.position.width)
+                height = max(height, e.position.y + e.position.height)
 
-        if slide.semantic_flow:
+        prompt_lines = [
+            f"Generate a presentation slide with the title '{title}'.",
+            f"Overall Design Style: {self._detect_design_style(slide)} slide layout."
+        ]
 
-            prompt += (
-                f"Semantic meaning: "
-                f"{slide.semantic_flow.overall_flow}. "
-            )
+        if slide.semantic_flow and slide.semantic_flow.overall_flow:
+            prompt_lines.append(f"Visual flow concept: {slide.semantic_flow.overall_flow}")
 
-        if slide.image_understanding:
+        colors = self._extract_color_palette(slide)
+        if colors:
+            prompt_lines.append(f"Color theme uses the following hex codes: {', '.join(colors)}.")
 
-            prompt += (
-                f"Scene description: "
-                f"{slide.image_understanding.scene_description}. "
-            )
+        prompt_lines.append("\n--- Slide Layout Elements (Positioned on a 100% x 100% canvas) ---")
+        for element in slide.elements:
+            elem_desc = f"- Element '{element.element_id}' ({element.element_type}):"
+            if element.position:
+                left_pct = (element.position.x / width) * 100
+                top_pct = (element.position.y / height) * 100
+                w_pct = (element.position.width / width) * 100
+                h_pct = (element.position.height / height) * 100
+                elem_desc += f" Positioned at left: {left_pct:.1f}%, top: {top_pct:.1f}%, width: {w_pct:.1f}%, height: {h_pct:.1f}%."
+            else:
+                elem_desc += " Positioned at default layout coords."
 
-        prompt += (
-            "Preserve object positions, "
-            "visual hierarchy, colors, "
-            "relationships, flow direction, "
-            "and layout structure."
-        )
+            if element.text:
+                elem_desc += f" Text: '{element.text.strip().replace('\n', ' ')}'."
+            if element.element_type == "image":
+                img_sum = element.metadata.get("image_summary") or element.metadata.get("summary")
+                if img_sum:
+                    elem_desc += f" Content depiction: {img_sum}."
+            if element.style and element.style.background_color:
+                elem_desc += f" Background color: {element.style.background_color}."
+            if element.style and element.style.text_color:
+                elem_desc += f" Text color: {element.style.text_color}."
 
-        return prompt
+            prompt_lines.append(elem_desc)
+
+        if slide.relationships:
+            prompt_lines.append("\n--- Connections and Relationships ---")
+            for relationship in slide.relationships:
+                label_str = f" with label '{relationship.label}'" if relationship.label else ""
+                prompt_lines.append(f"- Arrow connector from element '{relationship.source_element_id}' pointing directly to '{relationship.target_element_id}'{label_str}.")
+
+        prompt_lines.append("\nRecreate this slide perfectly matching the coordinates, elements, contents, and visual hierarchy described above.")
+
+        return "\n".join(prompt_lines)

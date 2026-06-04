@@ -90,11 +90,23 @@ class PPTExtractor:
                     slide_title = element.text.strip()
                     break
 
+        # Extract slide background color
+        slide_bg_color = None
+        try:
+            background = slide.background
+            if background and background.fill:
+                if background.fill.type == 1 and background.fill.fore_color: # solid fill
+                    slide_bg_color = self._get_safe_color_hex(background.fill.fore_color)
+        except Exception:
+            pass
+
         return SlideModel(
             slide_number=slide_number,
             title=slide_title,
             elements=extracted_elements,
+            background_color=slide_bg_color,
         )
+
     def _extract_shape_recursive(self,shape,slide_number: int,shape_index: int,prefix: str,) -> List[DocumentElementModel]:
         if shape.shape_type == MSO_SHAPE_TYPE.GROUP:
             child_elements = []
@@ -143,13 +155,23 @@ class PPTExtractor:
                     )
                     runs.append(run_model)
 
+                # Extract paragraph alignment
+                alignment_name = None
+                if paragraph.alignment is not None:
+                    try:
+                        alignment_name = paragraph.alignment.name
+                    except Exception:
+                        alignment_name = str(paragraph.alignment)
+
                 paragraphs.append(
                     ParagraphModel(
                         level=paragraph.level,
                         text=para_text,
                         runs=runs,
+                        alignment=alignment_name,
                     )
                 )
+
                 paragraph_texts.append(para_text)
 
             if paragraph_texts:
@@ -239,7 +261,22 @@ class PPTExtractor:
             try:
                 metadata["__image_bytes"] = shape.image.blob
             except Exception:
-                metadata["__image_bytes"] = None
+                try:
+                    # Fallback to direct relationship blob access for custom content type images (e.g. image/jpg)
+                    blip = shape._element.blipFill.blip
+                    embed_key = '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed'
+                    link_key = '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}link'
+                    rId = blip.get(embed_key) or blip.get(link_key)
+                    rel = shape.part.rels[rId]
+                    target_part = rel.target_part
+                    if hasattr(target_part, "blob"):
+                        metadata["__image_bytes"] = target_part.blob
+                    elif hasattr(target_part, "_blob"):
+                        metadata["__image_bytes"] = target_part._blob
+                    else:
+                        metadata["__image_bytes"] = None
+                except Exception:
+                    metadata["__image_bytes"] = None
 
         if shape.has_text_frame:
             metadata["bullet_hierarchy"] = self._extract_bullet_hierarchy(shape)
@@ -248,7 +285,27 @@ class PPTExtractor:
                 self._extract_connector_endpoints(shape)
             )
 
+        # High-fidelity rendering additions: Auto Shape geometry type and borders
+        try:
+            if hasattr(shape, "auto_shape_type") and shape.auto_shape_type is not None:
+                metadata["auto_shape_type"] = shape.auto_shape_type.name
+        except Exception:
+            pass
+
+
+        try:
+            if hasattr(shape, "line") and shape.line:
+                border_color = self._get_safe_color_hex(shape.line.color)
+                if border_color:
+                    metadata["border_color"] = border_color
+                if shape.line.width:
+                    metadata["border_width"] = float(shape.line.width.pt)
+        except Exception:
+            pass
+
+
         return metadata
+
 
     def _extract_table_data(self, shape) -> list:
         rows_out = []

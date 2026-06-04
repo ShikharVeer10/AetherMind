@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
@@ -32,6 +33,8 @@ class ParagraphModel(BaseModel):
     level: int = 0
     text: str
     runs: List[RunModel] = Field(default_factory=list)
+    alignment: Optional[str] = None
+
 
 
 class RelationshipModel(BaseModel):
@@ -117,7 +120,7 @@ class LayoutRegionModel(BaseModel):
 
 class LayoutStructureModel(BaseModel):
     layout_type: str = ""
-    regions: List[LayoutRegionModel] = Field(default_factory=list)
+    regions: List[RegionModel] = Field(default_factory=list)
 
 
 class FlowchartModel(BaseModel):
@@ -135,6 +138,9 @@ class VisualDesignModel(BaseModel):
     connector_types: List[str] = Field(default_factory=list)
     layout_pattern: Optional[str] = None
     spatial_structure: Optional[str] = None
+    background_style: Optional[str] = None
+    layout_style: Optional[str] = None
+    primary_shapes: List[str] = Field(default_factory=list)
 
 class ImageUnderstandingModel(BaseModel):
     scene_description: str = ""
@@ -156,7 +162,65 @@ class SemanticFlowModel(BaseModel):
     plain_english_summary: str = ""
     decision_points: List[str] = Field(default_factory=list)
     cause_effect_chain: List[str] = Field(default_factory=list)
+    image_generation_prompt: str = ""
 
+
+
+
+class SlideReconstructionContextModel(BaseModel):
+    """Full reconstruction context for recreating a slide with maximum visual fidelity."""
+    # SLIDE_METADATA
+    title: str = ""
+    slide_type: str = ""
+    purpose: str = ""
+    domain: str = ""
+
+    # VISUAL_STYLE
+    theme: str = ""
+    design_style: str = ""
+    mood: str = ""
+    complexity: str = ""
+    category: str = ""
+
+    # BACKGROUND
+    background_type: str = ""
+    primary_color: str = ""
+    secondary_color: str = ""
+    gradient_direction: str = ""
+    texture: str = ""
+    patterns: str = ""
+    effects: str = ""
+
+    # TYPOGRAPHY
+    title_typography: str = ""
+    body_typography: str = ""
+    typography_color_palette: List[str] = Field(default_factory=list)
+
+    # LAYOUT_STRUCTURE
+    layout_type: str = ""
+    canvas_ratio: str = "16:9"
+    regions: List[str] = Field(default_factory=list)
+    reading_order: List[str] = Field(default_factory=list)
+    alignment: str = ""
+    spacing: str = ""
+
+    # VISUAL_HIERARCHY
+    primary_focus: str = ""
+    secondary_focus: str = ""
+    tertiary_elements: str = ""
+    attention_flow: str = ""
+
+    # VISUAL_ELEMENTS
+    visual_elements: List[Dict[str, Any]] = Field(default_factory=list)
+
+    # IMAGE_RECONSTRUCTION
+    image_reconstructions: List[Dict[str, Any]] = Field(default_factory=list)
+
+    # RELATIONSHIPS
+    element_relationships: List[str] = Field(default_factory=list)
+
+    # Final formatted reconstruction prompt
+    reconstruction_prompt: str = ""
 
 
 class SlideContextModel(BaseModel):
@@ -193,6 +257,9 @@ class SlideModel(BaseModel):
     text_points: List[TextPointModel] = Field(default_factory=list)
     position_mapping: List[PositionMapModel] = Field(default_factory=list)
     image_reconstruction: Optional[ImageReconstructionModel] = None
+    slide_reconstruction_context: Optional[SlideReconstructionContextModel] = None
+    background_color: Optional[str] = None
+
 
 class DocumentModel(BaseModel):
     document_name: str

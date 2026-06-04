@@ -4,6 +4,23 @@ from models.document_model import SlideModel
 
 class SemanticFlowService:
 
+    async def analyze_slide_async(
+        self,
+        slide: SlideModel,
+        image_summaries: str = "",
+    ) -> SemanticFlowModel:
+        try:
+            from agents.slide_interpretation_agent import SlideInterpretationAgent
+            agent = SlideInterpretationAgent()
+            result = await agent.interpret_slide(slide, image_summaries=image_summaries)
+            if result:
+                return result
+        except Exception as e:
+            print(f"[SemanticFlowService] Slide interpretation agent failed: {e}. Falling back to programmatic analysis.")
+
+        # If LLM failed/fallback is needed, run programmatic analysis
+        return self.analyze_slide(slide)
+
     def analyze_slide(
         self,
         slide: SlideModel
@@ -37,6 +54,10 @@ class SemanticFlowService:
             self._build_cause_effect_chain(slide)
         )
 
+        # Fallback default image prompt
+        from services.semantic_slide_service import SemanticSlideService
+        semantic_flow.image_generation_prompt = SemanticSlideService()._build_image_prompt(slide)
+
         return semantic_flow
 
     def _build_overall_flow(
@@ -47,7 +68,7 @@ class SemanticFlowService:
         if (
             slide.flowchart
             and
-            slide.flowchart.flow_detected
+            slide.flowchart.is_flowchart
         ):
             return (
                 "The slide represents a process flow "

@@ -1,15 +1,26 @@
-from models.document_model import LayoutStructureModel
+from models.document_model import LayoutStructureModel, RegionModel
 from models.document_model import SlideModel
 
 
 class LayoutStructureService:
-    def analyze_layout(self,slide: SlideModel) -> LayoutStructureModel:
+    """
+    Alternative layout analysis service.
+    
+    NOTE: The primary pipeline uses LayoutAnalysisService (via LayoutStructureAgent
+    in the AgentOrchestrator). This service exists as a standalone utility.
+    """
+
+    # Standard 16:9 slide dimensions in EMUs
+    DEFAULT_WIDTH = 12_192_000.0
+    DEFAULT_HEIGHT = 6_858_000.0
+
+    def analyze_layout(self, slide: SlideModel) -> LayoutStructureModel:
         layout = LayoutStructureModel()
         layout.layout_type = self._detect_layout_type(slide)
         layout.regions = self._detect_regions(slide)
         return layout
 
-    def _detect_layout_type(self,slide: SlideModel) -> str:
+    def _detect_layout_type(self, slide: SlideModel) -> str:
         if not slide.elements:
             return "empty"
 
@@ -35,14 +46,12 @@ class LayoutStructureService:
 
         return "mixed"
 
-    def _detect_regions(self, slide: SlideModel) -> list[dict]:
-
-        left_region = []
-        center_region = []
-        right_region = []
+    def _detect_regions(self, slide: SlideModel) -> list[RegionModel]:
+        left_region: list[str] = []
+        center_region: list[str] = []
+        right_region: list[str] = []
 
         for element in slide.elements:
-
             x_position = element.position.x
 
             if x_position < 300:
@@ -52,27 +61,42 @@ class LayoutStructureService:
             else:
                 right_region.append(element.element_id)
 
-        regions = []
+        regions: list[RegionModel] = []
 
-        regions.append(
-            {
-                "name": "left",
-                "element_ids": left_region
-            }
-        )
+        if left_region:
+            regions.append(
+                RegionModel(
+                    name="left",
+                    x_start=0,
+                    y_start=0,
+                    x_end=300,
+                    y_end=self.DEFAULT_HEIGHT,
+                    element_ids=left_region,
+                )
+            )
 
-        regions.append(
-            {
-                "name": "center",
-                "element_ids": center_region
-            }
-        )
+        if center_region:
+            regions.append(
+                RegionModel(
+                    name="center",
+                    x_start=300,
+                    y_start=0,
+                    x_end=700,
+                    y_end=self.DEFAULT_HEIGHT,
+                    element_ids=center_region,
+                )
+            )
 
-        regions.append(
-            {
-                "name": "right",
-                "element_ids": right_region
-            }
-        )
+        if right_region:
+            regions.append(
+                RegionModel(
+                    name="right",
+                    x_start=700,
+                    y_start=0,
+                    x_end=self.DEFAULT_WIDTH,
+                    y_end=self.DEFAULT_HEIGHT,
+                    element_ids=right_region,
+                )
+            )
 
         return regions

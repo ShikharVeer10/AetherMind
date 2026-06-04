@@ -27,7 +27,7 @@ class ImageUnderstandingService:
         return image_understanding
 
     def _detect_image_type(self,slide: SlideModel) -> str:
-        if slide.flowchart and slide.flowchart.flow_detected:
+        if slide.flowchart and slide.flowchart.is_flowchart:
             return "flowchart"
         if slide.diagram_understanding and slide.diagram_understanding.is_diagram:
             return "diagram"
@@ -106,7 +106,7 @@ class ImageUnderstandingService:
         return relationships
 
     def _build_semantic_meaning(self,slide: SlideModel) -> str:
-        if slide.flowchart and slide.flowchart.flow_detected:
+        if slide.flowchart and slide.flowchart.is_flowchart:
             return "The slide explains a process flow through connected stages."
 
         if (
@@ -199,11 +199,22 @@ class ImageUnderstandingService:
         slide: SlideModel
     ) -> str:
 
-        title = slide.title or ""
+        title = slide.title or "Untitled Slide"
+        design_style = self._detect_image_type(slide)
+        scene = self._build_scene_description(slide)
+        meaning = self._build_semantic_meaning(slide)
 
-        return (
-            f"Create a presentation slide titled "
-            f"'{title}'. Preserve layout, visual "
-            f"structure, colors, relationships, "
-            f"flow and textual content."
-        )
+        prompt_lines = [
+            f"Generate a presentation slide titled '{title}'.",
+            f"Visual description: {scene}",
+            f"Interpretation/semantic meaning: {meaning}",
+            f"Layout category: {design_style} design style."
+        ]
+
+        colors = self._extract_colors(slide)
+        if colors:
+            prompt_lines.append(f"Dominant color hex values to apply: {', '.join(colors)}.")
+
+        prompt_lines.append("Recreate the slide ensuring precise spacing, consistent color theme, proper text hierarchy, alignment, and semantic flow.")
+
+        return "\n".join(prompt_lines)

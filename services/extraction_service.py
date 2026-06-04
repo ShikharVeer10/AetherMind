@@ -47,6 +47,7 @@ class ExtractionService:
         orchestrator = AgentOrchestrator(
             summarization_agent=self.summarization_agent,
             image_summarization_agent=self.image_summarization_agent,
+            presentation_metadata=document_model.presentation_metadata,
         )
 
         raw_slides = list(extractor.presentation.slides)
@@ -103,6 +104,7 @@ class ExtractionService:
                     {
                         "level": p.level,
                         "text": p.text,
+                        "alignment": p.alignment,
                         "runs": [
                             {
                                 "text": r.text,
@@ -117,6 +119,7 @@ class ExtractionService:
                     }
                     for p in element.paragraphs
                 ]
+
 
                 elements_payload.append(
                     {
@@ -223,10 +226,31 @@ class ExtractionService:
             if slide.diagram_understanding:
                 diagram_understanding = slide.diagram_understanding.model_dump()
 
+            semantic_flow = None
+            if slide.semantic_flow:
+                semantic_flow = slide.semantic_flow.model_dump()
+
+            semantic_slide_description = None
+            if slide.semantic_slide_description:
+                semantic_slide_description = slide.semantic_slide_description.model_dump()
+
+            image_understanding = None
+            if slide.image_understanding:
+                image_understanding = slide.image_understanding.model_dump()
+
+            image_reconstruction = None
+            if slide.image_reconstruction:
+                image_reconstruction = slide.image_reconstruction.model_dump()
+
+            slide_reconstruction_context = None
+            if slide.slide_reconstruction_context:
+                slide_reconstruction_context = slide.slide_reconstruction_context.model_dump()
+
             slides_payload.append(
                 {
                     "slide_number": slide.slide_number,
                     "title": slide.title,
+                    "background_color": slide.background_color,
                     "header_footer": hf,
                     "visual_inventory": inv,
                     "layout": layout,
@@ -237,10 +261,16 @@ class ExtractionService:
                     "text_points": text_points,
                     "position_mapping": position_mapping,
                     "diagram_understanding": diagram_understanding,
+                    "semantic_flow": semantic_flow,
+                    "semantic_slide_description": semantic_slide_description,
+                    "image_understanding": image_understanding,
+                    "image_reconstruction": image_reconstruction,
+                    "slide_reconstruction_context": slide_reconstruction_context,
                     "table_markdowns": slide.table_markdowns,
                     "summary": slide.slide_summary,
                 }
             )
+
 
         return {
             "document_type": "ppt",
