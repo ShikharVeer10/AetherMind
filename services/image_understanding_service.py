@@ -4,16 +4,12 @@ from models.document_model import VisualDesignModel
 
 
 class ImageUnderstandingService:
-
     def analyze_slide(
         self,
         slide: SlideModel
     ) -> ImageUnderstandingModel:
-
         image_understanding = ImageUnderstandingModel()
-
         image_understanding.image_type = self._detect_image_type(slide)
-
         image_understanding.scene_description = (self._build_scene_description(slide))
         image_understanding.objects_detected = (self._extract_objects(slide))
         image_understanding.actions_detected = (self._extract_actions(slide))
@@ -108,17 +104,11 @@ class ImageUnderstandingService:
     def _build_semantic_meaning(self,slide: SlideModel) -> str:
         if slide.flowchart and slide.flowchart.is_flowchart:
             return "The slide explains a process flow through connected stages."
-
-        if (
-            slide.diagram_understanding
-            and
-            slide.diagram_understanding.is_diagram
-        ):
+        if (slide.diagram_understanding and slide.diagram_understanding.is_diagram):
             return (
                 "The slide explains relationships "
                 "between concepts."
             )
-
         return (
             "The slide presents information "
             "through visual and textual elements."
@@ -128,13 +118,10 @@ class ImageUnderstandingService:
         self,
         slide: SlideModel
     ) -> VisualDesignModel:
-
         design = VisualDesignModel()
-
         design.background_style = (
             "presentation"
         )
-
         design.layout_style = (
             slide.layout_structure.layout_type
             if slide.layout_structure
@@ -165,7 +152,6 @@ class ImageUnderstandingService:
                 colors.add(
                     element.style.background_color
                 )
-
             if (
                 element.style
                 and
@@ -174,18 +160,14 @@ class ImageUnderstandingService:
                 colors.add(
                     element.style.text_color
                 )
-
         return list(colors)
 
     def _extract_visual_elements(
         self,
         slide: SlideModel
     ) -> list[str]:
-
         visual_elements = []
-
         for element in slide.elements:
-
             visual_elements.append(
                 element.element_type
             )
@@ -199,22 +181,11 @@ class ImageUnderstandingService:
         slide: SlideModel
     ) -> str:
 
-        title = slide.title or "Untitled Slide"
-        design_style = self._detect_image_type(slide)
-        scene = self._build_scene_description(slide)
-        meaning = self._build_semantic_meaning(slide)
+        title = slide.title or ""
 
-        prompt_lines = [
-            f"Generate a presentation slide titled '{title}'.",
-            f"Visual description: {scene}",
-            f"Interpretation/semantic meaning: {meaning}",
-            f"Layout category: {design_style} design style."
-        ]
-
-        colors = self._extract_colors(slide)
-        if colors:
-            prompt_lines.append(f"Dominant color hex values to apply: {', '.join(colors)}.")
-
-        prompt_lines.append("Recreate the slide ensuring precise spacing, consistent color theme, proper text hierarchy, alignment, and semantic flow.")
-
-        return "\n".join(prompt_lines)
+        return (
+            f"Create a presentation slide titled "
+            f"'{title}'. Preserve layout, visual "
+            f"structure, colors, relationships, "
+            f"flow and textual content."
+        )

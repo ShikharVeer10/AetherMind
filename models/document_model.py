@@ -33,8 +33,6 @@ class ParagraphModel(BaseModel):
     level: int = 0
     text: str
     runs: List[RunModel] = Field(default_factory=list)
-    alignment: Optional[str] = None
-
 
 
 class RelationshipModel(BaseModel):
@@ -70,7 +68,6 @@ class DiagramUnderstandingModel(BaseModel):
     flow_description: str = ""
     summary: str = ""
 
-
 class DocumentElementModel(BaseModel):
     element_id: str
     element_type: str
@@ -81,7 +78,6 @@ class DocumentElementModel(BaseModel):
     shape_type: Optional[str] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
     table_markdown: Optional[str] = None
-
 
 class HeaderFooterModel(BaseModel):
     header_text: Optional[str] = None
@@ -164,25 +160,16 @@ class SemanticFlowModel(BaseModel):
     cause_effect_chain: List[str] = Field(default_factory=list)
     image_generation_prompt: str = ""
 
-
-
-
 class SlideReconstructionContextModel(BaseModel):
-    """Full reconstruction context for recreating a slide with maximum visual fidelity."""
-    # SLIDE_METADATA
     title: str = ""
     slide_type: str = ""
     purpose: str = ""
     domain: str = ""
-
-    # VISUAL_STYLE
     theme: str = ""
     design_style: str = ""
     mood: str = ""
     complexity: str = ""
     category: str = ""
-
-    # BACKGROUND
     background_type: str = ""
     primary_color: str = ""
     secondary_color: str = ""
@@ -190,38 +177,23 @@ class SlideReconstructionContextModel(BaseModel):
     texture: str = ""
     patterns: str = ""
     effects: str = ""
-
-    # TYPOGRAPHY
     title_typography: str = ""
     body_typography: str = ""
     typography_color_palette: List[str] = Field(default_factory=list)
-
-    # LAYOUT_STRUCTURE
     layout_type: str = ""
     canvas_ratio: str = "16:9"
     regions: List[str] = Field(default_factory=list)
     reading_order: List[str] = Field(default_factory=list)
     alignment: str = ""
     spacing: str = ""
-
-    # VISUAL_HIERARCHY
     primary_focus: str = ""
     secondary_focus: str = ""
     tertiary_elements: str = ""
     attention_flow: str = ""
-
-    # VISUAL_ELEMENTS
     visual_elements: List[Dict[str, Any]] = Field(default_factory=list)
-
-    # IMAGE_RECONSTRUCTION
     image_reconstructions: List[Dict[str, Any]] = Field(default_factory=list)
-
-    # RELATIONSHIPS
     element_relationships: List[str] = Field(default_factory=list)
-
-    # Final formatted reconstruction prompt
     reconstruction_prompt: str = ""
-
 
 class SlideContextModel(BaseModel):
     header_footer: Optional[HeaderFooterModel] = None
@@ -258,8 +230,6 @@ class SlideModel(BaseModel):
     position_mapping: List[PositionMapModel] = Field(default_factory=list)
     image_reconstruction: Optional[ImageReconstructionModel] = None
     slide_reconstruction_context: Optional[SlideReconstructionContextModel] = None
-    background_color: Optional[str] = None
-
 
 class DocumentModel(BaseModel):
     document_name: str
