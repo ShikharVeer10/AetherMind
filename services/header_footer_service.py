@@ -26,6 +26,14 @@ class HeaderFooterService:
         slide_number_text: Optional[str] = None
         date_text: Optional[str] = None
 
+        if slide is None or not hasattr(slide, "placeholders"):
+            return HeaderFooterModel(
+                header_text=header_text,
+                footer_text=footer_text,
+                slide_number_text=slide_number_text,
+                date_text=date_text,
+            )
+
         # --- Layer 1: Slide placeholders ---
         for ph in slide.placeholders:
             header_text, footer_text, slide_number_text, date_text = (

@@ -7,55 +7,69 @@ import requests
 
 
 _IMAGE_PROMPT = """\
-Analyse this image in exhaustive detail. You MUST respond using the EXACT section headings and structure shown below. Do NOT skip any section — write "N/A" if a section does not apply. Avoid vague placeholders like "business" or "thing" — be specific based on what is actually visible.
+Analyse this image in exhaustive detail. You MUST respond using the EXACT section headings and structure shown below. Do NOT skip any section — write "N/A" if a section does not apply. Focus ONLY on the visual content inside the image. Do NOT describe slides, presentations, documents, or surrounding context. Focus on reproducing what is visible rather than explaining what it means.
 
-## 1. Visual Element Counts
-Count every distinct visual element:
-- Number of boxes / rectangles: <count>
-- Number of arrows / connectors: <count>
-- Number of panels / sections: <count>
-- Number of icons / symbols: <count>
-- Number of people / characters: <count>
-- Other shapes (circles, diamonds, etc.): list with counts
+## 1. Scene Overview
+Provide a detailed description of the entire image, including:
+- overall composition
+- visual hierarchy
+- major regions
+- focal points
 
-## 2. Flowchart / Process Flow Mapping
-If the image depicts any kind of process, flow, or diagram:
-- Map each step as: Step N: [Box/Node Label]
-- Show connections: [Source Box] → [Target Box] (arrow direction)
-- If there are multiple parallel flows or branches, map each separately.
-- If there is a clear reading order, state it explicitly.
-If not a flowchart, write "N/A — this image is not a flowchart or process diagram."
+## 2. Object Inventory
+Identify every significant visual element. For each object provide a JSON block matching:
+{
+  "name": "",
+  "category": "",
+  "position": "",
+  "size": "",
+  "appearance": ""
+}
+Examples of categories: human, robot, gear, chart, cloud, building, server, tree, molecule, icon, vehicle.
 
-## 3. Detailed Component Breakdown
-For every box, shape, arrow, icon, or visual element:
-- Describe its content (text, label, color, size, position relative to others)
-- Describe what it represents in the context of the image
-- Group related elements together (e.g., "Panel A contains…", "Panel B contains…")
+## 3. Spatial Relationships
+Describe how objects relate to one another (e.g. above, below, inside, connected_to, overlapping, surrounding, attached_to).
 
-## 4. Text Transcription
-Transcribe ALL text visible in the image verbatim, preserving hierarchy and position.
+## 4. Visual Style
+Identify:
+- illustration style
+- rendering style
+- realism level
+- artistic influences
+- design language
+Examples: photorealistic, corporate infographic, flat design, vector art, futuristic, 3D render, technical diagram, medical illustration, scientific visualization.
 
-## 5. Charts and Data
-If the image contains charts, graphs, or data visualizations:
-- Extract axis labels, legend items, data points, and trends.
-If not applicable, write "N/A".
+## 5. Color Analysis
+Return a JSON block containing:
+{
+  "dominant_colors": [],
+  "accent_colors": [],
+  "background_colors": []
+}
+Use HEX color values when possible.
 
-## 6. Summary & Interpretation
-- Explain what the image is trying to communicate, explain, or illustrate as a whole.
-- Describe the overall purpose, mood, and teaching intent of the image.
-- If comparing concepts (e.g., side-by-side panels), explain what each side represents and the key differences.
+## 6. Shapes and Geometry
+Identify:
+- circles
+- rectangles
+- polygons
+- arrows
+- connectors
+- icons
+- decorative elements
+Describe their placement and role.
 
-## 7. Plain-language Summary
-Provide a 2–4 sentence, human-friendly summary of what the image depicts in your own words.
+## 7. Text Elements
+Extract all visible text exactly as shown. Preserve wording, capitalization, and grouping. Do not summarize.
 
-## 8. Reconstructed Diagram Code (Mermaid.js)
-Generate complete, valid Mermaid.js markup that visually reconstructs this diagram or flowchart.
-- Use appropriate shapes (e.g., `id1[Text]`, `id2([Text])`, `id3{Decision}`) matching the original shapes.
-- Use explicit arrow connections with labels if visible (e.g., `id1 -->|Action| id2`).
-- Include subgraphs if there are panels or sections.
-- Make sure the Mermaid code is self-contained and free of any markdown wrapper other than standard code fences. If the image is a plain picture and not a diagram or flowchart, represent its main entities and their relationships as a conceptual node graph.
+## 8. Visual Structure
+Describe columns, rows, clusters, panels, sections, layers, and their arrangement.
 
-Be extremely detailed, precise, and structured. Use numbered lists or bullet points within each section.
+## 9. Reconstruction Description
+Generate an extremely detailed reconstruction description containing: objects, colors, positions, scale, spacing, style, lighting, relationships, and composition. The description should be sufficient for another image generation model to recreate a highly similar image.
+
+## 10. Reconstruction Prompt
+Generate a final image-generation prompt optimized for reconstruction fidelity. The prompt should describe the image precisely, avoid interpretation, avoid summarization, avoid adding new content, and preserve visual structure.
 """
 
 

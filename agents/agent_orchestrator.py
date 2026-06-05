@@ -148,7 +148,7 @@ class AgentOrchestrator:
         # 12) Semantic flow, image understanding, and reconstruction
         print("    [Orchestrator] Step 12: Semantic services...")
         from services.image_understanding_service import ImageUnderstandingService
-        from services.image_reconstruction_service import ImageReconstructionService
+        from services.imagereconstruction_service import ImageReconstructionService
         from services.semantic_slide_service import SemanticSlideService
 
         img_und_service = ImageUnderstandingService()

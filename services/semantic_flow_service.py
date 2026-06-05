@@ -46,6 +46,22 @@ def _parse_image_summary_sections(text: str) -> Dict[str, str]:
             buf.append(line)
     if current:
         sections[current] = "\n".join(buf).strip()
+
+    # Standardize / alias keys to maintain compatibility with downstream consumers
+    aliases = {
+        "1. Scene Overview": ["7. Plain-language Summary", "6. Summary & Interpretation"],
+        "2. Object Inventory": ["3. Detailed Component Breakdown"],
+        "3. Spatial Relationships": ["2. Flowchart / Process Flow Mapping"],
+        "7. Text Elements": ["4. Text Transcription"],
+        "9. Reconstruction Description": ["6. Summary & Interpretation"],
+        "10. Reconstruction Prompt": ["8. Reconstructed Diagram Code (Mermaid.js)"],
+    }
+    for new_key, old_keys in aliases.items():
+        if new_key in sections:
+            for old_key in old_keys:
+                if old_key not in sections:
+                    sections[old_key] = sections[new_key]
+
     return sections
 
 

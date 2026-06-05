@@ -32,6 +32,7 @@ class RunModel(BaseModel):
 class ParagraphModel(BaseModel):
     level: int = 0
     text: str
+    alignment: Optional[str] = None
     runs: List[RunModel] = Field(default_factory=list)
 
 
@@ -213,6 +214,7 @@ class SlideContextModel(BaseModel):
 class SlideModel(BaseModel):
     slide_number: int
     title: Optional[str] = None
+    background_color: Optional[str] = None
     elements: List[DocumentElementModel] = Field(default_factory=list)
     relationships: List[RelationshipModel] = Field(default_factory=list)
     header_footer: Optional[HeaderFooterModel] = None

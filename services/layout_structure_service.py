@@ -3,14 +3,7 @@ from models.document_model import SlideModel
 
 
 class LayoutStructureService:
-    """
-    Alternative layout analysis service.
-    
-    NOTE: The primary pipeline uses LayoutAnalysisService (via LayoutStructureAgent
-    in the AgentOrchestrator). This service exists as a standalone utility.
-    """
 
-    # Standard 16:9 slide dimensions in EMUs
     DEFAULT_WIDTH = 12_192_000.0
     DEFAULT_HEIGHT = 6_858_000.0
 

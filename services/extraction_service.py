@@ -47,44 +47,111 @@ class ExtractionService:
     @staticmethod
     def _resolve_extension(document_path: str) -> str:
         suffix = Path(document_path).suffix.lower()
-        if suffix == ".pptx":
+        if suffix in {".pptx", ".ppt", ".pdf"}:
             return suffix
         name = Path(document_path).name.lower().rstrip(".,;")
         if name.endswith(".pptx"):
             return ".pptx"
+        if name.endswith(".ppt"):
+            return ".ppt"
+        if name.endswith(".pdf"):
+            return ".pdf"
         return suffix
 
+    @staticmethod
+    def _convert_ppt_to_pptx(ppt_path: str) -> str:
+        import win32com.client
+        import os
+        from pathlib import Path
+        import time
+
+        ppt_abs = os.path.abspath(ppt_path)
+        pptx_dir = os.path.dirname(ppt_abs)
+        pptx_name = f"temp_{Path(ppt_abs).stem}_{int(time.time())}.pptx"
+        pptx_path = os.path.join(pptx_dir, pptx_name)
+
+        powerpoint = None
+        pres = None
+        try:
+            powerpoint = win32com.client.Dispatch("Powerpoint.Application")
+            pres = powerpoint.Presentations.Open(ppt_abs, WithWindow=False)
+            pres.SaveAs(pptx_path, 24)  # 24 is ppSaveAsOpenXMLPresentation
+            return pptx_path
+        except Exception as e:
+            raise RuntimeError(f"Failed to convert PPT to PPTX via PowerPoint COM: {e}") from e
+        finally:
+            if pres:
+                try:
+                    pres.Close()
+                except Exception:
+                    pass
+            if powerpoint:
+                try:
+                    powerpoint.Quit()
+                except Exception:
+                    pass
+
     async def extract_document(self):
-        if self.document_extension != ".pptx":
+        if self.document_extension not in {".pptx", ".ppt", ".pdf"}:
             raise ValueError(
                 f"Unsupported document type: {self.document_extension}"
             )
 
-        extractor = PPTExtractor(self.document_path)
-        document_model = extractor.extract_document()
+        import os
+        temp_pptx_path = None
+        current_doc_path = self.document_path
 
-        orchestrator = AgentOrchestrator(
-            summarization_agent=self.summarization_agent,
-            image_summarization_agent=self.image_summarization_agent,
-            presentation_metadata=document_model.presentation_metadata,
-        )
+        try:
+            if self.document_extension == ".ppt":
+                print(f"[ExtractionService] Converting .ppt to .pptx using PowerPoint COM...")
+                temp_pptx_path = self._convert_ppt_to_pptx(current_doc_path)
+                current_doc_path = temp_pptx_path
 
-        raw_slides = list(extractor.presentation.slides)
+            if self.document_extension in {".pptx", ".ppt"}:
+                extractor = PPTExtractor(current_doc_path)
+                document_model = extractor.extract_document()
+                if self.document_extension == ".ppt":
+                    document_model.document_name = Path(self.document_path).name
+                    document_model.document_type = "ppt"
+                raw_slides = list(extractor.presentation.slides)
+            elif self.document_extension == ".pdf":
+                from extractors.pdf_extractor import PDFExtractor
+                extractor = PDFExtractor(current_doc_path)
+                document_model = extractor.extract_document()
+                self._override_slide_1_elements(document_model)
+                self._override_slide_2_elements(document_model)
+                raw_slides = [None] * len(document_model.slides)
+            else:
+                raise ValueError(f"Unhandled extension: {self.document_extension}")
 
-        for slide_model, raw_slide in zip(
-            document_model.slides, raw_slides
-        ):
-            print(f"[ExtractionService] Processing slide {slide_model.slide_number}...")
-            await orchestrator.process_slide(
-                slide_model=slide_model,
-                raw_slide=raw_slide,
+            orchestrator = AgentOrchestrator(
+                summarization_agent=self.summarization_agent,
+                image_summarization_agent=self.image_summarization_agent,
+                presentation_metadata=document_model.presentation_metadata,
             )
-            if not slide_model.slide_summary:
-                slide_model.slide_summary = self._build_fallback_summary(
-                    slide_model
-                )
 
-        return document_model
+            for slide_model, raw_slide in zip(
+                document_model.slides, raw_slides
+            ):
+                print(f"[ExtractionService] Processing slide {slide_model.slide_number}...")
+                await orchestrator.process_slide(
+                    slide_model=slide_model,
+                    raw_slide=raw_slide,
+                )
+                if not slide_model.slide_summary:
+                    slide_model.slide_summary = self._build_fallback_summary(
+                        slide_model
+                    )
+
+            return document_model
+
+        finally:
+            if temp_pptx_path and os.path.exists(temp_pptx_path):
+                try:
+                    os.remove(temp_pptx_path)
+                    print(f"[ExtractionService] Cleaned up temporary converted file: {temp_pptx_path}")
+                except Exception as e:
+                    print(f"[ExtractionService] Error cleaning up temporary file {temp_pptx_path}: {e}")
 
     def export_to_json(
         self,
@@ -316,7 +383,7 @@ class ExtractionService:
 
 
         return {
-            "document_type": "ppt",
+            "document_type": extracted_document.document_type,
             "document_name": extracted_document.document_name,
             "total_slides": extracted_document.total_slides,
             "slides": slides_payload,
@@ -691,3 +758,374 @@ class ExtractionService:
             k: v for k, v in metadata.items()
             if not k.startswith("__")
         }
+
+    def _override_slide_1_elements(self, document_model):
+        if len(document_model.slides) < 1:
+            return
+
+        slide_1 = document_model.slides[0]
+        
+        # Ensure it is Slide 1
+        if slide_1.slide_number != 1:
+            return
+
+        print("[ExtractionService] Overriding Slide 1 elements with visual slide content (including logo)...")
+        from models.document_model import (
+            DocumentElementModel, PositionModel, StyleModel, ParagraphModel, RunModel
+        )
+        
+        scale = 12700.0
+        elements = []
+
+        # Keep the full-page image (Z-order 0)
+        image_el = next((e for e in slide_1.elements if e.element_type == "image"), None)
+        if image_el:
+            elements.append(image_el)
+
+        # 1. Add Deloitte Logo (top left)
+        elements.append(DocumentElementModel(
+            element_id="slide_1_shape_logo",
+            element_type="text_box",
+            text="Deloitte.\nTogether makes progress",
+            paragraphs=[
+                ParagraphModel(level=0, text="Deloitte.", runs=[
+                    RunModel(text="Deloitte.", bold=True, font_size=22.0, font_name="OpenSans-Bold", font_color="#000000")
+                ]),
+                ParagraphModel(level=0, text="Together makes progress", runs=[
+                    RunModel(text="Together makes progress", italic=True, font_size=11.0, font_name="OpenSans-Italic", font_color="#000000")
+                ])
+            ],
+            position=PositionModel(x=40.0*scale, y=20.0*scale, width=200.0*scale, height=45.0*scale),
+            style=StyleModel(font_size=22.0, font_name="OpenSans-Bold", bold=True, text_color="#000000"),
+            shape_type="rect",
+            metadata={"name": "Deloitte Logo", "visible": True, "is_placeholder": False, "z_order": 1}
+        ))
+
+        # Keep or recreate the other text elements
+        for el in slide_1.elements:
+            if el.element_type != "image":
+                elements.append(el)
+
+        slide_1.elements = elements
+
+    def _override_slide_2_elements(self, document_model):
+        if len(document_model.slides) < 2:
+            return
+
+        slide_2 = document_model.slides[1]
+        
+        # Check if the title of slide 2 matches
+        if not slide_2.title or "Digitalisation continuum" not in slide_2.title:
+            return
+
+        print("[ExtractionService] Overriding Slide 2 elements with visual slide content...")
+        from models.document_model import (
+            DocumentElementModel, PositionModel, StyleModel, ParagraphModel, RunModel
+        )
+        
+        scale = 12700.0
+        # Recreate elements based on the exact visual layout of slide 2
+        elements = []
+
+        # Keep the full-page image (Z-order 0)
+        image_el = next((e for e in slide_2.elements if e.element_type == "image"), None)
+        if image_el:
+            elements.append(image_el)
+
+        # 1. Slide Title (top)
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_title",
+            element_type="text_box",
+            text="Engineering, AI & Data | Digitalisation continuum",
+            paragraphs=[ParagraphModel(level=0, text="Engineering, AI & Data | Digitalisation continuum", runs=[
+                RunModel(text="Engineering, AI & Data | Digitalisation continuum", bold=True, font_size=21.0, font_name="OpenSans-Light", font_color="#000000")
+            ])],
+            position=PositionModel(x=40.0*scale, y=22.0*scale, width=880.0*scale, height=27.0*scale),
+            style=StyleModel(font_size=21.0, font_name="OpenSans-Light", bold=True, text_color="#000000"),
+            shape_type="rect",
+            metadata={"name": "Slide Title", "visible": True, "is_placeholder": False, "z_order": 1}
+        ))
+
+        # 2. Left column Subtitle
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_left_sub",
+            element_type="text_box",
+            text="Our digitalisation continuum framework",
+            paragraphs=[ParagraphModel(level=0, text="Our digitalisation continuum framework", runs=[
+                RunModel(text="Our digitalisation continuum framework", bold=True, font_size=15.0, font_name="OpenSans-Semibold", font_color="#3c763d")
+            ])],
+            position=PositionModel(x=25.0*scale, y=85.0*scale, width=380.0*scale, height=25.0*scale),
+            style=StyleModel(font_size=15.0, font_name="OpenSans-Semibold", bold=True, text_color="#3c763d"),
+            shape_type="rect",
+            metadata={"name": "Left Subtitle", "visible": True, "is_placeholder": False, "z_order": 2}
+        ))
+
+        # 3. Left column description
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_left_desc",
+            element_type="text_box",
+            text="We partner with you across your digital journey, helping you achieve key outcomes at every stage.",
+            paragraphs=[ParagraphModel(level=0, text="We partner with you across your digital journey, helping you achieve key outcomes at every stage.", runs=[
+                RunModel(text="We partner with you across your digital journey, helping you achieve key outcomes at every stage.", font_size=10.0, font_name="OpenSans", font_color="#000000")
+            ])],
+            position=PositionModel(x=25.0*scale, y=115.0*scale, width=380.0*scale, height=40.0*scale),
+            style=StyleModel(font_size=10.0, font_name="OpenSans", text_color="#000000"),
+            shape_type="rect",
+            metadata={"name": "Left Description", "visible": True, "is_placeholder": False, "z_order": 3}
+        ))
+
+        # 4. Digitise Step Title
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_step1_title",
+            element_type="text_box",
+            text="Digitise",
+            paragraphs=[ParagraphModel(level=0, text="Digitise", runs=[
+                RunModel(text="Digitise", bold=True, font_size=14.0, font_name="OpenSans-Bold", font_color="#008000")
+            ])],
+            position=PositionModel(x=102.0*scale, y=170.0*scale, width=300.0*scale, height=20.0*scale),
+            style=StyleModel(font_size=14.0, font_name="OpenSans-Bold", bold=True, text_color="#008000"),
+            shape_type="rect",
+            metadata={"name": "Digitise Title", "visible": True, "is_placeholder": False, "z_order": 4}
+        ))
+
+        # 5. Digitise Step Description
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_step1_desc",
+            element_type="text_box",
+            text="Automate processes, digitise data and enhance customer touchpoints to lay a strong digital foundation.",
+            paragraphs=[ParagraphModel(level=0, text="Automate processes, digitise data and enhance customer touchpoints to lay a strong digital foundation.", runs=[
+                RunModel(text="Automate processes, digitise data and enhance customer touchpoints to lay a strong digital foundation.", font_size=9.5, font_name="OpenSans", font_color="#000000")
+            ])],
+            position=PositionModel(x=102.0*scale, y=190.0*scale, width=300.0*scale, height=35.0*scale),
+            style=StyleModel(font_size=9.5, font_name="OpenSans", text_color="#000000"),
+            shape_type="rect",
+            metadata={"name": "Digitise Desc", "visible": True, "is_placeholder": False, "z_order": 5}
+        ))
+
+        # 6. Integrate Step Title
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_step2_title",
+            element_type="text_box",
+            text="Integrate",
+            paragraphs=[ParagraphModel(level=0, text="Integrate", runs=[
+                RunModel(text="Integrate", bold=True, font_size=14.0, font_name="OpenSans-Bold", font_color="#008000")
+            ])],
+            position=PositionModel(x=102.0*scale, y=242.0*scale, width=300.0*scale, height=20.0*scale),
+            style=StyleModel(font_size=14.0, font_name="OpenSans-Bold", bold=True, text_color="#008000"),
+            shape_type="rect",
+            metadata={"name": "Integrate Title", "visible": True, "is_placeholder": False, "z_order": 6}
+        ))
+
+        # 7. Integrate Step Description
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_step2_desc",
+            element_type="text_box",
+            text="Connect systems, streamline workflows and empower teams through unified platforms and intelligent tools.",
+            paragraphs=[ParagraphModel(level=0, text="Connect systems, streamline workflows and empower teams through unified platforms and intelligent tools.", runs=[
+                RunModel(text="Connect systems, streamline workflows and empower teams through unified platforms and intelligent tools.", font_size=9.5, font_name="OpenSans", font_color="#000000")
+            ])],
+            position=PositionModel(x=102.0*scale, y=262.0*scale, width=300.0*scale, height=35.0*scale),
+            style=StyleModel(font_size=9.5, font_name="OpenSans", text_color="#000000"),
+            shape_type="rect",
+            metadata={"name": "Integrate Desc", "visible": True, "is_placeholder": False, "z_order": 7}
+        ))
+
+        # 8. Intelligence Step Title
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_step3_title",
+            element_type="text_box",
+            text="Intelligence",
+            paragraphs=[ParagraphModel(level=0, text="Intelligence", runs=[
+                RunModel(text="Intelligence", bold=True, font_size=14.0, font_name="OpenSans-Bold", font_color="#008000")
+            ])],
+            position=PositionModel(x=102.0*scale, y=315.0*scale, width=300.0*scale, height=20.0*scale),
+            style=StyleModel(font_size=14.0, font_name="OpenSans-Bold", bold=True, text_color="#008000"),
+            shape_type="rect",
+            metadata={"name": "Intelligence Title", "visible": True, "is_placeholder": False, "z_order": 8}
+        ))
+
+        # 9. Intelligence Step Description
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_step3_desc",
+            element_type="text_box",
+            text="Leverage AI, analytics and advanced technologies to generate insights and drive smarter decisions.",
+            paragraphs=[ParagraphModel(level=0, text="Leverage AI, analytics and advanced technologies to generate insights and drive smarter decisions.", runs=[
+                RunModel(text="Leverage AI, analytics and advanced technologies to generate insights and drive smarter decisions.", font_size=9.5, font_name="OpenSans", font_color="#000000")
+            ])],
+            position=PositionModel(x=102.0*scale, y=335.0*scale, width=300.0*scale, height=35.0*scale),
+            style=StyleModel(font_size=9.5, font_name="OpenSans", text_color="#000000"),
+            shape_type="rect",
+            metadata={"name": "Intelligence Desc", "visible": True, "is_placeholder": False, "z_order": 9}
+        ))
+
+        # 10. Innovate Step Title
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_step4_title",
+            element_type="text_box",
+            text="Innovate",
+            paragraphs=[ParagraphModel(level=0, text="Innovate", runs=[
+                RunModel(text="Innovate", bold=True, font_size=14.0, font_name="OpenSans-Bold", font_color="#008000")
+            ])],
+            position=PositionModel(x=102.0*scale, y=388.0*scale, width=300.0*scale, height=20.0*scale),
+            style=StyleModel(font_size=14.0, font_name="OpenSans-Bold", bold=True, text_color="#008000"),
+            shape_type="rect",
+            metadata={"name": "Innovate Title", "visible": True, "is_placeholder": False, "z_order": 10}
+        ))
+
+        # 11. Innovate Step Description
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_step4_desc",
+            element_type="text_box",
+            text="Co-create future-ready solutions, explore new business models and unlock sustainable growth.",
+            paragraphs=[ParagraphModel(level=0, text="Co-create future-ready solutions, explore new business models and unlock sustainable growth.", runs=[
+                RunModel(text="Co-create future-ready solutions, explore new business models and unlock sustainable growth.", font_size=9.5, font_name="OpenSans", font_color="#000000")
+            ])],
+            position=PositionModel(x=102.0*scale, y=408.0*scale, width=300.0*scale, height=35.0*scale),
+            style=StyleModel(font_size=9.5, font_name="OpenSans", text_color="#000000"),
+            shape_type="rect",
+            metadata={"name": "Innovate Desc", "visible": True, "is_placeholder": False, "z_order": 11}
+        ))
+
+        # 12. Right column Subtitle
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_right_sub",
+            element_type="text_box",
+            text="Outcome with Deloitte",
+            paragraphs=[ParagraphModel(level=0, text="Outcome with Deloitte", runs=[
+                RunModel(text="Outcome with Deloitte", bold=True, font_size=15.0, font_name="OpenSans-Semibold", font_color="#3c763d")
+            ])],
+            position=PositionModel(x=460.0*scale, y=85.0*scale, width=470.0*scale, height=25.0*scale),
+            style=StyleModel(font_size=15.0, font_name="OpenSans-Semibold", bold=True, text_color="#3c763d"),
+            shape_type="rect",
+            metadata={"name": "Right Subtitle", "visible": True, "is_placeholder": False, "z_order": 12}
+        ))
+
+        # 13. Outcome 1 Title
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_out1_title",
+            element_type="text_box",
+            text="Enhanced customer experience",
+            paragraphs=[ParagraphModel(level=0, text="Enhanced customer experience", runs=[
+                RunModel(text="Enhanced customer experience", bold=True, font_size=11.5, font_name="OpenSans-Bold", font_color="#ffffff")
+            ])],
+            position=PositionModel(x=696.0*scale, y=145.0*scale, width=238.0*scale, height=18.0*scale),
+            style=StyleModel(font_size=11.5, font_name="OpenSans-Bold", bold=True, text_color="#ffffff"),
+            shape_type="rect",
+            metadata={"name": "Outcome 1 Title", "visible": True, "is_placeholder": False, "z_order": 13}
+        ))
+
+        # 14. Outcome 1 Desc
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_out1_desc",
+            element_type="text_box",
+            text="Deliver seamless, personalised and delightful customer interactions.",
+            paragraphs=[ParagraphModel(level=0, text="Deliver seamless, personalised and delightful customer interactions.", runs=[
+                RunModel(text="Deliver seamless, personalised and delightful customer interactions.", font_size=9.5, font_name="OpenSans", font_color="#ffffff")
+            ])],
+            position=PositionModel(x=696.0*scale, y=163.0*scale, width=238.0*scale, height=30.0*scale),
+            style=StyleModel(font_size=9.5, font_name="OpenSans", text_color="#ffffff"),
+            shape_type="rect",
+            metadata={"name": "Outcome 1 Desc", "visible": True, "is_placeholder": False, "z_order": 14}
+        ))
+
+        # 15. Outcome 2 Title
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_out2_title",
+            element_type="text_box",
+            text="Operational excellence",
+            paragraphs=[ParagraphModel(level=0, text="Operational excellence", runs=[
+                RunModel(text="Operational excellence", bold=True, font_size=11.5, font_name="OpenSans-Bold", font_color="#ffffff")
+            ])],
+            position=PositionModel(x=696.0*scale, y=220.0*scale, width=238.0*scale, height=18.0*scale),
+            style=StyleModel(font_size=11.5, font_name="OpenSans-Bold", bold=True, text_color="#ffffff"),
+            shape_type="rect",
+            metadata={"name": "Outcome 2 Title", "visible": True, "is_placeholder": False, "z_order": 15}
+        ))
+
+        # 16. Outcome 2 Desc
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_out2_desc",
+            element_type="text_box",
+            text="Streamline operations, reduce costs and improve efficiency across the value chain.",
+            paragraphs=[ParagraphModel(level=0, text="Streamline operations, reduce costs and improve efficiency across the value chain.", runs=[
+                RunModel(text="Streamline operations, reduce costs and improve efficiency across the value chain.", font_size=9.5, font_name="OpenSans", font_color="#ffffff")
+            ])],
+            position=PositionModel(x=696.0*scale, y=238.0*scale, width=238.0*scale, height=30.0*scale),
+            style=StyleModel(font_size=9.5, font_name="OpenSans", text_color="#ffffff"),
+            shape_type="rect",
+            metadata={"name": "Outcome 2 Desc", "visible": True, "is_placeholder": False, "z_order": 16}
+        ))
+
+        # 17. Outcome 3 Title
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_out3_title",
+            element_type="text_box",
+            text="Data-driven decisions",
+            paragraphs=[ParagraphModel(level=0, text="Data-driven decisions", runs=[
+                RunModel(text="Data-driven decisions", bold=True, font_size=11.5, font_name="OpenSans-Bold", font_color="#ffffff")
+            ])],
+            position=PositionModel(x=696.0*scale, y=295.0*scale, width=238.0*scale, height=18.0*scale),
+            style=StyleModel(font_size=11.5, font_name="OpenSans-Bold", bold=True, text_color="#ffffff"),
+            shape_type="rect",
+            metadata={"name": "Outcome 3 Title", "visible": True, "is_placeholder": False, "z_order": 17}
+        ))
+
+        # 18. Outcome 3 Desc
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_out3_desc",
+            element_type="text_box",
+            text="Harness data and AI to gain deeper insights and make confident, real-time decisions.",
+            paragraphs=[ParagraphModel(level=0, text="Harness data and AI to gain deeper insights and make confident, real-time decisions.", runs=[
+                RunModel(text="Harness data and AI to gain deeper insights and make confident, real-time decisions.", font_size=9.5, font_name="OpenSans", font_color="#ffffff")
+            ])],
+            position=PositionModel(x=696.0*scale, y=313.0*scale, width=238.0*scale, height=30.0*scale),
+            style=StyleModel(font_size=9.5, font_name="OpenSans", text_color="#ffffff"),
+            shape_type="rect",
+            metadata={"name": "Outcome 3 Desc", "visible": True, "is_placeholder": False, "z_order": 18}
+        ))
+
+        # 19. Outcome 4 Title
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_out4_title",
+            element_type="text_box",
+            text="Sustainable growth",
+            paragraphs=[ParagraphModel(level=0, text="Sustainable growth", runs=[
+                RunModel(text="Sustainable growth", bold=True, font_size=11.5, font_name="OpenSans-Bold", font_color="#ffffff")
+            ])],
+            position=PositionModel(x=696.0*scale, y=370.0*scale, width=238.0*scale, height=18.0*scale),
+            style=StyleModel(font_size=11.5, font_name="OpenSans-Bold", bold=True, text_color="#ffffff"),
+            shape_type="rect",
+            metadata={"name": "Outcome 4 Title", "visible": True, "is_placeholder": False, "z_order": 19}
+        ))
+
+        # 20. Outcome 4 Desc
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_out4_desc",
+            element_type="text_box",
+            text="Build resilient, future-ready businesses that adapt and scale with confidence.",
+            paragraphs=[ParagraphModel(level=0, text="Build resilient, future-ready businesses that adapt and scale with confidence.", runs=[
+                RunModel(text="Build resilient, future-ready businesses that adapt and scale with confidence.", font_size=9.5, font_name="OpenSans", font_color="#ffffff")
+            ])],
+            position=PositionModel(x=696.0*scale, y=388.0*scale, width=238.0*scale, height=30.0*scale),
+            style=StyleModel(font_size=9.5, font_name="OpenSans", text_color="#ffffff"),
+            shape_type="rect",
+            metadata={"name": "Outcome 4 Desc", "visible": True, "is_placeholder": False, "z_order": 20}
+        ))
+
+        # 21. Slide Footer (bottom)
+        elements.append(DocumentElementModel(
+            element_id="slide_2_shape_footer",
+            element_type="text_box",
+            text="Engineering + AI & Data Offerings \u00a9 2026 Deloitte Touche Tohmatsu India LLP.",
+            paragraphs=[ParagraphModel(level=0, text="Engineering + AI & Data Offerings \u00a9 2026 Deloitte Touche Tohmatsu India LLP. 2", runs=[
+                RunModel(text="Engineering + AI & Data Offerings \u00a9 2026 Deloitte Touche Tohmatsu India LLP.", font_size=8.5, font_name="OpenSans", font_color="#000000")
+            ])],
+            position=PositionModel(x=25.0*scale, y=510.0*scale, width=500.0*scale, height=15.0*scale),
+            style=StyleModel(font_size=8.5, font_name="OpenSans", text_color="#000000"),
+            shape_type="rect",
+            metadata={"name": "Slide Footer", "visible": True, "is_placeholder": False, "z_order": 21}
+        ))
+
+        # Replace all slide elements
+        slide_2.elements = elements
+

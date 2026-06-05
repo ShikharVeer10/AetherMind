@@ -4,7 +4,7 @@ import os
 import sys
 
 # Use the test pptx
-DOCUMENT_PATH = r"C:\Users\shikh\Downloads\E-Commerce-Recommendation-System-23BCE9278.pptx"
+DOCUMENT_PATH = r"C:\Users\shikh\OneDrive\Documents\Desktop\EAID Offerings Abriged for Client 2026 (1).pdf"
 
 if not os.path.exists(DOCUMENT_PATH):
     print(f"ERROR: File not found: {DOCUMENT_PATH}")

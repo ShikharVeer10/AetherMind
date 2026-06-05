@@ -25,64 +25,85 @@ class ImageInterpretationAgent:
         )
         return response.output_text
     def _build_prompt(self,slide_title: Optional[str]) -> str:
-        title_context = ""
-        if slide_title:
-            title_context = f"Slide Title: {slide_title}\n\n"
+        return """\
+You are an expert visual analysis and image reconstruction system.
 
-        return f"""
-{title_context}
+Analyze the provided image and produce a structured description optimized for faithful image reconstruction.
 
-You are an expert researcher,
-educator,
-presentation analyst,
-diagram analyst,
-and visual reasoning expert.
+Do NOT describe slides, presentations, documents, or surrounding context.
 
-Your task is NOT to describe pixels.
+Focus ONLY on the visual content inside the image.
 
-Your task is to understand:
+Your objective is to extract enough information so that another AI image generation model can recreate a visually similar image even if the original image becomes unavailable.
 
-1. What is happening in the image.
-2. What concept is being taught.
-3. Why the image exists.
-4. What information the author is trying to communicate.
-5. The semantic meaning of every major visual component.
-6. The flow of information from one component to another.
-7. The relationships between entities.
-8. The educational interpretation.
-9. The conceptual abstraction shown.
-10. A complete reconstruction description such that another LLM could recreate a near-identical image.
+Analyze the image and extract:
 
-Return your response EXACTLY in this format:
+## 1. Scene Overview
+Provide a detailed description of the entire image, including:
+- overall composition
+- visual hierarchy
+- major regions
+- focal points
 
-Semantic Flow
-<detailed explanation>
+## 2. Object Inventory
+Identify every significant visual element. For each object provide a JSON block matching:
+{
+  "name": "",
+  "category": "",
+  "position": "",
+  "size": "",
+  "appearance": ""
+}
+Examples of categories: human, robot, gear, chart, cloud, building, server, tree, molecule, icon, vehicle.
 
-Step-by-step Meaning
-<detailed numbered explanation>
+## 3. Spatial Relationships
+Describe how objects relate to one another (e.g. above, below, inside, connected_to, overlapping, surrounding, attached_to).
 
-Conceptual Layers
-<identify all concepts>
+## 4. Visual Style
+Identify:
+- illustration style
+- rendering style
+- realism level
+- artistic influences
+- design language
+Examples: photorealistic, corporate infographic, flat design, vector art, futuristic, 3D render, technical diagram, medical illustration, scientific visualization.
 
-Visual Design Details
-<layout, colours, connectors, shapes, hierarchy>
+## 5. Color Analysis
+Return a JSON block containing:
+{
+  "dominant_colors": [],
+  "accent_colors": [],
+  "background_colors": []
+}
+Use HEX color values when possible.
 
-Educational Interpretation
-<how a professor would explain it>
+## 6. Shapes and Geometry
+Identify:
+- circles
+- rectangles
+- polygons
+- arrows
+- connectors
+- icons
+- decorative elements
+Describe their placement and role.
 
-Plain English Summary
-<simple explanation>
+## 7. Text Elements
+Extract all visible text exactly as shown. Preserve wording, capitalization, and grouping. Do not summarize.
 
-Image Recreation Blueprint
-<extremely detailed image generation description>
+## 8. Visual Structure
+Describe columns, rows, clusters, panels, sections, layers, and their arrangement.
 
-Do not talk about pixels.
+## 9. Reconstruction Description
+Generate an extremely detailed reconstruction description containing: objects, colors, positions, scale, spacing, style, lighting, relationships, and composition. The description should be sufficient for another image generation model to recreate a highly similar image.
 
-Do not give OCR.
+## 10. Reconstruction Prompt
+Generate a final image-generation prompt optimized for reconstruction fidelity. The prompt should describe the image precisely, avoid interpretation, avoid summarization, avoid adding new content, and preserve visual structure.
 
-Focus on meaning,
-relationships,
-flow,
-reasoning,
-and educational intent.
+Critical Requirement:
+Do not explain the image.
+Do not summarize the image.
+Do not infer business meaning.
+Do not infer slide context.
+Only describe what is visually present and necessary for reconstruction.
 """

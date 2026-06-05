@@ -1,0 +1,1431 @@
+======================================================================
+Slide 1: 2026
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to 2026.
+
+Step-by-step meaning:
+Visual element representing slide content related to 2026.
+Concept/process depicted: 2026
+Flow/sequence: N/A
+
+Conceptual Layers
+Engineering, AI & Data
+Offerings Engineering your advantage
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #86bc25
+Shapes:
+rect: 3 instance(s)
+Structure:
+Layout type: two_column
+body_left → Engineering, AI & Data Offerings Engineering your advantage
+body_right → slide_1_full_page_image
+footer → 2026
+Asset supporting: 2026
+Connectors:
+Arrow: 'slide_1_full_page_image' → '2026' [contains]
+Arrow: 'slide_1_full_page_image' → 'Engineering, AI & Data Offerings Engineering your advantage' [contains]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to 2026.
+
+In the context of the slide topic '2026', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 2: Engineering, AI & Data | Digitalisation continuum
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Engineering, AI & Data | Digitalisation continuum.
+
+Step-by-step meaning:
+Visual element representing slide content related to Engineering, AI & Data | Digitalisation continuum.
+Concept/process depicted: Engineering, AI & Data | Digitalisation continuum
+Flow/sequence: N/A
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP.
+The slide presents: Our digitalisation continuum framework
+The slide presents: Enhanced customer experience
+The slide presents: Operational excellence
+The slide presents: Data-driven decisions
+The slide presents: Sustainable growth
+The slide presents: Outcome with Deloitte
+The slide presents: Digitise
+The slide presents: Integrate
+The slide presents: Intelligence
+The slide presents: Innovate
+The slide presents: We partner with you across your digital journey, helping you achieve key outcomes at every stage.
+The slide presents: Deliver seamless, personalised and delightful customer interactions.
+The slide presents: Streamline operations, reduce costs and improve efficiency across the value chain.
+The slide presents: Harness data and AI to gain deeper insights and make confident, real-time decisions.
+The slide presents: Build resilient, future-ready businesses that adapt and scale with confidence.
+The slide presents: Automate processes, digitise data and enhance customer touchpoints to lay a strong digital foundation.
+The slide presents: Connect systems, streamline workflows and empower teams through unified platforms and intelligent tools.
+The slide presents: Leverage AI, analytics and advanced technologies to generate insights and drive smarter decisions.
+The slide presents: Co-create future-ready solutions, explore new business models and unlock sustainable growth.
+
+Conceptual Layers
+Our digitalisation continuum framework
+Key concept illustrated on this slide.
+Digitise
+Key concept illustrated on this slide.
+Integrate
+Key concept illustrated on this slide.
+Intelligence
+Key concept illustrated on this slide.
+Innovate
+Key concept illustrated on this slide.
+Outcome with Deloitte
+Key concept illustrated on this slide.
+Enhanced customer experience
+Key concept illustrated on this slide.
+Deliver seamless, personalised and delightful customer interactions.
+Key concept illustrated on this slide.
+Operational excellence
+Key concept illustrated on this slide.
+Data-driven decisions
+Key concept illustrated on this slide.
+Sustainable growth
+Key concept illustrated on this slide.
+Build resilient, future-ready businesses that adapt and scale with confidence.
+Key concept illustrated on this slide.
+Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP.
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #3c763d, dark green (#008000), white (#ffffff)
+Shapes:
+rect: 22 instance(s)
+Structure:
+Layout type: two_column
+header → Engineering, AI & Data | Digitalisation continuum
+body_left → Our digitalisation continuum framework, We partner with you across your digital journey, helping you, Digitise, Automate processes, digitise data and enhance customer touch, Integrate, Connect systems, streamline workflows and empower teams thro, Intelligence, Leverage AI, analytics and advanced technologies to generate, Innovate, Co-create future-ready solutions, explore new business model
+body_right → slide_2_full_page_image, Outcome with Deloitte, Enhanced customer experience, Deliver seamless, personalised and delightful customer inter, Operational excellence, Streamline operations, reduce costs and improve efficiency a, Data-driven decisions, Harness data and AI to gain deeper insights and make confide, Sustainable growth, Build resilient, future-ready businesses that adapt and scal
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh
+Asset supporting: Engineering, AI & Data | Digitalisation continuum
+Connectors:
+Arrow: 'slide_2_full_page_image' → 'Engineering, AI & Data | Digitalisation continuum' [contains]
+Arrow: 'slide_2_full_page_image' → 'Our digitalisation continuum framework' [contains]
+Arrow: 'slide_2_full_page_image' → 'We partner with you across your digital journey, helping you achieve key outcomes at every stage.' [contains]
+Arrow: 'slide_2_full_page_image' → 'Digitise' [contains]
+Arrow: 'slide_2_full_page_image' → 'Automate processes, digitise data and enhance customer touchpoints to lay a strong digital foundation.' [contains]
+Arrow: 'slide_2_full_page_image' → 'Integrate' [contains]
+Arrow: 'slide_2_full_page_image' → 'Connect systems, streamline workflows and empower teams through unified platforms and intelligent tools.' [contains]
+Arrow: 'slide_2_full_page_image' → 'Intelligence' [contains]
+Arrow: 'slide_2_full_page_image' → 'Leverage AI, analytics and advanced technologies to generate insights and drive smarter decisions.' [contains]
+Arrow: 'slide_2_full_page_image' → 'Innovate' [contains]
+Arrow: 'slide_2_full_page_image' → 'Co-create future-ready solutions, explore new business models and unlock sustainable growth.' [contains]
+Arrow: 'slide_2_full_page_image' → 'Outcome with Deloitte' [contains]
+Arrow: 'slide_2_full_page_image' → 'Enhanced customer experience' [contains]
+Arrow: 'slide_2_full_page_image' → 'Deliver seamless, personalised and delightful customer interactions.' [contains]
+Arrow: 'slide_2_full_page_image' → 'Operational excellence' [contains]
+Arrow: 'slide_2_full_page_image' → 'Streamline operations, reduce costs and improve efficiency across the value chain.' [contains]
+Arrow: 'slide_2_full_page_image' → 'Data-driven decisions' [contains]
+Arrow: 'slide_2_full_page_image' → 'Harness data and AI to gain deeper insights and make confident, real-time decisions.' [contains]
+Arrow: 'slide_2_full_page_image' → 'Sustainable growth' [contains]
+Arrow: 'slide_2_full_page_image' → 'Build resilient, future-ready businesses that adapt and scale with confidence.' [contains]
+Arrow: 'slide_2_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP.' [contains]
+Arrow: 'Our digitalisation continuum framework' → 'We partner with you across your digital journey, helping you achieve key outcomes at every stage.' [proximity]
+Arrow: 'Digitise' → 'Automate processes, digitise data and enhance customer touchpoints to lay a strong digital foundation.' [proximity]
+Arrow: 'Integrate' → 'Connect systems, streamline workflows and empower teams through unified platforms and intelligent tools.' [proximity]
+Arrow: 'Intelligence' → 'Leverage AI, analytics and advanced technologies to generate insights and drive smarter decisions.' [proximity]
+Arrow: 'Innovate' → 'Co-create future-ready solutions, explore new business models and unlock sustainable growth.' [proximity]
+Arrow: 'Enhanced customer experience' → 'Deliver seamless, personalised and delightful customer interactions.' [proximity]
+Arrow: 'Operational excellence' → 'Streamline operations, reduce costs and improve efficiency across the value chain.' [proximity]
+Arrow: 'Data-driven decisions' → 'Harness data and AI to gain deeper insights and make confident, real-time decisions.' [proximity]
+Arrow: 'Sustainable growth' → 'Build resilient, future-ready businesses that adapt and scale with confidence.' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Engineering, AI & Data | Digitalisation continuum.
+
+In the context of the slide topic 'Engineering, AI & Data | Digitalisation continuum', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 3: Engineering, AI & Data | Why Deloitte
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Engineering, AI & Data | Why Deloitte.
+
+Step-by-step meaning:
+Visual element representing slide content related to Engineering, AI & Data | Why Deloitte.
+Concept/process depicted: Engineering, AI & Data | Why Deloitte
+Flow/sequence: N/A
+The slide presents: Depth in both business and technology to deliver success
+The slide presents: Solutions that create business value – advice, implement or operate
+The slide presents: Driving speed and agility through componentized solutions
+The slide presents: Gartner top quadrant in Customer, Data & Analytics and other areas of engineering
+The slide presents: Experience of having done digital journeys for clients many times over
+The slide presents: 35000+ strong team – across app, data, AI, cloud and quality engineering
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 3
+The slide presents: Been there, done that
+The slide presents: Expertise and scale
+The slide presents: Pre-built IP-based solutions
+The slide presents: Industry recognition
+The slide presents: Business and technology depth
+The slide presents: Business outcome focused
+
+Conceptual Layers
+Engineering + AI & Data Offerings
+© 2026 Deloitte Touche Tohmatsu India LLP. 3
+Been there, done that
+Key concept illustrated on this slide.
+Expertise and scale
+Key concept illustrated on this slide.
+Pre-built IP-based solutions
+Key concept illustrated on this slide.
+Industry recognition
+Key concept illustrated on this slide.
+Business and technology depth
+Key concept illustrated on this slide.
+Business outcome focused
+Key concept illustrated on this slide.
+Depth in both business and technology to deliver success
+Key concept illustrated on this slide.
+Solutions that create business value – advice, implement or operate
+Key concept illustrated on this slide.
+Driving speed and agility through componentized solutions
+Key concept illustrated on this slide.
+Gartner top quadrant in Customer, Data & Analytics and other
+areas of engineering
+Experience of having done digital journeys for clients
+many times over
+35000+ strong team – across app, data, AI, cloud and
+quality engineering
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #00abab, #005587, white (#ffffff)
+Shapes:
+rect: 15 instance(s)
+Structure:
+Layout type: two_column
+header → Engineering, AI & Data | Why Deloitte
+body_left → Been there, done that, Expertise and scale, Pre-built IP-based solutions, Industry recognition, Business and technology depth, Business outcome focused
+body_right → slide_3_full_page_image, Depth in both business and technology to deliver success, Solutions that create business value – advice, implement or , Driving speed and agility through componentized solutions, Gartner top quadrant in Customer, Data & Analytics and other, Experience of having done digital journeys for clients many , 35000+ strong team – across app, data, AI, cloud and quality
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh
+Asset supporting: Engineering, AI & Data | Why Deloitte
+Connectors:
+Arrow: 'slide_3_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 3' [contains]
+Arrow: 'slide_3_full_page_image' → 'Engineering, AI & Data | Why Deloitte' [contains]
+Arrow: 'slide_3_full_page_image' → 'Been there, done that' [contains]
+Arrow: 'slide_3_full_page_image' → 'Expertise and scale' [contains]
+Arrow: 'slide_3_full_page_image' → 'Pre-built IP-based solutions' [contains]
+Arrow: 'slide_3_full_page_image' → 'Industry recognition' [contains]
+Arrow: 'slide_3_full_page_image' → 'Business and technology depth' [contains]
+Arrow: 'slide_3_full_page_image' → 'Business outcome focused' [contains]
+Arrow: 'slide_3_full_page_image' → 'Depth in both business and technology to deliver success' [contains]
+Arrow: 'slide_3_full_page_image' → 'Solutions that create business value – advice, implement or operate' [contains]
+Arrow: 'slide_3_full_page_image' → 'Driving speed and agility through componentized solutions' [contains]
+Arrow: 'slide_3_full_page_image' → 'Gartner top quadrant in Customer, Data & Analytics and other areas of engineering' [contains]
+Arrow: 'slide_3_full_page_image' → 'Experience of having done digital journeys for clients many times over' [contains]
+Arrow: 'slide_3_full_page_image' → '35000+ strong team – across app, data, AI, cloud and quality engineering' [contains]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Engineering, AI & Data | Why Deloitte.
+
+In the context of the slide topic 'Engineering, AI & Data | Why Deloitte', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 4: Engineering, AI & Data | Offerings
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Engineering, AI & Data | Offerings.
+
+Step-by-step meaning:
+Visual element representing slide content related to Engineering, AI & Data | Offerings.
+Concept/process depicted: Engineering, AI & Data | Offerings
+Flow/sequence: N/A
+The slide presents: • Data platform architecture • Data modernisation • Data marketplace • Data management • Connected data platforms • Data operate
+The slide presents: Data Modernisation and
+The slide presents: • AI strategy • Applied analytics and AI • Generative AI and Agentic AI • KPI design • Insights-as-a-Service • AI driven business processes • AIOps/MLOps/LLMOps/ AgentOps
+The slide presents: AI Insights & Engagement
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 4
+The slide presents: • Cloud strategy • Foundation services and setup • Migration service • Cloud operate
+The slide presents: Hybrid Cloud Engineering
+The slide presents: • QE advisory and transformation • Digital enterprise and QE • Intelligent QE
+The slide presents: Quality Engineering
+The slide presents: Our Strength in Numbers
+The slide presents: 15000+
+The slide presents: 11000+
+The slide presents: 2800+
+The slide presents: 4500+
+The slide presents: Databricks
+The slide presents: • Digital product & application development • Software platform engineering • Domain platforms • Mainframe modernisation • Managed services and operate
+The slide presents: Total TestwareTM
+The slide presents: Platform Development
+The slide presents: Technology Ecosystem
+The slide presents: 3100+
+The slide presents: & Integration
+
+Conceptual Layers
+Engineering + AI & Data Offerings
+© 2026 Deloitte Touche Tohmatsu India LLP. 4
+
+Digital product & application development • Software platform engineering • Domain platforms • Mainframe modernisation • Managed services and operate
+Platform Development
+Key concept illustrated on this slide.
+
+Data platform architecture • Data modernisation • Data marketplace • Data management • Connected data platforms • Data operate
+Data Modernisation and
+Key concept illustrated on this slide.
+Migration
+Key concept illustrated on this slide.
+
+AI strategy • Applied analytics and AI • Generative AI and Agentic AI • KPI design • Insights-as-a-Service • AI driven business processes • AIOps/MLOps/LLMOps/ AgentOps
+AI Insights & Engagement
+Key concept illustrated on this slide.
+
+Cloud strategy • Foundation services and setup • Migration service • Cloud operate
+Hybrid Cloud Engineering
+Key concept illustrated on this slide.
+
+QE advisory and transformation • Digital enterprise and QE • Intelligent QE
+Quality Engineering
+Key concept illustrated on this slide.
+Our Strength in Numbers
+Key concept illustrated on this slide.
+Databricks
+Key concept illustrated on this slide.
+Total TestwareTM
+Key concept illustrated on this slide.
+Technology Ecosystem
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #00abab, #313131, white (#ffffff), #262626
+Shapes:
+rect: 24 instance(s)
+Structure:
+Layout type: two_column
+header → Engineering, AI & Data | Offerings
+body_left → • Digital product & application development • Software platf, Platform Development, & Integration, • Data platform architecture • Data modernisation • Data mar, Data Modernisation and, Migration, • AI strategy • Applied analytics and AI • Generative AI and, 15000+, 11000+, Technology Ecosystem
+body_right → slide_4_full_page_image, AI Insights & Engagement, • Cloud strategy • Foundation services and setup • Migration, Hybrid Cloud Engineering, • QE advisory and transformation • Digital enterprise and QE, Quality Engineering, Our Strength in Numbers, 3100+, 2800+, 4500+, Total TestwareTM
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh, Databricks
+Asset supporting: Engineering, AI & Data | Offerings
+Connectors:
+Arrow: 'slide_4_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 4' [contains]
+Arrow: 'slide_4_full_page_image' → 'Engineering, AI & Data | Offerings' [contains]
+Arrow: 'slide_4_full_page_image' → '• Digital product & application development • Software platform engineering • Domain platforms • Mainframe modernisation • Managed services and operate' [contains]
+Arrow: 'slide_4_full_page_image' → 'Platform Development' [contains]
+Arrow: 'slide_4_full_page_image' → '& Integration' [contains]
+Arrow: 'slide_4_full_page_image' → '• Data platform architecture • Data modernisation • Data marketplace • Data management • Connected data platforms • Data operate' [contains]
+Arrow: 'slide_4_full_page_image' → 'Data Modernisation and' [contains]
+Arrow: 'slide_4_full_page_image' → 'Migration' [contains]
+Arrow: 'slide_4_full_page_image' → '• AI strategy • Applied analytics and AI • Generative AI and Agentic AI • KPI design • Insights-as-a-Service • AI driven business processes • AIOps/MLOps/LLMOps/ AgentOps' [contains]
+Arrow: 'slide_4_full_page_image' → 'AI Insights & Engagement' [contains]
+Arrow: 'slide_4_full_page_image' → '• Cloud strategy • Foundation services and setup • Migration service • Cloud operate' [contains]
+Arrow: 'slide_4_full_page_image' → 'Hybrid Cloud Engineering' [contains]
+Arrow: 'slide_4_full_page_image' → '• QE advisory and transformation • Digital enterprise and QE • Intelligent QE' [contains]
+Arrow: 'slide_4_full_page_image' → 'Quality Engineering' [contains]
+Arrow: 'slide_4_full_page_image' → 'Our Strength in Numbers' [contains]
+Arrow: 'slide_4_full_page_image' → '15000+' [contains]
+Arrow: 'slide_4_full_page_image' → '11000+' [contains]
+Arrow: 'slide_4_full_page_image' → '3100+' [contains]
+Arrow: 'slide_4_full_page_image' → '2800+' [contains]
+Arrow: 'slide_4_full_page_image' → '4500+' [contains]
+Arrow: 'slide_4_full_page_image' → 'Databricks' [contains]
+Arrow: 'slide_4_full_page_image' → 'Total TestwareTM' [contains]
+Arrow: 'slide_4_full_page_image' → 'Technology Ecosystem' [contains]
+Arrow: 'Platform Development' → '& Integration' [proximity]
+Arrow: 'Data Modernisation and' → 'Migration' [proximity]
+Arrow: 'Our Strength in Numbers' → '3100+' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Engineering, AI & Data | Offerings.
+
+In the context of the slide topic 'Engineering, AI & Data | Offerings', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 5: Engineering, AI & Data | Platform Development and Integration
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Engineering, AI & Data | Platform Development and Integration.
+
+Step-by-step meaning:
+Visual element representing slide content related to Engineering, AI & Data | Platform Development and Integration.
+Concept/process depicted: Engineering, AI & Data | Platform Development and Integration
+Flow/sequence: N/A
+The slide presents: Leading Integrated Master Developer in UAE
+The slide presents: 2
+The slide presents: 1200+ screens & 200+ APIs developed using microservices architecture with focus on best-in-class user experience & enable faster go to market. Extensible web/mobile platform which was scaled to 3 brands.
+The slide presents: 2nd Largest Private Bank in India
+The slide presents: Modernization & Consolidation - 158 Apps to 50 domain Services | 20% Cost reduction per transaction
+The slide presents: Defined Modernization roadmap across 19 business areas to enable scalability to 100x transaction growth vision
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 5
+The slide presents: • Application strategy and design • Application engineering • Application modernisation
+The slide presents: Digital Product and App
+The slide presents: • Platform architecture & advisory • Integration services & API development (ipaas/ ESB) • Platform modernisation
+The slide presents: Software Platform Engineering
+The slide presents: • Domain platform strategy & design • Next gen domain platform engineering • Asset led platform modernisation
+The slide presents: Domain Platforms
+The slide presents: • Mainframe modernisation • Legacy application modernisation • Mainframe operate
+The slide presents: Mainframe Modernisation
+The slide presents: Case Studies
+The slide presents: • Application managed services • Platform managed service • Foundry based setup • Cloud managed services & operate
+The slide presents: Managed Services and Operate
+The slide presents: Deep industry expertise + deep engineering
+The slide presents: Experience in solving complex business and
+The slide presents: Top 3 Private Bank in India
+The slide presents: Reusable assets to shorten significantly time to
+The slide presents: Why Deloitte
+The slide presents: Corporate Banking Platform - TPS of 5000+ logins per hour & 75K transactions per day
+The slide presents: Migrated 5 lakh+ corporates to new-age banking experience. End-to-end corporate digital transformation of the bank across CIB, Payments, Trade, Treasury & Account Services
+The slide presents: Extensible Platforms for Real Estate & Property Mgmt.
+The slide presents: Impact delivered​
+The slide presents: capabilities
+The slide presents: technology led transformations
+The slide presents: market and realize value
+
+Conceptual Layers
+Engineering + AI & Data Offerings
+© 2026 Deloitte Touche Tohmatsu India LLP. 5
+Case Studies
+Key concept illustrated on this slide.
+Top 3 Private Bank in India
+Key concept illustrated on this slide.
+Corporate Banking Platform - TPS of 5000+ logins per
+hour & 75K transactions per day
+Migrated 5 lakh+ corporates to new-age banking
+experience. End-to-end corporate digital transformation of the bank across CIB, Payments, Trade, Treasury & Account Services
+Leading Integrated Master Developer in UAE
+Key concept illustrated on this slide.
+Extensible Platforms for Real Estate & Property Mgmt.
+Key concept illustrated on this slide.
+1200+ screens & 200+ APIs developed using
+microservices architecture with focus on best-in-class user experience & enable faster go to market. Extensible web/mobile platform which was scaled to 3 brands.
+Modernization & Consolidation - 158 Apps to 50 domain
+Services | 20% Cost reduction per transaction
+Defined Modernization roadmap across 19 business
+areas to enable scalability to 100x transaction growth vision
+Impact delivered​
+Key concept illustrated on this slide.
+
+Application strategy and design • Application engineering • Application modernisation
+Digital Product and App
+Key concept illustrated on this slide.
+Development
+Key concept illustrated on this slide.
+
+Platform architecture & advisory • Integration services & API development (ipaas/ ESB) • Platform modernisation
+Software Platform Engineering
+Key concept illustrated on this slide.
+
+Domain platform strategy & design • Next gen domain platform engineering • Asset led platform modernisation
+Domain Platforms
+Key concept illustrated on this slide.
+
+Mainframe modernisation • Legacy application modernisation • Mainframe operate
+Mainframe Modernisation
+Key concept illustrated on this slide.
+
+Application managed services • Platform managed service • Foundry based setup • Cloud managed services & operate
+Managed Services and Operate
+Key concept illustrated on this slide.
+Deep industry expertise + deep engineering
+Key concept illustrated on this slide.
+Experience in solving complex business and
+Key concept illustrated on this slide.
+Reusable assets to shorten significantly time to
+Key concept illustrated on this slide.
+Why Deloitte
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Shapes:
+rect: 35 instance(s)
+Structure:
+Layout type: two_column
+header → Engineering, AI & Data | Platform Development and Integratio
+body_left → Case Studies, Top 3 Private Bank in India, Corporate Banking Platform - TPS of 5000+ logins per hour & , 1, 2, • Application strategy and design • Application engineering , Digital Product and App, Development, • Platform architecture & advisory • Integration services & , Software Platform Engineering, • Domain platform strategy & design • Next gen domain platfo, Deep industry expertise + deep engineering, capabilities, Why Deloitte
+body_right → slide_5_full_page_image, Leading Integrated Master Developer in UAE, Extensible Platforms for Real Estate & Property Mgmt., 2nd Largest Private Bank in India, Modernization & Consolidation - 158 Apps to 50 domain Servic, 3, Impact delivered​, Domain Platforms, • Mainframe modernisation • Legacy application modernisation, Mainframe Modernisation, • Application managed services • Platform managed service • , Managed Services and Operate, Experience in solving complex business and, technology led transformations, Reusable assets to shorten significantly time to, market and realize value
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh, Migrated 5 lakh+ corporates to new-age banking experience. E, 1200+ screens & 200+ APIs developed using microservices arch, Defined Modernization roadmap across 19 business areas to en
+Asset supporting: Engineering, AI & Data | Platform Development and Integration
+Connectors:
+Arrow: 'slide_5_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 5' [contains]
+Arrow: 'slide_5_full_page_image' → 'Engineering, AI & Data | Platform Development and Integration' [contains]
+Arrow: 'slide_5_full_page_image' → 'Case Studies' [contains]
+Arrow: 'slide_5_full_page_image' → 'Top 3 Private Bank in India' [contains]
+Arrow: 'slide_5_full_page_image' → 'Corporate Banking Platform - TPS of 5000+ logins per hour & 75K transactions per day' [contains]
+Arrow: 'slide_5_full_page_image' → '1' [contains]
+Arrow: 'slide_5_full_page_image' → 'Migrated 5 lakh+ corporates to new-age banking experience. End-to-end corporate digital transformation of the bank across CIB, Payments, Trade, Treasury & Account Services' [contains]
+Arrow: 'slide_5_full_page_image' → 'Leading Integrated Master Developer in UAE' [contains]
+Arrow: 'slide_5_full_page_image' → 'Extensible Platforms for Real Estate & Property Mgmt.' [contains]
+Arrow: 'slide_5_full_page_image' → '2' [contains]
+Arrow: 'slide_5_full_page_image' → '1200+ screens & 200+ APIs developed using microservices architecture with focus on best-in-class user experience & enable faster go to market. Extensible web/mobile platform which was scaled to 3 brands.' [contains]
+Arrow: 'slide_5_full_page_image' → '2nd Largest Private Bank in India' [contains]
+Arrow: 'slide_5_full_page_image' → 'Modernization & Consolidation - 158 Apps to 50 domain Services | 20% Cost reduction per transaction' [contains]
+Arrow: 'slide_5_full_page_image' → '3' [contains]
+Arrow: 'slide_5_full_page_image' → 'Defined Modernization roadmap across 19 business areas to enable scalability to 100x transaction growth vision' [contains]
+Arrow: 'slide_5_full_page_image' → 'Impact delivered​' [contains]
+Arrow: 'slide_5_full_page_image' → '• Application strategy and design • Application engineering • Application modernisation' [contains]
+Arrow: 'slide_5_full_page_image' → 'Digital Product and App' [contains]
+Arrow: 'slide_5_full_page_image' → 'Development' [contains]
+Arrow: 'slide_5_full_page_image' → '• Platform architecture & advisory • Integration services & API development (ipaas/ ESB) • Platform modernisation' [contains]
+Arrow: 'slide_5_full_page_image' → 'Software Platform Engineering' [contains]
+Arrow: 'slide_5_full_page_image' → '• Domain platform strategy & design • Next gen domain platform engineering • Asset led platform modernisation' [contains]
+Arrow: 'slide_5_full_page_image' → 'Domain Platforms' [contains]
+Arrow: 'slide_5_full_page_image' → '• Mainframe modernisation • Legacy application modernisation • Mainframe operate' [contains]
+Arrow: 'slide_5_full_page_image' → 'Mainframe Modernisation' [contains]
+Arrow: 'slide_5_full_page_image' → '• Application managed services • Platform managed service • Foundry based setup • Cloud managed services & operate' [contains]
+Arrow: 'slide_5_full_page_image' → 'Managed Services and Operate' [contains]
+Arrow: 'slide_5_full_page_image' → 'Deep industry expertise + deep engineering' [contains]
+Arrow: 'slide_5_full_page_image' → 'capabilities' [contains]
+Arrow: 'slide_5_full_page_image' → 'Experience in solving complex business and' [contains]
+Arrow: 'slide_5_full_page_image' → 'technology led transformations' [contains]
+Arrow: 'slide_5_full_page_image' → 'Reusable assets to shorten significantly time to' [contains]
+Arrow: 'slide_5_full_page_image' → 'market and realize value' [contains]
+Arrow: 'slide_5_full_page_image' → 'Why Deloitte' [contains]
+Arrow: 'Leading Integrated Master Developer in UAE' → 'Extensible Platforms for Real Estate & Property Mgmt.' [proximity]
+Arrow: '1200+ screens & 200+ APIs developed using microservices architecture with focus on best-in-class user experience & enable faster go to market. Extensible web/mobile platform which was scaled to 3 brands.' → 'Impact delivered​' [proximity]
+Arrow: '• Application strategy and design • Application engineering • Application modernisation' → 'Development' [proximity]
+Arrow: 'Digital Product and App' → 'Development' [proximity]
+Arrow: 'Deep industry expertise + deep engineering' → 'capabilities' [proximity]
+Arrow: 'Experience in solving complex business and' → 'technology led transformations' [proximity]
+Arrow: 'Reusable assets to shorten significantly time to' → 'market and realize value' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Engineering, AI & Data | Platform Development and Integration.
+
+In the context of the slide topic 'Engineering, AI & Data | Platform Development and Integration', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 6: Engineering, AI & Data | Data Modernisation and Migration
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Engineering, AI & Data | Data Modernisation and Migration.
+
+Step-by-step meaning:
+Visual element representing slide content related to Engineering, AI & Data | Data Modernisation and Migration.
+Concept/process depicted: Engineering, AI & Data | Data Modernisation and Migration
+Flow/sequence: N/A
+The slide presents: The client needed one customer data platform, aiming to unify data for seamless, authoritative customer journey insights and experiences across diverse franchises
+The slide presents: 2
+The slide presents: • Integrated 20+ systems with data for around 30M accounts • Scale up across retail, wealth, and commercial sectors
+The slide presents: Data modernization for European consumer credit reporting company
+The slide presents: Client needed to migrate their Data & Analytics suite from legacy systems to the cloud to address poor customer experience due to increased data processing times
+The slide presents: • Doubled revenue in next 5 years • Add new offerings at reduced costs, expanding existing business and attracting new revenue with revamped products and services
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 6
+The slide presents: Deep industry expertise + deep Data as well as AI
+The slide presents: Our strong technical knowledge, combined with a laser focus on shortening total go-to-market time,
+The slide presents: Deloitte is the one-stop shop for everything you
+The slide presents: Data Platform Architecture
+The slide presents: Data Marketplace
+The slide presents: Data Management
+The slide presents: Connected Data Platforms
+The slide presents: Setup of a Data and Analytics CoE for a multinational financial technology company
+The slide presents: • Data strategy & architecture • Data Transformation Office (DTO)
+The slide presents: • Master data management • Data governance
+The slide presents: The client needed a Data and Analytics CoE to tackle critical business challenges, particularly addressing financial reconciliation issues arising from manual interventions and inefficient processes
+The slide presents: • Data core operations • Data observability
+The slide presents: Why Deloitte
+The slide presents: Case Studies
+The slide presents: 1
+The slide presents: • Reduced infrastructure costs by 30% • Improved performance by 30% • $84M revenue increase, and $4.4M cost savings
+The slide presents: Enable unified customer view for a large financial services company
+The slide presents: Impact delivered​
+The slide presents: capabilities
+The slide presents: has helped our customers enhance overall productivity and realize ROI sooner than projected
+The slide presents: need to develop a data-driven organization
+The slide presents: • Legacy appliance offload • Enterprise data platforms
+The slide presents: • Data products • Data consumption applications
+The slide presents: • Connected platforms
+The slide presents: Data Operate
+
+Conceptual Layers
+Engineering + AI & Data Offerings
+© 2026 Deloitte Touche Tohmatsu India LLP. 6
+Setup of a Data and Analytics CoE for a
+multinational financial technology company
+The client needed a Data and Analytics CoE to tackle
+critical business challenges, particularly addressing financial reconciliation issues arising from manual interventions and inefficient processes
+
+Reduced infrastructure costs by 30% • Improved performance by 30% • $84M revenue increase, and $4.4M cost savings
+Enable unified customer view for a large financial
+services company
+The client needed one customer data platform, aiming to
+unify data for seamless, authoritative customer journey insights and experiences across diverse franchises
+
+Integrated 20+ systems with data for around 30M accounts • Scale up across retail, wealth, and commercial sectors
+Data modernization for European consumer credit
+reporting company
+Client needed to migrate their Data & Analytics suite from
+legacy systems to the cloud to address poor customer experience due to increased data processing times
+
+Doubled revenue in next 5 years • Add new offerings at reduced costs, expanding existing business and attracting new revenue with revamped products and services
+Impact delivered​
+Key concept illustrated on this slide.
+Deep industry expertise + deep Data as well as AI
+Key concept illustrated on this slide.
+Our strong technical knowledge, combined with a
+laser focus on shortening total go-to-market time,
+has helped our customers enhance overall
+productivity and realize ROI sooner than projected
+Deloitte is the one-stop shop for everything you
+Key concept illustrated on this slide.
+Data Platform Architecture
+Key concept illustrated on this slide.
+Data Modernisation
+Key concept illustrated on this slide.
+Data Marketplace
+Key concept illustrated on this slide.
+Data Management
+Key concept illustrated on this slide.
+Connected Data Platforms
+Key concept illustrated on this slide.
+
+Data strategy & architecture • Data Transformation Office (DTO)
+
+Legacy appliance offload • Enterprise data platforms
+
+Data products • Data consumption applications
+
+Master data management • Data governance
+
+Connected platforms
+
+Data core operations • Data observability
+Data Operate
+Key concept illustrated on this slide.
+Why Deloitte
+Key concept illustrated on this slide.
+Case Studies
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Shapes:
+rect: 36 instance(s)
+Structure:
+Layout type: two_column
+header → Engineering, AI & Data | Data Modernisation and Migration
+body_left → Setup of a Data and Analytics CoE for a multinational financ, The client needed a Data and Analytics CoE to tackle critica, 1, • Reduced infrastructure costs by 30% • Improved performance, 2, Deep industry expertise + deep Data as well as AI, capabilities, Data Platform Architecture, Data Modernisation, Data Marketplace, • Data strategy & architecture • Data Transformation Office , • Legacy appliance offload • Enterprise data platforms, • Data products • Data consumption applications, Why Deloitte, Case Studies
+body_right → slide_6_full_page_image, Enable unified customer view for a large financial services , The client needed one customer data platform, aiming to unif, • Integrated 20+ systems with data for around 30M accounts •, Data modernization for European consumer credit reporting co, Client needed to migrate their Data & Analytics suite from l, 3, Impact delivered​, Our strong technical knowledge, combined with a laser focus , has helped our customers enhance overall productivity and re, Deloitte is the one-stop shop for everything you, need to develop a data-driven organization, Data Management, Connected Data Platforms, • Master data management • Data governance, • Connected platforms, • Data core operations • Data observability, Data Operate
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh, • Doubled revenue in next 5 years • Add new offerings at red
+Asset supporting: Engineering, AI & Data | Data Modernisation and Migration
+Connectors:
+Arrow: 'slide_6_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 6' [contains]
+Arrow: 'slide_6_full_page_image' → 'Engineering, AI & Data | Data Modernisation and Migration' [contains]
+Arrow: 'slide_6_full_page_image' → 'Setup of a Data and Analytics CoE for a multinational financial technology company' [contains]
+Arrow: 'slide_6_full_page_image' → 'The client needed a Data and Analytics CoE to tackle critical business challenges, particularly addressing financial reconciliation issues arising from manual interventions and inefficient processes' [contains]
+Arrow: 'slide_6_full_page_image' → '1' [contains]
+Arrow: 'slide_6_full_page_image' → '• Reduced infrastructure costs by 30% • Improved performance by 30% • $84M revenue increase, and $4.4M cost savings' [contains]
+Arrow: 'slide_6_full_page_image' → 'Enable unified customer view for a large financial services company' [contains]
+Arrow: 'slide_6_full_page_image' → 'The client needed one customer data platform, aiming to unify data for seamless, authoritative customer journey insights and experiences across diverse franchises' [contains]
+Arrow: 'slide_6_full_page_image' → '2' [contains]
+Arrow: 'slide_6_full_page_image' → '• Integrated 20+ systems with data for around 30M accounts • Scale up across retail, wealth, and commercial sectors' [contains]
+Arrow: 'slide_6_full_page_image' → 'Data modernization for European consumer credit reporting company' [contains]
+Arrow: 'slide_6_full_page_image' → 'Client needed to migrate their Data & Analytics suite from legacy systems to the cloud to address poor customer experience due to increased data processing times' [contains]
+Arrow: 'slide_6_full_page_image' → '3' [contains]
+Arrow: 'slide_6_full_page_image' → '• Doubled revenue in next 5 years • Add new offerings at reduced costs, expanding existing business and attracting new revenue with revamped products and services' [contains]
+Arrow: 'slide_6_full_page_image' → 'Impact delivered​' [contains]
+Arrow: 'slide_6_full_page_image' → 'Deep industry expertise + deep Data as well as AI' [contains]
+Arrow: 'slide_6_full_page_image' → 'capabilities' [contains]
+Arrow: 'slide_6_full_page_image' → 'Our strong technical knowledge, combined with a laser focus on shortening total go-to-market time,' [contains]
+Arrow: 'slide_6_full_page_image' → 'has helped our customers enhance overall productivity and realize ROI sooner than projected' [contains]
+Arrow: 'slide_6_full_page_image' → 'Deloitte is the one-stop shop for everything you' [contains]
+Arrow: 'slide_6_full_page_image' → 'need to develop a data-driven organization' [contains]
+Arrow: 'slide_6_full_page_image' → 'Data Platform Architecture' [contains]
+Arrow: 'slide_6_full_page_image' → 'Data Modernisation' [contains]
+Arrow: 'slide_6_full_page_image' → 'Data Marketplace' [contains]
+Arrow: 'slide_6_full_page_image' → 'Data Management' [contains]
+Arrow: 'slide_6_full_page_image' → 'Connected Data Platforms' [contains]
+Arrow: 'slide_6_full_page_image' → '• Data strategy & architecture • Data Transformation Office (DTO)' [contains]
+Arrow: 'slide_6_full_page_image' → '• Legacy appliance offload • Enterprise data platforms' [contains]
+Arrow: 'slide_6_full_page_image' → '• Data products • Data consumption applications' [contains]
+Arrow: 'slide_6_full_page_image' → '• Master data management • Data governance' [contains]
+Arrow: 'slide_6_full_page_image' → '• Connected platforms' [contains]
+Arrow: 'slide_6_full_page_image' → '• Data core operations • Data observability' [contains]
+Arrow: 'slide_6_full_page_image' → 'Data Operate' [contains]
+Arrow: 'slide_6_full_page_image' → 'Why Deloitte' [contains]
+Arrow: 'slide_6_full_page_image' → 'Case Studies' [contains]
+Arrow: '• Integrated 20+ systems with data for around 30M accounts • Scale up across retail, wealth, and commercial sectors' → 'Impact delivered​' [proximity]
+Arrow: 'Deep industry expertise + deep Data as well as AI' → 'capabilities' [proximity]
+Arrow: 'Our strong technical knowledge, combined with a laser focus on shortening total go-to-market time,' → 'has helped our customers enhance overall productivity and realize ROI sooner than projected' [proximity]
+Arrow: 'Deloitte is the one-stop shop for everything you' → 'need to develop a data-driven organization' [proximity]
+Arrow: 'Data Modernisation' → '• Legacy appliance offload • Enterprise data platforms' [proximity]
+Arrow: 'Data Marketplace' → '• Data products • Data consumption applications' [proximity]
+Arrow: 'Connected Data Platforms' → '• Connected platforms' [proximity]
+Arrow: '• Data core operations • Data observability' → 'Data Operate' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Engineering, AI & Data | Data Modernisation and Migration.
+
+In the context of the slide topic 'Engineering, AI & Data | Data Modernisation and Migration', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 7: Engineering, AI & Data | Artificial Intelligence Insights & Engagement (1/2)
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Engineering, AI & Data | Artificial Intelligence Insights & Engagement (1/2).
+
+Step-by-step meaning:
+Visual element representing slide content related to Engineering, AI & Data | Artificial Intelligence Insights & Engagement (1/2).
+Concept/process depicted: Engineering, AI & Data | Artificial Intelligence Insights & Engagement (1/2)
+Flow/sequence: N/A
+The slide presents: AI driven Global Transformation for a leading Automotive major
+The slide presents: Used ML, deep learning, NLP, Generative AI, and Agentic AI to build intelligent, scalable solution with end-to-end CoE based value delivery
+The slide presents: • Accelerated AI-value realization with CoE delivering 60+ scalable AI use cases globally • 15% uplift in customer satisfaction
+The slide presents: Conversational cognitive insights solution for a leading global CPG player
+The slide presents: Utilized tabular data for factual insights and a textual corpus to retrieve and summarize reports with an LLM to formulate responses with feedback mechanism
+The slide presents: 3
+The slide presents: • Accelerated decision making due to automatic chart generation • Enhanced operational efficiency
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 7
+The slide presents: Biggest and best AI/ML and data science practice in
+The slide presents: Depth in business and technology to deliver
+The slide presents: Pre-built solutions/assets that deliver agility and
+The slide presents: • AI vision & ambition setting • AI academy • AI value realization and business case development • AI-readiness assessment • Operating model design • Use case prioritisation
+The slide presents: AI Strategy
+The slide presents: • Advanced analytics and AI use case implementation • Embedded analytics in business workflows • Decision intelligence and next-best- action engines
+The slide presents: Applied Analytics and AI
+The slide presents: Case Studies
+The slide presents: • COE / incubator • Applied GenAI solutions • Autonomous AI agents • Agentic AI enablement
+The slide presents: Generative and Agentic AI
+The slide presents: • Key Performance Indicator design • Blueprinting and storyboarding • Visualisation and dashboarding
+The slide presents: KPI Design
+The slide presents: Why Deloitte
+The slide presents: Agentic AI-powered insurance platform modernization for a Mauritius based insurer
+The slide presents: Overhauled the client’s legacy AS400 mainframe-based insurance platform along with intelligent process automation for claims processing
+The slide presents: • Enhanced customer experience through faster claims settlement • 40% reduction in claims processing turnaround time
+The slide presents: Impact delivered​
+The slide presents: consulting in India
+The slide presents: business outcomes/ROI
+The slide presents: value to solve issues across the value chain
+
+Conceptual Layers
+Engineering + AI & Data Offerings
+© 2026 Deloitte Touche Tohmatsu India LLP. 7
+Case Studies
+Key concept illustrated on this slide.
+Agentic AI-powered insurance platform
+modernization for a Mauritius based insurer
+Overhauled the client’s legacy AS400 mainframe-based
+insurance platform along with intelligent process automation for claims processing
+
+Enhanced customer experience through faster claims settlement • 40% reduction in claims processing turnaround time
+AI driven Global Transformation for a leading
+Automotive major
+Used ML, deep learning, NLP, Generative AI, and Agentic
+AI to build intelligent, scalable solution with end-to-end CoE based value delivery
+
+Accelerated AI-value realization with CoE delivering 60+ scalable AI use cases globally • 15% uplift in customer satisfaction
+Conversational cognitive insights solution for a
+leading global CPG player
+Utilized tabular data for factual insights and a textual
+corpus to retrieve and summarize reports with an LLM to formulate responses with feedback mechanism
+
+Accelerated decision making due to automatic chart generation • Enhanced operational efficiency
+Impact delivered​
+Key concept illustrated on this slide.
+Biggest and best AI/ML and data science practice in
+Key concept illustrated on this slide.
+Depth in business and technology to deliver
+Key concept illustrated on this slide.
+Pre-built solutions/assets that deliver agility and
+Key concept illustrated on this slide.
+
+AI vision & ambition setting • AI academy • AI value realization and business case development • AI-readiness assessment • Operating model design • Use case prioritisation
+AI Strategy
+Key concept illustrated on this slide.
+
+Advanced analytics and AI use case implementation • Embedded analytics in business workflows • Decision intelligence and next-best- action engines
+Applied Analytics and AI
+Key concept illustrated on this slide.
+
+COE / incubator • Applied GenAI solutions • Autonomous AI agents • Agentic AI enablement
+Generative and Agentic AI
+Key concept illustrated on this slide.
+
+Key Performance Indicator design • Blueprinting and storyboarding • Visualisation and dashboarding
+KPI Design
+Key concept illustrated on this slide.
+Why Deloitte
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Shapes:
+rect: 32 instance(s)
+Structure:
+Layout type: two_column
+header → Engineering, AI & Data | Artificial Intelligence Insights &
+body_left → Case Studies, Agentic AI-powered insurance platform modernization for a Ma, Overhauled the client’s legacy AS400 mainframe-based insuran, 1, 2, Biggest and best AI/ML and data science practice in, consulting in India, • AI vision & ambition setting • AI academy • AI value reali, AI Strategy, • Advanced analytics and AI use case implementation • Embedd, Applied Analytics and AI, Why Deloitte
+body_right → slide_7_full_page_image, AI driven Global Transformation for a leading Automotive maj, Used ML, deep learning, NLP, Generative AI, and Agentic AI t, Conversational cognitive insights solution for a leading glo, Utilized tabular data for factual insights and a textual cor, 3, Impact delivered​, Depth in business and technology to deliver, business outcomes/ROI, Pre-built solutions/assets that deliver agility and, value to solve issues across the value chain, • COE / incubator • Applied GenAI solutions • Autonomous AI , Generative and Agentic AI, • Key Performance Indicator design • Blueprinting and storyb, KPI Design
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh, • Enhanced customer experience through faster claims settlem, • Accelerated AI-value realization with CoE delivering 60+ s, • Accelerated decision making due to automatic chart generat
+Asset supporting: Engineering, AI & Data | Artificial Intelligence Insights & Engagement (1/2)
+Connectors:
+Arrow: 'slide_7_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 7' [contains]
+Arrow: 'slide_7_full_page_image' → 'Engineering, AI & Data | Artificial Intelligence Insights & Engagement (1/2)' [contains]
+Arrow: 'slide_7_full_page_image' → 'Case Studies' [contains]
+Arrow: 'slide_7_full_page_image' → 'Agentic AI-powered insurance platform modernization for a Mauritius based insurer' [contains]
+Arrow: 'slide_7_full_page_image' → 'Overhauled the client’s legacy AS400 mainframe-based insurance platform along with intelligent process automation for claims processing' [contains]
+Arrow: 'slide_7_full_page_image' → '1' [contains]
+Arrow: 'slide_7_full_page_image' → '• Enhanced customer experience through faster claims settlement • 40% reduction in claims processing turnaround time' [contains]
+Arrow: 'slide_7_full_page_image' → 'AI driven Global Transformation for a leading Automotive major' [contains]
+Arrow: 'slide_7_full_page_image' → 'Used ML, deep learning, NLP, Generative AI, and Agentic AI to build intelligent, scalable solution with end-to-end CoE based value delivery' [contains]
+Arrow: 'slide_7_full_page_image' → '2' [contains]
+Arrow: 'slide_7_full_page_image' → '• Accelerated AI-value realization with CoE delivering 60+ scalable AI use cases globally • 15% uplift in customer satisfaction' [contains]
+Arrow: 'slide_7_full_page_image' → 'Conversational cognitive insights solution for a leading global CPG player' [contains]
+Arrow: 'slide_7_full_page_image' → 'Utilized tabular data for factual insights and a textual corpus to retrieve and summarize reports with an LLM to formulate responses with feedback mechanism' [contains]
+Arrow: 'slide_7_full_page_image' → '3' [contains]
+Arrow: 'slide_7_full_page_image' → '• Accelerated decision making due to automatic chart generation • Enhanced operational efficiency' [contains]
+Arrow: 'slide_7_full_page_image' → 'Impact delivered​' [contains]
+Arrow: 'slide_7_full_page_image' → 'Biggest and best AI/ML and data science practice in' [contains]
+Arrow: 'slide_7_full_page_image' → 'consulting in India' [contains]
+Arrow: 'slide_7_full_page_image' → 'Depth in business and technology to deliver' [contains]
+Arrow: 'slide_7_full_page_image' → 'business outcomes/ROI' [contains]
+Arrow: 'slide_7_full_page_image' → 'Pre-built solutions/assets that deliver agility and' [contains]
+Arrow: 'slide_7_full_page_image' → 'value to solve issues across the value chain' [contains]
+Arrow: 'slide_7_full_page_image' → '• AI vision & ambition setting • AI academy • AI value realization and business case development • AI-readiness assessment • Operating model design • Use case prioritisation' [contains]
+Arrow: 'slide_7_full_page_image' → 'AI Strategy' [contains]
+Arrow: 'slide_7_full_page_image' → '• Advanced analytics and AI use case implementation • Embedded analytics in business workflows • Decision intelligence and next-best- action engines' [contains]
+Arrow: 'slide_7_full_page_image' → 'Applied Analytics and AI' [contains]
+Arrow: 'slide_7_full_page_image' → '• COE / incubator • Applied GenAI solutions • Autonomous AI agents • Agentic AI enablement' [contains]
+Arrow: 'slide_7_full_page_image' → 'Generative and Agentic AI' [contains]
+Arrow: 'slide_7_full_page_image' → '• Key Performance Indicator design • Blueprinting and storyboarding • Visualisation and dashboarding' [contains]
+Arrow: 'slide_7_full_page_image' → 'KPI Design' [contains]
+Arrow: 'slide_7_full_page_image' → 'Why Deloitte' [contains]
+Arrow: 'Used ML, deep learning, NLP, Generative AI, and Agentic AI to build intelligent, scalable solution with end-to-end CoE based value delivery' → 'Impact delivered​' [proximity]
+Arrow: '• Accelerated AI-value realization with CoE delivering 60+ scalable AI use cases globally • 15% uplift in customer satisfaction' → 'Impact delivered​' [proximity]
+Arrow: 'Biggest and best AI/ML and data science practice in' → 'consulting in India' [proximity]
+Arrow: 'Depth in business and technology to deliver' → 'business outcomes/ROI' [proximity]
+Arrow: 'Pre-built solutions/assets that deliver agility and' → 'value to solve issues across the value chain' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Engineering, AI & Data | Artificial Intelligence Insights & Engagement (1/2).
+
+In the context of the slide topic 'Engineering, AI & Data | Artificial Intelligence Insights & Engagement (1/2)', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 8: Engineering, AI & Data | Artificial Intelligence Insights & Engagement (2/2)
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Engineering, AI & Data | Artificial Intelligence Insights & Engagement (2/2).
+
+Step-by-step meaning:
+Visual element representing slide content related to Engineering, AI & Data | Artificial Intelligence Insights & Engagement (2/2).
+Concept/process depicted: Engineering, AI & Data | Artificial Intelligence Insights & Engagement (2/2)
+Flow/sequence: N/A
+The slide presents: 2 Scaling up RPA and providing CoE support for a multinational Oil & Gas company • Increased RPA adoption within the organization, assist in RPA CoE Design and scaling up the RPA operations • Catered all business units across 70 countries by supporting centralized RPA CoE • Identified and assessed automation amenability of 24 potential use cases across the globe with a benefits NPV of $ 4.47 million
+The slide presents: Deloitte is named a worldwide leader
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 8
+The slide presents: We have the deep functional and sector expertise across industries
+The slide presents: Deloitte has a strong alliance with Automation Anywhere, UiPath, Blue
+The slide presents: We have a strong team of R&IA professionals with an accepted track
+The slide presents: • Insight factory setup and operating model • Business translation for AI transformation • Architecture blueprinting and road- mapping
+The slide presents: Insights-as-a-Service
+The slide presents: • ML &LLM CI/CD pipelines • Model, agent & prompt lifecycle management and monitoring • Managed AI platform and run services • Productionisation of ML services
+The slide presents: AIOps / MLOps / LLMOps
+The slide presents: • Maintenance and support (L1/L2/L3) • Continuous improvement • Process/Bot/Platform migration & management • IA Run & Maintenance CoE
+The slide presents: Case Studies
+The slide presents: Managed Services
+The slide presents: • PEGA advisory • Re-engineering • Implementation • DevOps and BAU
+The slide presents: Business Process Management
+The slide presents: Why Deloitte
+The slide presents: 1 Centralized 24X7 support model for a global brewer company • Flexible and scalable managed services model to address the current and future support needs of the client. • 250+ bots supported • 15000+ bot executions per month • Bot efficiency improvement from 65% to 95% • Licenses optimized from 85 to 42 • $37800+ savings in license costs
+The slide presents: in Artificial Intelligence Business
+The slide presents: Prism, ABBYY and other relevant
+The slide presents: record in large scale RPA implantation, at both build and run
+The slide presents: Centralized delivery and support model for a large global consumer goods company • Designed a 4D Operating model to allow end to end delivery of automations in collaboration with the client Automation CoE
+The slide presents: • Deploy a joint team of business and technical architect to design optimal solutions with multi-bot architecture, email triggers, OCR integrations
+The slide presents: Services 2023 by IDC
+The slide presents: technology OEMs
+The slide presents: level
+The slide presents: • 135 use cases with considerable FTE savings delivered and stabilized in the production in 10 months
+
+Conceptual Layers
+Engineering + AI & Data Offerings
+© 2026 Deloitte Touche Tohmatsu India LLP. 8
+Case Studies
+Key concept illustrated on this slide.
+Centralized delivery and support model for a large
+global consumer goods company • Designed a 4D Operating model to allow end to end delivery of automations in collaboration with the client Automation CoE
+
+Deploy a joint team of business and technical architect to design optimal solutions with multi-bot architecture, email triggers, OCR integrations
+
+135 use cases with considerable FTE savings delivered and stabilized in the production in 10 months
+1
+Centralized 24X7 support model for a global brewer company • Flexible and scalable managed services model to address the current and future support needs of the client. • 250+ bots supported • 15000+ bot executions per month • Bot efficiency improvement from 65% to 95% • Licenses optimized from 85 to 42 • $37800+ savings in license costs
+2
+Scaling up RPA and providing CoE support for a multinational Oil & Gas company • Increased RPA adoption within the organization, assist in RPA CoE Design and scaling up the RPA operations • Catered all business units across 70 countries by supporting centralized RPA CoE • Identified and assessed automation amenability of 24 potential use cases across the globe with a benefits NPV of $ 4.47 million
+Deloitte is named a worldwide leader
+Key concept illustrated on this slide.
+Services 2023 by IDC
+Key concept illustrated on this slide.
+We have the deep functional and
+sector expertise across industries
+Deloitte has a strong alliance with
+Automation Anywhere, UiPath, Blue
+Prism, ABBYY and other relevant
+Key concept illustrated on this slide.
+We have a strong team of R&IA
+professionals with an accepted track
+record in large scale RPA
+implantation, at both build and run
+
+Insight factory setup and operating model • Business translation for AI transformation • Architecture blueprinting and road- mapping
+Insights-as-a-Service
+Key concept illustrated on this slide.
+
+ML &LLM CI/CD pipelines • Model, agent & prompt lifecycle management and monitoring • Managed AI platform and run services • Productionisation of ML services
+AIOps / MLOps / LLMOps
+Key concept illustrated on this slide.
+
+Maintenance and support (L1/L2/L3) • Continuous improvement • Process/Bot/Platform migration & management • IA Run & Maintenance CoE
+Managed Services
+Key concept illustrated on this slide.
+
+PEGA advisory • Re-engineering • Implementation • DevOps and BAU
+Business Process Management
+Key concept illustrated on this slide.
+Why Deloitte
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Shapes:
+rect: 29 instance(s)
+Structure:
+Layout type: two_column
+header → Engineering, AI & Data | Artificial Intelligence Insights &
+body_left → Case Studies, Centralized delivery and support model for a large global co, • Deploy a joint team of business and technical architect to, 1 Centralized 24X7 support model for a global brewer company, Deloitte is named a worldwide leader, in Artificial Intelligence Business, Services 2023 by IDC, We have the deep functional and sector expertise across indu, • Insight factory setup and operating model • Business trans, Insights-as-a-Service, • ML &LLM CI/CD pipelines • Model, agent & prompt lifecycle , AIOps / MLOps / LLMOps, Why Deloitte
+body_right → slide_8_full_page_image, 2 Scaling up RPA and providing CoE support for a multination, 3, Deloitte has a strong alliance with Automation Anywhere, UiP, Prism, ABBYY and other relevant, technology OEMs, We have a strong team of R&IA professionals with an accepted, record in large scale RPA implantation, at both build and ru, level, • Maintenance and support (L1/L2/L3) • Continuous improvemen, Managed Services, • PEGA advisory • Re-engineering • Implementation • DevOps a, Business Process Management
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh, • 135 use cases with considerable FTE savings delivered and
+Asset supporting: Engineering, AI & Data | Artificial Intelligence Insights & Engagement (2/2)
+Connectors:
+Arrow: 'slide_8_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 8' [contains]
+Arrow: 'slide_8_full_page_image' → 'Engineering, AI & Data | Artificial Intelligence Insights & Engagement (2/2)' [contains]
+Arrow: 'slide_8_full_page_image' → 'Case Studies' [contains]
+Arrow: 'slide_8_full_page_image' → 'Centralized delivery and support model for a large global consumer goods company • Designed a 4D Operating model to allow end to end delivery of automations in collaboration with the client Automation CoE' [contains]
+Arrow: 'slide_8_full_page_image' → '• Deploy a joint team of business and technical architect to design optimal solutions with multi-bot architecture, email triggers, OCR integrations' [contains]
+Arrow: 'slide_8_full_page_image' → '• 135 use cases with considerable FTE savings delivered and stabilized in the production in 10 months' [contains]
+Arrow: 'slide_8_full_page_image' → '1 Centralized 24X7 support model for a global brewer company • Flexible and scalable managed services model to address the current and future support needs of the client. • 250+ bots supported • 15000+ bot executions per month • Bot efficiency improvement from 65% to 95% • Licenses optimized from 85 to 42 • $37800+ savings in license costs' [contains]
+Arrow: 'slide_8_full_page_image' → '2 Scaling up RPA and providing CoE support for a multinational Oil & Gas company • Increased RPA adoption within the organization, assist in RPA CoE Design and scaling up the RPA operations • Catered all business units across 70 countries by supporting centralized RPA CoE • Identified and assessed automation amenability of 24 potential use cases across the globe with a benefits NPV of $ 4.47 million' [contains]
+Arrow: 'slide_8_full_page_image' → '3' [contains]
+Arrow: 'slide_8_full_page_image' → 'Deloitte is named a worldwide leader' [contains]
+Arrow: 'slide_8_full_page_image' → 'in Artificial Intelligence Business' [contains]
+Arrow: 'slide_8_full_page_image' → 'Services 2023 by IDC' [contains]
+Arrow: 'slide_8_full_page_image' → 'We have the deep functional and sector expertise across industries' [contains]
+Arrow: 'slide_8_full_page_image' → 'Deloitte has a strong alliance with Automation Anywhere, UiPath, Blue' [contains]
+Arrow: 'slide_8_full_page_image' → 'Prism, ABBYY and other relevant' [contains]
+Arrow: 'slide_8_full_page_image' → 'technology OEMs' [contains]
+Arrow: 'slide_8_full_page_image' → 'We have a strong team of R&IA professionals with an accepted track' [contains]
+Arrow: 'slide_8_full_page_image' → 'record in large scale RPA implantation, at both build and run' [contains]
+Arrow: 'slide_8_full_page_image' → 'level' [contains]
+Arrow: 'slide_8_full_page_image' → '• Insight factory setup and operating model • Business translation for AI transformation • Architecture blueprinting and road- mapping' [contains]
+Arrow: 'slide_8_full_page_image' → 'Insights-as-a-Service' [contains]
+Arrow: 'slide_8_full_page_image' → '• ML &LLM CI/CD pipelines • Model, agent & prompt lifecycle management and monitoring • Managed AI platform and run services • Productionisation of ML services' [contains]
+Arrow: 'slide_8_full_page_image' → 'AIOps / MLOps / LLMOps' [contains]
+Arrow: 'slide_8_full_page_image' → '• Maintenance and support (L1/L2/L3) • Continuous improvement • Process/Bot/Platform migration & management • IA Run & Maintenance CoE' [contains]
+Arrow: 'slide_8_full_page_image' → 'Managed Services' [contains]
+Arrow: 'slide_8_full_page_image' → '• PEGA advisory • Re-engineering • Implementation • DevOps and BAU' [contains]
+Arrow: 'slide_8_full_page_image' → 'Business Process Management' [contains]
+Arrow: 'slide_8_full_page_image' → 'Why Deloitte' [contains]
+Arrow: '1 Centralized 24X7 support model for a global brewer company • Flexible and scalable managed services model to address the current and future support needs of the client. • 250+ bots supported • 15000+ bot executions per month • Bot efficiency improvement from 65% to 95% • Licenses optimized from 85 to 42 • $37800+ savings in license costs' → 'Centralized delivery and support model for a large global consumer goods company • Designed a 4D Operating model to allow end to end delivery of automations in collaboration with the client Automation CoE' [contains]
+Arrow: '• Deploy a joint team of business and technical architect to design optimal solutions with multi-bot architecture, email triggers, OCR integrations' → '• 135 use cases with considerable FTE savings delivered and stabilized in the production in 10 months' [proximity]
+Arrow: '1 Centralized 24X7 support model for a global brewer company • Flexible and scalable managed services model to address the current and future support needs of the client. • 250+ bots supported • 15000+ bot executions per month • Bot efficiency improvement from 65% to 95% • Licenses optimized from 85 to 42 • $37800+ savings in license costs' → '• Deploy a joint team of business and technical architect to design optimal solutions with multi-bot architecture, email triggers, OCR integrations' [contains]
+Arrow: '2 Scaling up RPA and providing CoE support for a multinational Oil & Gas company • Increased RPA adoption within the organization, assist in RPA CoE Design and scaling up the RPA operations • Catered all business units across 70 countries by supporting centralized RPA CoE • Identified and assessed automation amenability of 24 potential use cases across the globe with a benefits NPV of $ 4.47 million' → '3' [contains]
+Arrow: 'Deloitte is named a worldwide leader' → 'in Artificial Intelligence Business' [proximity]
+Arrow: 'Deloitte is named a worldwide leader' → 'Services 2023 by IDC' [proximity]
+Arrow: 'in Artificial Intelligence Business' → 'Services 2023 by IDC' [proximity]
+Arrow: 'Deloitte has a strong alliance with Automation Anywhere, UiPath, Blue' → 'Prism, ABBYY and other relevant' [proximity]
+Arrow: 'Deloitte has a strong alliance with Automation Anywhere, UiPath, Blue' → 'technology OEMs' [proximity]
+Arrow: 'Prism, ABBYY and other relevant' → 'technology OEMs' [proximity]
+Arrow: 'We have a strong team of R&IA professionals with an accepted track' → 'record in large scale RPA implantation, at both build and run' [proximity]
+Arrow: 'record in large scale RPA implantation, at both build and run' → 'level' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Engineering, AI & Data | Artificial Intelligence Insights & Engagement (2/2).
+
+In the context of the slide topic 'Engineering, AI & Data | Artificial Intelligence Insights & Engagement (2/2)', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 9: Engineering, AI & Data | Hybrid Cloud Engineering
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Engineering, AI & Data | Hybrid Cloud Engineering.
+
+Step-by-step meaning:
+Visual element representing slide content related to Engineering, AI & Data | Hybrid Cloud Engineering.
+Concept/process depicted: Engineering, AI & Data | Hybrid Cloud Engineering
+Flow/sequence: N/A
+The slide presents: Cloud migration and operation for a large German enterprise
+The slide presents: The client needed to migrate and operate over 50 mission- critical applications while maintaining high availability, automation, and operational stability in a single-cloud environment
+The slide presents: 2
+The slide presents: • Migrated 50+ applications with zero-downtime and standardized cloud operations • Accelerated deployments through automation, CI/CD, and DevOps-led execution • Improved reliability through 24×7 cloud support
+The slide presents: P2P Infrastructure Migration for a Global Supply Chain SaaS Company
+The slide presents: The client sought to consolidate fragmented service providers and hyperscalers to improve efficiency, collaboration, and scalability while reducing operational complexity.
+The slide presents: 3
+The slide presents: • Enhanced platform agility and scalability across environments • Seamless experience for P2P application users • Achieved significant cost reduction of over 20%
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 9
+The slide presents: Solutions built on a foundation of mature, technology-focused assets and accelerators
+The slide presents: We offer the full spectrum of services with
+The slide presents: Deloitte helps reduce cloud complexity and enhance
+The slide presents: Cloud Strategy and Architecture
+The slide presents: Foundation Services & Setup
+The slide presents: Migration Services
+The slide presents: • Cloud feasibility • Cloud financial management • Cloud architecture • Modernisation and migration advisory
+The slide presents: • Consulting and design services • Landing zone implementation • Managed services • Special service offering
+The slide presents: Case Studies
+The slide presents: • Rehost • Replatform • Refactor
+The slide presents: • Cloud managed support • FinOps governance
+The slide presents: Cloud Operate
+The slide presents: Why Deloitte
+The slide presents: Multi-cloud operating model and CoE enablement for a large Indian banking organization
+The slide presents: The client needed to unify a fragmented multi-cloud landscape across AWS, Azure, and GCP while strengthening governance, security, cost control, and scalability
+The slide presents: 1
+The slide presents: • Enabled faster, automated deployments through CI/CD, FinOps dashboards, and container orchestration • Delivered measurable cost savings, improved compliance, and higher platform reliability at scale
+The slide presents: Impact delivered​
+The slide presents: experienced Cloud Strategy practitioners
+The slide presents: business value proving a unified solution for financial, security, service and technical governance
+
+Conceptual Layers
+Engineering + AI & Data Offerings
+© 2026 Deloitte Touche Tohmatsu India LLP. 9
+Case Studies
+Key concept illustrated on this slide.
+Multi-cloud operating model and CoE enablement
+for a large Indian banking organization
+The client needed to unify a fragmented multi-cloud
+landscape across AWS, Azure, and GCP while strengthening governance, security, cost control, and scalability
+
+Enabled faster, automated deployments through CI/CD, FinOps dashboards, and container orchestration • Delivered measurable cost savings, improved compliance, and higher platform reliability at scale
+Cloud migration and operation for a large German
+enterprise
+The client needed to migrate and operate over 50 mission-
+critical applications while maintaining high availability, automation, and operational stability in a single-cloud environment
+
+Migrated 50+ applications with zero-downtime and standardized cloud operations • Accelerated deployments through automation, CI/CD, and DevOps-led execution • Improved reliability through 24×7 cloud support
+P2P Infrastructure Migration for a Global Supply
+Chain SaaS Company
+The client sought to consolidate fragmented service
+providers and hyperscalers to improve efficiency, collaboration, and scalability while reducing operational complexity.
+
+Enhanced platform agility and scalability across environments • Seamless experience for P2P application users • Achieved significant cost reduction of over 20%
+Impact delivered​
+Key concept illustrated on this slide.
+Solutions built on a foundation of mature,
+technology-focused assets and accelerators
+We offer the full spectrum of services with
+Key concept illustrated on this slide.
+Deloitte helps reduce cloud complexity and enhance
+Key concept illustrated on this slide.
+business value proving a unified solution for
+financial, security, service and technical governance
+Cloud Strategy and Architecture
+Key concept illustrated on this slide.
+Foundation Services & Setup
+Key concept illustrated on this slide.
+Migration Services
+Key concept illustrated on this slide.
+
+Cloud feasibility • Cloud financial management • Cloud architecture • Modernisation and migration advisory
+
+Consulting and design services • Landing zone implementation • Managed services • Special service offering
+
+Rehost • Replatform • Refactor
+
+Cloud managed support • FinOps governance
+Cloud Operate
+Key concept illustrated on this slide.
+Why Deloitte
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Shapes:
+rect: 31 instance(s)
+Structure:
+Layout type: two_column
+header → Engineering, AI & Data | Hybrid Cloud Engineering
+body_left → Case Studies, Multi-cloud operating model and CoE enablement for a large I, The client needed to unify a fragmented multi-cloud landscap, 1, 2, Solutions built on a foundation of mature, technology-focuse, Cloud Strategy and Architecture, Foundation Services & Setup, • Cloud feasibility • Cloud financial management • Cloud arc, • Consulting and design services • Landing zone implementati, Why Deloitte
+body_right → slide_9_full_page_image, Cloud migration and operation for a large German enterprise, The client needed to migrate and operate over 50 mission- cr, P2P Infrastructure Migration for a Global Supply Chain SaaS , The client sought to consolidate fragmented service provider, 3, • Enhanced platform agility and scalability across environme, Impact delivered​, We offer the full spectrum of services with, experienced Cloud Strategy practitioners, Deloitte helps reduce cloud complexity and enhance, business value proving a unified solution for financial, sec, Migration Services, • Rehost • Replatform • Refactor, • Cloud managed support • FinOps governance, Cloud Operate
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh, • Enabled faster, automated deployments through CI/CD, FinOp, • Migrated 50+ applications with zero-downtime and standardi
+Asset supporting: Engineering, AI & Data | Hybrid Cloud Engineering
+Connectors:
+Arrow: 'slide_9_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 9' [contains]
+Arrow: 'slide_9_full_page_image' → 'Engineering, AI & Data | Hybrid Cloud Engineering' [contains]
+Arrow: 'slide_9_full_page_image' → 'Case Studies' [contains]
+Arrow: 'slide_9_full_page_image' → 'Multi-cloud operating model and CoE enablement for a large Indian banking organization' [contains]
+Arrow: 'slide_9_full_page_image' → 'The client needed to unify a fragmented multi-cloud landscape across AWS, Azure, and GCP while strengthening governance, security, cost control, and scalability' [contains]
+Arrow: 'slide_9_full_page_image' → '1' [contains]
+Arrow: 'slide_9_full_page_image' → '• Enabled faster, automated deployments through CI/CD, FinOps dashboards, and container orchestration • Delivered measurable cost savings, improved compliance, and higher platform reliability at scale' [contains]
+Arrow: 'slide_9_full_page_image' → 'Cloud migration and operation for a large German enterprise' [contains]
+Arrow: 'slide_9_full_page_image' → 'The client needed to migrate and operate over 50 mission- critical applications while maintaining high availability, automation, and operational stability in a single-cloud environment' [contains]
+Arrow: 'slide_9_full_page_image' → '2' [contains]
+Arrow: 'slide_9_full_page_image' → '• Migrated 50+ applications with zero-downtime and standardized cloud operations • Accelerated deployments through automation, CI/CD, and DevOps-led execution • Improved reliability through 24×7 cloud support' [contains]
+Arrow: 'slide_9_full_page_image' → 'P2P Infrastructure Migration for a Global Supply Chain SaaS Company' [contains]
+Arrow: 'slide_9_full_page_image' → 'The client sought to consolidate fragmented service providers and hyperscalers to improve efficiency, collaboration, and scalability while reducing operational complexity.' [contains]
+Arrow: 'slide_9_full_page_image' → '3' [contains]
+Arrow: 'slide_9_full_page_image' → '• Enhanced platform agility and scalability across environments • Seamless experience for P2P application users • Achieved significant cost reduction of over 20%' [contains]
+Arrow: 'slide_9_full_page_image' → 'Impact delivered​' [contains]
+Arrow: 'slide_9_full_page_image' → 'Solutions built on a foundation of mature, technology-focused assets and accelerators' [contains]
+Arrow: 'slide_9_full_page_image' → 'We offer the full spectrum of services with' [contains]
+Arrow: 'slide_9_full_page_image' → 'experienced Cloud Strategy practitioners' [contains]
+Arrow: 'slide_9_full_page_image' → 'Deloitte helps reduce cloud complexity and enhance' [contains]
+Arrow: 'slide_9_full_page_image' → 'business value proving a unified solution for financial, security, service and technical governance' [contains]
+Arrow: 'slide_9_full_page_image' → 'Cloud Strategy and Architecture' [contains]
+Arrow: 'slide_9_full_page_image' → 'Foundation Services & Setup' [contains]
+Arrow: 'slide_9_full_page_image' → 'Migration Services' [contains]
+Arrow: 'slide_9_full_page_image' → '• Cloud feasibility • Cloud financial management • Cloud architecture • Modernisation and migration advisory' [contains]
+Arrow: 'slide_9_full_page_image' → '• Consulting and design services • Landing zone implementation • Managed services • Special service offering' [contains]
+Arrow: 'slide_9_full_page_image' → '• Rehost • Replatform • Refactor' [contains]
+Arrow: 'slide_9_full_page_image' → '• Cloud managed support • FinOps governance' [contains]
+Arrow: 'slide_9_full_page_image' → 'Cloud Operate' [contains]
+Arrow: 'slide_9_full_page_image' → 'Why Deloitte' [contains]
+Arrow: 'The client needed to migrate and operate over 50 mission- critical applications while maintaining high availability, automation, and operational stability in a single-cloud environment' → 'Impact delivered​' [proximity]
+Arrow: '• Migrated 50+ applications with zero-downtime and standardized cloud operations • Accelerated deployments through automation, CI/CD, and DevOps-led execution • Improved reliability through 24×7 cloud support' → 'Impact delivered​' [proximity]
+Arrow: 'We offer the full spectrum of services with' → 'experienced Cloud Strategy practitioners' [proximity]
+Arrow: 'Deloitte helps reduce cloud complexity and enhance' → 'business value proving a unified solution for financial, security, service and technical governance' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Engineering, AI & Data | Hybrid Cloud Engineering.
+
+In the context of the slide topic 'Engineering, AI & Data | Hybrid Cloud Engineering', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 10: Engineering, AI & Data | Quality Engineering
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Engineering, AI & Data | Quality Engineering.
+
+Step-by-step meaning:
+Visual element representing slide content related to Engineering, AI & Data | Quality Engineering.
+Concept/process depicted: Engineering, AI & Data | Quality Engineering
+Flow/sequence: N/A
+The slide presents: 2
+The slide presents: • Enabled coordinated rollout across countries and systems • Achieved 96% pass rate through Agile test execution • Improved system stability through performance testing and benchmarking
+The slide presents: Testing for largest private Indian banking and financial services company The client sought to modernize testing to support rapid scale, high transaction volumes, and superior customer experience
+The slide presents: 3
+The slide presents: • Enabled cloud-based UPI testing at scale, supporting peak transaction loads • Reduced UPI payment testing timelines through improved planning and execution
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 10
+The slide presents: • TMMi certification, maturity assessment • QE transformation • Continuous testing adoption • TCoE  setup and development • TMO, test governance & ESG • Program test strategy • Tool advisory
+The slide presents: QE Advisory And Transformation
+The slide presents: • Agentic solutions for traditional QE • Agentic solutions for AI observability testing • Agentic point solutions for
+The slide presents: standalone use cases • Chaos engineering • Analytics and reporting • IOT testing & crowd testing
+The slide presents: Intelligent QE
+The slide presents: Digital Enterprise and QE
+The slide presents: • Core engineering testing • Packaged application testing - SAP, Oracle, Workday, Salesforce, ServiceNow • Performance engineering and  scalability • Mobile, web, and API testing • UI/UX,  usability and accessibility testing • Continuous testing in DevOps
+The slide presents: • Cloud & Cloud Ops Testing • Digital content testing • Data Testing,  ETL testing Migration & Conversion • Test environments and data management
+The slide presents: Deloitte is a leader in Gartner Magic
+The slide presents: Unmatched alliance with various
+The slide presents: Case Studies
+The slide presents: Established unique workforce and delivery models specifically tailored
+The slide presents: Ranked #1 globally in Consulting,
+The slide presents: Why Deloitte
+The slide presents: Enterprise QE redesign for a global telecom provider The client aimed to standardize and scale QE across geographies, portfolios, and delivery teams to improve efficiency and predictability
+The slide presents: • Established a unified QE operating model • Improved automation adoption, and talent alignment • Enabled measurable productivity gains, cost savings, and FTE impact
+The slide presents: End to end testing for  a multinational consumer goods company The client required a scalable testing approach to support a multi-country rollout of a complex, integrated enterprise platform
+The slide presents: Impact delivered​
+The slide presents: Quadrant: Software application
+The slide presents: packaged application enabling
+The slide presents: for teaming with our Clients
+The slide presents: based on revenue and
+The slide presents: influence over product quality
+The slide presents: market share (ALM)
+
+Conceptual Layers
+Engineering + AI & Data Offerings
+© 2026 Deloitte Touche Tohmatsu India LLP. 10
+Case Studies
+Key concept illustrated on this slide.
+Enterprise QE redesign for a global telecom
+provider The client aimed to standardize and scale QE across geographies, portfolios, and delivery teams to improve efficiency and predictability
+
+Established a unified QE operating model • Improved automation adoption, and talent alignment • Enabled measurable productivity gains, cost savings, and FTE impact
+End to end testing for  a multinational consumer
+goods company The client required a scalable testing approach to support a multi-country rollout of a complex, integrated enterprise platform
+
+Enabled coordinated rollout across countries and systems • Achieved 96% pass rate through Agile test execution • Improved system stability through performance testing and benchmarking
+Testing for largest private Indian banking and
+financial services company The client sought to modernize testing to support rapid scale, high transaction volumes, and superior customer experience
+
+Enabled cloud-based UPI testing at scale, supporting peak transaction loads • Reduced UPI payment testing timelines through improved planning and execution
+Impact delivered​
+Key concept illustrated on this slide.
+
+TMMi certification, maturity assessment • QE transformation • Continuous testing adoption • TCoE  setup and development • TMO, test governance & ESG • Program test strategy • Tool advisory
+QE Advisory And Transformation
+Key concept illustrated on this slide.
+
+Agentic solutions for traditional QE • Agentic solutions for AI observability testing • Agentic point solutions for
+standalone use
+cases • Chaos engineering • Analytics and reporting • IOT testing & crowd testing
+Intelligent QE
+Key concept illustrated on this slide.
+Digital Enterprise and QE
+Key concept illustrated on this slide.
+
+Core engineering testing • Packaged application testing - SAP, Oracle, Workday, Salesforce, ServiceNow • Performance engineering and  scalability • Mobile, web, and API testing • UI/UX,  usability and accessibility testing • Continuous testing in DevOps
+
+Cloud & Cloud Ops Testing • Digital content testing • Data Testing,  ETL testing Migration & Conversion • Test environments and data management
+Deloitte is a leader in Gartner Magic
+Key concept illustrated on this slide.
+Quadrant
+Software application: Key concept illustrated on this slide.
+Unmatched alliance with various
+Key concept illustrated on this slide.
+Established unique workforce and
+delivery models specifically tailored
+Ranked #1 globally in Consulting,
+Key concept illustrated on this slide.
+Why Deloitte
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Shapes:
+rect: 34 instance(s)
+Structure:
+Layout type: two_column
+header → Engineering, AI & Data | Quality Engineering
+body_left → Case Studies, Enterprise QE redesign for a global telecom provider The cli, 1, 2, • TMMi certification, maturity assessment • QE transformatio, QE Advisory And Transformation, Digital Enterprise and QE, • Core engineering testing • Packaged application testing - , Deloitte is a leader in Gartner Magic, Quadrant: Software application, testing, Unmatched alliance with various, packaged application enabling, influence over product quality, Why Deloitte
+body_right → slide_10_full_page_image, End to end testing for  a multinational consumer goods compa, Testing for largest private Indian banking and financial ser, 3, Impact delivered​, • Agentic solutions for traditional QE • Agentic solutions f, standalone use cases • Chaos engineering • Analytics and rep, Intelligent QE, • Cloud & Cloud Ops Testing • Digital content testing • Data, Established unique workforce and delivery models specificall, for teaming with our Clients, Ranked #1 globally in Consulting,, based on revenue and, market share (ALM)
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh, • Established a unified QE operating model • Improved automa, • Enabled coordinated rollout across countries and systems •, • Enabled cloud-based UPI testing at scale, supporting peak
+Asset supporting: Engineering, AI & Data | Quality Engineering
+Connectors:
+Arrow: 'slide_10_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 10' [contains]
+Arrow: 'slide_10_full_page_image' → 'Engineering, AI & Data | Quality Engineering' [contains]
+Arrow: 'slide_10_full_page_image' → 'Case Studies' [contains]
+Arrow: 'slide_10_full_page_image' → 'Enterprise QE redesign for a global telecom provider The client aimed to standardize and scale QE across geographies, portfolios, and delivery teams to improve efficiency and predictability' [contains]
+Arrow: 'slide_10_full_page_image' → '1' [contains]
+Arrow: 'slide_10_full_page_image' → '• Established a unified QE operating model • Improved automation adoption, and talent alignment • Enabled measurable productivity gains, cost savings, and FTE impact' [contains]
+Arrow: 'slide_10_full_page_image' → 'End to end testing for  a multinational consumer goods company The client required a scalable testing approach to support a multi-country rollout of a complex, integrated enterprise platform' [contains]
+Arrow: 'slide_10_full_page_image' → '2' [contains]
+Arrow: 'slide_10_full_page_image' → '• Enabled coordinated rollout across countries and systems • Achieved 96% pass rate through Agile test execution • Improved system stability through performance testing and benchmarking' [contains]
+Arrow: 'slide_10_full_page_image' → 'Testing for largest private Indian banking and financial services company The client sought to modernize testing to support rapid scale, high transaction volumes, and superior customer experience' [contains]
+Arrow: 'slide_10_full_page_image' → '3' [contains]
+Arrow: 'slide_10_full_page_image' → '• Enabled cloud-based UPI testing at scale, supporting peak transaction loads • Reduced UPI payment testing timelines through improved planning and execution' [contains]
+Arrow: 'slide_10_full_page_image' → 'Impact delivered​' [contains]
+Arrow: 'slide_10_full_page_image' → '• TMMi certification, maturity assessment • QE transformation • Continuous testing adoption • TCoE  setup and development • TMO, test governance & ESG • Program test strategy • Tool advisory' [contains]
+Arrow: 'slide_10_full_page_image' → 'QE Advisory And Transformation' [contains]
+Arrow: 'slide_10_full_page_image' → '• Agentic solutions for traditional QE • Agentic solutions for AI observability testing • Agentic point solutions for' [contains]
+Arrow: 'slide_10_full_page_image' → 'standalone use cases • Chaos engineering • Analytics and reporting • IOT testing & crowd testing' [contains]
+Arrow: 'slide_10_full_page_image' → 'Intelligent QE' [contains]
+Arrow: 'slide_10_full_page_image' → 'Digital Enterprise and QE' [contains]
+Arrow: 'slide_10_full_page_image' → '• Core engineering testing • Packaged application testing - SAP, Oracle, Workday, Salesforce, ServiceNow • Performance engineering and  scalability • Mobile, web, and API testing • UI/UX,  usability and accessibility testing • Continuous testing in DevOps' [contains]
+Arrow: 'slide_10_full_page_image' → '• Cloud & Cloud Ops Testing • Digital content testing • Data Testing,  ETL testing Migration & Conversion • Test environments and data management' [contains]
+Arrow: 'slide_10_full_page_image' → 'Deloitte is a leader in Gartner Magic' [contains]
+Arrow: 'slide_10_full_page_image' → 'Quadrant: Software application' [contains]
+Arrow: 'slide_10_full_page_image' → 'testing' [contains]
+Arrow: 'slide_10_full_page_image' → 'Unmatched alliance with various' [contains]
+Arrow: 'slide_10_full_page_image' → 'packaged application enabling' [contains]
+Arrow: 'slide_10_full_page_image' → 'influence over product quality' [contains]
+Arrow: 'slide_10_full_page_image' → 'Established unique workforce and delivery models specifically tailored' [contains]
+Arrow: 'slide_10_full_page_image' → 'for teaming with our Clients' [contains]
+Arrow: 'slide_10_full_page_image' → 'Ranked #1 globally in Consulting,' [contains]
+Arrow: 'slide_10_full_page_image' → 'based on revenue and' [contains]
+Arrow: 'slide_10_full_page_image' → 'market share (ALM)' [contains]
+Arrow: 'slide_10_full_page_image' → 'Why Deloitte' [contains]
+Arrow: '• Enabled coordinated rollout across countries and systems • Achieved 96% pass rate through Agile test execution • Improved system stability through performance testing and benchmarking' → 'Impact delivered​' [proximity]
+Arrow: 'Deloitte is a leader in Gartner Magic' → 'Quadrant: Software application' [proximity]
+Arrow: 'Deloitte is a leader in Gartner Magic' → 'testing' [proximity]
+Arrow: 'Quadrant: Software application' → 'testing' [proximity]
+Arrow: 'Unmatched alliance with various' → 'packaged application enabling' [proximity]
+Arrow: 'Unmatched alliance with various' → 'influence over product quality' [proximity]
+Arrow: 'packaged application enabling' → 'influence over product quality' [proximity]
+Arrow: 'Established unique workforce and delivery models specifically tailored' → 'for teaming with our Clients' [proximity]
+Arrow: 'Ranked #1 globally in Consulting,' → 'based on revenue and' [proximity]
+Arrow: 'Ranked #1 globally in Consulting,' → 'market share (ALM)' [proximity]
+Arrow: 'based on revenue and' → 'market share (ALM)' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Engineering, AI & Data | Quality Engineering.
+
+In the context of the slide topic 'Engineering, AI & Data | Quality Engineering', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 11: Connect with us
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Connect with us.
+
+Step-by-step meaning:
+Visual element representing slide content related to Connect with us.
+Concept/process depicted: Connect with us
+Flow/sequence: N/A
+The slide presents: Debasish Chatterjee
+The slide presents: Nitin Agrawal
+The slide presents: Ankit Saran Data Modernisation &
+The slide presents: Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 11
+The slide presents: Rajesh Kannan Quality Engineering (QE)
+The slide presents: Vijay Gopalakrishnan AI Insights and Engagement and
+The slide presents: Saurabh Kumar Offering Portfolio Leader Engineering, AI & Data (EAD)
+The slide presents: Prashanth Kaddi Offering Leader – Engineering, AI & Data (E,AI&D)
+The slide presents: Platform Development
+The slide presents: Hybrid Cloud Engineering (HCE)
+The slide presents: Migration (DMM)
+The slide presents: Intelligent Automation (AI&D)
+The slide presents: and Integration (PDI)
+
+Conceptual Layers
+Engineering + AI & Data Offerings
+© 2026 Deloitte Touche Tohmatsu India LLP. 11
+Debasish Chatterjee
+Key concept illustrated on this slide.
+Platform Development
+Key concept illustrated on this slide.
+Nitin Agrawal
+Key concept illustrated on this slide.
+Hybrid Cloud
+Engineering (HCE)
+Ankit Saran
+Data Modernisation &
+Migration (DMM)
+Key concept illustrated on this slide.
+Rajesh Kannan
+Quality Engineering (QE)
+Vijay Gopalakrishnan
+AI Insights and Engagement and
+Intelligent Automation (AI&D)
+Key concept illustrated on this slide.
+Saurabh Kumar
+Offering Portfolio Leader Engineering, AI & Data (EAD)
+Prashanth Kaddi
+Offering Leader – Engineering, AI & Data (E,AI&D)
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000), #00abab, #005587
+Shapes:
+rect: 15 instance(s)
+Structure:
+Layout type: two_column
+header → Connect with us
+body_left → Debasish Chatterjee, Platform Development, and Integration (PDI)
+body_right → slide_11_full_page_image, Nitin Agrawal, Hybrid Cloud Engineering (HCE), Ankit Saran Data Modernisation &, Migration (DMM), Saurabh Kumar Offering Portfolio Leader Engineering, AI & Da, Prashanth Kaddi Offering Leader – Engineering, AI & Data (E,
+footer → Engineering + AI & Data Offerings © 2026 Deloitte Touche Toh, Rajesh Kannan Quality Engineering (QE), Vijay Gopalakrishnan AI Insights and Engagement and, Intelligent Automation (AI&D)
+Asset supporting: Connect with us
+Connectors:
+Arrow: 'slide_11_full_page_image' → 'Engineering + AI & Data Offerings © 2026 Deloitte Touche Tohmatsu India LLP. 11' [contains]
+Arrow: 'slide_11_full_page_image' → 'Connect with us' [contains]
+Arrow: 'slide_11_full_page_image' → 'Debasish Chatterjee' [contains]
+Arrow: 'slide_11_full_page_image' → 'Platform Development' [contains]
+Arrow: 'slide_11_full_page_image' → 'and Integration (PDI)' [contains]
+Arrow: 'slide_11_full_page_image' → 'Nitin Agrawal' [contains]
+Arrow: 'slide_11_full_page_image' → 'Hybrid Cloud Engineering (HCE)' [contains]
+Arrow: 'slide_11_full_page_image' → 'Ankit Saran Data Modernisation &' [contains]
+Arrow: 'slide_11_full_page_image' → 'Migration (DMM)' [contains]
+Arrow: 'slide_11_full_page_image' → 'Rajesh Kannan Quality Engineering (QE)' [contains]
+Arrow: 'slide_11_full_page_image' → 'Vijay Gopalakrishnan AI Insights and Engagement and' [contains]
+Arrow: 'slide_11_full_page_image' → 'Intelligent Automation (AI&D)' [contains]
+Arrow: 'slide_11_full_page_image' → 'Saurabh Kumar Offering Portfolio Leader Engineering, AI & Data (EAD)' [contains]
+Arrow: 'slide_11_full_page_image' → 'Prashanth Kaddi Offering Leader – Engineering, AI & Data (E,AI&D)' [contains]
+Arrow: 'Debasish Chatterjee' → 'Platform Development' [proximity]
+Arrow: 'Debasish Chatterjee' → 'and Integration (PDI)' [proximity]
+Arrow: 'Platform Development' → 'and Integration (PDI)' [proximity]
+Arrow: 'Nitin Agrawal' → 'Hybrid Cloud Engineering (HCE)' [proximity]
+Arrow: 'Ankit Saran Data Modernisation &' → 'Migration (DMM)' [proximity]
+Arrow: 'Vijay Gopalakrishnan AI Insights and Engagement and' → 'Intelligent Automation (AI&D)' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Connect with us.
+
+In the context of the slide topic 'Connect with us', this image element supports the surrounding text and layout.
+
+
+======================================================================
+Slide 12: Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”). DTTL (also referred to as “Deloitte Global”) and  each of its member firms and related entities are legally separate and independent entities, which cannot obligate or bind each other in respect of third parties. DTTL and each DTTL member firm and related entity is liable only for  its own acts and omissions, and not those of each other. DTTL does not provide services to clients. Please see www.deloitte.com/about to learn more.
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”).
+
+Step-by-step meaning:
+Visual element representing slide content related to Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”). DTTL (also referred to as “Deloitte Global”) and  each of its member firms and related entities are legally separate and independent entities, which cannot obligate or bind each other in respect of third parties. DTTL and each DTTL member firm and related entity is liable only for  its own acts and omissions, and not those of each other. DTTL does not provide services to clients. Please see www.deloitte.com/about to learn more..
+Concept/process depicted: Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”). DTTL (also referred to as “Deloitte Global”) and  each of its member firms and related entities are legally separate and independent entities, which cannot obligate or bind each other in respect of third parties. DTTL and each DTTL member firm and related entity is liable only for  its own acts and omissions, and not those of each other. DTTL does not provide services to clients. Please see www.deloitte.com/about to learn more.
+Flow/sequence: N/A
+The slide presents: Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”). DTTL (also referred to as “Deloitte Global”) and each of its member firms and related entities are legally separate and independent entities, which cannot obligate or bind each other in respect of third parties. DTTL and each DTTL member firm and related entity is liable only for its own acts and omissions, and not those of each other. DTTL does not provide services to clients. Please see www.deloitte.com/about to learn more.
+The slide presents: Deloitte Asia Pacific Limited is a company limited by guarantee and a member firm of DTTL. Members of Deloitte Asia Pacific Limited and their related entities, each of which is a separate and independent legal entity, provide services from more than 100 cities across the region, including Auckland, Bangkok, Beijing, Bengaluru, Hanoi, Hong Kong, Jakarta, Kuala Lumpur, Manila, Melbourne, Mumbai, New Delhi, Osaka, Seoul, Shanghai, Singapore, Sydney, Taipei and Tokyo.
+The slide presents: © 2026 Deloitte Touche Tohmatsu India LLP. Member of Deloitte Touche Tohmatsu Limited
+The slide presents: This communication contains general information only, and none of DTTL, its global network of member firms or their related entities is, by means of this communication, rendering professional advice or services. Before making any decision or taking any action that may affect your finances or your business, you should consult a qualified professional adviser.
+The slide presents: No representations, warranties or undertakings (express or implied) are given as to the accuracy or completeness of the information in this communication, and none of DTTL, its member firms, related entities, employees or agents shall be liable or responsible for any loss or damage whatsoever arising directly or indirectly in connection with any person relying on this communication.
+
+Conceptual Layers
+Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”). DTTL (also referred to as “Deloitte Global”) and
+each of its member firms and related entities are legally separate and independent entities, which cannot obligate or bind each other in respect of third parties. DTTL and each DTTL member firm and related entity is liable only for its own acts and omissions, and not those of each other. DTTL does not provide services to clients. Please see www.deloitte.com/about to learn more.
+Deloitte Asia Pacific Limited is a company limited by guarantee and a member firm of DTTL. Members of Deloitte Asia Pacific Limited and their related entities, each of which is a separate and independent legal entity, provide
+services from more than 100 cities across the region, including Auckland, Bangkok, Beijing, Bengaluru, Hanoi, Hong Kong, Jakarta, Kuala Lumpur, Manila, Melbourne, Mumbai, New Delhi, Osaka, Seoul, Shanghai, Singapore, Sydney, Taipei and Tokyo.
+This communication contains general information only, and none of DTTL, its global network of member firms or their related entities is, by means of this communication, rendering professional advice or services. Before making
+any decision or taking any action that may affect your finances or your business, you should consult a qualified professional adviser.
+No representations, warranties or undertakings (express or implied) are given as to the accuracy or completeness of the information in this communication, and none of DTTL, its member firms, related entities, employees or
+agents shall be liable or responsible for any loss or damage whatsoever arising directly or indirectly in connection with any person relying on this communication.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 6 instance(s)
+Structure:
+Layout type: two_column
+body_left → Deloitte refers to one or more of Deloitte Touche Tohmatsu L, Deloitte Asia Pacific Limited is a company limited by guaran, This communication contains general information only, and no
+body_right → slide_12_full_page_image
+footer → No representations, warranties or undertakings (express or i, © 2026 Deloitte Touche Tohmatsu India LLP. Member of Deloitt
+Asset supporting: Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”). DTTL (also referred to as “Deloitte Global”) and  each of its member firms and related entities are legally separate and independent entities, which cannot obligate or bind each other in respect of third parties. DTTL and each DTTL member firm and related entity is liable only for  its own acts and omissions, and not those of each other. DTTL does not provide services to clients. Please see www.deloitte.com/about to learn more.
+Connectors:
+Arrow: 'slide_12_full_page_image' → 'Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”). DTTL (also referred to as “Deloitte Global”) and each of its member firms and related entities are legally separate and independent entities, which cannot obligate or bind each other in respect of third parties. DTTL and each DTTL member firm and related entity is liable only for its own acts and omissions, and not those of each other. DTTL does not provide services to clients. Please see www.deloitte.com/about to learn more.' [contains]
+Arrow: 'slide_12_full_page_image' → 'Deloitte Asia Pacific Limited is a company limited by guarantee and a member firm of DTTL. Members of Deloitte Asia Pacific Limited and their related entities, each of which is a separate and independent legal entity, provide services from more than 100 cities across the region, including Auckland, Bangkok, Beijing, Bengaluru, Hanoi, Hong Kong, Jakarta, Kuala Lumpur, Manila, Melbourne, Mumbai, New Delhi, Osaka, Seoul, Shanghai, Singapore, Sydney, Taipei and Tokyo.' [contains]
+Arrow: 'slide_12_full_page_image' → 'This communication contains general information only, and none of DTTL, its global network of member firms or their related entities is, by means of this communication, rendering professional advice or services. Before making any decision or taking any action that may affect your finances or your business, you should consult a qualified professional adviser.' [contains]
+Arrow: 'slide_12_full_page_image' → 'No representations, warranties or undertakings (express or implied) are given as to the accuracy or completeness of the information in this communication, and none of DTTL, its member firms, related entities, employees or agents shall be liable or responsible for any loss or damage whatsoever arising directly or indirectly in connection with any person relying on this communication.' [contains]
+Arrow: 'slide_12_full_page_image' → '© 2026 Deloitte Touche Tohmatsu India LLP. Member of Deloitte Touche Tohmatsu Limited' [contains]
+Arrow: 'Deloitte Asia Pacific Limited is a company limited by guarantee and a member firm of DTTL. Members of Deloitte Asia Pacific Limited and their related entities, each of which is a separate and independent legal entity, provide services from more than 100 cities across the region, including Auckland, Bangkok, Beijing, Bengaluru, Hanoi, Hong Kong, Jakarta, Kuala Lumpur, Manila, Melbourne, Mumbai, New Delhi, Osaka, Seoul, Shanghai, Singapore, Sydney, Taipei and Tokyo.' → 'This communication contains general information only, and none of DTTL, its global network of member firms or their related entities is, by means of this communication, rendering professional advice or services. Before making any decision or taking any action that may affect your finances or your business, you should consult a qualified professional adviser.' [proximity]
+Arrow: 'This communication contains general information only, and none of DTTL, its global network of member firms or their related entities is, by means of this communication, rendering professional advice or services. Before making any decision or taking any action that may affect your finances or your business, you should consult a qualified professional adviser.' → 'No representations, warranties or undertakings (express or implied) are given as to the accuracy or completeness of the information in this communication, and none of DTTL, its member firms, related entities, employees or agents shall be liable or responsible for any loss or damage whatsoever arising directly or indirectly in connection with any person relying on this communication.' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”). DTTL (also referred to as “Deloitte Global”) and  each of its member firms and related entities are legally separate and independent entities, which cannot obligate or bind each other in respect of third parties. DTTL and each DTTL member firm and related entity is liable only for  its own acts and omissions, and not those of each other. DTTL does not provide services to clients. Please see www.deloitte.com/about to learn more..
+
+In the context of the slide topic 'Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited (“DTTL”), its global network of  member firms, and their related entities (collectively, the “Deloitte organization”). DTTL (also referred to as “Deloitte Global”) and  each of its member firms and related entities are legally separate and independent entities, which cannot obligate or bind each other in respect of third parties. DTTL and each DTTL member firm and related entity is liable only for  its own acts and omissions, and not those of each other. DTTL does not provide services to clients. Please see www.deloitte.com/about to learn more.', this image element supports the surrounding text and layout.
+

@@ -1,0 +1,729 @@
+======================================================================
+Slide 1: E-Commerce Recommendation System
+======================================================================
+Semantic Flow
+The slide shows a dark-themed user interface of an E-commerce recommendation dashboard displayed inside a laptop mockup.
+
+Step-by-step meaning:
+A dark-themed user interface of an E-commerce recommendation dashboard displayed inside a laptop mockup. It showcases recommended items like a shirt, watch, shoe, and bag, as well as a list of metrics and a glowing neural-net brain graphic.
+N/A — this image is not a flowchart or process diagram.
+
+Conceptual Layers
+FIRST REVIEW
+Content-Based Product Recommendation Using Machine Learning VEERAMACHINENI SHIKHAR· 23BCE9278
+E-COMMERCE RECOMMENDATION SYSTEM
+Personalized Recommendations
+Personalized settings and details according to user interest
+Welcome, Harsh!
+User Behavior
+Product Catalog
+Production...
+View Details
+
+Visual Design Details
+Colour scheme:
+#242428: used for 'slide_1_shape_2'
+Full palette: #e4dfdf, #242428
+Visual colour cues (from image analysis): dark, blue, light
+Shapes:
+PICTURE (13): 2 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+FREEFORM (5): 1 instance(s)
+TEXT_BOX (17): 1 instance(s)
+Structure:
+Layout type: flowchart
+body_left → slide_1_shape_3
+body_right → E-Commerce Recommendation System, slide_1_shape_2, FIRST REVIEW Content-Based Product Recommendation Using Mach
+footer → slide_1_shape_0
+Main laptop computer displaying a custom dark-blue interface with "E-COMMERCE RECOMMENDATION SYSTEM" as the top banner title.
+Personalized recommendations page labeled "Personalized Recommendations" with subtitle "Personalized settings and details according to user interest".
+A greeting "Welcome, Harsh!" in the left corner alongside a circular profile picture icon.
+A 2x2 grid of recommendation cards:
+Top Left Card: Blue t-shirt with rating/price details.
+Top Right Card: Smartwatch showing a classic watch face.
+Bottom Left Card: Sneaker shoe with price/details.
+Bottom Right Card: Messenger bag with price/details.
+A checklist on the right: "User Behavior", "Product Catalog", "Production...", and "Sales Data", each with a checkmark icon.
+A neon-style silhouette of a human head containing a detailed neural network/circuit board brain diagram, representing the underlying recommender intelligence.
+Connectors:
+1 arrow(s)/connector(s) indicating logical flow
+Visual layout style: flowchart
+Background style: presentation
+
+3. Plain English Summary
+A dark-themed user interface of an E-commerce recommendation dashboard displayed inside a laptop mockup. It showcases recommended items like a shirt, watch, shoe, and bag, as well as a list of metrics and a glowing neural-net brain graphic.
+
+This mockup shows the personalized dashboard interface of an e-commerce recommendations platform. It highlights target items recommended to a user named "Harsh" based on backend user-behavior models illustrated by a glowing neural network brain icon on the right side.
+
+FIRST REVIEW
+Content-Based Product Recommendation Using Machine Learning 
+VEERAMACHINENI SHIKHAR· 23BCE9278
+
+
+======================================================================
+Slide 2: Personalizing the Shopping Experience
+======================================================================
+Semantic Flow
+The slide shows a horizontal workflow chart depicting the recommendation pipeline.
+
+Step-by-step meaning:
+A horizontal workflow chart depicting the recommendation pipeline. The process steps through preprocessing, feature engineering, similarity calculations, and product suggestions.
+[Dataset and Preprocessing] --> Step 2: [Feature Engineering]
+[Feature Engineering] --> Step 3: [Feature Similarity Computation]
+[Feature Similarity Computation] --> Step 4: [Content-Based Recommendations]
+Reading order: Left-to-right horizontal pipeline.
+
+Conceptual Layers
+PROJECT OVERVIEW
+Key concept illustrated on this slide.
+Modern e-commerce platforms host thousands of products, making personalized discovery essential for user engagement. This project builds a Content-Based Recommendation System that helps users find products matching their interests and preferences.
+The first review phase focuses on designing and implementing Content- Based Filtering (CBF) as the foundation for more advanced recommendation techniques.
+Recommendation Pipeline for E-Commerce
+Dataset and Preprocessing
+Prepare and clean data to fine-tune features and user interactions.
+Feature Engineering
+Generate product vectors using category, brand, keywords, and price.
+Feature Similarity Computation
+Calculate similarity scores between products using cosine similarity.
+Content-Based Recommendations
+Suggest top products similar to those previously liked by the user.
+
+Visual Design Details
+Colour scheme:
+Full palette: #e4dfdf, #f1f1f3
+Shapes:
+FREEFORM (5): 1 instance(s)
+PICTURE (13): 3 instance(s)
+TEXT_BOX (17): 2 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+Structure:
+Layout type: flowchart
+header → slide_2_group_0_shape_0, slide_2_group_0_shape_1, PROJECT OVERVIEW
+body_left → slide_2_shape_5
+body_right → Personalizing the Shopping Experience, Modern e-commerce platforms host thousands of products, maki
+footer → slide_2_shape_4
+Title: "Recommendation Pipeline for E-Commerce" centered at the top.
+Step 1 Panel: Dataset and Preprocessing: A user choosing products. Text: "Prepare and clean data to fine-tune features and user interactions."
+Step 2 Panel: Feature Engineering: A computer screen displaying charts. Text: "Generate product vectors using category, brand, keywords, and price."
+Step 3 Panel: Feature Similarity Computation: Two smartphone UI screens linked by a matching percentage circle. Text: "Calculate similarity scores between products using cosine similarity."
+Step 4 Panel: Content-Based Recommendations: Grid cards showing items with star ratings. Text: "Suggest top products similar to those previously liked by the user."
+Connectors:
+Arrow: 'slide_2_group_0_shape_0' → 'slide_2_group_0_shape_1' [contains]
+Arrow: 'slide_2_group_0_shape_0' → 'PROJECT OVERVIEW' [contains]
+Visual layout style: flowchart
+Background style: presentation
+
+3. Plain English Summary
+A horizontal workflow chart depicting the recommendation pipeline. The process steps through preprocessing, feature engineering, similarity calculations, and product suggestions.
+
+This flowchart illustrates the end-to-end recommendation pipeline. It displays the process flow of transforming raw user/item inputs into personalized recommendation listings.
+
+Modern e-commerce platforms host thousands of products, making personalized discovery essential for user engagement. This project builds a Content-Based Recommendation System that helps users find products matching their interests and preferences.
+The first review phase focuses on designing and implementing Content- Based Filtering (CBF) as the foundation for more advanced recommendation techniques.
+
+
+======================================================================
+Slide 3: The Challenge We're Solving
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to The Challenge We're Solving.
+
+Step-by-step meaning:
+Visual element representing slide content related to The Challenge We're Solving.
+Concept/process depicted: The Challenge We're Solving
+Flow/sequence: N/A
+The slide presents: Overwhelming Product Catalogs Users face decision paralysis when browsing through massive product inventories without personalized guidance.
+The slide presents: Lack of Personalization Traditional search systems return generic results that don't consider individual user preferences and shopping history.
+The slide presents: Reduced Engagement Generic recommendations fail to capture user interest, leading to lower conversion rates and customer satisfaction.
+The slide presents: Our Goal: Recommend products based on user interests and product characteristics to create a personalized shopping journey.
+
+Conceptual Layers
+Overwhelming Product Catalogs
+Users face decision paralysis when browsing through massive product inventories without personalized guidance.
+Lack of Personalization
+Traditional search systems return generic results that don't consider individual user preferences and shopping history.
+Reduced Engagement
+Generic recommendations fail to capture user interest, leading to lower conversion rates and customer satisfaction.
+
+Visual Design Details
+Colour scheme:
+#040404: used for 'slide_3_group_2_shape_0', 'slide_3_group_4_shape_0', 'slide_3_group_6_shape_0'
+#f1f1f3: used for 'slide_3_group_2_shape_2', 'slide_3_group_4_shape_2', 'slide_3_group_6_shape_2'
+Full palette: #040404, #f1f1f3, #e4dfdf
+Shapes:
+PICTURE (13): 1 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+FREEFORM (5): 9 instance(s)
+TEXT_BOX (17): 4 instance(s)
+Structure:
+Layout type: flowchart
+body_left → The Challenge We're Solving, slide_3_group_2_shape_0, slide_3_group_2_shape_1, slide_3_group_2_shape_2, Overwhelming Product Catalogs Users face decision paralysis , slide_3_group_4_shape_2
+body_right → slide_3_group_4_shape_0, slide_3_group_4_shape_1, Lack of Personalization Traditional search systems return ge, slide_3_group_6_shape_0, slide_3_group_6_shape_1, slide_3_group_6_shape_2, Reduced Engagement Generic recommendations fail to capture u
+footer → slide_3_shape_0, Our Goal: Recommend products based on user interests and pro
+Asset supporting: The Challenge We're Solving
+Connectors:
+Arrow: 'slide_3_group_2_shape_1' → 'slide_3_group_2_shape_0' [contains]
+Arrow: 'slide_3_group_2_shape_0' → 'Overwhelming Product Catalogs Users face decision paralysis when browsing through massive product inventories without personalized guidance.' [contains]
+Arrow: 'slide_3_group_2_shape_1' → 'Overwhelming Product Catalogs Users face decision paralysis when browsing through massive product inventories without personalized guidance.' [contains]
+Arrow: 'slide_3_group_4_shape_1' → 'slide_3_group_4_shape_0' [contains]
+Arrow: 'slide_3_group_4_shape_0' → 'Lack of Personalization Traditional search systems return generic results that don't consider individual user preferences and shopping history.' [contains]
+Arrow: 'slide_3_group_4_shape_1' → 'Lack of Personalization Traditional search systems return generic results that don't consider individual user preferences and shopping history.' [contains]
+Arrow: 'slide_3_group_6_shape_1' → 'slide_3_group_6_shape_0' [contains]
+Arrow: 'slide_3_group_6_shape_0' → 'Reduced Engagement Generic recommendations fail to capture user interest, leading to lower conversion rates and customer satisfaction.' [contains]
+Arrow: 'slide_3_group_6_shape_1' → 'Reduced Engagement Generic recommendations fail to capture user interest, leading to lower conversion rates and customer satisfaction.' [contains]
+Visual layout style: flowchart
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to The Challenge We're Solving.
+
+In the context of the slide topic 'The Challenge We're Solving', this image element supports the surrounding text and layout.
+
+Our Goal: Recommend products based on user interests and product characteristics to create a personalized shopping journey.
+
+
+======================================================================
+Slide 4: Understanding Recommendation Systems
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Understanding Recommendation Systems.
+
+Step-by-step meaning:
+Visual element representing slide content related to Understanding Recommendation Systems.
+Concept/process depicted: Understanding Recommendation Systems
+Flow/sequence: N/A
+The slide presents: Current Phase: Content-Based
+The slide presents: Filtering analyzes product attributes to find similar items users might like.
+The slide presents: Content-Based Phase 1 — current item profiling
+The slide presents: Collaborative Phase 2 — user similarity & neighbors
+The slide presents: Hybrid Systems Phase 3 — combined models final
+The slide presents: A recommendation system predicts
+The slide presents: products a user may prefer based on past interactions and patterns. This project follows a phased approach to build increasingly sophisticated recommendation capabilities.
+
+Conceptual Layers
+Content-Based
+Phase 1 — current item profiling
+Collaborative
+Phase 2 — user similarity & neighbors
+Hybrid Systems
+Phase 3 — combined models final
+A recommendation system predicts
+Key concept illustrated on this slide.
+Current Phase
+Content-Based: Key concept illustrated on this slide.
+Filtering analyzes product attributes to find similar items users might like.
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+#242428: used for 'slide_4_group_9_shape_0'
+Full palette: #e4dfdf, white (#ffffff), #242428
+Visual colour cues (from image analysis): dark, white
+Shapes:
+PICTURE (13): 6 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+TEXT_BOX (17): 7 instance(s)
+FREEFORM (5): 1 instance(s)
+Structure:
+Layout type: flowchart
+body_left → slide_4_shape_2, Content-Based Phase 1 — current item profiling, slide_4_group_4_shape_0, slide_4_group_4_shape_1
+body_right → Understanding Recommendation Systems, slide_4_group_4_shape_2, Hybrid Systems Phase 3 — combined models final, A recommendation system predicts, products a user may prefer based on past interactions and pa, slide_4_group_9_shape_1, Current Phase: Content-Based
+footer → slide_4_shape_0, Collaborative Phase 2 — user similarity & neighbors, slide_4_group_9_shape_0, Filtering analyzes product attributes to find similar items
+Asset supporting: Understanding Recommendation Systems
+Connectors:
+Arrow: 'slide_4_shape_2' → 'Content-Based Phase 1 — current item profiling' [contains]
+Arrow: 'slide_4_shape_2' → 'slide_4_group_4_shape_0' [contains]
+Arrow: 'slide_4_shape_2' → 'slide_4_group_4_shape_1' [contains]
+Arrow: 'slide_4_shape_2' → 'slide_4_group_4_shape_2' [contains]
+Arrow: 'slide_4_shape_2' → 'Collaborative Phase 2 — user similarity & neighbors' [contains]
+Arrow: 'slide_4_shape_2' → 'Hybrid Systems Phase 3 — combined models final' [contains]
+Arrow: 'slide_4_group_9_shape_0' → 'slide_4_group_9_shape_1' [contains]
+Arrow: 'slide_4_group_9_shape_0' → 'Current Phase: Content-Based' [contains]
+Arrow: 'slide_4_group_9_shape_0' → 'Filtering analyzes product attributes to find similar items users might like.' [contains]
+Visual layout style: flowchart
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Understanding Recommendation Systems.
+
+In the context of the slide topic 'Understanding Recommendation Systems', this image element supports the surrounding text and layout.
+
+Collaborative
+Phase 2 — user similarity & neighbors
+
+
+======================================================================
+Slide 5: Dataset & Preprocessing Pipeline
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Dataset & Preprocessing Pipeline.
+
+Step-by-step meaning:
+Visual element representing slide content related to Dataset & Preprocessing Pipeline.
+Concept/process depicted: Dataset & Preprocessing Pipeline
+Flow/sequence: N/A
+The slide presents: DATA FOUNDATION
+The slide presents: Encode categorical features for machine learning 03 Text Processing
+The slide presents: Clean product descriptions and extract keywords 04 Normalization
+The slide presents: Normalize features and create product vectors
+The slide presents: Dataset Components
+The slide presents: Product ID Product Category Brand Information Price Range Product Description User Interaction History
+The slide presents: Preprocessing Steps: 01 Data Cleaning
+The slide presents: Handle missing values and remove duplicate records 02 Feature Encoding
+
+Conceptual Layers
+DATA FOUNDATION
+Key concept illustrated on this slide.
+Dataset Components
+Key concept illustrated on this slide.
+Product ID
+Product Category Brand Information Price Range Product Description User Interaction History
+Preprocessing Steps
+01: Data Cleaning
+Handle missing values and remove duplicate records
+02 Feature Encoding
+Encode categorical features for machine learning
+03 Text Processing
+Clean product descriptions and extract keywords
+04 Normalization
+Normalize features and create product vectors
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+#242428: used for 'slide_5_group_0_shape_0'
+#f1f1f3: used for 'slide_5_shape_3', 'slide_5_shape_6', 'slide_5_shape_8', 'slide_5_shape_10'
+Full palette: #e4dfdf, #f1f1f3, #242428
+Shapes:
+FREEFORM (5): 6 instance(s)
+PICTURE (13): 2 instance(s)
+TEXT_BOX (17): 8 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+Structure:
+Layout type: flowchart
+header → slide_5_group_0_shape_0, slide_5_group_0_shape_1, DATA FOUNDATION
+body_left → slide_5_shape_3, Dataset Components, Product ID Product Category Brand Information Price Range Pr
+body_right → Dataset & Preprocessing Pipeline, slide_5_shape_6, Preprocessing Steps: 01 Data Cleaning, slide_5_shape_8, Handle missing values and remove duplicate records 02 Featur, slide_5_shape_10, Encode categorical features for machine learning 03 Text Pro
+footer → slide_5_shape_12, Clean product descriptions and extract keywords 04 Normaliza, Normalize features and create product vectors, slide_5_shape_15
+Asset supporting: Dataset & Preprocessing Pipeline
+Connectors:
+Arrow: 'slide_5_group_0_shape_0' → 'slide_5_group_0_shape_1' [contains]
+Arrow: 'slide_5_group_0_shape_0' → 'DATA FOUNDATION' [contains]
+Arrow: 'slide_5_shape_3' → 'Dataset Components' [contains]
+Arrow: 'slide_5_shape_3' → 'Product ID Product Category Brand Information Price Range Product Description User Interaction History' [contains]
+Arrow: 'slide_5_shape_8' → 'Handle missing values and remove duplicate records 02 Feature Encoding' [proximity]
+Visual layout style: flowchart
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Dataset & Preprocessing Pipeline.
+
+In the context of the slide topic 'Dataset & Preprocessing Pipeline', this image element supports the surrounding text and layout.
+
+Clean product descriptions and extract keywords
+04
+Normalization
+
+
+======================================================================
+Slide 6: Content-Based Filtering Approach
+======================================================================
+Semantic Flow
+The slide shows a vertical workflow diagram tracing the five key stages of a Content-Based Recommendation System.
+
+Step-by-step meaning:
+A vertical workflow diagram tracing the five key stages of a Content-Based Recommendation System. It walks the developer through data gathering, preprocessing, tf-idf vector engineering, cosine similarity computation, and recommending items.
+[Data Collection] --> Step 2: [Data Preprocessing]
+[Data Preprocessing] --> Step 3: [Feature Engineering]
+[Feature Engineering] --> Step 4: [Similarity Computation]
+[Similarity Computation] --> Step 5: [Generate Recommendations]
+Reading order: Vertical staggered flow from top to bottom.
+Panel 1: Data Collection: Shows user and a product database screen. Text: "Gather product details and user interactions data."
+Panel 2: Data Preprocessing: Shows mobile phone listing items. Text: "Clean, normalize, and encode product information."
+Panel 3: Feature Engineering (labeled '2'): Shows mobile device showing product cards. Text: "Represent products as numerical vectors using TF-IDF for keywords."
+Panel 4: Similarity Computation: Shows comparison of product features on mobile devices. Text: "Calculate similarity between product vectors using cosine similarity."
+Panel 5: Generate Recommendations (labeled '5'): Shows final recommended items cards on mobile screen. Text: "Rank and suggest Top-N products similar to those liked by the user."
+
+Conceptual Layers
+Product Attributes
+Category, brand, keywords, and description features
+User History
+Past interactions and preference patterns
+Feature Similarity
+Mathematical comparison of product vectors
+Panel 1
+Data Collection: Shows user and a product database screen. Text: "Gather product details and user interactions data."
+Panel 2
+Data Preprocessing: Shows mobile phone listing items. Text: "Clean, normalize, and encode product information."
+Panel 3
+Feature Engineering (labeled '2'): Shows mobile device showing product cards. Text: "Represent products as numerical vectors using TF-IDF for keywords."
+Panel 4
+Similarity Computation: Shows comparison of product features on mobile devices. Text: "Calculate similarity between product vectors using cosine similarity."
+Panel 5
+Generate Recommendations (labeled '5'): Shows final recommended items cards on mobile screen. Text: "Rank and suggest Top-N products similar to those liked by the user."
+
+Visual Design Details
+Colour scheme:
+#3c3c42: used for 'slide_6_group_3_shape_0', 'slide_6_group_5_shape_0', 'slide_6_group_7_shape_0'
+#f1f1f3: used for 'slide_6_shape_10'
+Full palette: #e4dfdf, #f1f1f3, #3c3c42
+Visual colour cues (from image analysis): white, black
+Shapes:
+PICTURE (13): 2 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+TEXT_BOX (17): 5 instance(s)
+FREEFORM (5): 7 instance(s)
+Structure:
+Layout type: flowchart
+body_left → Content-Based Filtering Approach, Content-Based Filtering (CBF) recommends products by analyzi, slide_6_group_3_shape_0, slide_6_group_3_shape_1, Product Attributes Category, brand, keywords, and descriptio, slide_6_group_5_shape_0, slide_6_group_5_shape_1, User History Past interactions and preference patterns
+body_right → slide_6_group_0_shape_0, slide_6_group_0_shape_1, slide_6_group_7_shape_0, slide_6_group_7_shape_1, Feature Similarity Mathematical comparison of product vector
+footer → Core Principle: Recommend items similar to products previous, slide_6_shape_10
+Main Title: "Content-Based Recommendation Workflow" with subtitle "Steps in building a Content-Based Recommendation System".
+Panel 1: Data Collection: Shows user and a product database screen. Text: "Gather product details and user interactions data."
+Panel 2: Data Preprocessing: Shows mobile phone listing items. Text: "Clean, normalize, and encode product information."
+Panel 3: Feature Engineering (labeled '2'): Shows mobile device showing product cards. Text: "Represent products as numerical vectors using TF-IDF for keywords."
+Panel 4: Similarity Computation: Shows comparison of product features on mobile devices. Text: "Calculate similarity between product vectors using cosine similarity."
+Panel 5: Generate Recommendations (labeled '5'): Shows final recommended items cards on mobile screen. Text: "Rank and suggest Top-N products similar to those liked by the user."
+Connectors:
+Arrow: 'slide_6_group_0_shape_0' → 'slide_6_group_0_shape_1' [contains]
+Arrow: 'slide_6_group_3_shape_1' → 'slide_6_group_3_shape_0' [contains]
+Arrow: 'slide_6_group_3_shape_0' → 'Product Attributes Category, brand, keywords, and description features' [contains]
+Arrow: 'slide_6_group_3_shape_1' → 'Product Attributes Category, brand, keywords, and description features' [contains]
+Arrow: 'slide_6_group_5_shape_1' → 'slide_6_group_5_shape_0' [contains]
+Arrow: 'slide_6_group_5_shape_0' → 'User History Past interactions and preference patterns' [contains]
+Arrow: 'slide_6_group_5_shape_1' → 'User History Past interactions and preference patterns' [contains]
+Arrow: 'slide_6_group_7_shape_1' → 'slide_6_group_7_shape_0' [contains]
+Arrow: 'slide_6_group_7_shape_0' → 'Feature Similarity Mathematical comparison of product vectors' [contains]
+Arrow: 'slide_6_group_7_shape_1' → 'Feature Similarity Mathematical comparison of product vectors' [contains]
+Visual layout style: flowchart
+Background style: presentation
+
+3. Plain English Summary
+A vertical workflow diagram tracing the five key stages of a Content-Based Recommendation System. It walks the developer through data gathering, preprocessing, tf-idf vector engineering, cosine similarity computation, and recommending items.
+
+This workflow diagram explains the step-by-step implementation of content-based recommender systems, flowing through raw collections, processing, vector representations, similarity measurements, and final suggestions.
+
+Core Principle: Recommend items similar to products previously preferred by the user.
+
+
+======================================================================
+Slide 7: How CBF Works: The Recommendation Pipeline
+======================================================================
+Semantic Flow
+The slide shows a vertical stack of five downward-pointing dark-gray chevrons, each containing an icon: a worker, a clipboard, a ruler, vertical arrows, and a star.
+
+Step-by-step meaning:
+A vertical stack of five downward-pointing dark-gray chevrons, each containing an icon: a worker, a clipboard, a ruler, vertical arrows, and a star.
+Reading order: Vertical descending list.
+
+Conceptual Layers
+Extract Features
+Parse product attributes Vectorize Convert to numerical vectors Measure Similarity Calculate cosine similarity Rank Items Sort by relevance score Recommend Return Top-N products
+
+Visual Design Details
+Colour scheme:
+Full palette: #e4dfdf
+Visual colour cues (from image analysis): dark, white
+Shapes:
+PICTURE (13): 2 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+TEXT_BOX (17): 1 instance(s)
+Structure:
+Layout type: single_column
+header → How CBF Works: The Recommendation Pipeline
+body_left → slide_7_shape_2, Extract Features Parse product attributes Vectorize Convert
+footer → slide_7_shape_0
+A vertical stack of five dark-gray chevron shapes pointing downward.
+Each chevron contains a white line icon:
+Chevron 1: A builder/worker wearing a helmet with a shovel/pick.
+Chevron 2: A clipboard with checklist lines and a clock icon.
+Chevron 3: A standard ruler.
+Chevron 4: Two vertical arrowheads pointing in opposite directions (up and down).
+Chevron 5: A single five-pointed star.
+Connectors:
+No connectors detected
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+A vertical stack of five downward-pointing dark-gray chevrons, each containing an icon: a worker, a clipboard, a ruler, vertical arrows, and a star.
+
+This vertical chevron diagram is a process template showing five progression phases.
+
+Extract Features
+Parse product attributes
+
+
+Vectorize
+Convert to numerical vectors
+
+
+Measure Similarity
+Calculate cosine similarity
+
+
+Rank Items
+Sort by relevance score
+
+
+Recommend
+Return Top-N products
+
+
+======================================================================
+Slide 8: Feature Engineering & Similarity Computation
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Feature Engineering & Similarity Computation.
+
+Step-by-step meaning:
+Visual element representing slide content related to Feature Engineering & Similarity Computation.
+Concept/process depicted: Feature Engineering & Similarity Computation
+Flow/sequence: N/A
+The slide presents: Price Range: Cost segmentation
+The slide presents: Similarity Techniques
+The slide presents: TF-IDF Vectorization Transforms text into weighted numerical vectors based on term frequency and importance
+The slide presents: Cosine Similarity Measures angle between vectors: higher similarity → higher recommendation priority
+The slide presents: Features Extracted
+The slide presents: Product Category: Primary classification
+The slide presents: Brand: Manufacturer identity
+The slide presents: Description: Textual content analysis
+
+Conceptual Layers
+Features Extracted
+Key concept illustrated on this slide.
+Product Category
+Primary classification: Key concept illustrated on this slide.
+Brand
+Manufacturer identity: Key concept illustrated on this slide.
+Description
+Textual content analysis: Key concept illustrated on this slide.
+Price Range
+Cost segmentation: Key concept illustrated on this slide.
+Similarity Techniques
+Key concept illustrated on this slide.
+TF-IDF
+Vectorization Transforms text into weighted numerical vectors based on term frequency and importance
+Cosine Similarity
+Measures angle between vectors: higher similarity → higher recommendation priority
+
+Visual Design Details
+Colour scheme:
+#040404: used for 'slide_8_group_12_shape_0', 'slide_8_group_14_shape_0'
+Full palette: #e4dfdf, #f1f1f3, #040404
+Shapes:
+PICTURE (13): 6 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+TEXT_BOX (17): 8 instance(s)
+FREEFORM (5): 9 instance(s)
+Structure:
+Layout type: flowchart
+body_left → Features Extracted, slide_8_group_3_shape_0, slide_8_group_3_shape_1, slide_8_group_3_shape_2, slide_8_group_3_shape_3, Product Category: Primary classification, slide_8_shape_5, Brand: Manufacturer identity, slide_8_group_7_shape_0, slide_8_group_7_shape_1, slide_8_group_7_shape_2, Description: Textual content analysis
+body_right → Feature Engineering & Similarity Computation, Similarity Techniques, slide_8_group_12_shape_0, slide_8_group_12_shape_1, TF-IDF Vectorization Transforms text into weighted numerical, slide_8_group_14_shape_0, slide_8_group_14_shape_1, Cosine Similarity Measures angle between vectors: higher sim
+footer → slide_8_shape_0, slide_8_group_9_shape_0, slide_8_group_9_shape_1, Price Range: Cost segmentation
+Asset supporting: Feature Engineering & Similarity Computation
+Connectors:
+Arrow: 'slide_8_group_3_shape_0' → 'slide_8_group_3_shape_1' [proximity]
+Arrow: 'slide_8_group_3_shape_0' → 'slide_8_group_3_shape_2' [proximity]
+Arrow: 'slide_8_group_3_shape_0' → 'slide_8_group_3_shape_3' [proximity]
+Arrow: 'slide_8_group_3_shape_1' → 'slide_8_group_3_shape_2' [proximity]
+Arrow: 'slide_8_group_3_shape_1' → 'slide_8_group_3_shape_3' [proximity]
+Arrow: 'slide_8_group_3_shape_2' → 'slide_8_group_3_shape_3' [proximity]
+Arrow: 'slide_8_group_7_shape_0' → 'slide_8_group_7_shape_1' [proximity]
+Arrow: 'slide_8_group_7_shape_2' → 'slide_8_group_7_shape_0' [contains]
+Arrow: 'slide_8_group_7_shape_2' → 'slide_8_group_7_shape_1' [contains]
+Arrow: 'slide_8_group_9_shape_0' → 'slide_8_group_9_shape_1' [proximity]
+Arrow: 'slide_8_group_12_shape_1' → 'slide_8_group_12_shape_0' [contains]
+Arrow: 'slide_8_group_12_shape_0' → 'TF-IDF Vectorization Transforms text into weighted numerical vectors based on term frequency and importance' [contains]
+Arrow: 'slide_8_group_12_shape_1' → 'TF-IDF Vectorization Transforms text into weighted numerical vectors based on term frequency and importance' [contains]
+Arrow: 'slide_8_group_14_shape_1' → 'slide_8_group_14_shape_0' [contains]
+Arrow: 'slide_8_group_14_shape_0' → 'Cosine Similarity Measures angle between vectors: higher similarity → higher recommendation priority' [contains]
+Arrow: 'slide_8_group_14_shape_1' → 'Cosine Similarity Measures angle between vectors: higher similarity → higher recommendation priority' [contains]
+Visual layout style: flowchart
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Feature Engineering & Similarity Computation.
+
+In the context of the slide topic 'Feature Engineering & Similarity Computation', this image element supports the surrounding text and layout.
+
+Price Range: Cost segmentation
+
+
+======================================================================
+Slide 9: System Architecture & Trade-offs
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to System Architecture & Trade-offs.
+
+Step-by-step meaning:
+Visual element representing slide content related to System Architecture & Trade-offs.
+Concept/process depicted: System Architecture & Trade-offs
+Flow/sequence: N/A
+The slide presents: Personalized recommendations tailored User-independent — doesn't require Cold-start resilient — works well for new
+The slide presents: users
+The slide presents: Similarity Computation Current Limitations
+The slide presents: Limited diversity in recommendations Over-specialization — may create filter bubbles No community insights — misses trending patterns
+The slide presents: Product Dataset
+The slide presents: Feature Extraction
+The slide presents: Vector Representation
+The slide presents: Recommendation Output
+The slide presents: Key Advantages
+The slide presents: to individual preferences
+The slide presents: community data
+
+Conceptual Layers
+Product Dataset
+Key concept illustrated on this slide.
+Feature Extraction
+Key concept illustrated on this slide.
+Vector Representation
+Key concept illustrated on this slide.
+Recommendation Output
+Key concept illustrated on this slide.
+Key Advantages
+Key concept illustrated on this slide.
+Personalized recommendations tailored
+User-independent — doesn't require Cold-start resilient — works well for new
+Similarity Computation
+Current Limitations
+Limited diversity in recommendations
+Over-specialization — may create filter bubbles No community insights — misses trending patterns
+
+Visual Design Details
+Colour scheme:
+Full palette: #e4dfdf, #f1f1f3
+Visual colour cues (from image analysis): dark, black
+Shapes:
+PICTURE (13): 6 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+TEXT_BOX (17): 11 instance(s)
+FREEFORM (5): 6 instance(s)
+Structure:
+Layout type: flowchart
+header → System Architecture & Trade-offs
+body_left → Product Dataset, slide_9_group_4_shape_0, slide_9_group_4_shape_1, slide_9_group_4_shape_2, slide_9_group_4_shape_3, slide_9_group_4_shape_4, slide_9_group_4_shape_5, slide_9_group_4_shape_6, Feature Extraction
+body_right → slide_9_shape_2, slide_9_group_4_shape_7, slide_9_group_4_shape_8, slide_9_group_4_shape_9, Vector Representation, Recommendation Output
+footer → slide_9_shape_0, Key Advantages, to individual preferences, community data, Personalized recommendations tailored User-independent — doe, users, Similarity Computation Current Limitations, Limited diversity in recommendations Over-specialization — m
+Asset supporting: System Architecture & Trade-offs
+Connectors:
+Arrow: 'slide_9_shape_2' → 'Product Dataset' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_0' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_1' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_2' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_3' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_4' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_5' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_6' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_7' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_8' [contains]
+Arrow: 'slide_9_shape_2' → 'slide_9_group_4_shape_9' [contains]
+Arrow: 'slide_9_shape_2' → 'Feature Extraction' [contains]
+Arrow: 'slide_9_shape_2' → 'Vector Representation' [contains]
+Arrow: 'slide_9_shape_2' → 'Recommendation Output' [contains]
+Arrow: 'slide_9_shape_2' → 'Similarity Computation Current Limitations' [contains]
+Arrow: 'slide_9_group_4_shape_0' → 'slide_9_group_4_shape_1' [proximity]
+Arrow: 'slide_9_group_4_shape_0' → 'slide_9_group_4_shape_2' [proximity]
+Arrow: 'slide_9_group_4_shape_1' → 'slide_9_group_4_shape_2' [proximity]
+Arrow: 'slide_9_group_4_shape_3' → 'slide_9_group_4_shape_4' [proximity]
+Arrow: 'slide_9_group_4_shape_3' → 'slide_9_group_4_shape_5' [proximity]
+Arrow: 'slide_9_group_4_shape_3' → 'slide_9_group_4_shape_6' [contains]
+Arrow: 'slide_9_group_4_shape_4' → 'slide_9_group_4_shape_5' [proximity]
+Arrow: 'slide_9_group_4_shape_4' → 'slide_9_group_4_shape_6' [proximity]
+Arrow: 'slide_9_group_4_shape_5' → 'slide_9_group_4_shape_6' [proximity]
+Arrow: 'Personalized recommendations tailored User-independent — doesn't require Cold-start resilient — works well for new' → 'to individual preferences' [contains]
+Arrow: 'Personalized recommendations tailored User-independent — doesn't require Cold-start resilient — works well for new' → 'community data' [contains]
+Visual layout style: flowchart
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to System Architecture & Trade-offs.
+
+In the context of the slide topic 'System Architecture & Trade-offs', this image element supports the surrounding text and layout.
+
+Key Advantages
+
+
+======================================================================
+Slide 10: Milestones & Future Roadmap
+======================================================================
+Semantic Flow
+The slide shows visual element representing slide content related to Milestones & Future Roadmap.
+
+Step-by-step meaning:
+Visual element representing slide content related to Milestones & Future Roadmap.
+Concept/process depicted: Milestones & Future Roadmap
+Flow/sequence: N/A
+The slide presents: PROGRESS
+The slide presents: Next Steps
+The slide presents: 01
+The slide presents: Collaborative Filtering
+The slide presents: Implement user-based recommendations 02 Hybrid System Combine CBF and collaborative approaches
+The slide presents: 03	Evaluation Compare model performance metrics
+The slide presents: The first phase establishes a functional Content-Based Recommendation System, forming the foundation for advanced recommendation models in subsequent reviews.
+The slide presents: Work Completed Problem formulation and scope definition Dataset preparation and cleaning Comprehensive data preprocessing Feature engineering pipeline Content-Based Filtering implementation
+
+Conceptual Layers
+PROGRESS
+Key concept illustrated on this slide.
+Work Completed
+Problem formulation and scope definition Dataset preparation and cleaning Comprehensive data preprocessing Feature engineering pipeline Content-Based Filtering implementation
+Next Steps
+Key concept illustrated on this slide.
+Collaborative Filtering
+Key concept illustrated on this slide.
+Implement user-based recommendations
+02 Hybrid System Combine CBF and collaborative approaches
+03	Evaluation
+Compare model performance metrics
+The first phase establishes a functional Content-Based Recommendation System, forming the
+foundation for advanced recommendation models in subsequent reviews.
+
+Visual Design Details
+Colour scheme:
+#242428: used for 'slide_10_group_0_shape_0'
+#f1f1f3: used for 'slide_10_shape_9', 'slide_10_shape_12', 'slide_10_shape_14', 'slide_10_shape_19'
+#e4dfdf: used for 'slide_10_shape_17'
+Full palette: #e4dfdf, #f1f1f3, #242428
+Shapes:
+FREEFORM (5): 6 instance(s)
+PICTURE (13): 7 instance(s)
+TEXT_BOX (17): 8 instance(s)
+PLACEHOLDER (14): 1 instance(s)
+Structure:
+Layout type: flowchart
+header → slide_10_group_0_shape_0, slide_10_group_0_shape_1, PROGRESS
+body_left → Milestones & Future Roadmap, slide_10_shape_3, slide_10_shape_4, slide_10_shape_5, slide_10_shape_6, slide_10_shape_7, Work Completed Problem formulation and scope definition Data
+body_right → slide_10_shape_9, Next Steps, 01, slide_10_shape_12, Collaborative Filtering, slide_10_shape_14, Implement user-based recommendations 02 Hybrid System Combin, 03	Evaluation Compare model performance metrics
+footer → slide_10_shape_17, The first phase establishes a functional Content-Based Recom, slide_10_shape_19, slide_10_shape_20
+Asset supporting: Milestones & Future Roadmap
+Connectors:
+Arrow: 'slide_10_group_0_shape_0' → 'slide_10_group_0_shape_1' [contains]
+Arrow: 'slide_10_group_0_shape_0' → 'PROGRESS' [contains]
+Arrow: 'slide_10_group_0_shape_1' → 'PROGRESS' [proximity]
+Arrow: 'slide_10_shape_3' → 'slide_10_shape_4' [proximity]
+Arrow: 'Work Completed Problem formulation and scope definition Dataset preparation and cleaning Comprehensive data preprocessing Feature engineering pipeline Content-Based Filtering implementation' → 'slide_10_shape_3' [contains]
+Arrow: 'slide_10_shape_4' → 'slide_10_shape_5' [proximity]
+Arrow: 'Work Completed Problem formulation and scope definition Dataset preparation and cleaning Comprehensive data preprocessing Feature engineering pipeline Content-Based Filtering implementation' → 'slide_10_shape_4' [contains]
+Arrow: 'slide_10_shape_5' → 'slide_10_shape_6' [proximity]
+Arrow: 'Work Completed Problem formulation and scope definition Dataset preparation and cleaning Comprehensive data preprocessing Feature engineering pipeline Content-Based Filtering implementation' → 'slide_10_shape_5' [contains]
+Arrow: 'slide_10_shape_6' → 'slide_10_shape_7' [proximity]
+Arrow: 'Work Completed Problem formulation and scope definition Dataset preparation and cleaning Comprehensive data preprocessing Feature engineering pipeline Content-Based Filtering implementation' → 'slide_10_shape_6' [contains]
+Arrow: 'Work Completed Problem formulation and scope definition Dataset preparation and cleaning Comprehensive data preprocessing Feature engineering pipeline Content-Based Filtering implementation' → 'slide_10_shape_7' [contains]
+Arrow: 'slide_10_shape_9' → 'Next Steps' [contains]
+Arrow: 'slide_10_shape_9' → '01' [contains]
+Arrow: 'slide_10_shape_9' → 'slide_10_shape_12' [contains]
+Arrow: 'slide_10_shape_9' → 'Collaborative Filtering' [contains]
+Arrow: 'slide_10_shape_9' → 'Implement user-based recommendations 02 Hybrid System Combine CBF and collaborative approaches' [contains]
+Arrow: 'slide_10_shape_9' → '03	Evaluation Compare model performance metrics' [contains]
+Visual layout style: flowchart
+Background style: presentation
+
+3. Plain English Summary
+Visual element representing slide content related to Milestones & Future Roadmap.
+
+In the context of the slide topic 'Milestones & Future Roadmap', this image element supports the surrounding text and layout.
+
+The first phase establishes a functional Content-Based Recommendation System, forming the
+foundation for advanced recommendation models in subsequent reviews.
+

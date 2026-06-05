@@ -265,25 +265,21 @@ class SlideInterpretationAgent:
         prompt = f"""\
 Slide {slide.slide_number}
 Title: {slide.title or '(none)'}
-
---- Header / Footer ---
 {hf_info or '(no header/footer detected)'}
-
---- Extracted Text (preserve EXACT wording in your output) ---
 {slide_text}
-
---- Slide Structure & Layout Context ---
 {context_outline or '(no layout context)'}
-
---- Structural Extraction (diagram, flowchart, connectors) ---
 {reconstruction_context or '(no structural extraction data)'}
-
---- Image Summaries ---
 {image_summaries or '(no image summaries)'}
 
 Produce a reconstruction-oriented SemanticFlowModel. Do not summarize away structure.
 The image_generation_prompt must be detailed enough for another model to recreate this slide.
 """
+
+        enable_summaries = os.getenv("ENABLE_SUMMARIES", "true").lower() in {"1", "true"}
+        if not enable_summaries:
+            print("[SlideInterpretationAgent] ENABLE_SUMMARIES is false. Bypassing LLM and using rule-based SemanticFlowService.")
+            from services.semantic_flow_service import SemanticFlowService
+            return SemanticFlowService().analyze_slide(slide, image_summaries=image_summaries)
 
         gemini_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
         groq_key = os.getenv("GROQ_API_KEY")
@@ -354,23 +350,25 @@ The image_generation_prompt must be detailed enough for another model to recreat
                 print(f"[SlideInterpretationAgent] OpenAI analysis failed: {e}")
 
         # Fallback to Ollama
-        ollama_host = os.getenv("OLLAMA_HOST", "http://localhost:11434")
-        try:
-            resp = requests.get(f"{ollama_host}/api/tags", timeout=2)
-            if resp.status_code == 200:
-                models = [m["name"] for m in resp.json().get("models", [])]
-                target_model = "llama3.2"
-                if "llama3.2:latest" in models or "llama3.2" in models:
+        skip_ollama = os.getenv("SKIP_OLLAMA", "false").lower() in {"1", "true"}
+        if not skip_ollama:
+            ollama_host = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+            try:
+                resp = requests.get(f"{ollama_host}/api/tags", timeout=2)
+                if resp.status_code == 200:
+                    models = [m["name"] for m in resp.json().get("models", [])]
                     target_model = "llama3.2"
-                elif models:
-                    target_model = models[0]
+                    if "llama3.2:latest" in models or "llama3.2" in models:
+                        target_model = "llama3.2"
+                    elif models:
+                        target_model = models[0]
 
-                json_prompt = (
-                    f"{prompt}\n\n"
-                    "CRITICAL: Return your response ONLY as a raw JSON object matching this schema. "
-                    "Do NOT wrap in markdown code blocks. Do NOT include any extra text.\n"
-                    f"Schema:\n{_JSON_SCHEMA_HINT}"
-                )
+                    json_prompt = (
+                        f"{prompt}\n\n"
+                        "CRITICAL: Return your response ONLY as a raw JSON object matching this schema. "
+                        "Do NOT wrap in markdown code blocks. Do NOT include any extra text.\n"
+                        f"Schema:\n{_JSON_SCHEMA_HINT}"
+                    )
 
                 payload = {
                     "model": target_model,
@@ -383,15 +381,15 @@ The image_generation_prompt must be detailed enough for another model to recreat
                 response = requests.post(
                     f"{ollama_host}/api/generate",
                     json=payload,
-                    timeout=180,
+                    timeout=15,
                 )
                 if response.status_code == 200:
                     res_text = response.json().get("response", "").strip()
                     if res_text:
                         parsed = json.loads(res_text)
                         return SemanticFlowModel(**parsed)
-        except Exception as e:
-            print(f"[SlideInterpretationAgent] Ollama analysis failed: {e}")
+            except Exception as e:
+                print(f"[SlideInterpretationAgent] Ollama analysis failed: {e}")
 
         print("[SlideInterpretationAgent] No LLM API succeeded. Using rule-based SemanticFlowService.")
         from services.semantic_flow_service import SemanticFlowService
