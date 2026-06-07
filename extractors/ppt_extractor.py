@@ -285,6 +285,8 @@ class PPTExtractor:
 
         if element_type == "table":
             metadata["table_data"] = self._extract_table_data(shape)
+        if element_type == "chart":
+            metadata["chart_data"] = self._extract_pptx_chart_data(shape)
         if element_type == "image":
             try:
                 metadata["__image_bytes"] = shape.image.blob
@@ -343,6 +345,41 @@ class PPTExtractor:
             cells = [cell.text.strip() for cell in row.cells]
             rows_out.append(cells)
         return rows_out
+
+    def _extract_pptx_chart_data(self, shape) -> Optional[dict]:
+        if not hasattr(shape, "chart") or shape.chart is None:
+            return None
+        try:
+            chart = shape.chart
+            title = ""
+            if chart.has_title:
+                title = chart.chart_title.text_frame.text
+
+            series_data = []
+            for s in chart.series:
+                series_data.append({
+                    "name": s.name,
+                    "values": list(s.values) if hasattr(s, "values") else []
+                })
+
+            categories = []
+            if len(chart.plots) > 0:
+                plot = chart.plots[0]
+                if hasattr(plot, "categories"):
+                    categories = [str(cat) for cat in plot.categories]
+
+            chart_type_name = "unknown"
+            if hasattr(chart, "chart_type"):
+                chart_type_name = str(chart.chart_type)
+
+            return {
+                "title": title,
+                "chart_type": chart_type_name,
+                "series": series_data,
+                "categories": categories
+            }
+        except Exception:
+            return None
 
     def _extract_bullet_hierarchy(self, shape) -> list:
         items = []

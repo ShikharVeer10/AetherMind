@@ -69,6 +69,26 @@ class DiagramUnderstandingModel(BaseModel):
     flow_description: str = ""
     summary: str = ""
 
+
+class ChartUnderstandingModel(BaseModel):
+    chart_type: str = "none"
+    title: Optional[str] = None
+    measures: List[str] = Field(default_factory=list)
+    dimensions: List[str] = Field(default_factory=list)
+    trends: List[str] = Field(default_factory=list)
+    anomalies: List[str] = Field(default_factory=list)
+    comparisons: List[str] = Field(default_factory=list)
+    raw_chart_data: Optional[Dict[str, Any]] = None
+
+
+class SemanticRegionModel(BaseModel):
+    name: str
+    semantic_role: str
+    purpose: str
+    position: PositionModel
+    contents: List[str] = Field(default_factory=list)
+
+
 class DocumentElementModel(BaseModel):
     element_id: str
     element_type: str
@@ -79,6 +99,10 @@ class DocumentElementModel(BaseModel):
     shape_type: Optional[str] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
     table_markdown: Optional[str] = None
+    raw_table_content: Optional[List[List[str]]] = None
+    table_structure: Optional[Dict[str, Any]] = None
+    table_semantic_interpretation: Optional[str] = None
+    chart_understanding: Optional[ChartUnderstandingModel] = None
 
 class HeaderFooterModel(BaseModel):
     header_text: Optional[str] = None
@@ -150,6 +174,12 @@ class ImageUnderstandingModel(BaseModel):
     dominant_colors: List[str] = Field(default_factory=list)
     visual_elements: List[str] = Field(default_factory=list)
     llm_recreation_prompt: str = ""
+    slide_intent: Optional[str] = None
+    visual_regions: List[Dict[str, Any]] = Field(default_factory=list)
+    illustration_inventory: List[Dict[str, Any]] = Field(default_factory=list)
+    relationship_mapping: List[Dict[str, Any]] = Field(default_factory=list)
+    design_hierarchy: Optional[Dict[str, Any]] = None
+    reading_order: List[str] = Field(default_factory=list)
 
 class SemanticFlowModel(BaseModel):
     overall_flow: str = ""
@@ -160,6 +190,14 @@ class SemanticFlowModel(BaseModel):
     decision_points: List[str] = Field(default_factory=list)
     cause_effect_chain: List[str] = Field(default_factory=list)
     image_generation_prompt: str = ""
+    slide_intent: Optional[str] = None
+    content_hierarchy: Optional[Dict[str, Any]] = None
+    visual_hierarchy: Optional[Dict[str, Any]] = None
+    semantic_relationships: List[Dict[str, Any]] = Field(default_factory=list)
+    layout_regions: List[Dict[str, Any]] = Field(default_factory=list)
+    visual_grouping: List[Dict[str, Any]] = Field(default_factory=list)
+    storytelling_structure: Optional[str] = None
+    reading_order: List[str] = Field(default_factory=list)
 
 class SlideReconstructionContextModel(BaseModel):
     title: str = ""
@@ -232,6 +270,8 @@ class SlideModel(BaseModel):
     position_mapping: List[PositionMapModel] = Field(default_factory=list)
     image_reconstruction: Optional[ImageReconstructionModel] = None
     slide_reconstruction_context: Optional[SlideReconstructionContextModel] = None
+    chart_understandings: List[ChartUnderstandingModel] = Field(default_factory=list)
+    semantic_regions: List[SemanticRegionModel] = Field(default_factory=list)
 
 class DocumentModel(BaseModel):
     document_name: str
@@ -244,6 +284,7 @@ class DocumentModel(BaseModel):
         default_factory=dict,
         description="Top-level presentation metadata: author, slide dimensions, theme, etc.",
     )
+    document_structure: Optional[Dict[str, Any]] = None
 
 class ImageReconstructionModel(BaseModel):
     layout_description: str = ""

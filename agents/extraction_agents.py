@@ -215,6 +215,9 @@ class TableExtractionAgent:
                     if md:
                         markdowns.append(md)
                         element.table_markdown = md
+                    element.raw_table_content = table_data
+                    element.table_structure = self.service.analyze_structure(table_data)
+                    element.table_semantic_interpretation = self.service.generate_interpretation(table_data)
         return markdowns
 
 

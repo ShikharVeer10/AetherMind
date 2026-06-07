@@ -57,7 +57,7 @@ class SlideReconstructionService:
         ctx.visual_elements = self._build_visual_elements(slide, pres_meta)
         ctx.image_reconstructions = self._build_image_reconstructions(slide)
         ctx.element_relationships = self._build_relationships(slide)
-        ctx.reconstruction_prompt = self._format_reconstruction_prompt(ctx)
+        ctx.reconstruction_prompt = self._format_reconstruction_prompt(ctx, slide)
 
         return ctx
 
@@ -395,7 +395,7 @@ class SlideReconstructionService:
             )
         return relationships
 
-    def _format_reconstruction_prompt(self, ctx: SlideReconstructionContextModel) -> str:
+    def _format_reconstruction_prompt(self, ctx: SlideReconstructionContextModel, slide: Optional[SlideModel] = None) -> str:
         lines: List[str] = []
 
         lines.append("=" * 50)
@@ -412,6 +412,14 @@ class SlideReconstructionService:
         lines.append(f"Slide Type:")
         lines.append(f"{ctx.slide_type}")
         lines.append("")
+        if slide and slide.semantic_flow and slide.semantic_flow.slide_intent:
+            lines.append(f"Slide Intent:")
+            lines.append(f"{slide.semantic_flow.slide_intent}")
+            lines.append("")
+        if slide and slide.semantic_flow and slide.semantic_flow.storytelling_structure:
+            lines.append(f"Storytelling Structure:")
+            lines.append(f"{slide.semantic_flow.storytelling_structure}")
+            lines.append("")
         lines.append(f"Purpose:")
         lines.append(f"{ctx.purpose}")
         lines.append("")
@@ -569,6 +577,18 @@ class SlideReconstructionService:
                 lines.append("")
                 lines.append(f"Interactions:")
                 lines.append(f"{img.get('interactions', '')}")
+                lines.append("")
+
+        # SEMANTIC_REGIONS
+        if slide and getattr(slide, "semantic_regions", None):
+            lines.append("=" * 50)
+            lines.append("SEMANTIC_REGIONS")
+            lines.append("=" * 50)
+            lines.append("")
+            for r in slide.semantic_regions:
+                lines.append(f"Region '{r.name}' (Role: {r.semantic_role}):")
+                lines.append(f"  Purpose: {r.purpose}")
+                lines.append(f"  Contents: {r.contents}")
                 lines.append("")
 
         # RELATIONSHIPS

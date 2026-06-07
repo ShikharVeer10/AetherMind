@@ -223,8 +223,26 @@ class ImageReconstructionService:
             f"Overall Design Style: {self._detect_design_style(slide)} slide layout."
         ]
 
-        if slide.semantic_flow and slide.semantic_flow.overall_flow:
-            prompt_lines.append(f"Visual flow concept: {slide.semantic_flow.overall_flow}")
+        if slide.semantic_flow:
+            if slide.semantic_flow.overall_flow:
+                prompt_lines.append(f"Visual flow concept: {slide.semantic_flow.overall_flow}")
+            if slide.semantic_flow.storytelling_structure:
+                prompt_lines.append(f"Storytelling/Narrative Structure: {slide.semantic_flow.storytelling_structure}")
+            if slide.semantic_flow.reading_order:
+                prompt_lines.append(f"Verbatim Reading Order: {' -> '.join(slide.semantic_flow.reading_order)}")
+
+        # Include Semantic Regions if detected
+        if getattr(slide, "semantic_regions", None):
+            prompt_lines.append("\n--- Slide Semantic Regions and Layout Panels ---")
+            for r in slide.semantic_regions:
+                prompt_lines.append(f"- Region '{r.name}' (Role: {r.semantic_role}): {r.purpose}. Contents: {r.contents}")
+
+        # Include Semantic Relationships
+        if slide.semantic_flow and slide.semantic_flow.semantic_relationships:
+            prompt_lines.append("\n--- Semantic Relationships and Visual Logic ---")
+            for rel in slide.semantic_flow.semantic_relationships:
+                desc = rel.get('description', '') if isinstance(rel, dict) else getattr(rel, 'description', '')
+                prompt_lines.append(f"- Relation: {desc}")
 
         colors = self._extract_color_palette(slide)
         if colors:

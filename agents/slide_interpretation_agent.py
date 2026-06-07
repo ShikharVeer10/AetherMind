@@ -48,7 +48,15 @@ _RECONSTRUCTION_SYSTEM_PROMPT = (
     "5. plain_english_summary: 3-5 paragraphs explaining what the slide teaches in plain language.\n"
     "6. decision_points: Every decision node with EXACT question text.\n"
     "7. cause_effect_chain: Causal links using exact element text and branch labels.\n"
-    "8. image_generation_prompt: PRIMARY reconstruction field — a complete visual blueprint with sections:\n"
+    "8. slide_intent: Primary intent of the slide, selected from: cover_page, executive_summary, dashboard, methodology, architecture_diagram, process_flow, infographic, comparison, research_report, findings, recommendations, conclusion, appendix, custom.\n"
+    "9. content_hierarchy: Dictionary structure capturing Title, primary topics, and nested details.\n"
+    "10. visual_hierarchy: Dictionary specifying primary focus, secondary focus, tertiary focus, and attention flow.\n"
+    "11. semantic_relationships: List of relationship mappings between elements. Use types: supports, explains, compares, contrasts, groups, summarizes, influences, depends_on.\n"
+    "12. layout_regions: List of layout sections (header, footer, sidebars, panels, callout boxes, etc.) with description and bounding logic.\n"
+    "13. visual_grouping: List of elements grouped together (e.g. key-value pairs, column cards, flow blocks).\n"
+    "14. storytelling_structure: Narrative or logical structure explaining how the slide tells its story (e.g., problem-solution, progression, cause-effect).\n"
+    "15. reading_order: Ordered list of text strings or element descriptions depicting exact reading flow.\n"
+    "16. image_generation_prompt: PRIMARY reconstruction field — a complete visual blueprint with sections:\n"
     "   === LAYOUT === (left/right/top/bottom/center with contents and proportions)\n"
     "   === OBJECTS === (every visible object with exact text, type, placement)\n"
     "   === DIAGRAM STRUCTURE === (decisions, branches, flow, exact text, mermaid if applicable)\n"
@@ -69,7 +77,15 @@ _JSON_SCHEMA_HINT = (
     '  "plain_english_summary": "string",\n'
     '  "decision_points": ["string"],\n'
     '  "cause_effect_chain": ["string"],\n'
-    '  "image_generation_prompt": "string"\n'
+    '  "image_generation_prompt": "string",\n'
+    '  "slide_intent": "string",\n'
+    '  "content_hierarchy": {"title": "string", "primary_content": ["string"], "nested_details": {}},\n'
+    '  "visual_hierarchy": {"primary_focus": "string", "secondary_focus": "string", "tertiary_focus": "string", "attention_flow": "string"},\n'
+    '  "semantic_relationships": [{"source": "string", "target": "string", "relationship_type": "string", "description": "string"}],\n'
+    '  "layout_regions": [{"name": "string", "bounds": {}, "description": "string"}],\n'
+    '  "visual_grouping": [{"group_id": "string", "element_ids": ["string"], "description": "string"}],\n'
+    '  "storytelling_structure": "string",\n'
+    '  "reading_order": ["string"]\n'
     "}"
 )
 

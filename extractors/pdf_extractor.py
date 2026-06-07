@@ -203,9 +203,7 @@ class PDFExtractor:
             return None
 
     def _deduce_title(self, blocks: List[dict], page_height: float) -> Optional[str]:
-        best_title = None
-        max_font_size = 0.0
-        
+        candidates = []
         for block in blocks:
             if block.get("type") != 0:
                 continue
@@ -213,7 +211,10 @@ class PDFExtractor:
             bbox = block.get("bbox", (0, 0, 0, 0))
             y0 = bbox[1]
             
-            # Find largest font size within this block
+            # Skip blocks in the bottom 25% of the page (almost certainly not a title)
+            if y0 > page_height * 0.75:
+                continue
+                
             block_max_font = 0.0
             block_text = ""
             for line in block.get("lines", []):
@@ -225,23 +226,28 @@ class PDFExtractor:
             if not block_text:
                 continue
                 
-            # Restrict candidate title blocks to upper 40% of page
-            if y0 < page_height * 0.4:
-                if block_max_font > max_font_size:
-                    max_font_size = block_max_font
-                    best_title = block_text
-                    
-        if best_title:
-            return best_title.replace("\n", " ").strip()
+            candidates.append({
+                "text": block_text,
+                "max_font": block_max_font,
+                "y0": y0,
+                "x0": bbox[0]
+            })
             
-        # Fallback to first text block text if no clear title found in top half
-        for block in blocks:
-            if block.get("type") == 0:
-                text_lines = []
-                for line in block.get("lines", []):
-                    text_lines.append("".join(s.get("text", "") for s in line.get("spans", [])))
-                text = " ".join(text_lines).strip()
-                if text:
-                    return text.replace("\n", " ").strip()
-                    
+        if not candidates:
+            return None
+            
+        # Find global max font size
+        global_max_font = max(c["max_font"] for c in candidates)
+        
+        # Filter candidates: must be within 30% of the max font size on the page
+        font_threshold = global_max_font * 0.7
+        title_candidates = [c for c in candidates if c["max_font"] >= font_threshold]
+        
+        # Sort title candidates: primarily by y0 (top to bottom), secondarily by x0 (left to right)
+        title_candidates.sort(key=lambda c: (c["y0"], c["x0"]))
+        
+        if title_candidates:
+            # Clean and return the topmost candidate
+            return title_candidates[0]["text"].replace("\n", " ").strip()
+            
         return None

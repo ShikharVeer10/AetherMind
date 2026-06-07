@@ -116,10 +116,119 @@ class SemanticFlowService:
         semantic_flow.cause_effect_chain = self._build_cause_effect_chain(
             slide, labels, parsed_sections
         )
+        
+        # Populate new reconstruction fields
+        semantic_flow.slide_intent = getattr(slide.image_understanding, "slide_intent", None) or self._infer_intent_fallback(slide)
+        semantic_flow.content_hierarchy = self._build_content_hierarchy(slide)
+        semantic_flow.visual_hierarchy = self._build_visual_hierarchy_dict(slide)
+        semantic_flow.semantic_relationships = self._build_semantic_relationships(slide)
+        semantic_flow.layout_regions = self._build_layout_regions_dict(slide)
+        semantic_flow.visual_grouping = self._build_visual_grouping(slide)
+        semantic_flow.storytelling_structure = self._infer_storytelling_structure(slide)
+        semantic_flow.reading_order = self._build_reading_order_list(slide, labels)
+
         semantic_flow.image_generation_prompt = self._build_reconstruction_image_prompt(
             slide, labels, combined_summaries, parsed_sections
         )
         return semantic_flow
+
+    def _infer_intent_fallback(self, slide: SlideModel) -> str:
+        if slide.flowchart and slide.flowchart.is_flowchart:
+            return "process_flow"
+        if slide.layout_structure and slide.layout_structure.layout_type == "title_slide":
+            return "cover_page"
+        if slide.title:
+            t = slide.title.lower()
+            if "summary" in t or "takeaway" in t:
+                return "executive_summary"
+            if "recommend" in t or "roadmap" in t or "next step" in t:
+                return "recommendations"
+            if "appendix" in t or "supplement" in t:
+                return "appendix"
+            if "compare" in t or "vs" in t:
+                return "comparison"
+        return "findings"
+
+    def _build_content_hierarchy(self, slide: SlideModel) -> dict:
+        primary_content = []
+        nested_details = {}
+        for p in slide.text_points:
+            if p.level == 0:
+                primary_content.append(p.text)
+            else:
+                parent = primary_content[-1] if primary_content else "General"
+                nested_details.setdefault(parent, []).append(p.text)
+        return {
+            "title": slide.title or "",
+            "primary_content": primary_content,
+            "nested_details": nested_details
+        }
+
+    def _build_visual_hierarchy_dict(self, slide: SlideModel) -> dict:
+        if slide.image_understanding and slide.image_understanding.design_hierarchy:
+            return slide.image_understanding.design_hierarchy
+        primary = f"Title: {slide.title}" if slide.title else ""
+        secondary = ""
+        if slide.text_points:
+            secondary = "; ".join([p.text for p in slide.text_points if p.level == 0][:2])
+        return {
+            "primary_focus": primary,
+            "secondary_focus": secondary,
+            "tertiary_focus": "",
+            "attention_flow": "top-to-bottom"
+        }
+
+    def _build_semantic_relationships(self, slide: SlideModel) -> list:
+        if slide.image_understanding and slide.image_understanding.relationship_mapping:
+            return slide.image_understanding.relationship_mapping
+        rels = []
+        for rel in slide.relationships:
+            rels.append({
+                "source": rel.source_element_id,
+                "target": rel.target_element_id,
+                "relationship_type": rel.relationship_type,
+                "description": f"Connector from {rel.source_element_id} to {rel.target_element_id}"
+            })
+        return rels
+
+    def _build_layout_regions_dict(self, slide: SlideModel) -> list:
+        if slide.image_understanding and slide.image_understanding.visual_regions:
+            return slide.image_understanding.visual_regions
+        regions = []
+        if slide.layout_structure and slide.layout_structure.regions:
+            for r in slide.layout_structure.regions:
+                regions.append({
+                    "name": r.name,
+                    "bounds": {"x_start": r.x_start, "y_start": r.y_start, "x_end": r.x_end, "y_end": r.y_end},
+                    "description": f"Layout region '{r.name}' containing {len(r.element_ids)} elements"
+                })
+        return regions
+
+    def _build_visual_grouping(self, slide: SlideModel) -> list:
+        groupings = []
+        if slide.layout_structure and slide.layout_structure.regions:
+            for r in slide.layout_structure.regions:
+                if len(r.element_ids) > 1:
+                    groupings.append({
+                        "group_id": f"group_{r.name}",
+                        "element_ids": r.element_ids,
+                        "description": f"Elements grouped in {r.name} region"
+                      })
+        return groupings
+
+    def _infer_storytelling_structure(self, slide: SlideModel) -> str:
+        if slide.flowchart and slide.flowchart.is_flowchart:
+            return "chronological/process flow showing step-by-step progress"
+        if slide.layout_structure and slide.layout_structure.layout_type == "two_column":
+            return "comparison/contrast layout between left and right sections"
+        return "hierarchical presentation of title and supporting details"
+
+    def _build_reading_order_list(self, slide: SlideModel, labels: dict) -> list:
+        if slide.image_understanding and slide.image_understanding.reading_order:
+            return slide.image_understanding.reading_order
+        if slide.flowchart and slide.flowchart.reading_order:
+            return [labels.get(eid, eid) for eid in slide.flowchart.reading_order]
+        return [labels.get(e.element_id, e.element_id) for e in sorted(slide.elements, key=lambda x: (x.position.y, x.position.x)) if e.text]
 
     def _element_label_lookup(self, slide: SlideModel) -> dict[str, str]:
         lookup: dict[str, str] = {}
@@ -732,6 +841,26 @@ class SemanticFlowService:
         # Slide title
         if slide.title:
             sections.append(f"Slide title: {slide.title}")
+
+        # === STORYTELLING AND NARRATIVE FLOW ===
+        storytelling = "The slide presents information hierarchically, highlighting key points sequentially."
+        if slide.flowchart and slide.flowchart.is_flowchart:
+            storytelling = "The slide illustrates a process/workflow sequence, showing consecutive steps and decision logic."
+        elif slide.layout_structure and slide.layout_structure.layout_type == "two_column":
+            storytelling = "The slide compares and contrasts two distinct concept columns or panels."
+        sections.append(f"=== STORYTELLING AND NARRATIVE FLOW ===\n{storytelling}")
+
+        # === SEMANTIC RELATIONSHIPS ===
+        rel_lines = ["=== SEMANTIC RELATIONSHIPS ==="]
+        if slide.image_understanding and slide.image_understanding.relationship_mapping:
+            for rm in slide.image_understanding.relationship_mapping:
+                desc = rm.get('description', '') if isinstance(rm, dict) else getattr(rm, 'description', '')
+                rtype = rm.get('relationship_type', 'supports') if isinstance(rm, dict) else getattr(rm, 'relationship_type', 'supports')
+                rel_lines.append(f"  - {desc} (Type: {rtype})")
+        else:
+            for rel in slide.relationships:
+                rel_lines.append(f"  - Element '{labels.get(rel.source_element_id, rel.source_element_id)}' connects to '{labels.get(rel.target_element_id, rel.target_element_id)}' (Type: {rel.relationship_type})")
+        sections.append("\n".join(rel_lines))
 
         # === EXACT TEXT ===
         text_block = ["=== EXACT TEXT (preserve verbatim) ==="]

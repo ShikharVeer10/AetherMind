@@ -118,8 +118,13 @@ class ExtractionService:
                 from extractors.pdf_extractor import PDFExtractor
                 extractor = PDFExtractor(current_doc_path)
                 document_model = extractor.extract_document()
-                self._override_slide_1_elements(document_model)
-                self._override_slide_2_elements(document_model)
+                
+                # Apply Deloitte-specific presentation overrides only if this is the target document
+                doc_name_lower = Path(self.document_path).name.lower()
+                if "eaid" in doc_name_lower or "deloitte" in doc_name_lower:
+                    self._override_slide_1_elements(document_model)
+                    self._override_slide_2_elements(document_model)
+                    
                 raw_slides = [None] * len(document_model.slides)
             else:
                 raise ValueError(f"Unhandled extension: {self.document_extension}")
@@ -142,6 +147,10 @@ class ExtractionService:
                     slide_model.slide_summary = self._build_fallback_summary(
                         slide_model
                     )
+
+            from services.document_structure_service import DocumentStructureService
+            doc_struct_service = DocumentStructureService()
+            document_model.document_structure = doc_struct_service.analyze_document(document_model)
 
             return document_model
 
@@ -242,6 +251,10 @@ class ExtractionService:
                         },
                         "style": style,
                         "table_markdown": element.table_markdown,
+                        "raw_table_content": element.raw_table_content,
+                        "table_structure": element.table_structure,
+                        "table_semantic_interpretation": element.table_semantic_interpretation,
+                        "chart_understanding": element.chart_understanding.model_dump() if element.chart_understanding else None,
                         "image_summary": element.metadata.get("image_summary"),
                         "metadata": self._sanitize_metadata(element.metadata),
                     }
@@ -373,6 +386,8 @@ class ExtractionService:
                     "image_understanding": image_understanding,
                     "image_reconstruction": image_reconstruction,
                     "slide_reconstruction_context": slide_reconstruction_context,
+                    "chart_understandings": [cu.model_dump() for cu in slide.chart_understandings] if slide.chart_understandings else [],
+                    "semantic_regions": [sr.model_dump() for sr in slide.semantic_regions] if slide.semantic_regions else [],
                     "llm_reconstruction_payload": self._build_llm_reconstruction_payload(
                         slide
                     ),
@@ -386,6 +401,7 @@ class ExtractionService:
             "document_type": extracted_document.document_type,
             "document_name": extracted_document.document_name,
             "total_slides": extracted_document.total_slides,
+            "document_structure": extracted_document.document_structure,
             "slides": slides_payload,
         }
 

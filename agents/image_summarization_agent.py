@@ -7,16 +7,42 @@ import requests
 
 
 _IMAGE_PROMPT = """\
-Analyse this image in exhaustive detail. You MUST respond using the EXACT section headings and structure shown below. Do NOT skip any section — write "N/A" if a section does not apply. Focus ONLY on the visual content inside the image. Do NOT describe slides, presentations, documents, or surrounding context. Focus on reproducing what is visible rather than explaining what it means.
+Analyze this image in exhaustive detail for the purpose of recreating/reconstructing it. Focus on producing a high-fidelity visual and structural reconstruction blueprint. You MUST respond using the EXACT section headings and structure shown below. Do NOT skip any section — write "N/A" if a section does not apply. Focus ONLY on the visual content inside the image.
 
-## 1. Scene Overview
+## 1. Slide Intent
+Categorize the primary intent of the slide from this list: cover_page, executive_summary, dashboard, methodology, architecture_diagram, process_flow, infographic, comparison, research_report, findings, recommendations, conclusion, appendix, custom. Briefly explain the classification.
+
+## 2. Visual Regions
+Identify and locate the boundaries, layout panels, or main zones of the slide. Focus on regions such as: header, footer, left panel, right panel, center panel, sidebars, banners, chart areas, illustration areas. Describe their coordinates or relative placement on a 100x100 grid.
+
+## 3. Illustration Inventory
+List all graphics, illustrations, icons, diagrams, or visual assets. For each illustration, specify:
+- position (coordinates or relative location)
+- size (relative size or scale)
+- purpose (what role it plays)
+- semantic meaning (what concept it depicts)
+
+## 4. Relationship Mapping
+Analyze the connections and relations between all visual and textual elements. Map relationships using the following categories: supports, explains, compares, contrasts, groups, summarizes, influences, depends_on. For each relation, specify the source element, target element, and relationship type.
+
+## 5. Design Hierarchy
+Detail the visual prominence of elements:
+- primary focus (what grabs attention first)
+- secondary focus (what grabs attention second)
+- tertiary focus (other supporting details)
+- attention flow (the path the viewer's eyes follow)
+
+## 6. Reading Order
+Provide the step-by-step reading order a human would naturally follow when reading/interpreting the slide (e.g. top-to-bottom, left-to-right, flowchart sequence).
+
+## 7. Scene Overview
 Provide a detailed description of the entire image, including:
 - overall composition
 - visual hierarchy
 - major regions
 - focal points
 
-## 2. Object Inventory
+## 8. Object Inventory
 Identify every significant visual element. For each object provide a JSON block matching:
 {
   "name": "",
@@ -27,19 +53,18 @@ Identify every significant visual element. For each object provide a JSON block 
 }
 Examples of categories: human, robot, gear, chart, cloud, building, server, tree, molecule, icon, vehicle.
 
-## 3. Spatial Relationships
+## 9. Spatial Relationships
 Describe how objects relate to one another (e.g. above, below, inside, connected_to, overlapping, surrounding, attached_to).
 
-## 4. Visual Style
+## 10. Visual Style
 Identify:
 - illustration style
 - rendering style
 - realism level
 - artistic influences
 - design language
-Examples: photorealistic, corporate infographic, flat design, vector art, futuristic, 3D render, technical diagram, medical illustration, scientific visualization.
 
-## 5. Color Analysis
+## 11. Color Analysis
 Return a JSON block containing:
 {
   "dominant_colors": [],
@@ -48,27 +73,16 @@ Return a JSON block containing:
 }
 Use HEX color values when possible.
 
-## 6. Shapes and Geometry
-Identify:
-- circles
-- rectangles
-- polygons
-- arrows
-- connectors
-- icons
-- decorative elements
-Describe their placement and role.
+## 12. Shapes and Geometry
+Identify circles, rectangles, polygons, arrows, connectors, icons, decorative elements, and describe their role.
 
-## 7. Text Elements
+## 13. Text Elements
 Extract all visible text exactly as shown. Preserve wording, capitalization, and grouping. Do not summarize.
 
-## 8. Visual Structure
-Describe columns, rows, clusters, panels, sections, layers, and their arrangement.
-
-## 9. Reconstruction Description
+## 14. Reconstruction Description
 Generate an extremely detailed reconstruction description containing: objects, colors, positions, scale, spacing, style, lighting, relationships, and composition. The description should be sufficient for another image generation model to recreate a highly similar image.
 
-## 10. Reconstruction Prompt
+## 15. Reconstruction Prompt
 Generate a final image-generation prompt optimized for reconstruction fidelity. The prompt should describe the image precisely, avoid interpretation, avoid summarization, avoid adding new content, and preserve visual structure.
 """
 
@@ -746,6 +760,37 @@ class ImageSummaryAgent:
         # Bypassed for speed when running on CPU (transformers takes too long)
         print("[ImageSummary] Local Ollama and Gemini/Groq/OpenAI APIs unavailable. Generating instantaneous metadata fallback.")
         topic = slide_title or "this topic"
+        
+        # Build robust fallback content from slide_text to preserve wording and semantics
+        transcription = "N/A"
+        breakdown = f"Asset supporting: {topic}"
+        summary_interp = f"In the context of the slide topic '{topic}', this image element supports the surrounding text and layout."
+        plain_summary = f"Visual element representing slide content related to {topic}."
+        
+        mermaid_code = ""
+        if slide_text:
+            lines = [line.strip() for line in slide_text.splitlines() if line.strip()]
+            if lines:
+                quoted_lines = [f'"{l}"' for l in lines]
+                transcription = "\n".join(quoted_lines)
+                
+                cleaned_text = " ".join(lines)
+                breakdown += f". Contains text content: {cleaned_text}"
+                summary_interp = f"Visual presentation slide for '{topic}'. Key content includes: {cleaned_text}."
+                plain_summary = f"A presentation slide covering '{topic}', containing: {cleaned_text}."
+                
+                mermaid_code += "graph TD\n\n"
+                mermaid_code += f"    Title[\"{topic}\"]\n"
+                for i, line in enumerate(lines[:6]):
+                    escaped_line = line.replace('"', '\\"')
+                    mermaid_code += f"    Title --> Node{i}[\"{escaped_line}\"]\n"
+                    
+        if not mermaid_code:
+            mermaid_code = (
+                f"graph TD\n"
+                f"    A[\"{topic}\"] --> B[\"Visual Asset\"]\n"
+            )
+            
         return (
             f"## 1. Visual Element Counts\n"
             f"- Number of boxes / rectangles: N/A (local API fallback)\n"
@@ -759,25 +804,23 @@ class ImageSummaryAgent:
             f"- Flow/sequence: N/A\n"
             f"\n"
             f"## 3. Detailed Component Breakdown\n"
-            f"Asset supporting: {topic}\n"
+            f"{breakdown}\n"
             f"\n"
             f"## 4. Text Transcription\n"
-            f"N/A\n"
+            f"{transcription}\n"
             f"\n"
             f"## 5. Charts and Data\n"
             f"N/A\n"
             f"\n"
             f"## 6. Summary & Interpretation\n"
-            f"In the context of the slide topic '{topic}', this image element supports the surrounding text and layout.\n"
+            f"{summary_interp}\n"
             f"\n"
             f"## 7. Plain-language Summary\n"
-            f"Visual element representing slide content related to {topic}.\n"
+            f"{plain_summary}\n"
             f"\n"
             f"## 8. Reconstructed Diagram Code (Mermaid.js)\n"
             f"```mermaid\n"
-            f"graph TD\n"
-            f"    A[\"{topic}\"] --> B[\"Visual Asset\"]\n"
-            f"```\n"
+            f"{mermaid_code}```\n"
         )
 
 

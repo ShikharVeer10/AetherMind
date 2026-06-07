@@ -10,6 +10,8 @@ Concept/process depicted: 2026
 Flow/sequence: N/A
 
 Conceptual Layers
+Deloitte.
+Together makes progress
 Engineering, AI & Data
 Offerings Engineering your advantage
 
@@ -18,14 +20,16 @@ Colour scheme:
 Slide background: white (#ffffff)
 Full palette: black (#000000), #86bc25
 Shapes:
-rect: 3 instance(s)
+rect: 4 instance(s)
 Structure:
 Layout type: two_column
+header → Deloitte. Together makes progress
 body_left → Engineering, AI & Data Offerings Engineering your advantage
 body_right → slide_1_full_page_image
 footer → 2026
 Asset supporting: 2026
 Connectors:
+Arrow: 'slide_1_full_page_image' → 'Deloitte. Together makes progress' [contains]
 Arrow: 'slide_1_full_page_image' → '2026' [contains]
 Arrow: 'slide_1_full_page_image' → 'Engineering, AI & Data Offerings Engineering your advantage' [contains]
 Visual layout style: two_column
@@ -99,7 +103,7 @@ Key concept illustrated on this slide.
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #3c763d, dark green (#008000), white (#ffffff)
+Full palette: #3c763d, dark green (#008000), white (#ffffff), black (#000000)
 Shapes:
 rect: 22 instance(s)
 Structure:
@@ -204,7 +208,7 @@ quality engineering
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #00abab, #005587, white (#ffffff)
+Full palette: white (#ffffff), #00abab, #005587, black (#000000)
 Shapes:
 rect: 15 instance(s)
 Structure:
@@ -307,7 +311,7 @@ Key concept illustrated on this slide.
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #00abab, #313131, white (#ffffff), #262626
+Full palette: #00abab, #262626, #313131, black (#000000), white (#ffffff)
 Shapes:
 rect: 24 instance(s)
 Structure:
@@ -451,7 +455,7 @@ Key concept illustrated on this slide.
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Full palette: white (#ffffff), #00abab, black (#000000), #00a3e0
 Shapes:
 rect: 35 instance(s)
 Structure:
@@ -618,7 +622,7 @@ Key concept illustrated on this slide.
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Full palette: white (#ffffff), #00abab, black (#000000), #00a3e0
 Shapes:
 rect: 36 instance(s)
 Structure:
@@ -773,7 +777,7 @@ Key concept illustrated on this slide.
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Full palette: white (#ffffff), #00abab, black (#000000), #00a3e0
 Shapes:
 rect: 32 instance(s)
 Structure:
@@ -917,7 +921,7 @@ Key concept illustrated on this slide.
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Full palette: white (#ffffff), #00abab, black (#000000), #00a3e0
 Shapes:
 rect: 29 instance(s)
 Structure:
@@ -1072,7 +1076,7 @@ Key concept illustrated on this slide.
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Full palette: white (#ffffff), #00abab, black (#000000), #00a3e0
 Shapes:
 rect: 31 instance(s)
 Structure:
@@ -1218,7 +1222,7 @@ Key concept illustrated on this slide.
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #00a3e0, #00abab, white (#ffffff)
+Full palette: white (#ffffff), #00abab, black (#000000), #00a3e0
 Shapes:
 rect: 34 instance(s)
 Structure:
@@ -1335,7 +1339,7 @@ Offering Leader – Engineering, AI & Data (E,AI&D)
 Visual Design Details
 Colour scheme:
 Slide background: white (#ffffff)
-Full palette: black (#000000), #00abab, #005587
+Full palette: #005587, #00abab, black (#000000)
 Shapes:
 rect: 15 instance(s)
 Structure:

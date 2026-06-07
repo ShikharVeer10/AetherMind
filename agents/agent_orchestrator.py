@@ -150,12 +150,27 @@ class AgentOrchestrator:
         from services.image_understanding_service import ImageUnderstandingService
         from services.imagereconstruction_service import ImageReconstructionService
         from services.semantic_slide_service import SemanticSlideService
+        from services.chart_understanding_service import ChartUnderstandingService
+        from services.semantic_region_detection_service import SemanticRegionDetectionService
+
+        # Run Chart Understanding Service
+        chart_service = ChartUnderstandingService()
+        slide_model.chart_understandings = []
+        for element in slide_model.elements:
+            if element.element_type == "chart" or (element.element_type == "image" and any(k in (element.metadata.get("image_summary") or "").lower() for k in ("chart", "graph", "dashboard", "kpi"))):
+                chart_info = chart_service.analyze_chart_element(element, slide_model)
+                element.chart_understanding = chart_info
+                slide_model.chart_understandings.append(chart_info)
 
         img_und_service = ImageUnderstandingService()
         slide_model.image_understanding = img_und_service.analyze_slide(slide_model)
 
         img_rec_service = ImageReconstructionService()
         slide_model.image_reconstruction = img_rec_service.analyze_slide(slide_model)
+
+        # Run Semantic Region Detection Service
+        sem_region_service = SemanticRegionDetectionService()
+        slide_model.semantic_regions = sem_region_service.detect_regions(slide_model)
 
         print("    [Orchestrator] Step 12.1: Slide interpretation (semantic flow)...")
         from agents.slide_interpretation_agent import SlideInterpretationAgent
