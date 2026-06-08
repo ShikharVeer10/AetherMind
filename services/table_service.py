@@ -176,6 +176,7 @@ class TableService:
             "key_insights": self.generate_key_insights(table_data),
             "row_count": len(table_data),
             "column_count": len(headers),
+            "raw_text": table_data,
         }
     def generate_interpretation(self, table_data: List[List[str]]) -> str:
         """
@@ -264,16 +265,12 @@ class TableService:
     self,
     table_data: List[List[str]]
 ) -> str:
-
         headers = [
         c.strip()
         for c in table_data[0]
         if c.strip()
     ]
-
         if headers:
             return f"Table showing {', '.join(headers[:3])}"
-
         return "Untitled Table"
     
-        "raw_text": [row for row in table_data]

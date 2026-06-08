@@ -92,7 +92,7 @@ class DiagramUnderstandingService:
         flowchart: FlowchartModel,
     ) -> List[DocumentElementModel]:
         """Prefer flowchart boxes over all non-connector elements to avoid inflated counts."""
-        if flowchart.is_flowchart and flowchart.boxes:
+        if flowchart and flowchart.is_flowchart and flowchart.boxes:
             box_ids = {b["element_id"] for b in flowchart.boxes}
             return [e for e in elements if e.element_id in box_ids]
 

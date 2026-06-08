@@ -193,33 +193,65 @@ class DiagramUnderstandingAgent:
 
 
 class TableExtractionAgent:
-    system_prompt = (
-        "You are the Table Extraction Agent. For every table element on the slide, \n"
-        "convert its cell data into GitHub-Flavored Markdown (GFM) format. \n"
-        "The first row is always treated as the header row. Escape pipe characters \n"
-        "within cell text. If a data row has fewer cells than the header, pad with empty cells. \n"
-        "Attach the markdown string to the element's table_markdown field and also \n"
-        "return a list of all table markdowns for the slide."
-    )
+    """
+    Extract tables exactly as they appear.
+    No summarization.
+    No interpretation.
+    No business insights.
+    """
 
-    def __init__(self):
-        self.service = TableService()
+    system_prompt = """
+You are a table extraction engine.
 
-    def run(self, slide_model: SlideModel) -> list[str]:
-        markdowns = []
+STRICT RULES:
+
+1. Extract tables only.
+2. Never summarize.
+3. Never explain.
+4. Never interpret.
+5. Never infer values.
+6. Never generate insights.
+7. Preserve row order exactly.
+8. Preserve column order exactly.
+9. Preserve merged-header hierarchy.
+10. Preserve numerical values exactly.
+11. Preserve percentages exactly.
+12. Preserve currency values exactly.
+13. Preserve empty cells.
+
+Output ONLY markdown.
+
+Do not output any commentary.
+Do not output any prose.
+"""
+
+    def run(self, slide_model):
+
+        extracted_tables = []
+
         for element in slide_model.elements:
-            if element.element_type == "table":
-                table_data = element.metadata.get("table_data", [])
-                if table_data:
-                    md = self.service.to_markdown(table_data)
-                    if md:
-                        markdowns.append(md)
-                        element.table_markdown = md
-                    element.raw_table_content = table_data
-                    element.table_structure = self.service.analyze_structure(table_data)
-                    element.table_semantic_interpretation = self.service.generate_interpretation(table_data)
-        return markdowns
 
+            if element.element_type != "table":
+                continue
+
+            if hasattr(element, "table_markdown"):
+
+                extracted_tables.append(
+                    element.table_markdown
+                )
+
+            elif hasattr(
+                element,
+                "raw_table_content"
+            ):
+
+                extracted_tables.append(
+                    str(
+                        element.raw_table_content
+                    )
+                )
+
+        return extracted_tables
 
 class ContextAssemblyAgent:
     system_prompt = (

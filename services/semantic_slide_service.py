@@ -107,14 +107,23 @@ class SemanticSlideService:
         )
     
 
-    def _build_image_depiction_summary(self,slide: SlideModel,) -> str:
-        depictions = []
-        for image in slide.images:
-            if image.semantic_description:
-                depictions.append(
-                image.semantic_description
+    def _build_image_depiction_summary(self, slide):
+
+        summaries = []
+
+        for element in slide.elements:
+
+            if element.element_type != "image":
+                continue
+
+            image_summary = element.metadata.get(
+                "image_summary"
             )
-        return " | ".join(depictions)
+
+            if image_summary:
+                summaries.append(image_summary)
+
+        return "\n".join(summaries)
     
     def _infer_slide_archetype(self,slide: SlideModel,) -> str:
 

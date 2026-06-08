@@ -3,7 +3,9 @@ Multi-agent orchestrator that runs extraction tasks in the required order.
 Each task is owned by a dedicated agent with an explicit system prompt.
 """
 
+from services import diagram_understanding_service
 from typing import Optional
+from models.document_model import FlowchartModel
 
 from models.document_model import (
     HeaderFooterModel,
@@ -23,7 +25,7 @@ from agents.extraction_agents import (
     TextExtractionAgent,
     VisualInventoryAgent,
 )
-
+from agents.table_extraction_agent import TableExtractionAgent
 
 class AgentOrchestrator:
     """
@@ -101,23 +103,42 @@ class AgentOrchestrator:
         slide_model.relationships = relationships
 
         # 7) Flowchart analysis
-        print("    [Orchestrator] Step 7: Flowchart analysis...")
-        flowchart = self.flowchart_agent.run(slide_model, relationships)
-        if flowchart.is_flowchart and layout.layout_type != "flowchart":
-            layout.layout_type = "flowchart"
+        print("    [Orchestrator] Step 7: Flowchart analysis skipped")
 
-        # 8) Diagram understanding
-        print("    [Orchestrator] Step 8: Diagram understanding...")
-        diagram_understanding = self.diagram_agent.run(
-            slide_model, relationships, flowchart
+
+        flowchart = FlowchartModel(
+            is_flowchart=False,
+            box_count=0,
+            arrow_count=0,
+            decision_node_count=0,
+            start_nodes=[],
+            end_nodes=[],
+            flow_type="none",
+            boxes=[],
+            arrows=[],
+            relationships=[],
+            relationship_mapping=[],
+            reading_order=[],
+            reading_order_labels=[],
+            process_summary=None,
         )
+
+       
 
         # 9) Image understanding and depiction
         print("    [Orchestrator] Step 9: Image summaries...")
         image_summary_text = await self._run_image_summaries(slide_model)
 
+        print("    [Orchestrator] Step 8: Diagram understanding...")
+        diagram_understanding= self.diagram_agent.run(
+            slide_model,
+            relationships,
+            flowchart
+        )
+
         # 10) Slide context
         print("    [Orchestrator] Step 10: Slide context...")
+
         context = self.context_agent.run(
             title=slide_model.title,
             header_footer=header_footer or HeaderFooterModel(),
@@ -127,7 +148,7 @@ class AgentOrchestrator:
             text_points=slide_model.text_points,
             position_mapping=position_mapping,
             relationships=relationships,
-            diagram_understanding=diagram_understanding,
+            diagram_understanding=diagram_understanding
         )
 
         # 11) Table extraction (markdown)
@@ -139,11 +160,11 @@ class AgentOrchestrator:
         slide_model.header_footer = header_footer or HeaderFooterModel()
         slide_model.visual_inventory = visual_inventory or VisualInventoryModel()
         slide_model.layout_structure = layout
-        slide_model.flowchart = flowchart
         slide_model.context = context
         slide_model.table_markdowns = table_markdowns or []
         slide_model.position_mapping = position_mapping
         slide_model.diagram_understanding = diagram_understanding
+        slide_model.flowchart = flowchart
 
         # 12) Semantic flow, image understanding, and reconstruction
         print("    [Orchestrator] Step 12: Semantic services...")
