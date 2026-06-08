@@ -1,8 +1,8 @@
 from typing import List, Dict, Any, Optional
-from models.document_model import DocumentModel, SlideModel
+from models.document_model import DocumentModel, SlideModel,DocumentStructureModel
 
 class DocumentStructureService:
-    def analyze_document(self, doc: DocumentModel) -> Dict[str, Any]:
+    def analyze_document(self, doc: DocumentModel) -> DocumentStructureModel:
         """
         Build a generalized document structure including:
         - overall document role (Consulting Report, Financial Audit, Research Paper, etc.)
@@ -17,6 +17,13 @@ class DocumentStructureService:
             }
 
         slide_roles = []
+        slide_sequence = []
+        executive_summary_slides = []
+        methodology_slides = []
+        findings_slides = []
+        recommendation_slides = []
+        appendix_slides = []
+        section_breaks = []
         is_financial = False
         is_research = False
         is_consulting = False
@@ -47,6 +54,29 @@ class DocumentStructureService:
                         intent = "comparison"
             
             slide_roles.append(intent)
+            slide_sequence.append(intent)
+
+        slide_no = slide.slide_number
+
+        if intent == "executive_summary":
+            executive_summary_slides.append(slide_no)
+
+        elif intent == "methodology":
+            methodology_slides.append(slide_no)
+
+        elif intent in {
+        "findings",
+        "dashboard",
+        "comparison",
+        "research_report"
+        }:
+            findings_slides.append(slide_no)
+
+        elif intent == "recommendations":
+            recommendation_slides.append(slide_no)
+
+        elif intent == "appendix":
+            appendix_slides.append(slide_no)
 
             # Check content keywords for overall classification
             content_text = ""
@@ -109,11 +139,32 @@ class DocumentStructureService:
             
         narrative_flow = " ".join(narrative_parts)
 
-        return {
-            "document_role": doc_role,
-            "sections": sections,
-            "narrative_flow": narrative_flow
-        }
+        return DocumentStructureModel(
+            presentation_type=doc_role,
+            slide_sequence=slide_sequence,
+
+            total_sections=len(sections),
+
+            section_breaks=section_breaks,
+
+            executive_summary_slides=executive_summary_slides,
+
+            methodology_slides=methodology_slides,
+
+            findings_slides=findings_slides,
+
+            recommendation_slides=recommendation_slides,
+
+            appendix_slides=appendix_slides,
+
+            narrative_flow=narrative_flow,
+
+            document_summary=(
+                f"{doc_role} consisting of "
+                f"{len(doc.slides)} slides and "
+                f"{len(sections)} major sections."
+            )
+        )
 
     @staticmethod
     def _map_role_to_section_name(role: str) -> str:

@@ -42,6 +42,8 @@ class RelationshipModel(BaseModel):
     target_element_id: str
     label: Optional[str] = None
     confidence: float = 1.0
+    semantic_relation:Optional[str]=None
+    direction:Optional[str]=None
 
 
 class TextPointModel(BaseModel):
@@ -103,26 +105,41 @@ class DocumentElementModel(BaseModel):
     table_structure: Optional[Dict[str, Any]] = None
     table_semantic_interpretation: Optional[str] = None
     chart_understanding: Optional[ChartUnderstandingModel] = None
+    table_title: Optional[str] = None
+    table_purpose: Optional[str] = None
+    table_insights: List[str] = Field(default_factory=list)
 
 class HeaderFooterModel(BaseModel):
     header_text: Optional[str] = None
     footer_text: Optional[str] = None
     slide_number_text: Optional[str] = None
     date_text: Optional[str] = None
+    confidentiality_label: Optional[str] = None
+    header_type: Optional[str] = None
+    footer_type: Optional[str] = None
 
 
 class VisualInventoryModel(BaseModel):
-    text_box_count: int = 0
-    shape_count: int = 0
-    arrow_count: int = 0
-    connector_count: int = 0
-    image_count: int = 0
-    table_count: int = 0
-    group_count: int = 0
-    chart_count: int = 0
-    placeholder_count: int = 0
-    unknown_count: int = 0
-    total_elements: int = 0
+    text_box_count: int
+    shape_count: int
+    arrow_count: int
+    connector_count: int
+    image_count: int
+    table_count: int
+    group_count: int
+    chart_count: int
+    placeholder_count: int
+    unknown_count: int
+    total_elements: int
+
+    # NEW
+    title_count: int = 0
+    header_count: int = 0
+    footer_count: int = 0
+    figure_count: int = 0
+    icon_count: int = 0
+
+    slide_type: str | None = None
 
 
 class RegionModel(BaseModel):
@@ -148,10 +165,17 @@ class FlowchartModel(BaseModel):
     is_flowchart: bool = False
     box_count: int = 0
     arrow_count: int = 0
+    decision_node_count: int = 0
+    start_nodes: List[str] = Field(default_factory=list)
+    end_nodes: List[str] = Field(default_factory=list)
+    flow_type: Optional[str] = None
     boxes: List[Dict[str, Any]] = Field(default_factory=list)
     arrows: List[Dict[str, Any]] = Field(default_factory=list)
     relationships: List[RelationshipModel] = Field(default_factory=list)
+    relationship_mapping: List[Dict[str, Any]] = Field(default_factory=list)
     reading_order: List[str] = Field(default_factory=list)
+    reading_order_labels: List[str] = Field(default_factory=list)
+    process_summary: Optional[str] = None
 
 class VisualDesignModel(BaseModel):
     color_scheme: List[str] = Field(default_factory=list)
@@ -247,6 +271,12 @@ class SlideContextModel(BaseModel):
     outline: str = ""
     image_understanding:Optional[ImageUnderstandingModel]=None
     semantic_flow:Optional[SemanticFlowModel]=None
+    exact_text_dump: List[Dict[str, Any]] = Field(default_factory=list)
+    table_contexts: List[Dict[str, Any]] = Field(default_factory=list)
+    image_depictions: List[str] = Field(default_factory=list)
+    slide_structure_summary: Optional[str] = None
+    exact_text_dump: List[Dict[str, Any]] = Field(default_factory=list)
+
 
 
 class SlideModel(BaseModel):
@@ -272,6 +302,21 @@ class SlideModel(BaseModel):
     slide_reconstruction_context: Optional[SlideReconstructionContextModel] = None
     chart_understandings: List[ChartUnderstandingModel] = Field(default_factory=list)
     semantic_regions: List[SemanticRegionModel] = Field(default_factory=list)
+
+class DocumentStructureModel(BaseModel):
+    presentation_type: str = "unknown"
+    slide_sequence: List[str] = Field(default_factory=list)
+    total_sections: int = 0
+    section_breaks: List[int] = Field(default_factory=list)
+    executive_summary_slides: List[int] = Field(default_factory=list)
+    methodology_slides: List[int] = Field(default_factory=list)
+    findings_slides: List[int] = Field(default_factory=list)
+    recommendation_slides: List[int] = Field(default_factory=list)
+    appendix_slides: List[int] = Field(default_factory=list)
+    narrative_flow: str = ""
+    document_summary: str = ""
+    sections: List[Dict[str, Any]] = Field(default_factory=list)
+    sections=sections
 
 class DocumentModel(BaseModel):
     document_name: str
@@ -304,3 +349,8 @@ class SemanticSlideDescriptionModel(BaseModel):
     visual_design_details: List[str] = Field(default_factory=list)
     plain_english_summary: str = ""
     image_generation_prompt:str=""
+    visual_inventory_summary: str | None = None
+    relationship_summary: str | None = None
+    image_depiction_summary: Optional[str]
+    slide_archetype: str | None = None
+    flowchart_summary: str | None = None

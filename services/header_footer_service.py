@@ -70,51 +70,61 @@ class HeaderFooterService:
             pass
 
         # --- Layer 4: Positional fallback for header/footer from text shapes ---
-        if header_text is None or footer_text is None:
-            header_text, footer_text = self._positional_header_footer(
-                slide, header_text, footer_text
-            )
+        # --- Layer 4: Positional fallback for header/footer from text shapes ---
+        header_text, footer_text = self._positional_header_footer(slide,header_text,footer_text)
+
+        confidentiality_label = self._detect_confidentiality(footer_text)
 
         return HeaderFooterModel(
             header_text=header_text,
             footer_text=footer_text,
             slide_number_text=slide_number_text,
             date_text=date_text,
+            confidentiality_label=confidentiality_label,
         )
 
     @staticmethod
     def _positional_header_footer(
-        slide,
-        existing_header: Optional[str],
-        existing_footer: Optional[str],
-    ) -> tuple[Optional[str], Optional[str]]:
-        """
-        Scan all shapes on the slide for text boxes/shapes positioned in the
-        extreme top (header) or extreme bottom (footer) of the slide.
-        Only fills in values that are still None.
-        """
+    slide,
+    existing_header: Optional[str],
+    existing_footer: Optional[str],
+    existing_slide_number: Optional[str] = None,
+    ):
+
         header = existing_header
         footer = existing_footer
+        slide_number = existing_slide_number
 
         for shape in slide.shapes:
+
             if not shape.has_text_frame:
                 continue
+
             text = shape.text_frame.text.strip()
+
             if not text:
                 continue
+
+            import re
+
+            if slide_number is None:
+                if (bottom > _FOOTER_Y_CUTOFF and re.fullmatch(r"\d+", text)):
+                    slide_number = text
 
             try:
                 top = float(shape.top)
                 bottom = top + float(shape.height)
+
             except Exception:
                 continue
 
             if header is None and top < _HEADER_Y_CUTOFF:
                 header = text
+
             elif footer is None and bottom > _FOOTER_Y_CUTOFF:
                 footer = text
+        return(header,footer,slide_number)
 
-        return header, footer
 
     @staticmethod
     def _check_placeholder(
@@ -151,3 +161,27 @@ class HeaderFooterService:
             header = text or None
 
         return header, footer, slide_num, date
+    
+    @staticmethod
+    def _detect_confidentiality(
+        text: str | None
+    ) -> str | None:
+
+        if not text:
+            return None
+
+        lower = text.lower()
+
+        keywords = [
+            "confidential",
+            "internal use only",
+            "proprietary",
+            "draft",
+            "restricted"
+        ]
+
+        for keyword in keywords:
+            if keyword in lower:
+                return keyword
+
+        return None

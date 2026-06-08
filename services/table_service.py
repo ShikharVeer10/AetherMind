@@ -131,6 +131,52 @@ class TableService:
             "is_financial_table": is_financial
         }
 
+    def generate_semantic_context(self,table_data: List[List[str]]) -> dict:
+
+        if not table_data:
+            return {}
+
+        interpretation = self.generate_interpretation(
+            table_data
+    )
+
+        headers = [
+            str(c).strip()
+            for c in table_data[0]
+            if str(c).strip()
+        ]
+
+        entities = []
+
+        for row in table_data[1:]:
+            if row and row[0].strip():
+                entities.append(row[0].strip())
+
+        purpose = "reference"
+
+        structure = self.analyze_structure(
+            table_data
+    )
+
+        if structure.get("is_comparison_table"):
+            purpose = "comparison"
+
+        elif structure.get("is_financial_table"):
+            purpose = "financial_reporting"
+
+        elif len(headers) >= 2:
+            purpose = "categorization"
+
+        return {
+            "title": self.infer_table_title(table_data),
+            "purpose": purpose,
+            "column_headers": headers,
+            "entities": entities[:10],
+            "semantic_summary": interpretation,
+            "key_insights": self.generate_key_insights(table_data),
+            "row_count": len(table_data),
+            "column_count": len(headers),
+        }
     def generate_interpretation(self, table_data: List[List[str]]) -> str:
         """
         Generate a semantic interpretation of the table content and structure.
@@ -171,4 +217,63 @@ class TableService:
         if row_identifiers:
             interpretation_parts.append(f"Row items include: {', '.join(row_identifiers[:6])}.")
 
+        key_insight = self.generate_key_insight(table_data)
+        interpretation_parts.append(f"Key insight: {key_insight}")
         return " ".join(interpretation_parts)
+
+    
+    def generate_key_insights(self,table_data: List[List[str]]) -> List[str]:
+
+        insights = []
+
+        if not table_data:
+            return insights
+
+        headers = [
+        c.strip()
+        for c in table_data[0]
+        if c.strip()
+    ]
+
+        if headers:
+            insights.append(
+            f"The table contains {len(headers)} key dimensions."
+        )
+
+        if len(table_data) > 1:
+            insights.append(
+            f"The table compares {len(table_data)-1} entities."
+        )
+
+        structure = self.analyze_structure(table_data)
+
+        if structure.get("is_financial_table"):
+            insights.append(
+            "The table contains financial reporting information."
+        )
+
+        if structure.get("is_comparison_table"):
+            insights.append(
+            "The table is structured for side-by-side comparison."
+        )
+            
+
+        return insights
+    
+    def infer_table_title(
+    self,
+    table_data: List[List[str]]
+) -> str:
+
+        headers = [
+        c.strip()
+        for c in table_data[0]
+        if c.strip()
+    ]
+
+        if headers:
+            return f"Table showing {', '.join(headers[:3])}"
+
+        return "Untitled Table"
+    
+        "raw_text": [row for row in table_data]

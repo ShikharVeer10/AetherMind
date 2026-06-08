@@ -23,6 +23,11 @@ class VisualInventoryService:
             "chart": 0,
             "placeholder": 0,
             "unknown": 0,
+            "title": 0,
+            "header": 0,
+            "footer": 0,
+            "figure": 0,
+            "icon": 0,
         }
 
         for element in elements:
@@ -31,6 +36,12 @@ class VisualInventoryService:
                 counts[t] += 1
             else:
                 counts["unknown"] += 1
+            if getattr(element, "is_title", False):
+                counts["title"] += 1
+            if t in {"icon"}:
+                counts["icon"] += 1
+            if t in {"smartart", "diagram"}:
+                counts["figure"] += 1
 
         return VisualInventoryModel(
             text_box_count=counts["text_box"],
@@ -42,6 +53,27 @@ class VisualInventoryService:
             group_count=counts["group"],
             chart_count=counts["chart"],
             placeholder_count=counts["placeholder"],
-            unknown_count=counts["unknown"],
+            unknown_count=counts["unknown"],title_count=counts["title"],
+            header_count=counts["header"],
+            footer_count=counts["footer"],
+            figure_count=counts["figure"],
+            icon_count=counts["icon"],
+            slide_type=self._infer_slide_type(counts),
             total_elements=len(elements),
         )
+    
+
+    def _infer_slide_type(self,counts: dict) -> str:
+        if counts["table"] > 0:
+            return "table_slide"
+
+        if counts["chart"] > 0:
+            return "chart_slide"
+
+        if counts["arrow"] + counts["connector"] > 3:
+            return "flowchart"
+
+        if counts["image"] > 3:
+            return "image_heavy"
+
+        return "general"
