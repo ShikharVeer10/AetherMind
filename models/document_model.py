@@ -275,61 +275,9 @@ class SlideContextModel(BaseModel):
     table_contexts: List[Dict[str, Any]] = Field(default_factory=list)
     image_depictions: List[str] = Field(default_factory=list)
     slide_structure_summary: Optional[str] = None
-    exact_text_dump: List[Dict[str, Any]] = Field(default_factory=list)
 
 
 
-class SlideModel(BaseModel):
-    slide_number: int
-    title: Optional[str] = None
-    background_color: Optional[str] = None
-    elements: List[DocumentElementModel] = Field(default_factory=list)
-    relationships: List[RelationshipModel] = Field(default_factory=list)
-    header_footer: Optional[HeaderFooterModel] = None
-    visual_inventory: Optional[VisualInventoryModel] = None
-    semantic_slide_description: Optional[SemanticSlideDescriptionModel] = None
-    layout_structure: Optional[LayoutStructureModel] = None
-    flowchart: Optional[FlowchartModel] = None
-    diagram_understanding: Optional[DiagramUnderstandingModel] = None
-    image_understanding: Optional[ImageUnderstandingModel] = None
-    context: Optional[SlideContextModel] = None
-    semantic_flow: Optional[SemanticFlowModel] = None
-    table_markdowns: List[str] = Field(default_factory=list)
-    slide_summary: Optional[str] = None
-    text_points: List[TextPointModel] = Field(default_factory=list)
-    position_mapping: List[PositionMapModel] = Field(default_factory=list)
-    image_reconstruction: Optional[ImageReconstructionModel] = None
-    slide_reconstruction_context: Optional[SlideReconstructionContextModel] = None
-    chart_understandings: List[ChartUnderstandingModel] = Field(default_factory=list)
-    semantic_regions: List[SemanticRegionModel] = Field(default_factory=list)
-
-class DocumentStructureModel(BaseModel):
-    presentation_type: str = "unknown"
-    slide_sequence: List[str] = Field(default_factory=list)
-    total_sections: int = 0
-    section_breaks: List[int] = Field(default_factory=list)
-    executive_summary_slides: List[int] = Field(default_factory=list)
-    methodology_slides: List[int] = Field(default_factory=list)
-    findings_slides: List[int] = Field(default_factory=list)
-    recommendation_slides: List[int] = Field(default_factory=list)
-    appendix_slides: List[int] = Field(default_factory=list)
-    narrative_flow: str = ""
-    document_summary: str = ""
-    sections: List[Dict[str, Any]] = Field(default_factory=list)
-    sections=sections
-
-class DocumentModel(BaseModel):
-    document_name: str
-    document_type: str
-    total_slides: int
-    slides: List[SlideModel] = Field(default_factory=list)
-    relationships: List[RelationshipModel] = Field(default_factory=list)
-    metadata: Dict[str, Any] = Field(default_factory=dict)
-    presentation_metadata: Dict[str, Any] = Field(
-        default_factory=dict,
-        description="Top-level presentation metadata: author, slide dimensions, theme, etc.",
-    )
-    document_structure: Optional[Dict[str, Any]] = None
 
 class ImageReconstructionModel(BaseModel):
     layout_description: str = ""
@@ -354,3 +302,58 @@ class SemanticSlideDescriptionModel(BaseModel):
     image_depiction_summary: Optional[str]
     slide_archetype: str | None = None
     flowchart_summary: str | None = None
+
+class SlideModel(BaseModel):
+    slide_number: int
+    title: Optional[str] = None
+    background_color: Optional[str] = None
+    elements: List[DocumentElementModel] = Field(default_factory=list)
+    images: List[Dict[str, Any]] = Field(default_factory=list)
+    relationships: List[RelationshipModel] = Field(default_factory=list)
+    header_footer: Optional[HeaderFooterModel] = None
+    visual_inventory: Optional[VisualInventoryModel] = None
+    semantic_slide_description: Optional[SemanticSlideDescriptionModel] = None
+    layout_structure: Optional[LayoutStructureModel] = None
+    flowchart: Optional[FlowchartModel] = None
+    diagram_understanding: Optional[DiagramUnderstandingModel] = None
+    image_understanding: Optional[ImageUnderstandingModel] = None
+    context: Optional[SlideContextModel] = None
+    semantic_flow: Optional[SemanticFlowModel] = None
+    table_markdowns: List[str] = Field(default_factory=list)
+    slide_summary: Optional[str] = None
+    text_points: List[TextPointModel] = Field(default_factory=list)
+    position_mapping: List[PositionMapModel] = Field(default_factory=list)
+    image_reconstruction: Optional[ImageReconstructionModel] = None
+    slide_reconstruction_context: Optional[SlideReconstructionContextModel] = None
+    chart_understandings: List[ChartUnderstandingModel] = Field(default_factory=list)
+    semantic_regions: List[SemanticRegionModel] = Field(default_factory=list)
+    
+
+class DocumentStructureModel(BaseModel):
+    presentation_type: str = "unknown"
+    slide_sequence: List[str] = Field(default_factory=list)
+    total_sections: int = 0
+    section_breaks: List[int] = Field(default_factory=list)
+    executive_summary_slides: List[int] = Field(default_factory=list)
+    methodology_slides: List[int] = Field(default_factory=list)
+    findings_slides: List[int] = Field(default_factory=list)
+    recommendation_slides: List[int] = Field(default_factory=list)
+    appendix_slides: List[int] = Field(default_factory=list)
+    narrative_flow: str = ""
+    document_summary: str = ""
+    sections: List[Dict[str, Any]] = Field(default_factory=list)
+    
+
+class DocumentModel(BaseModel):
+    document_name: str
+    document_type: str
+    total_slides: int
+    slides: List[SlideModel] = Field(default_factory=list)
+    relationships: List[RelationshipModel] = Field(default_factory=list)
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+    presentation_metadata: Dict[str, Any] = Field(
+        default_factory=dict,
+        description="Top-level presentation metadata: author, slide dimensions, theme, etc.",
+    )
+    document_structure: Optional[Dict[str, Any]] = None
+

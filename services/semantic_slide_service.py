@@ -113,7 +113,7 @@ class SemanticSlideService:
 
         for element in slide.elements:
 
-            if element.element_type != "image":
+            if element.element_type == "image":
                 continue
 
             image_summary = element.metadata.get(

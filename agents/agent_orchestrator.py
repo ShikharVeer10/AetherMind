@@ -3,7 +3,6 @@ Multi-agent orchestrator that runs extraction tasks in the required order.
 Each task is owned by a dedicated agent with an explicit system prompt.
 """
 
-from services import diagram_understanding_service
 from typing import Optional
 from models.document_model import FlowchartModel
 
@@ -21,7 +20,6 @@ from agents.extraction_agents import (
     LayoutStructureAgent,
     PositionMappingAgent,
     RelationshipMappingAgent,
-    TableExtractionAgent,
     TextExtractionAgent,
     VisualInventoryAgent,
 )
