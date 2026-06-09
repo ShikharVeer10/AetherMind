@@ -41,6 +41,9 @@ class ContextBuilder:
         and generate a human-readable outline string.
         """
         outline_parts: list[str] = []
+        text_points = text_points or []
+        position_mapping = position_mapping or []
+        relationships = relationships or []
 
         # --- Title ---
         if title:

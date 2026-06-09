@@ -97,7 +97,7 @@ class AgentOrchestrator:
 
         # 6) Relationship mapping
         print("    [Orchestrator] Step 6: Relationship mapping...")
-        relationships = self.relationship_agent.run(slide_model)
+        relationships = self.relationship_agent.run(slide_model) or []
         slide_model.relationships = relationships
 
         # 7) Flowchart analysis
@@ -145,7 +145,7 @@ class AgentOrchestrator:
             flowchart=flowchart,
             text_points=slide_model.text_points,
             position_mapping=position_mapping,
-            relationships=relationships,
+            relationships=relationships or [],
             diagram_understanding=diagram_understanding
         )
 

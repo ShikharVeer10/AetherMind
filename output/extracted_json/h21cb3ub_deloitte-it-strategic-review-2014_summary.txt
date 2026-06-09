@@ -1,0 +1,1715 @@
+======================================================================
+Slide 1: Deloitte.
+======================================================================
+Semantic Flow
+The slide presents and explains Deloitte..
+
+Step-by-step meaning:
+Together makes progress
+Town of Tillsonburg
+IT Strategic Review -
+Council Update
+January 13, 2014
+
+Conceptual Layers
+Deloitte.
+Together makes progress
+Town of Tillsonburg
+IT Strategic Review - Council Update
+January 13, 2014
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 4 instance(s)
+Structure:
+Layout type: single_column
+header → Deloitte. Together makes progress, Deloitte.
+body_left → Town of Tillsonburg IT Strategic Review - Council Update
+footer → January 13, 2014
+Connectors:
+Arrow: 'Deloitte. Together makes progress' → 'Deloitte.' [hierarchy]
+Arrow: 'Deloitte. Together makes progress' → 'January 13, 2014' [hierarchy]
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+Deloitte. covers the following ideas: Deloitte. Together makes progress; Deloitte.; Town of Tillsonburg IT Strategic Review - Council Update; January 13, 2014.
+
+
+======================================================================
+Slide 2: Table of contents
+======================================================================
+Semantic Flow
+The slide presents and explains Table of contents.
+
+Step-by-step meaning:
+Project overview
+Findings summary
+Roadmap and costing
+1
+Town of Tillson burg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+1
+Town of Tillson burg - IT Strategy Review - Council Update © Deloitte LLP and affiliated entities.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 5 instance(s)
+Structure:
+Layout type: single_column
+header → Table of contents
+body_left → • Project overview, • Findings summary, • Roadmap and costing
+footer → 1 Town of Tillson burg - IT Strategy Review - Council Update
+Connectors:
+Arrow: 'Table of contents' → '• Findings summary' [hierarchy]
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+Table of contents covers the following ideas: Table of contents; • Project overview; • Findings summary; • Roadmap and costing.
+
+
+======================================================================
+Slide 3: (no title)
+======================================================================
+Semantic Flow
+The slide presents and explains the slide content.
+
+Step-by-step meaning:
+
+Conceptual Layers
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Shapes:
+Structure:
+Layout type: blank
+Connectors:
+No connectors detected
+Visual layout style: blank
+Background style: presentation
+
+3. Plain English Summary
+The slide titled 'This slide' presents information through text, visuals, and structural layout.
+
+
+======================================================================
+Slide 4: Project overview
+======================================================================
+Semantic Flow
+The slide shows a transformation from low-level environment representation → high-level reasoning
+
+Step-by-step meaning:
+Project Background
+Objectives
+The Town of Tillsonburg has engaged Deloitte to conduct
+an assessment of the Town's technology controls,
+processes, policies and underlying infrastructure. At
+present the Town's IT operations are outsourced to the
+County of Oxford and management is looking for
+direction on a future IT operating model as well as
+ensuring current infrastructure and applications are
+capable of meeting the business needs of the Town.
+The assessment focused on the following key areas:
+Applications and infrastructure;
+Governance and strategy;
+Information security and vulnerability; and
+Disaster recovery planning.
+Benchmarking of the Town's IT
+environment against comparable
+municipalities;
+Future state IT organizational structure
+and governance model;
+Directional hardware and software
+requirements;
+Sustainable IT funding model;
+Recommended Disaster Recovery and
+Record Storage Model;
+Guidance on policies and procedures
+that should be in place to support the IT
+Strategy and impacted business units at
+the Town;
+Identify the most effective strategy for
+meeting the Towns business needs and
+priorities; and
+Define an action plan and roadmap for
+implementing that strategy
+3
+Town of Tillson burg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+Project Background
+Key concept illustrated on this slide.
+The Town of Tillsonburg has engaged Deloitte to conduct
+an assessment of the Town's technology controls, processes, policies and underlying infrastructure. At present the Town's IT operations are outsourced to the County of Oxford and management is looking for direction on a future IT operating model as well as ensuring current infrastructure and applications are capable of meeting the business needs of the Town. The assessment focused on the following key areas: • Applications and infrastructure; • Governance and strategy; • Information security and vulnerability; and • Disaster recovery planning.
+Town of Tillson burg - IT Strategy Review - Council Update
+Key concept illustrated on this slide.
+Objectives
+Key concept illustrated on this slide.
+Benchmarking of the Town's IT
+environment against comparable municipalities; • Future state IT organizational structure and governance model; • Directional hardware and software requirements; • Sustainable IT funding model; • Recommended Disaster Recovery and Record Storage Model; • Guidance on policies and procedures that should be in place to support the IT Strategy and impacted business units at the Town; • Identify the most effective strategy for meeting the Towns business needs and priorities; and • Define an action plan and roadmap for implementing that strategy
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 8 instance(s)
+Structure:
+Layout type: two_column
+header → Project overview
+body_left → Project Background, The Town of Tillsonburg has engaged Deloitte to conduct an a
+body_right → Objectives, • Benchmarking of the Town's IT environment against comparab
+footer → 3, Town of Tillson burg - IT Strategy Review - Council Update, © Deloitte LLP and affiliated entities.
+Connectors:
+No connectors detected
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Project overview covers the following ideas: Project overview; 3; Project Background; The Town of Tillsonburg has engaged Deloitte to conduct an assessment of the Town's technology controls, processes, policies and underlying infrastructure. At present the Town's IT operations are outsourced to the County of Oxford and management is looking for direction on a future IT operating model as well as ensuring current infrastructure and applications are capable of meeting the business needs of the Town. The assessment focused on the following key areas: • Applications and infrastructure; • Governance and strategy; • Information security and vulnerability; and • Disaster recovery planning..
+
+
+======================================================================
+Slide 5: (no title)
+======================================================================
+Semantic Flow
+The slide presents and explains the slide content.
+
+Step-by-step meaning:
+
+Conceptual Layers
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Shapes:
+Structure:
+Layout type: blank
+Connectors:
+No connectors detected
+Visual layout style: blank
+Background style: presentation
+
+3. Plain English Summary
+The slide titled 'This slide' presents information through text, visuals, and structural layout.
+
+
+======================================================================
+Slide 6: Drivers of the IT strategy review
+======================================================================
+Semantic Flow
+The slide shows a transformation from low-level environment representation → high-level reasoning
+
+Step-by-step meaning:
+Driver
+Deloitte Approach and Findings
+Infrastructure
+Engagement with County IT staff and Town staff
+Investment in physical IT
+. A key theme was significant lost productivity on the part of Town staff due to frequent
+infrastructure has been neglected at
+workstation and server downtime or slow performance.
+the Town for several years
+. Total lost productivity reported was 1 - 3 hours per employee per week.
+. Significant time spent by IT resources maintaining the server infrastructure and
+managing storage to ensure systems stay operational.
+Applications
+Application functionality within the major applications is sufficient to meet current
+There is limited understanding of
+business needs.
+whether the Town's current
+. Some current applications could be consolidated into fewer larger hardware platforms to
+applications meet functional needs
+improve performance and reduce maintenance, while still enabling redundancy.
+. Management has initiated CityWide as the primary fixed asset management system to
+achieve alignment across the Town.
+Governance and Strategy
+. Benchmarking of the Town's budgetary and IT organizational model to determine a
+The Town is in a state flux with
+suitable go forward strategy.
+regards to its operating model (short
+Of the municipalities consulted for benchmarking all had primarily in-house IT services.
+term arrangement with the County of
+Oxford). There is limited definition of
+IT governance.
+Information security and
+. Deloitte conducted internal and external testing of the Town's network using VA tools
+vulnerability
+including QualysGuard and other tools, as well as manual verification.
+Given the age of infrastructure and
+Several weaknesses in the current system were noted primarily due to the age of
+change in operating model there is
+infrastructure and application areas.
+uncertainty around whether security
+gaps exist to current systems.
+Disaster recovery planning
+Deloitte reviewed system documentation and interviewed IT and functional staff to
+There is limited redundancy, data
+determine the current state of disaster recovery planning. There is currently a high risk of
+backup, or business continuity
+data loss due to the lack of data protection practices in place.
+currently in place.
+5
+Town of Tillsonburg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+Driver
+Deloitte Approach and Findings
+Infrastructure
+• Engagement with County IT staff and Town staff Investment in physical IT . A key theme was significant lost productivity on the part of Town staff due to frequent infrastructure has been neglected at workstation and server downtime or slow performance. the Town for several years . Total lost productivity reported was 1 - 3 hours per employee per week. . Significant time spent by IT resources maintaining the server infrastructure and managing storage to ensure systems stay operational.
+Applications
+• Application functionality within the major applications is sufficient to meet current There is limited understanding of business needs. whether the Town's current . Some current applications could be consolidated into fewer larger hardware platforms to applications meet functional needs improve performance and reduce maintenance, while still enabling redundancy. . Management has initiated CityWide as the primary fixed asset management system to achieve alignment across the Town.
+Governance and Strategy
+. Benchmarking of the Town's budgetary and IT organizational model to determine a The Town is in a state flux with suitable go forward strategy. regards to its operating model (short • Of the municipalities consulted for benchmarking all had primarily in-house IT services. term arrangement with the County of Oxford). There is limited definition of IT governance.
+Information security and
+. Deloitte conducted internal and external testing of the Town's network using VA tools vulnerability including QualysGuard and other tools, as well as manual verification. Given the age of infrastructure and • Several weaknesses in the current system were noted primarily due to the age of change in operating model there is infrastructure and application areas. uncertainty around whether security gaps exist to current systems.
+Disaster recovery planning
+• Deloitte reviewed system documentation and interviewed IT and functional staff to There is limited redundancy, data determine the current state of disaster recovery planning. There is currently a high risk of backup, or business continuity data loss due to the lack of data protection practices in place. currently in place.
+5
+Town of Tillsonburg - IT Strategy Review - Council Update © Deloitte LLP and affiliated entities.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 8 instance(s)
+Structure:
+Layout type: single_column
+header → Drivers of the IT strategy review
+body_left → Driver Deloitte Approach and Findings, Infrastructure • Engagement with County IT staff and Town st, Applications • Application functionality within the major ap, Governance and Strategy . Benchmarking of the Town's budgeta, Information security and . Deloitte conducted internal and e
+footer → Disaster recovery planning • Deloitte reviewed system docume, 5 Town of Tillsonburg - IT Strategy Review - Council Update
+Connectors:
+Arrow: 'Drivers of the IT strategy review' → 'Driver Deloitte Approach and Findings' [hierarchy]
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+Drivers of the IT strategy review covers the following ideas: Drivers of the IT strategy review; Driver Deloitte Approach and Findings; Infrastructure • Engagement with County IT staff and Town staff Investment in physical IT . A key theme was significant lost productivity on the part of Town staff due to frequent infrastructure has been neglected at workstation and server downtime or slow performance. the Town for several years . Total lost productivity reported was 1 - 3 hours per employee per week. . Significant time spent by IT resources maintaining the server infrastructure and managing storage to ensure systems stay operational.; Applications • Application functionality within the major applications is sufficient to meet current There is limited understanding of business needs. whether the Town's current . Some current applications could be consolidated into fewer larger hardware platforms to applications meet functional needs improve performance and reduce maintenance, while still enabling redundancy. . Management has initiated CityWide as the primary fixed asset management system to achieve alignment across the Town..
+
+
+======================================================================
+Slide 7: Current high risk areas
+======================================================================
+Semantic Flow
+The slide presents and explains Current high risk areas.
+
+Step-by-step meaning:
+As part of the review Deloitte identified four high risk areas which should be addressed by the Town in the
+short term. These areas have the potential to significantly impact IT operations and service delivery to
+constituents if not prioritized for short term action.
+Security and network vulnerability - There are significant weaknesses within the Town's network
+largely due to its aging infrastructure and systems.
+Non-compliance of software licenses - Current Microsoft licenses are out of date at both the
+operating system and desktop application level. The Town has initiated a license audit which will assist
+in gathering an inventory of all Microsoft office and operating system installs and standardize versions
+while working with the vendor to update licenses.
+
+Staff productivity - aged hardware infrastructure (servers and workstations) - The age of server
+and workstation infrastructure results in poor performance, and risk of imminent failure. Server
+performance is similarly poor with frequent downtime and impacts to application performance.
+Downtime impacts of 1 - 3 hours per employee results in lost productivity of $384,000 annually*.
+
+The Town lacks the ability to upgrade certain applications due to out dated server configurations.
+Disaster recovery - There is a lack of redundancy across the current architecture resulting in high risk
+of data loss. In the event of a disaster the Town has no business continuity capabilities outside of fully
+manual operations. Redundancy should be built in with the server replacement exercise recommended
+as part of the hardware refresh initiative above.
+Based on 80 employees and an average fully loaded FTE cost of $50/hr.
+6
+Town of Tillsonburg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+As part of the review Deloitte identified four high risk areas which should be addressed by the Town in the
+short term. These areas have the potential to significantly impact IT operations and service delivery to constituents if not prioritized for short term action.
+Security and network vulnerability - There are significant weaknesses within the Town's network
+largely due to its aging infrastructure and systems.
+Non-compliance of software licenses - Current Microsoft licenses are out of date at both the
+operating system and desktop application level. The Town has initiated a license audit which will assist in gathering an inventory of all Microsoft office and operating system installs and standardize versions while working with the vendor to update licenses. •
+Staff productivity - aged hardware infrastructure (servers and workstations) - The age of server
+and workstation infrastructure results in poor performance, and risk of imminent failure. Server performance is similarly poor with frequent downtime and impacts to application performance. Downtime impacts of 1 - 3 hours per employee results in lost productivity of $384,000 annually*.
+
+The Town lacks the ability to upgrade certain applications due to out dated server configurations.
+Disaster recovery - There is a lack of redundancy across the current architecture resulting in high risk
+of data loss. In the event of a disaster the Town has no business continuity capabilities outside of fully manual operations. Redundancy should be built in with the server replacement exercise recommended as part of the hardware refresh initiative above.
+6
+Town of Tillsonburg - IT Strategy Review - Council Update © Deloitte LLP and affiliated entities.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 9 instance(s)
+Structure:
+Layout type: single_column
+header → Current high risk areas
+body_left → As part of the review Deloitte identified four high risk are, • Security and network vulnerability - There are significant, • Non-compliance of software licenses - Current Microsoft li, • Staff productivity - aged hardware infrastructure (servers, - The Town lacks the ability to upgrade certain applications
+footer → • Disaster recovery - There is a lack of redundancy across t, *Based on 80 employees and an average fully loaded FTE cost , 6 Town of Tillsonburg - IT Strategy Review - Council Update
+Connectors:
+No connectors detected
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+Current high risk areas covers the following ideas: Current high risk areas; As part of the review Deloitte identified four high risk areas which should be addressed by the Town in the short term. These areas have the potential to significantly impact IT operations and service delivery to constituents if not prioritized for short term action.; • Security and network vulnerability - There are significant weaknesses within the Town's network largely due to its aging infrastructure and systems.; • Non-compliance of software licenses - Current Microsoft licenses are out of date at both the operating system and desktop application level. The Town has initiated a license audit which will assist in gathering an inventory of all Microsoft office and operating system installs and standardize versions while working with the vendor to update licenses. •.
+
+
+======================================================================
+Slide 8: Summary recommendations
+======================================================================
+Semantic Flow
+The slide shows a transformation from low-level environment representation → high-level reasoning
+
+Step-by-step meaning:
+Driver
+Infrastructure
+Invest in upgrading its server and end user hardware in the
+Investment in physical IT infrastructure has been
+short term.
+neglected at the Town for several years
+Management has initiated a workstation refresh and
+continued priority should be given in this area.
+Applications
+An in-depth application architecture strategy is recommended
+There is limited understanding of whether the Town's
+to assess:
+current applications meet functional needs
+Where common applications can be rationalized;
+Where additional functionality is required; and
+Where County applications can be leveraged .
+Governance and Strategy
+Continue to work with the County while ensuring strong
+The Town is in a state flux with regards to its operating
+internal IT management capabilities within the senior
+model (short term arrangement with the County of
+management group.
+Oxford). There is limited definition of IT governance.
+Information security and vulnerability
+Significant gaps should be addressed in the short term .
+Given the age of infrastructure change in operating
+model there uncertainty around whether security gaps
+exist to current systems.
+Disaster recovery planning
+As part of the hardware refresh and system architecture
+There is limited redundancy, data backup, or business
+migration basic redundancy should be put in place in the
+continuity currently in place.
+short term.
+Over the medium to long term a business impact analysis
+and detailed disaster recovery plan should be formed.
+7
+Town of Tillson burg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+Driver
+Summary recommendations
+Infrastructure
+• Invest in upgrading its server and end user hardware in the Investment in physical IT infrastructure has been short term. neglected at the Town for several years • Management has initiated a workstation refresh and continued priority should be given in this area.
+Applications
+An in-depth application architecture strategy is recommended There is limited understanding of whether the Town's to assess: current applications meet functional needs • Where common applications can be rationalized; • Where additional functionality is required; and • Where County applications can be leveraged .
+Governance and Strategy
+• Continue to work with the County while ensuring strong The Town is in a state flux with regards to its operating internal IT management capabilities within the senior model (short term arrangement with the County of management group. Oxford). There is limited definition of IT governance.
+Information security and vulnerability
+• Significant gaps should be addressed in the short term . Given the age of infrastructure change in operating model there uncertainty around whether security gaps exist to current systems.
+Disaster recovery planning
+• As part of the hardware refresh and system architecture There is limited redundancy, data backup, or business migration basic redundancy should be put in place in the continuity currently in place. short term. • Over the medium to long term a business impact analysis and detailed disaster recovery plan should be formed.
+7
+Town of Tillson burg - IT Strategy Review - Council Update © Deloitte LLP and affiliated entities.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 8 instance(s)
+Structure:
+Layout type: single_column
+header → Summary recommendations
+body_left → Driver Summary recommendations, Infrastructure • Invest in upgrading its server and end user, Applications An in-depth application architecture strategy i, Governance and Strategy • Continue to work with the County w, Information security and vulnerability • Significant gaps sh, Disaster recovery planning • As part of the hardware refresh
+footer → 7 Town of Tillson burg - IT Strategy Review - Council Update
+Connectors:
+No connectors detected
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+Summary recommendations covers the following ideas: Summary recommendations; Driver Summary recommendations; Infrastructure • Invest in upgrading its server and end user hardware in the Investment in physical IT infrastructure has been short term. neglected at the Town for several years • Management has initiated a workstation refresh and continued priority should be given in this area.; Applications An in-depth application architecture strategy is recommended There is limited understanding of whether the Town's to assess: current applications meet functional needs • Where common applications can be rationalized; • Where additional functionality is required; and • Where County applications can be leveraged ..
+
+
+======================================================================
+Slide 9: Short term priority items
+======================================================================
+Semantic Flow
+The slide presents and explains Short term priority items.
+
+Step-by-step meaning:
+Gaps requiring immediate attention to limit risks to the organization and overall constituent service include:
+Hardware refresh
+
+End user systems: Due to the age of and lack of reliability, replacing end user systems will increase productivity by
+reducing downtime and waiting time, as well as reducing help desk calls.
+
+Infrastructure: Updating core infrastructure components and re-designing system addressing schemes (in progress)
+will improve network infrastructure performance.
+Email migration
+
+The current email system is inefficient and out of date. Upgrading the infrastructure will reduce downtime, system
+management effort
+Server architecture
+
+Virtualization: Virtualization technology will enable redundancy and consolidation of systems, as well as optimize
+hardware usage.
+
+Redundancy: The ability to fail over or reinitialize servers on redundant hardware will improve the reliability of the
+town systems. As noted, virtualization enables redundancy without significant hardware purchase.
+
+Consolidation: Consolidation of databases, email and other applications into common, redundant systems simplifies
+system maintenance and can reduce licensing costs.
+IT governance aspects such as oversight, policies and procedures should be developed and
+implemented.
+An application strategy is recommended to ensure current investments are being appropriately
+leveraged and necessary functionality is being delivered.
+Disaster recovery/business continuity - short term focus should be on building redundancy as part of
+the hardware refresh.
+8
+Town of Tillsonburg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+
+End user systems: Due to the age of and lack of reliability, replacing end user systems will increase productivity by reducing downtime and waiting time, as well as reducing help desk calls.
+
+Infrastructure: Updating core infrastructure components and re-designing system addressing schemes (in progress) will improve network infrastructure performance.
+
+The current email system is inefficient and out of date. Upgrading the infrastructure will reduce downtime, system management effort
+
+Virtualization: Virtualization technology will enable redundancy and consolidation of systems, as well as optimize hardware usage.
+
+Redundancy: The ability to fail over or reinitialize servers on redundant hardware will improve the reliability of the town systems. As noted, virtualization enables redundancy without significant hardware purchase.
+
+Consolidation: Consolidation of databases, email and other applications into common, redundant systems simplifies system maintenance and can reduce licensing costs.
+IT governance aspects such as oversight, policies and procedures should be developed and
+implemented. • An application strategy is recommended to ensure current investments are being appropriately leveraged and necessary functionality is being delivered. • Disaster recovery/business continuity - short term focus should be on building redundancy as part of the hardware refresh.
+8
+Town of Tillsonburg - IT Strategy Review - Council Update © Deloitte LLP and affiliated entities.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 13 instance(s)
+Structure:
+Layout type: single_column
+header → Short term priority items
+body_left → Gaps requiring immediate attention to limit risks to the org, • Hardware refresh, - End user systems: Due to the age of and lack of reliabilit, - Infrastructure: Updating core infrastructure components an, • Email migration, - The current email system is inefficient and out of date. U, • Server architecture, - Virtualization: Virtualization technology will enable redu, - Redundancy: The ability to fail over or reinitialize serve, - Consolidation: Consolidation of databases, email and other
+footer → • IT governance aspects such as oversight, policies and proc, 8 Town of Tillsonburg - IT Strategy Review - Council Update
+Connectors:
+No connectors detected
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+Short term priority items covers the following ideas: Short term priority items; Gaps requiring immediate attention to limit risks to the organization and overall constituent service include:; • Hardware refresh; - End user systems: Due to the age of and lack of reliability, replacing end user systems will increase productivity by reducing downtime and waiting time, as well as reducing help desk calls..
+
+
+======================================================================
+Slide 10: (no title)
+======================================================================
+Semantic Flow
+The slide presents and explains the slide content.
+
+Step-by-step meaning:
+
+Conceptual Layers
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Shapes:
+Structure:
+Layout type: blank
+Connectors:
+No connectors detected
+Visual layout style: blank
+Background style: presentation
+
+3. Plain English Summary
+The slide titled 'This slide' presents information through text, visuals, and structural layout.
+
+
+======================================================================
+Slide 11: 5 year roadmap
+======================================================================
+Semantic Flow
+The slide presents and explains 5 year roadmap.
+
+Step-by-step meaning:
+The roadmap below presents the initiatives recommended for the Town over 5 years in order to achieve stability in IT
+operations and reach the target maturity levels recommended. A disproportionate amount of effort and cost is allocated in
+the first two years of the plan in order to mitigate the high risk areas facing the Town as highlighted on slide 7 above.
+Determining a preferred operating model (initiative 7 .1) and developing and implementing an IT governance section
+(initiative1 .1) will help to further refine the scope and timing of the remaining recommended initiatives.
+1.0 Governance
+1.1 Develop and implement
+IT governance structure
+2.1 Network
+2.2 Upgrades, replacements and maintenance
+baseline
+2.0 Network
+3.0Servers
+3.1 Target
+3.2 Architecture migration
+3.3 Maintenance and refresh
+architecture
+4.2 Maintenance and refresh
+4.1 Workstation refresh
+4.1.1 Mobility updates
+4.0 End user
+computing
+5.3 Strategic enhancements
+5.1
+Application
+strategy
+5.2 Application enhancement and rationalization
+5.0 Applications
+6.3 Ongoing capacity management
+6.2 Conduct business impact analysis (BIA) and design and
+implement disaster recovery plan (DRP)
+6.1 IT asset management
+6.0 Systems
+Management
+r
+~
+
+
+,
+..
+:-
+
+.
+:'.
+
+10
+Town of Tillson burg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+The roadmap below presents the initiatives recommended for the Town over 5 years in order to achieve stability in IT
+operations and reach the target maturity levels recommended. A disproportionate amount of effort and cost is allocated in the first two years of the plan in order to mitigate the high risk areas facing the Town as highlighted on slide 7 above. Determining a preferred operating model (initiative 7 .1) and developing and implementing an IT governance section (initiative1 .1) will help to further refine the scope and timing of the remaining recommended initiatives.
+1.1 Develop and implement
+IT governance structure
+2.1 Network
+2.2 Upgrades, replacements and maintenance baseline
+3.0Servers
+3.1 Target 3.2 Architecture migration 3.3 Maintenance and refresh
+4.0 End user
+computing
+6.0 Systems
+Management
+4.1 Workstation refresh
+4.1.1 Mobility updates
+5.1
+Application strategy
+r
+~ - - , .. -:- • .
+
+'.: -
+6.2 Conduct business impact analysis (BIA) and design and
+implement disaster recovery plan (DRP)
+10
+Town of Tillson burg - IT Strategy Review - Council Update
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 23 instance(s)
+Structure:
+Layout type: two_column
+header → 5 year roadmap
+body_left → The roadmap below presents the initiatives recommended for t, 1.0 Governance, 2.0 Network, 1.1 Develop and implement IT governance structure, 2.1 Network 2.2 Upgrades, replacements and maintenance basel, 3.0Servers 3.1 Target 3.2 Architecture migration 3.3 Mainten, 4.0 End user computing, 5.0 Applications, 6.0 Systems Management, architecture, 4.1 Workstation refresh 4.1.1 Mobility updates, 5.1 Application strategy, 6.1 IT asset management, 4.2 Maintenance and refresh, 5.2 Application enhancement and rationalization, 6.2 Conduct business impact analysis (BIA) and design and im
+body_right → 5.3 Strategic enhancements, 6.3 Ongoing capacity management
+footer → r ~ - - , .. -:- • ., :'. -, 10 Town of Tillson burg - IT Strategy Review - Council Updat, © Deloitte LLP and affiliated entities.
+Connectors:
+No connectors detected
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+5 year roadmap covers the following ideas: 5 year roadmap; The roadmap below presents the initiatives recommended for the Town over 5 years in order to achieve stability in IT operations and reach the target maturity levels recommended. A disproportionate amount of effort and cost is allocated in the first two years of the plan in order to mitigate the high risk areas facing the Town as highlighted on slide 7 above. Determining a preferred operating model (initiative 7 .1) and developing and implementing an IT governance section (initiative1 .1) will help to further refine the scope and timing of the remaining recommended initiatives.; 1.0 Governance; 2.0 Network.
+
+
+======================================================================
+Slide 12: Cost summary (hardware, software, and licensing)
+======================================================================
+Semantic Flow
+The slide presents and explains Cost summary (hardware, software, and licensing).
+
+Step-by-step meaning:
+The table below summarizes the capital impact of the recommendations outlined in this report. A significant capital investment must be
+made in the first two years to mitigate the risks currently facing the Town.
+2015
+2016
+2017
+2018
+Item
+2014
+5,000
+5,000
+5,000
+5,000
+2.1 & 2.2 Network
+55,000
+baseline/upgrades
+
+
+
+
+3.1 Target server architecture
+
+
+
+
+
+3.2 Architecture migration
+40,000 - 60,000
+10,000 - 15,000
+10,000-15,000
+10,000-15,000
+10,000 - 15,000
+3.3 Server maintenance and
+15,000 - 20,000
+refresh
+
+
+
+
+4.1 Workstation refresh
+120,000 - 150,000
+4.1.1 Mobility updates
+25,000 - 40,000
+5,000 - 10,000
+5,000 - 10,000
+5,000 - 10,000
+5,000 - 10,000
+4.2 End user maintenance
+
+20,000 - 30,000
+20,000 - 30,000
+20,000 - 30,000
+20,000 - 30,000
+30,000 - 40,000
+
+
+
+5.2 Application enhancement
+
+
+
+
+
+5.2.1 Email replacement
+40,000 - 60,000
+$70,000 - $100,000
+$40,000 - $60,000
+$40,000 - $60,000
+$40,000 - $60,000
+Total hardware and software
+$295,000 - $395,000
+Current 2014 placeholder costs
+Item
+2014 budget (placeholders)
+The town has currently allocated $634,700 for various
+hardware, application and licensing costs. The overall
+cost meets the required spend for 2014 and 2015.
+However the pace and overall allocation will need to be
+evaluated by management based on the
+recommendations of this IT strategy.
+Licensing/maintenance contracts
+$319,200
+Other
+$7,500
+Workstation Refresh
+$80,000
+Server
+$150,000
+Laserfische
+$28,000
+Strategic plan implementation
+$50,000
+Total
+$634,700
+11
+Town of Tillson burg - IT Strategy Review - Council Update
+@ Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+The table below summarizes the capital impact of the recommendations outlined in this report. A significant capital investment must be
+made in the first two years to mitigate the risks currently facing the Town.
+Item
+2014
+2.1 & 2.2 Network
+55,000 baseline/upgrades
+3.1 Target server architecture
+-
+3.2 Architecture migration
+40,000 - 60,000
+3.3 Server maintenance and
+15,000 - 20,000 refresh
+4.1 Workstation refresh
+120,000 - 150,000
+4.1.1 Mobility updates
+25,000 - 40,000
+4.2 End user maintenance
+-
+5.2 Application enhancement
+-
+5.2.1 Email replacement
+40,000 - 60,000
+Total hardware and software
+$295,000 - $395,000
+Current 2014 placeholder costs
+Key concept illustrated on this slide.
+The town has currently allocated $634,700 for various
+hardware, application and licensing costs. The overall cost meets the required spend for 2014 and 2015. However the pace and overall allocation will need to be evaluated by management based on the recommendations of this IT strategy.
+2015
+2016 2017 2018
+5,000
+5,000 5,000 5,000
+
+- - -
+
+- - -
+10,000 - 15,000
+10,000-15,000 10,000-15,000 10,000 - 15,000
+
+- - -
+5,000 - 10,000
+5,000 - 10,000 5,000 - 10,000 5,000 - 10,000
+20,000 - 30,000
+20,000 - 30,000 20,000 - 30,000 20,000 - 30,000
+30,000 - 40,000
+- - -
+
+- - -
+$70,000 - $100,000
+$40,000 - $60,000 $40,000 - $60,000 $40,000 - $60,000
+Item
+2014 budget (placeholders)
+Licensing/maintenance contracts
+$319,200
+Other
+$7,500
+Workstation Refresh
+$80,000
+Server
+$150,000
+Laserfische
+$28,000
+Strategic plan implementation
+$50,000
+Total
+$634,700
+11
+Town of Tillson burg - IT Strategy Review - Council Update @ Deloitte LLP and affiliated entities.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 35 instance(s)
+Structure:
+Layout type: two_column
+header → Cost summary (hardware, software, and licensing)
+body_left → The table below summarizes the capital impact of the recomme, Item 2014, 2.1 & 2.2 Network 55,000 baseline/upgrades, 3.1 Target server architecture -, 3.2 Architecture migration 40,000 - 60,000, 3.3 Server maintenance and 15,000 - 20,000 refresh, 4.1 Workstation refresh 120,000 - 150,000, 4.1.1 Mobility updates 25,000 - 40,000, 4.2 End user maintenance -, 5.2 Application enhancement -, 5.2.1 Email replacement 40,000 - 60,000, Total hardware and software $295,000 - $395,000, Current 2014 placeholder costs, The town has currently allocated $634,700 for various hardwa, Licensing/maintenance contracts $319,200, Other $7,500, Workstation Refresh $80,000
+body_right → 2015 2016 2017 2018, 5,000 5,000 5,000 5,000, - - - -, - - - -, 10,000 - 15,000 10,000-15,000 10,000-15,000 10,000 - 15,000, - - - -, 5,000 - 10,000 5,000 - 10,000 5,000 - 10,000 5,000 - 10,000, 20,000 - 30,000 20,000 - 30,000 20,000 - 30,000 20,000 - 30,, 30,000 - 40,000 - - -, - - - -, $70,000 - $100,000 $40,000 - $60,000 $40,000 - $60,000 $40,0, Item 2014 budget (placeholders)
+footer → Server $150,000, Laserfische $28,000, Strategic plan implementation $50,000, Total $634,700, 11 Town of Tillson burg - IT Strategy Review - Council Updat
+Connectors:
+Arrow: 'Cost summary (hardware, software, and licensing)' → 'The table below summarizes the capital impact of the recommendations outlined in this report. A significant capital investment must be made in the first two years to mitigate the risks currently facing the Town.' [proximity]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Cost summary (hardware, software, and licensing) covers the following ideas: Cost summary (hardware, software, and licensing); The table below summarizes the capital impact of the recommendations outlined in this report. A significant capital investment must be made in the first two years to mitigate the risks currently facing the Town.; Item 2014; 2.1 & 2.2 Network 55,000 baseline/upgrades.
+
+
+======================================================================
+Slide 13: Cost summary (resourcing) The table below summarizes the budget impact for staff or contract resources to execute the recommendations outlined in this report. This is the expected increase in budget over the current budget costs for the IT infrastructure. As most of these costs are one time project costs, the best funding is for most of the costs is as specific projects.
+======================================================================
+Semantic Flow
+The slide presents and explains Cost summary (resourcing) The table below summarizes the budget impact for staff or contract resources to execute the recommendations outlined in this report. This is the expected increase in budget over the current budget costs for the IT infrastructure. As most of these costs are one time project costs, the best funding is for most of the costs is as specific projects..
+
+Step-by-step meaning:
+Cost summary (resourcing)
+The table below summarizes the budget impact for staff or contract resources to execute the recommendations outlined in this report. This
+is the expected increase in budget over the current budget costs for the IT infrastructure. As most of these costs are one time project costs,
+the best funding is for most of the costs is as specific projects.
+Item
+2014
+2015
+2016
+2017
+2018
+1.1 Develop and implement
+50,000
+25,000
+IT governance structure
+2.1 & 2.2 Network
+45,000
+
+
+
+
+baseline/upgrades
+3.1 Target server architecture
+25,000
+
+
+
+
+3.2 Architecture migration
+25,000
+50,000
+
+
+
+4.1 Workstation refresh
+25,000
+
+
+
+
+4.1.1 Mobility updates
+25,000
+
+
+
+
+5.1 Application strategy
+60,000 - 80,000
+
+
+
+
+5.2 Application enhancement
+
+25,000
+10,000
+
+
+5.3 Strategic enhancements
+
+
+
+300,000
+300,000
+5.2.1 Email replacement
+50,000
+
+
+
+
+6.1 IT asset management
+
+
+
+
+
+6.2 BIA and DRP
+
+50,000
+30,000
+
+
+Total resource
+$305,000 - $325,000
+$150,000
+$55,000
+$300,000
+$300,000
+Current 2014 placeholder costs
+Item
+2014 budget place holder
+The town has currently held $72,000 resourcing cost
+for county payments. Overall resourcing costs will
+need to be evaluated in order to effectively execute
+on the recommendations in the IT strategic plan.
+Some re-allocation from hardware, software, and
+licensing costs may need to be considered.
+Consultant/contractor
+Payments to County
+$72,000
+Employee
+$72,000
+Total
+GJ Deloitte LLP and affiliated entities.
+12
+Town of Tillson burg - IT Strategy Review - Council Update
+
+Conceptual Layers
+Cost summary (resourcing)
+The table below summarizes the budget impact for staff or contract resources to execute the recommendations outlined in this report. This is the expected increase in budget over the current budget costs for the IT infrastructure. As most of these costs are one time project costs, the best funding is for most of the costs is as specific projects.
+Item
+2014 2015 2016 2017 2018
+1.1 Develop and implement
+50,000 25,000 IT governance structure
+2.1 & 2.2 Network
+45,000 - - - - baseline/upgrades
+3.1 Target server architecture
+25,000 - - - -
+3.2 Architecture migration
+25,000 50,000 - - -
+4.1 Workstation refresh
+25,000 - - - -
+4.1.1 Mobility updates
+25,000 - - - -
+5.1 Application strategy
+60,000 - 80,000 - - - -
+5.2 Application enhancement
+- 25,000 10,000 - -
+5.3 Strategic enhancements
+- - - 300,000 300,000
+5.2.1 Email replacement
+50,000 - - - -
+6.1 IT asset management
+- - - - -
+6.2 BIA and DRP
+- 50,000 30,000 - -
+Total resource
+$305,000 - $325,000 $150,000 $55,000 $300,000 $300,000
+Current 2014 placeholder costs
+Item 2014 budget place holder
+The town has currently held $72,000 resourcing cost
+for county payments. Overall resourcing costs will need to be evaluated in order to effectively execute on the recommendations in the IT strategic plan. Some re-allocation from hardware, software, and licensing costs may need to be considered.
+Consultant/contractor
+Key concept illustrated on this slide.
+Payments to County
+Key concept illustrated on this slide.
+Employee
+Key concept illustrated on this slide.
+Total
+Key concept illustrated on this slide.
+12
+Town of Tillson burg - IT Strategy Review - Council Update
+GJ Deloitte LLP and affiliated entities.
+Key concept illustrated on this slide.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 25 instance(s)
+Structure:
+Layout type: single_column
+header → Cost summary (resourcing) The table below summarizes the bud
+body_left → Item 2014 2015 2016 2017 2018, 1.1 Develop and implement 50,000 25,000 IT governance struct, 2.1 & 2.2 Network 45,000 - - - - baseline/upgrades, 3.1 Target server architecture 25,000 - - - -, 3.2 Architecture migration 25,000 50,000 - - -, 4.1 Workstation refresh 25,000 - - - -, 4.1.1 Mobility updates 25,000 - - - -, 5.1 Application strategy 60,000 - 80,000 - - - -, 5.2 Application enhancement - 25,000 10,000 - -, 5.3 Strategic enhancements - - - 300,000 300,000, 5.2.1 Email replacement 50,000 - - - -, 6.1 IT asset management - - - - -, 6.2 BIA and DRP - 50,000 30,000 - -, Total resource $305,000 - $325,000 $150,000 $55,000 $300,000, Current 2014 placeholder costs Item 2014 budget place holder
+footer → The town has currently held $72,000 resourcing cost for coun, Consultant/contractor, Payments to County, Employee, Total, 12 Town of Tillson burg - IT Strategy Review - Council Updat, $72,000, $72,000, GJ Deloitte LLP and affiliated entities.
+Connectors:
+No connectors detected
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+Cost summary (resourcing) The table below summarizes the budget impact for staff or contract resources to execute the recommendations outlined in this report. This is the expected increase in budget over the current budget costs for the IT infrastructure. As most of these costs are one time project costs, the best funding is for most of the costs is as specific projects. covers the following ideas: Cost summary (resourcing) The table below summarizes the budget impact for staff or contract resources to execute the recommendations outlined in this report. This is the expected increase in budget over the current budget costs for the IT infrastructure. As most of these costs are one time project costs, the best funding is for most of the costs is as specific projects.; Item 2014 2015 2016 2017 2018; 1.1 Develop and implement 50,000 25,000 IT governance structure; 2.1 & 2.2 Network 45,000 - - - - baseline/upgrades.
+
+
+======================================================================
+Slide 14: Current budgetary placeholders
+======================================================================
+Semantic Flow
+The slide presents and explains Current budgetary placeholders.
+
+Step-by-step meaning:
+Town management developed budgetary estimates for 2014 prior to the development of the IT strategic
+plan. Management will re-evaluate the overall allocation of funds to align with the strategy for 2014 and
+beyond. The forecasted start date of the initiatives recommended in the strategic plan and work initiated in
+2013 will impact the overall allocation and timing of spend.
+A key area for consideration is allocating sufficient funds for people resources, whether through the
+County or contractors to complete the recommended initiatives.
+·
+$305,000 -
+$600,000 -
+$634,700
+$72,000
+$706,700
+$325,000
+$720,000
+$70,000 - $100,000
+150,000
+$220,000 -
+TBD
+TBD
+TBD
+$250,000
+$40,000 - $60,000
+$55,000
+$95,000 - $115,000
+TBD
+TBD
+TBD
+$300,000
+$340,000 -
+TBD
+TBD
+TBD
+$360,000
+$40,000 - $60,000
+$300,000
+$340,000 -
+TBD
+TBD
+TBD
+$360,000
+$1,110,000-
+$1,595,000 -
+$634,700
+$72,000
+$706,700
+$1 ,130,000
+$1,805,000
+13
+Town of Tillsonburg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+plan. Management will re-evaluate the overall allocation of funds to align with the strategy for 2014 and
+beyond. The forecasted start date of the initiatives recommended in the strategic plan and work initiated in 2013 will impact the overall allocation and timing of spend.
+A key area for consideration is allocating sufficient funds for people resources, whether through the
+County or contractors to complete the recommended initiatives. ·
+$305,000 -
+$600,000 - $634,700 $72,000 $706,700 $325,000 $720,000
+$70,000 - $100,000
+150,000 $220,000 - TBD TBD TBD $250,000
+$40,000 - $60,000
+$55,000 $95,000 - $115,000 TBD TBD TBD
+$300,000
+$340,000 - TBD TBD TBD $360,000
+$40,000 - $60,000
+$300,000 $340,000 - TBD TBD TBD $360,000
+$1,110,000-
+$1,595,000 - $634,700 $72,000 $706,700 $1 ,130,000 $1,805,000
+13
+Town of Tillsonburg - IT Strategy Review - Council Update © Deloitte LLP and affiliated entities.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 11 instance(s)
+Structure:
+Layout type: single_column
+header → Current budgetary placeholders
+body_left → Town management developed budgetary estimates for 2014 prior, plan. Management will re-evaluate the overall allocation of , A key area for consideration is allocating sufficient funds , $305,000 - $600,000 - $634,700 $72,000 $706,700 $325,000 $72, $70,000 - $100,000 150,000 $220,000 - TBD TBD TBD $250,000, $40,000 - $60,000 $55,000 $95,000 - $115,000 TBD TBD TBD, $300,000 $340,000 - TBD TBD TBD $360,000
+footer → $40,000 - $60,000 $300,000 $340,000 - TBD TBD TBD $360,000, $1,110,000- $1,595,000 - $634,700 $72,000 $706,700 $1 ,130,0, 13 Town of Tillsonburg - IT Strategy Review - Council Update
+Connectors:
+No connectors detected
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+Current budgetary placeholders covers the following ideas: Current budgetary placeholders; Town management developed budgetary estimates for 2014 prior to the development of the IT strategic; plan. Management will re-evaluate the overall allocation of funds to align with the strategy for 2014 and beyond. The forecasted start date of the initiatives recommended in the strategic plan and work initiated in 2013 will impact the overall allocation and timing of spend.; A key area for consideration is allocating sufficient funds for people resources, whether through the County or contractors to complete the recommended initiatives. ·.
+
+
+======================================================================
+Slide 15: IT operating model options
+======================================================================
+Semantic Flow
+The slide shows a transformation from low-level environment representation → high-level reasoning
+
+Step-by-step meaning:
+Town management should prioritize a decision around a future IT operating model which will help drive future planning for medium to
+longer term initiatives. The potential options and their related risks, benefits, and costs are described below. Regardless of the direction
+chosen an investment in IT needs to be made at the management level to ensure accountability and skillsets are present at the high
+level of Town administration.
+
+Status quo - Maintain the current relationship with the County with limited defined IT accountability within Town management and
+maintaining existing processes and IT infrastructure.
+
+Fully in-source IT - Develop an internal IT department with full time staff to maintain applications, infrastructure, and related IT
+processes.
+
+County contract with defined governance - Maintain the relationship with the County, however clearly define IT ownership within
+Town management, build functional application skillsets within the department, and conduct infrastructure renewal.
+
+Outsource to private provider- Contract a private 3rd party provider to manage all IT servers for the Town with a dedicated
+contract manager at the Town.
+NEGATIVE
+Potential for application
+proliferation and significant
+loss of staff productivity
+Potentially high financial impact to
+the Town with lost productivity,
+HIGH
+Not scalable, aging
+infrastructure
+Not a viable option
+lack of data redundancy, and
+licensing risks
+HIGH
+Limited internal skillsets to
+support diverse
+applications
+HIGH
+Hiring and training needs for
+applications and infrastructure
+support
+MODERATE
+Provides control and oversight
+of IT operations
+Not a viable option
+MODERATE
+Initial hardware refresh costs will
+be high however longer term
+costs can be controlled with
+shared service opportunities
+HIGH
+Leverage County skillsets,
+LOW
+Current working
+relationship,
+Pursue in 3-5 year
+term
+potential to leverage
+applications and reduce costs
+MODERATE
+Few providers for municipal
+Ability to immediately adopt
+space in the region
+leading practices
+HIGH
+HIGH
+There are limited providers in the
+Municipal space.
+Not a short term
+option
+Town of Tillson burg - IT Strategy Review - Council Update
+14
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+Town management should prioritize a decision around a future IT operating model which will help drive future planning for medium to
+longer term initiatives. The potential options and their related risks, benefits, and costs are described below. Regardless of the direction chosen an investment in IT needs to be made at the management level to ensure accountability and skillsets are present at the high level of Town administration.
+
+Status quo - Maintain the current relationship with the County with limited defined IT accountability within Town management and maintaining existing processes and IT infrastructure.
+
+Fully in-source IT - Develop an internal IT department with full time staff to maintain applications, infrastructure, and related IT processes.
+
+County contract with defined governance - Maintain the relationship with the County, however clearly define IT ownership within Town management, build functional application skillsets within the department, and conduct infrastructure renewal.
+
+Outsource to private provider- Contract a private 3rd party provider to manage all IT servers for the Town with a dedicated contract manager at the Town.
+HIGH
+Not scalable, aging infrastructure
+HIGH
+Limited internal skillsets to support diverse applications
+LOW
+Current working relationship,
+HIGH
+Key concept illustrated on this slide.
+NEGATIVE
+Potential for application proliferation and significant loss of staff productivity
+MODERATE
+Provides control and oversight of IT operations
+HIGH
+Leverage County skillsets,
+potential to leverage
+applications and reduce costs
+MODERATE
+Few providers for municipal Ability to immediately adopt space in the region leading practices
+Town of Tillson burg - IT Strategy Review - Council Update
+Key concept illustrated on this slide.
+Potentially high financial impact to
+the Town with lost productivity,
+lack of data redundancy, and
+licensing risks
+HIGH
+Hiring and training needs for applications and infrastructure support
+MODERATE
+Initial hardware refresh costs will be high however longer term costs can be controlled with shared service opportunities
+HIGH
+There are limited providers in the Municipal space.
+Not a viable option
+Key concept illustrated on this slide.
+Not a viable option
+Key concept illustrated on this slide.
+Pursue in 3-5 year
+term
+Not a short term
+option
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 27 instance(s)
+Structure:
+Layout type: two_column
+header → IT operating model options
+body_left → Town management should prioritize a decision around a future, • Status quo - Maintain the current relationship with the Co, • Fully in-source IT - Develop an internal IT department wit, • County contract with defined governance - Maintain the rel, • Outsource to private provider- Contract a private 3rd part, HIGH Not scalable, aging infrastructure, HIGH Limited internal skillsets to support diverse applicati, NEGATIVE Potential for application proliferation and signifi, MODERATE Provides control and oversight of IT operations, HIGH Leverage County skillsets,
+body_right → Potentially high financial impact to the Town with lost prod, lack of data redundancy, and licensing risks, HIGH Hiring and training needs for applications and infrastr, Not a viable option, Not a viable option
+footer → 14, LOW Current working relationship,, HIGH, potential to leverage applications and reduce costs, MODERATE Few providers for municipal Ability to immediately , Town of Tillson burg - IT Strategy Review - Council Update, MODERATE Initial hardware refresh costs will be high however, HIGH There are limited providers in the Municipal space., Pursue in 3-5 year term, Not a short term option, © Deloitte LLP and affiliated entities.
+Connectors:
+Arrow: 'IT operating model options' → 'Town of Tillson burg - IT Strategy Review - Council Update' [hierarchy]
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+IT operating model options covers the following ideas: IT operating model options; Town management should prioritize a decision around a future IT operating model which will help drive future planning for medium to longer term initiatives. The potential options and their related risks, benefits, and costs are described below. Regardless of the direction chosen an investment in IT needs to be made at the management level to ensure accountability and skillsets are present at the high level of Town administration.; • Status quo - Maintain the current relationship with the County with limited defined IT accountability within Town management and maintaining existing processes and IT infrastructure.; • Fully in-source IT - Develop an internal IT department with full time staff to maintain applications, infrastructure, and related IT processes..
+
+
+======================================================================
+Slide 16: IT operating model recommendation
+======================================================================
+Semantic Flow
+The slide shows a transformation from low-level environment representation → high-level reasoning
+
+Step-by-step meaning:
+
+The Town should continue to engage the County for IT services with an enhanced governance framework. This should
+re-evaluated within 3-5 years as the Town completes is major upgrade initiatives to attain baseline operations.
+Roles and Responsibility Map
+County of Oxford
+Town of Tillson burg
+0 Systems management
+0 Network
+0 Governance
+
+Maintenance of Town assets
+
+Town ownership of infrastructure
+County maintenance and
+troubleshooting
+0 Servers
+IT ownership at executive level*
+Defined contract and SLAs (service level
+agreements)
+Implement and operationalize DRP
+Decision making/ approvals for Town
+IT assets will remain the responsibility
+of the Town.
+Established policies and procedures (refresh
+cycles, hardware and application standards,
+etc.,)
+Asset management decision making
+
+Town ownership of infrastructure
+
+County maintenance and
+troubleshooting
+Potential for shared DR capacity
+0 End user computing
+
+Organization
+
+Staff training and hiring
+Ensure sufficient resourcing for County and
+Town operations
+
+Organization
+End user training
+Updating of operating model
+
+Town ownership of infrastructure
+County maintenance and
+troubleshooting
+Key Stakeholders
+
+Senior Management
+Key Stakeholders
+
+Town Council
+0 Applications
+
+IT Management
+
+Senior Management
+Town ownership of infrastructure
+County maintenance and
+troubleshooting
+
+IT Staff
+Functional Users
+Potential for shared licensing on
+common applications
+The Town should define a specific role at the Senior Management level which holds executive accountability for IT. This position would be the
+policy and budget owner for all IT areas. The position would act as the primary contract manager between the County and Town, ensure SLAs
+are achieved, approve IT spending, and work with other Town stakeholders to meet IT needs. The responsibility can be attached to an existing
+position and would require a moderate level of IT experience.
+Town of Tillsonburg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+15
+
+Conceptual Layers
+
+The Town should continue to engage the County for IT services with an enhanced governance framework. This should re-evaluated within 3-5 years as the Town completes is major upgrade initiatives to attain baseline operations.
+Town of Tillson burg
+Key concept illustrated on this slide.
+IT ownership at executive level*
+Defined contract and SLAs (service level agreements)
+Established policies and procedures (refresh
+cycles, hardware and application standards, etc.,) Asset management decision making
+
+Organization
+End user training
+Updating of operating model
+Key Stakeholders
+- Town Council
+
+Senior Management
+Functional Users
+Key concept illustrated on this slide.
+Roles and Responsibility Map
+Key concept illustrated on this slide.
+
+Town ownership of infrastructure County maintenance and troubleshooting 0 Servers
+
+Town ownership of infrastructure - County maintenance and troubleshooting Potential for shared DR capacity 0 End user computing
+
+Town ownership of infrastructure County maintenance and troubleshooting
+Town ownership of infrastructure
+County maintenance and troubleshooting
+Potential for shared licensing on
+common applications
+County of Oxford
+Key concept illustrated on this slide.
+
+Maintenance of Town assets
+Implement and operationalize DRP
+Decision making/ approvals for Town IT assets will remain the responsibility of the Town.
+
+Organization
+
+Staff training and hiring Ensure sufficient resourcing for County and Town operations
+Key Stakeholders
+- Senior Management
+
+IT Management
+
+IT Staff
+The Town should define a specific role at the Senior Management level which holds executive accountability for IT. This position would be the
+policy and budget owner for all IT areas. The position would act as the primary contract manager between the County and Town, ensure SLAs are achieved, approve IT spending, and work with other Town stakeholders to meet IT needs. The responsibility can be attached to an existing position and would require a moderate level of IT experience.
+Town of Tillsonburg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 31 instance(s)
+Structure:
+Layout type: two_column
+header → IT operating model recommendation
+body_left → • The Town should continue to engage the County for IT servi, Town of Tillson burg, 0 Governance, IT ownership at executive level* Defined contract and SLAs (, Established policies and procedures (refresh cycles, hardwar, • Organization, End user training Updating of operating model, Key Stakeholders - Town Council, - Senior Management, Functional Users, Roles and Responsibility Map, 0 Network, - Town ownership of infrastructure County maintenance and tr, - Town ownership of infrastructure - County maintenance and , - Town ownership of infrastructure County maintenance and tr, 0 Applications, Town ownership of infrastructure County maintenance and trou
+body_right → County of Oxford, 0 Systems management, - Maintenance of Town assets, Implement and operationalize DRP Decision making/ approvals , • Organization, - Staff training and hiring Ensure sufficient resourcing for, Key Stakeholders - Senior Management, - IT Management, - IT Staff
+footer → 15, Potential for shared licensing on common applications, *The Town should define a specific role at the Senior Manage, Town of Tillsonburg - IT Strategy Review - Council Update ©
+Connectors:
+No connectors detected
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+IT operating model recommendation covers the following ideas: IT operating model recommendation; • The Town should continue to engage the County for IT services with an enhanced governance framework. This should re-evaluated within 3-5 years as the Town completes is major upgrade initiatives to attain baseline operations.; 15; Town of Tillson burg.
+
+
+======================================================================
+Slide 17: Some areas such as Governance and Infrastructure will need to move to the "Managed" level given their importance to addressing the stated goals Depending on the Town's direction in adopting a best-of-breed applications strategy the Applications (Acquisition) dimension will require greater development BIBI 1-----+-+---l-='=----+---1-----1 H.181 ...,_..,,.._.--+---'"""""'"---+---1------1 Given the limited IT capacity within the organization today, and the level of investment and effort that will be required to achieve the future state maturity, a progressive approach is recommended within the operating model. IMI Overall, the most significant shifts will be required within IT Governance and Infrastructure, which are the traditional areas that require development within emerging organizations -I Legend: T Current State T 3-S years
+======================================================================
+Semantic Flow
+The slide shows a transformation from low-level environment representation → high-level reasoning
+
+Step-by-step meaning:
+Targeted future state of IT
+Future State Maturity (5 Year Strategy)
+.··. Increasing Maturity
+1-il::ii:HH:F
+hG·hii,M:Hi
+··MHiil·N/1:il·IIMl:iHl·IIMHII
+T
+To address the Town's objectives to enhance services to constituents and staff
+while controlling costs, the IT function will need to mature to at least a "Defined"
+level
+Some areas such as Governance and Infrastructure will need to move to
+the "Managed" level given their importance to addressing the stated goals
+Depending on the Town's direction in adopting a best-of-breed
+applications strategy the Applications (Acquisition) dimension will require
+greater development
+BIBI 1-----+-+---l-='=----+---1-----1
+H.181 ...,_..,,.._.--+---'"""""'"---+---1------1
+Given the limited IT capacity within the organization today, and the level of
+investment and effort that will be required to achieve the future state maturity, a
+progressive approach is recommended within the operating model.
+IMI
+Overall, the most significant shifts will be required within IT Governance and
+Infrastructure, which are the traditional areas that require development within
+emerging organizations
+
+I Legend: T Current State T 3-S years
+Maturity Model - Definitions
+The maturity model, a standard tool for effectively assessing an organization's IT capabilities, is used to illustrate the current state maturity ranking of the Town across each of
+the components of the IT Operating Model
+Increasing Maturity
+Mature
+Managed
+Defined
+Initial
+Developing
+Proactive management of
+performance and focus on
+continuous improvement
+Consistent and repeatable
+application of processes
+across the organization
+Proactive review of tools
+performance
+Full resource alignment
+against processes and
+performance management
+aligned roles
+Processes are formalized
+through documentation,
+standardization, and
+integration
+Policies and procedures
+are in place along with
+training to relevant
+stakeholders
+Tools are in place to
+support processes
+Roles / responsibilities are
+formally defined
+Process / performance
+benchmarks and KPls are
+established
+Performance monitoring
+and continuous
+improvement is introduced
+Consistent tool utilization
+Resources are aligned
+against repeatable
+processes with
+documented roles I
+Basic repeatable
+processes are established
+but are not applied
+consistently
+Limited formal
+communication of
+processes or policies and
+procedures
+Tools introduced to enable
+operations
+Basic definition of roles /
+responsibilities
+Processes are
+disorganized, even chaotic
+Processes are not
+sufficiently defined and / or
+documented
+Success is dependent on
+individual efforts, and is not
+considered to be
+repeatable
+No tools in place
+Roles / responsibilities are
+loosely defined
+responsibilities
+16
+© Deloitte LLP and affiliated entities.
+Town of Tillson burg - IT Strategy Review - Council Update
+
+Conceptual Layers
+Targeted future state of IT
+Key concept illustrated on this slide.
+Future State Maturity (5 Year Strategy)
+Key concept illustrated on this slide.
+.··. Increasing Maturity
+1-il::ii:HH:F hG·hii,M:Hi
+··MHiil·N/1
+il·IIMl:iHl·IIMHII: T
+To address the Town's objectives to enhance services to constituents and staff
+while controlling costs, the IT function will need to mature to at least a "Defined"
+Some areas such as Governance and Infrastructure will need to move to
+the "Managed" level given their importance to addressing the stated goals Depending on the Town's direction in adopting a best-of-breed applications strategy the Applications (Acquisition) dimension will require greater development BIBI 1-----+-+---l-='=----+---1-----1 H.181 ...,_..,,.._.--+---'"""""'"---+---1------1 Given the limited IT capacity within the organization today, and the level of investment and effort that will be required to achieve the future state maturity, a progressive approach is recommended within the operating model. IMI Overall, the most significant shifts will be required within IT Governance and Infrastructure, which are the traditional areas that require development within emerging organizations - I Legend: T Current State T 3-S years
+Maturity Model - Definitions
+Key concept illustrated on this slide.
+The maturity model, a standard tool for effectively assessing an organization's IT capabilities, is used to illustrate the current state maturity ranking of the Town across each of
+the components of the IT Operating Model
+Initial
+Key concept illustrated on this slide.
+Processes are
+disorganized, even chaotic • Processes are not sufficiently defined and / or documented • Success is dependent on individual efforts, and is not considered to be repeatable No tools in place Roles / responsibilities are loosely defined
+Developing
+Key concept illustrated on this slide.
+Basic repeatable
+processes are established but are not applied consistently • Limited formal communication of processes or policies and procedures • Tools introduced to enable operations • Basic definition of roles / responsibilities
+Increasing Maturity
+Key concept illustrated on this slide.
+Defined
+Key concept illustrated on this slide.
+Processes are formalized
+through documentation, standardization, and integration Policies and procedures are in place along with training to relevant stakeholders • Tools are in place to support processes • Roles / responsibilities are formally defined
+Town of Tillson burg - IT Strategy Review - Council Update
+Key concept illustrated on this slide.
+Managed
+Key concept illustrated on this slide.
+Process / performance
+benchmarks and KPls are established • Performance monitoring and continuous improvement is introduced • Consistent tool utilization • Resources are aligned against repeatable processes with documented roles I
+Mature
+Key concept illustrated on this slide.
+Proactive management of
+performance and focus on continuous improvement Consistent and repeatable application of processes across the organization Proactive review of tools performance • Full resource alignment against processes and performance management aligned roles
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 24 instance(s)
+Structure:
+Layout type: two_column
+header → Targeted future state of IT
+body_left → Future State Maturity (5 Year Strategy), .··. Increasing Maturity 1-il::ii:HH:F hG·hii,M:Hi, ··MHiil·N/1:il·IIMl:iHl·IIMHII T, level, Some areas such as Governance and Infrastructure will need t, Maturity Model - Definitions, The maturity model, a standard tool for effectively assessin, Initial, Developing, Increasing Maturity, Defined
+body_right → To address the Town's objectives to enhance services to cons, Managed, Mature
+footer → 16, • Processes are disorganized, even chaotic • Processes are n, • Basic repeatable processes are established but are not app, Processes are formalized through documentation, standardizat, Town of Tillson burg - IT Strategy Review - Council Update, • Process / performance benchmarks and KPls are established , responsibilities, • Proactive management of performance and focus on continuou, © Deloitte LLP and affiliated entities.
+Connectors:
+No connectors detected
+Visual layout style: two_column
+Background style: presentation
+
+3. Plain English Summary
+Some areas such as Governance and Infrastructure will need to move to the "Managed" level given their importance to addressing the stated goals Depending on the Town's direction in adopting a best-of-breed applications strategy the Applications (Acquisition) dimension will require greater development BIBI 1-----+-+---l-='=----+---1-----1 H.181 ...,_..,,.._.--+---'"""""'"---+---1------1 Given the limited IT capacity within the organization today, and the level of investment and effort that will be required to achieve the future state maturity, a progressive approach is recommended within the operating model. IMI Overall, the most significant shifts will be required within IT Governance and Infrastructure, which are the traditional areas that require development within emerging organizations -I Legend: T Current State T 3-S years covers the following ideas: Targeted future state of IT; Future State Maturity (5 Year Strategy); .··. Increasing Maturity 1-il::ii:HH:F hG·hii,M:Hi; ··MHiil·N/1:il·IIMl:iHl·IIMHII T.
+
+
+======================================================================
+Slide 18: Conclusion
+======================================================================
+Semantic Flow
+The slide presents and explains Conclusion.
+
+Step-by-step meaning:
+Key benefits
+Direct impact to staff productivity and constituent service
+Modernize system architecture; higher efficiency machines at lower maintenance costs going
+forward
+Long term sustainability of IT organization; ensuring IT spend meets business and community
+needs
+The risks of doing nothing
+Inefficient IT spending; potentially duplicating applications
+Security and data recovery risks; current lack of redundancy in the system
+Impact to constituent service; system downtime impacts the organizations overall productivity
+17
+Town of Tillsonburg - IT Strategy Review - Council Update
+© Deloitte LLP and affiliated entities.
+
+Conceptual Layers
+Direct impact to staff productivity and constituent service
+Key concept illustrated on this slide.
+Modernize system architecture; higher efficiency machines at lower maintenance costs going
+forward
+Long term sustainability of IT organization; ensuring IT spend meets business and community
+needs
+Inefficient IT spending; potentially duplicating applications
+Key concept illustrated on this slide.
+Security and data recovery risks; current lack of redundancy in the system
+Key concept illustrated on this slide.
+17
+Town of Tillsonburg - IT Strategy Review - Council Update © Deloitte LLP and affiliated entities.
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 10 instance(s)
+Structure:
+Layout type: single_column
+header → Conclusion
+body_left → • Key benefits, Direct impact to staff productivity and constituent service, Modernize system architecture; higher efficiency machines at, Long term sustainability of IT organization; ensuring IT spe, • The risks of doing nothing, Inefficient IT spending; potentially duplicating application, Security and data recovery risks; current lack of redundancy, Impact to constituent service; system downtime impacts the o
+footer → 17 Town of Tillsonburg - IT Strategy Review - Council Update
+Connectors:
+No connectors detected
+Visual layout style: single_column
+Background style: presentation
+
+3. Plain English Summary
+Conclusion covers the following ideas: Conclusion; • Key benefits; Direct impact to staff productivity and constituent service; Modernize system architecture; higher efficiency machines at lower maintenance costs going forward.
+
+
+======================================================================
+Slide 19: ' . . . . . -
+======================================================================
+Semantic Flow
+The slide presents and explains ' . . . . . -.
+
+Step-by-step meaning:
+' . . .
+. . -
+
+Conceptual Layers
+' . . .
+. . -
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Full palette: black (#000000)
+Shapes:
+rect: 1 instance(s)
+Structure:
+Layout type: title_slide
+header → ' . . . . . -
+Connectors:
+No connectors detected
+Visual layout style: title_slide
+Background style: presentation
+
+3. Plain English Summary
+' . . . . . - covers the following ideas: ' . . . . . -.
+
+
+======================================================================
+Slide 20: (no title)
+======================================================================
+Semantic Flow
+The slide presents and explains the slide content.
+
+Step-by-step meaning:
+
+Conceptual Layers
+
+Visual Design Details
+Colour scheme:
+Slide background: white (#ffffff)
+Shapes:
+Structure:
+Layout type: blank
+Connectors:
+No connectors detected
+Visual layout style: blank
+Background style: presentation
+
+3. Plain English Summary
+The slide titled 'This slide' presents information through text, visuals, and structural layout.
+

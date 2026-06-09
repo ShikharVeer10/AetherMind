@@ -173,8 +173,17 @@ class ExtractionService:
         json_output_file = output_path / f"{document_name}.json"
 
         output_payload = self._format_output(extracted_document)
+
         with open(json_output_file, "w", encoding="utf-8") as f:
-            json.dump(output_payload, f, indent=4, ensure_ascii=False)
+            json.dump(
+                output_payload,
+                f,
+                indent=4,
+                ensure_ascii=False,
+                default=lambda o: o.model_dump()
+                if hasattr(o, "model_dump")
+                else str(o)
+            )
 
         # Generate a clean human-readable text summary of all slides
         from services.semantic_flow_service import SemanticFlowService
@@ -236,6 +245,8 @@ class ExtractionService:
                     for p in element.paragraphs
                 ]
 
+                print("TABLE STRUCTURE TYPE:", type(element.table_structure))
+                print("TABLE SEMANTIC TYPE:", type(element.table_semantic_interpretation))
 
                 elements_payload.append(
                     {
@@ -252,11 +263,32 @@ class ExtractionService:
                         "style": style,
                         "table_markdown": element.table_markdown,
                         "raw_table_content": element.raw_table_content,
-                        "table_structure": element.table_structure,
-                        "table_semantic_interpretation": element.table_semantic_interpretation,
-                        "chart_understanding": element.chart_understanding.model_dump() if element.chart_understanding else None,
+                        "table_structure": (
+                            element.table_structure.model_dump()
+                            if hasattr(element.table_structure, "model_dump")
+                            else element.table_structure
+                        ),
+                        "table_render_model": (
+                            element.table_render_model.model_dump()
+                            if element.table_render_model
+                            else None
+                        ),
+
+                        "table_semantic_interpretation": (
+                            element.table_semantic_interpretation.model_dump()
+                            if hasattr(element.table_semantic_interpretation, "model_dump")
+                            else element.table_semantic_interpretation
+                        ),
+
+                        "chart_understanding": (
+                            element.chart_understanding.model_dump()
+                            if element.chart_understanding
+                            else None
+                        ),
                         "image_summary": element.metadata.get("image_summary"),
-                        "metadata": self._sanitize_metadata(element.metadata),
+                        "metadata": self._sanitize_metadata(
+                            element.metadata
+                        ),
                     }
                 )
 
@@ -373,6 +405,7 @@ class ExtractionService:
                     "background_color": slide.background_color,
                     "header_footer": hf,
                     "visual_inventory": inv,
+                    "detected_tables": slide.detected_tables,
                     "layout": layout,
                     "elements": elements_payload,
                     "relationships": relationships_payload,
@@ -393,6 +426,7 @@ class ExtractionService:
                     ),
                     "table_markdowns": slide.table_markdowns,
                     "summary": slide.slide_summary,
+
                 }
             )
 
@@ -401,7 +435,11 @@ class ExtractionService:
             "document_type": extracted_document.document_type,
             "document_name": extracted_document.document_name,
             "total_slides": extracted_document.total_slides,
-            "document_structure": extracted_document.document_structure,
+            "document_structure": (
+                extracted_document.document_structure.model_dump(mode="json")
+                if extracted_document.document_structure
+                else None
+            ),
             "slides": slides_payload,
         }
 
@@ -613,8 +651,19 @@ class ExtractionService:
             "type": element.element_type,
             "content": {
                 "text": text,
-                "table_markdown": element.table_markdown,
                 "image_description": image_summary,
+                "table_markdown": element.table_markdown,
+                "table_structure": (
+                element.table_structure.model_dump()
+                    if element.table_structure
+                    else None
+                ),
+                "raw_table_content": element.raw_table_content,
+                 "table_semantic_interpretation": (
+                    element.table_semantic_interpretation.model_dump()
+                    if hasattr(element.table_semantic_interpretation, "model_dump")
+                    else element.table_semantic_interpretation
+                )
             },
             "position_percent": {
                 "left": round(left, 2),
@@ -739,7 +788,12 @@ class ExtractionService:
         for element in elements:
             pos = element["position_percent"]
             content = element["content"]
-            text = content["text"] or content["image_description"] or content["table_markdown"] or ""
+            text = (
+                content.get("text")
+                or content.get("image_description")
+                or content.get("table_markdown")
+                or ""
+            )
             lines.append(
                 "- {id} ({type}) at left {left}%, top {top}%, width {width}%, height {height}%: {text}".format(
                     id=element["id"],
@@ -818,9 +872,8 @@ class ExtractionService:
         ))
 
         # Keep or recreate the other text elements
-        for el in slide_1.elements:
-            if el.element_type != "image":
-                elements.append(el)
+        # Preserve all existing elements
+        elements.extend(slide_1.elements)
 
         slide_1.elements = elements
 

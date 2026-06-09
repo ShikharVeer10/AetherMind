@@ -103,11 +103,16 @@ class DocumentElementModel(BaseModel):
     table_markdown: Optional[str] = None
     raw_table_content: Optional[List[List[str]]] = None
     table_structure: Optional[Dict[str, Any]] = None
-    table_semantic_interpretation: Optional[str] = None
+    table_visual_metadata: Optional[dict] = None
+    table_render_model: Optional[dict] = None
+    table_semantic_interpretation: Optional[Dict[str, Any]] = None
     chart_understanding: Optional[ChartUnderstandingModel] = None
     table_title: Optional[str] = None
     table_purpose: Optional[str] = None
     table_insights: List[str] = Field(default_factory=list)
+    table_geometry: dict = Field(default_factory=dict)
+    table_styles: dict = Field(default_factory=dict)
+    table_merged_cells: list = Field(default_factory=list)
 
 class HeaderFooterModel(BaseModel):
     header_text: Optional[str] = None
@@ -307,6 +312,7 @@ class SlideModel(BaseModel):
     slide_number: int
     title: Optional[str] = None
     background_color: Optional[str] = None
+    layout_regions: list = []
     elements: List[DocumentElementModel] = Field(default_factory=list)
     images: List[Dict[str, Any]] = Field(default_factory=list)
     relationships: List[RelationshipModel] = Field(default_factory=list)
@@ -327,6 +333,8 @@ class SlideModel(BaseModel):
     slide_reconstruction_context: Optional[SlideReconstructionContextModel] = None
     chart_understandings: List[ChartUnderstandingModel] = Field(default_factory=list)
     semantic_regions: List[SemanticRegionModel] = Field(default_factory=list)
+    detected_tables: Optional[list] = []
+
     
 
 class DocumentStructureModel(BaseModel):

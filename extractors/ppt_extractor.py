@@ -13,12 +13,14 @@ from models.document_model import (
     ParagraphModel,
     RunModel,
 )
+from services.table_service import TableService
 
 
 class PPTExtractor:
     def __init__(self, pptx_file_path: str):
         self.pptx_file_path = Path(pptx_file_path)
         self.presentation = Presentation(pptx_file_path)
+        self.table_service = TableService()
 
     def extract_document(self) -> DocumentModel:
         extracted_slides = []
@@ -38,6 +40,7 @@ class PPTExtractor:
             slides=extracted_slides,
             presentation_metadata=pres_meta,
         )
+    
 
     def _extract_presentation_metadata(self) -> dict:
         """Extract top-level presentation metadata (author, dimensions, etc.)"""
@@ -62,6 +65,7 @@ class PPTExtractor:
         except Exception:
             pass
         return meta
+
     def extract_slide(self, slide, slide_number: int) -> SlideModel:
         extracted_elements = []
         slide_title: Optional[str] = None
@@ -83,7 +87,6 @@ class PPTExtractor:
             )
             for element in elements:
                 extracted_elements.append(element)
-
         # 2. Fallback: if no placeholder title, use the first element text
         if slide_title is None:
             for element in extracted_elements:
@@ -200,22 +203,64 @@ class PPTExtractor:
 
         style = self._extract_text_style(shape)
         element_type = self._get_shape_type(shape)
+        print(
+            "SHAPE:",
+            shape.name,
+            "TYPE:",
+            shape.shape_type,
+            "ELEMENT:",
+            element_type
+        )       
+        print("=" * 80)
+        print("SHAPE NAME:", shape.name)
+        print("SHAPE TYPE:", shape.shape_type)
+        print("ELEMENT TYPE:", element_type)
+        print("=" * 80)
         metadata = self._extract_shape_metadata(shape, element_type)
         metadata["z_order"] = z_order
-        table_md: Optional[str] = None
+
+        table_md = None
+        raw_table_content = None
+        table_structure = None
+        table_render_model = None
+        table_semantic_interpretation = None
+        table_visual_metadata = None
+
         if element_type == "table":
-            table_md = self.extract_table_as_markdown(shape)
+
+            raw_table_content = self.extract_table_as_list(shape)
+
+        table_md = self.extract_table_as_markdown(shape)
+
+        table_structure = self.table_service.analyze_structure(raw_table_content)
+
+        table_semantic_interpretation = (self.table_service.generate_semantic_context(raw_table_content))
+
+        table_render_model = self.table_service.build_render_model(raw_table_content,table_structure)
+
+        table_visual_metadata = (self.extract_table_visual_metadata(shape))
+
+        print("TABLE DETECTED")
+        print("ROWS:", len(raw_table_content))
+        print("STRUCTURE:", table_structure)
+
         return DocumentElementModel(
-            element_id=element_id,
-            element_type=element_type,
-            text=full_text,
-            paragraphs=paragraphs,
-            position=position,
-            style=style,
-            shape_type=str(shape.shape_type),
-            metadata=metadata,
-            table_markdown=table_md,
-        )
+    element_id=element_id,
+    element_type=element_type,
+    text=full_text,
+    paragraphs=paragraphs,
+    position=position,
+    style=style,
+    shape_type=str(shape.shape_type),
+    metadata=metadata,
+    table_markdown=table_md,
+    raw_table_content=raw_table_content,
+    table_structure=table_structure,
+    table_render_model=table_render_model,
+    table_semantic_interpretation=table_semantic_interpretation,
+    table_visual_metadata=table_visual_metadata,
+)  
+        
 
     def _get_shape_type(self, shape) -> str:
         st = shape.shape_type
@@ -337,14 +382,15 @@ class PPTExtractor:
         return metadata
 
 
-    def _extract_table_data(self, shape) -> list:
-        rows_out = []
-        if not shape.has_table:
-            return rows_out
-        for row in shape.table.rows:
-            cells = [cell.text.strip() for cell in row.cells]
-            rows_out.append(cells)
-        return rows_out
+    def extract_table_data(self, shape):
+        table = shape.table
+        rows = []
+        for row in table.rows:
+            row_data = []
+            for cell in row.cells:
+                row_data.append(cell.text.strip())
+            rows.append(row_data)
+        return rows
 
     def _extract_pptx_chart_data(self, shape) -> Optional[dict]:
         if not hasattr(shape, "chart") or shape.chart is None:
@@ -488,6 +534,28 @@ class PPTExtractor:
 
         parts = [header, separator] + body_lines
         return "\n".join(parts)
+
+    def extract_table_as_list(self, shape):
+        table_data = []
+
+        for row in shape.table.rows:
+            row_data = []
+
+            for cell in row.cells:
+                row_data.append(cell.text.strip())
+
+            table_data.append(row_data)
+
+        return table_data
+
+    def extract_table_visual_metadata(self, shape):
+        table = shape.table
+        return {
+        "row_count": len(table.rows),
+        "column_count": len(table.columns),
+        "column_widths": [col.width for col in table.columns],
+        "row_heights": [row.height for row in table.rows],
+    }
 
     def _get_safe_color_hex(self, color_obj) -> Optional[str]:
         """Safely extract hex color, avoiding ValueError on scheme colors."""

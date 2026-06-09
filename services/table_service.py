@@ -273,4 +273,92 @@ class TableService:
         if headers:
             return f"Table showing {', '.join(headers[:3])}"
         return "Untitled Table"
-    
+
+
+    def build_render_model(self, table_data, table_structure):
+
+        if not table_data:
+            return {}
+
+        rows = len(table_data)
+        cols = max(len(r) for r in table_data)
+
+        cells = []
+
+        for row_idx, row in enumerate(table_data):
+
+            for col_idx in range(cols):
+
+                value = ""
+
+                if col_idx < len(row):
+                    value = row[col_idx]
+
+                cell_type = "data"
+
+                if row_idx == 0:
+                    cell_type = "header"
+
+                if (table_structure.get("has_grouped_rows") and row_idx in table_structure.get("grouped_row_indices",[])):
+                    cell_type = "group_header"
+
+                cells.append(
+                    {
+                        "row": row_idx,
+                        "column": col_idx,
+                        "text": value,
+                        "cell_type": cell_type,
+                        "row_span": 1,
+                        "col_span": 1,
+
+                        "fill_color": None,
+                        "font_size": None,
+                        "font_color": None,
+
+                        "bold": row_idx == 0,
+
+                        "horizontal_alignment": "center",
+
+                        "border_top": True,
+                        "border_bottom": True,
+                        "border_left": True,
+                        "border_right": True,
+                    }
+                )
+
+        return {
+            "table_type": (
+                "financial"
+                if table_structure.get(
+                    "is_financial_table"
+                )
+                else (
+                    "comparison"
+                    if table_structure.get(
+                        "is_comparison_table"
+                    )
+                    else "generic"
+                )
+            ),
+
+            "rows": rows,
+            "columns": cols,
+
+            "layout": {
+                "header_rows": [0],
+                "group_rows": table_structure.get(
+                    "grouped_row_indices",
+                    []
+            ),
+            "total_rows": table_structure.get(
+                "total_rows",
+                []
+            ),
+            "subtotal_rows": table_structure.get(
+                "subtotal_rows",
+                []
+            ),
+        },
+        "cells": cells,
+        "structure": table_structure,
+    }

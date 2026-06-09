@@ -18,6 +18,30 @@ class DiagramUnderstandingService:
         relationships: List[RelationshipModel],
         flowchart: FlowchartModel,
     ) -> DiagramUnderstandingModel:
+
+        relationships = relationships or []
+        elements = elements or []
+
+        if flowchart is None:
+            flowchart = FlowchartModel(
+            is_flowchart=False,
+            box_count=0,
+            arrow_count=0,
+            decision_node_count=0,
+            start_nodes=[],
+            end_nodes=[],
+            flow_type="none",
+            boxes=[],
+            arrows=[],
+            relationships=[],
+            relationship_mapping=[],
+            reading_order=[],
+            reading_order_labels=[],
+            process_summary=None,
+        )
+
+
+
         semantic_nodes = self._semantic_nodes(elements, flowchart)
         nodes = [
             {
