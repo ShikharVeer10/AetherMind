@@ -92,6 +92,46 @@ class TableSemanticsModel(BaseModel):
     merged_cells: List[Dict[str, Any]] = Field(default_factory=list)
 
 
+class TableCellModel(BaseModel):
+    row: int
+    column: int
+    text: str
+    row_span: int = 1
+    column_span: int = 1
+    role: str = "data"
+    importance: str = "normal"
+    semantic_meaning: str = ""
+    cell_geometry: Dict[str, float] = Field(default_factory=dict)
+
+class TableSemanticStructureModel(BaseModel):
+    comparison_dimension: List[str] = Field(default_factory=list)
+    evaluation_dimension: List[str] = Field(default_factory=list)
+    decision_dimension: List[str] = Field(default_factory=list)
+
+class TableRenderModel(BaseModel):
+    layout_type: str = "grid"
+    header_rows: List[int] = Field(default_factory=list)
+    body_rows: List[int] = Field(default_factory=list)
+    grouped_columns: List[int] = Field(default_factory=list)
+    grouped_rows: List[int] = Field(default_factory=list)
+    merged_regions: List[Dict[str, Any]] = Field(default_factory=list)
+    visual_hierarchy: List[str] = Field(default_factory=list)
+
+class TableReconstructionModel(BaseModel):
+    table_id: str
+    table_type: str = "standard"
+    visual_table: bool = False
+    rows: int
+    columns: int
+    headers: List[str] = Field(default_factory=list)
+    row_headers: List[str] = Field(default_factory=list)
+    cells: List[TableCellModel] = Field(default_factory=list)
+    merged_cells: List[Dict[str, Any]] = Field(default_factory=list)
+    semantic_structure: TableSemanticStructureModel = Field(default_factory=TableSemanticStructureModel)
+    table_geometry: Dict[str, float] = Field(default_factory=dict)
+    table_render_model: TableRenderModel = Field(default_factory=TableRenderModel)
+    functional_equivalence_requirements: List[str] = Field(default_factory=list)
+
 class SemanticRegionModel(BaseModel):
     name: str
     semantic_role: str
@@ -114,8 +154,9 @@ class DocumentElementModel(BaseModel):
     table_structure: Optional[Dict[str, Any]] = None
     table_semantics: Optional[TableSemanticsModel] = None
     table_visual_metadata: Optional[dict] = None
-    table_render_model: Optional[dict] = None
+    table_render_model: Optional[TableRenderModel] = None
     table_semantic_interpretation: Optional[Dict[str, Any]] = None
+    table_reconstruction: Optional[TableReconstructionModel] = None
     chart_understanding: Optional[ChartUnderstandingModel] = None
     table_title: Optional[str] = None
     table_purpose: Optional[str] = None

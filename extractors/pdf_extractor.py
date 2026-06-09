@@ -197,6 +197,21 @@ class PDFExtractor:
                 table_semantic_interpretation = self.table_service.generate_semantic_context(raw_table_content)
                 table_render_model = self.table_service.build_render_model(raw_table_content, table_structure)
                 
+                table_reconstruction = self.table_service.build_reconstruction_payload(
+                    table_id=f"slide_{page_number}_table_{table_idx}",
+                    raw_table_content=raw_table_content,
+                    table_structure=table_structure,
+                    table_render_model=table_render_model,
+                    table_semantics=table_semantic_interpretation,
+                    is_visual=False,
+                    table_geometry={
+                        "x": table.bbox[0] * scale,
+                        "y": table.bbox[1] * scale,
+                        "width": (table.bbox[2] - table.bbox[0]) * scale,
+                        "height": (table.bbox[3] - table.bbox[1]) * scale
+                    }
+                )
+                
                 table_element = DocumentElementModel(
                     element_id=f"slide_{page_number}_table_{table_idx}",
                     element_type="table",
@@ -213,6 +228,7 @@ class PDFExtractor:
                     table_structure=table_structure,
                     table_render_model=table_render_model,
                     table_semantic_interpretation=table_semantic_interpretation,
+                    table_reconstruction=table_reconstruction,
                     metadata={"z_order": z_order}
                 )
                 extracted_elements.append(table_element)
@@ -225,12 +241,57 @@ class PDFExtractor:
 
         # Flexible table detection fallback for text blocks
         visual_tables = self.flexible_table_detector.detect_visual_tables(extracted_elements)
-        for visual_table in visual_tables:
+        if visual_tables:
+            print(f"VISUAL TABLES FOUND: {len(visual_tables)}")
+            
+        for vt_idx, visual_table in enumerate(visual_tables):
+            raw_table_content = visual_table.get("rows", [])
+            if not raw_table_content:
+                continue
+
+            table_markdown = self.table_service.to_markdown(raw_table_content)
+            table_structure = self.table_service.analyze_structure(raw_table_content)
+            table_semantic_interpretation = self.table_service.generate_semantic_context(raw_table_content)
+            table_render_model = self.table_service.build_render_model(raw_table_content, table_structure)
+            bbox = visual_table.get("bbox", {"x": 0, "y": 0, "width": 0, "height": 0})
+
+            table_reconstruction = self.table_service.build_reconstruction_payload(
+                table_id=f"slide_{page_number}_vtable_{vt_idx}",
+                raw_table_content=raw_table_content,
+                table_structure=table_structure,
+                table_render_model=table_render_model,
+                table_semantics=table_semantic_interpretation,
+                is_visual=True,
+                table_geometry=bbox
+            )
+
+            table_element = DocumentElementModel(
+                element_id=f"slide_{page_number}_vtable_{vt_idx}",
+                element_type="table",
+                text=table_markdown,
+                paragraphs=[],
+                position=PositionModel(
+                    x=bbox["x"],
+                    y=bbox["y"],
+                    width=bbox["width"],
+                    height=bbox["height"]
+                ),
+                table_markdown=table_markdown,
+                raw_table_content=raw_table_content,
+                table_structure=table_structure,
+                table_render_model=table_render_model,
+                table_semantic_interpretation=table_semantic_interpretation,
+                table_reconstruction=table_reconstruction,
+                metadata={"z_order": z_order}
+            )
+            extracted_elements.append(table_element)
+
             detected_tables.append({
                 "table_type": visual_table.get("table_type", "visual_table"),
                 "rows": len(visual_table.get("rows", [])),
                 "content": visual_table.get("rows", [])
             })
+            z_order += 1
 
         return SlideModel(
             slide_number=page_number,

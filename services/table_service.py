@@ -58,12 +58,15 @@ class TableService:
             return {}
 
         num_rows = len(table_data)
-        num_cols = len(table_data[0]) if num_rows > 0 else 0
+        num_cols = max(len(row) for row in table_data) if num_rows > 0 else 0
+
+        # Pad rows to ensure uniform length
+        padded_table_data = [row + [""] * (num_cols - len(row)) for row in table_data]
 
         # Check for nested headers
         has_nested_headers = False
         if num_rows > 1:
-            first_row = table_data[0]
+            first_row = padded_table_data[0]
             # Duplicate adjacent cells in header rows often represent merged cells
             has_duplicates = any(first_row[i] == first_row[i+1] and first_row[i].strip() for i in range(len(first_row)-1))
             empty_first = sum(1 for c in first_row if not c.strip())
@@ -78,7 +81,7 @@ class TableService:
         
         # Check for grouped rows
         grouped_row_indices = []
-        for i, row in enumerate(table_data):
+        for i, row in enumerate(padded_table_data):
             row_str = " ".join(row).lower()
             if "subtotal" in row_str or "sub-total" in row_str:
                 has_subtotals = True
@@ -94,17 +97,17 @@ class TableService:
         # Check for grouped columns
         grouped_cols = []
         for col_idx in range(num_cols):
-            col_cells = [table_data[row_idx][col_idx].strip() for row_idx in range(num_rows)]
+            col_cells = [padded_table_data[row_idx][col_idx].strip() for row_idx in range(num_rows)]
             empty_count = sum(1 for c in col_cells if not c)
             if empty_count > num_rows * 0.7 and empty_count < num_rows:
                 grouped_cols.append(col_idx)
 
         # Check for comparison tables
         is_comparison = False
-        all_cells_str = " ".join(" ".join(row) for row in table_data).lower()
+        all_cells_str = " ".join(" ".join(row) for row in padded_table_data).lower()
         if any(kw in all_cells_str for kw in ("vs", "versus", "compare", "features")):
             is_comparison = True
-        yes_no_count = sum(1 for row in table_data for cell in row if cell.strip().lower() in ("yes", "no", "y", "n", "✓", "✗", "true", "false"))
+        yes_no_count = sum(1 for row in padded_table_data for cell in row if cell.strip().lower() in ("yes", "no", "y", "n", "✓", "✗", "true", "false"))
         if yes_no_count > 2:
             is_comparison = True
 
@@ -113,7 +116,7 @@ class TableService:
         financial_keywords = {"revenue", "profit", "ebitda", "balance", "audit", "cash flow", "assets", "liabilities", "expenses", "income", "tax", "operating"}
         if any(kw in all_cells_str for kw in financial_keywords):
             is_financial = True
-        financial_patterns = sum(1 for row in table_data for cell in row if re.search(r'\$\d+|\(\d+\)|\b\d+,\d{3}\b', cell))
+        financial_patterns = sum(1 for row in padded_table_data for cell in row if re.search(r'\$\d+|\(\d+\)|\b\d+,\d{3}\b', cell))
         if financial_patterns > 1:
             is_financial = True
 
@@ -363,3 +366,103 @@ class TableService:
         "cells": cells,
         "structure": table_structure,
     }
+
+    def build_reconstruction_payload(
+        self,
+        table_id: str,
+        raw_table_content: List[List[str]],
+        table_structure: dict,
+        table_render_model: dict,
+        table_semantics: dict,
+        is_visual: bool,
+        table_geometry: dict = None
+    ) -> "TableReconstructionModel":
+        from models.document_model import (
+            TableReconstructionModel,
+            TableCellModel,
+            TableSemanticStructureModel,
+            TableRenderModel
+        )
+        
+        if not raw_table_content:
+            return None
+
+        num_rows = len(raw_table_content)
+        num_cols = max(len(r) for r in raw_table_content) if num_rows > 0 else 0
+
+        headers = [c.strip() for c in raw_table_content[0]] if num_rows > 0 else []
+        row_headers = [r[0].strip() for r in raw_table_content[1:] if len(r) > 0] if num_rows > 1 else []
+
+        cells = []
+        for r_idx, row in enumerate(raw_table_content):
+            for c_idx, text in enumerate(row):
+                role = "data"
+                importance = "normal"
+                if r_idx == 0:
+                    role = "header"
+                    importance = "high"
+                elif c_idx == 0:
+                    role = "row_header"
+                elif r_idx in table_structure.get("total_rows", []):
+                    role = "summary"
+                    importance = "high"
+                elif r_idx in table_structure.get("subtotal_rows", []):
+                    role = "subtotal"
+
+                cells.append(TableCellModel(
+                    row=r_idx,
+                    column=c_idx,
+                    text=text.strip(),
+                    row_span=1,
+                    column_span=1,
+                    role=role,
+                    importance=importance,
+                    semantic_meaning=table_semantics.get("key_insights", [""])[0] if table_semantics.get("key_insights") else "",
+                    cell_geometry={}
+                ))
+        
+        semantic_structure = TableSemanticStructureModel(
+            comparison_dimension=headers if table_structure.get("is_comparison_table") else [],
+            evaluation_dimension=row_headers if table_structure.get("is_comparison_table") else [],
+            decision_dimension=[]
+        )
+
+        render_model = TableRenderModel(
+            layout_type="matrix" if table_structure.get("is_comparison_table") else "grid",
+            header_rows=[0] if num_rows > 0 else [],
+            body_rows=list(range(1, num_rows)),
+            grouped_columns=table_structure.get("grouped_column_indices", []),
+            grouped_rows=table_structure.get("grouped_row_indices", []),
+            merged_regions=[],
+            visual_hierarchy=["header"] + (["summary"] if table_structure.get("has_totals") else [])
+        )
+        
+        reqs = ["Preserve row hierarchy", "Preserve column hierarchy"]
+        if table_structure.get("is_comparison_table"):
+            reqs.append("Preserve comparison relationships")
+        if table_structure.get("has_grouped_rows"):
+            reqs.append("Preserve grouping structure")
+        if table_structure.get("is_financial_table"):
+            reqs.append("Preserve financial calculation logic")
+
+        table_type = "standard"
+        if table_structure.get("is_comparison_table"):
+            table_type = "comparison_matrix"
+        elif table_structure.get("is_financial_table"):
+            table_type = "financial_statement"
+
+        return TableReconstructionModel(
+            table_id=table_id,
+            table_type=table_type,
+            visual_table=is_visual,
+            rows=num_rows,
+            columns=num_cols,
+            headers=headers,
+            row_headers=row_headers,
+            cells=cells,
+            merged_cells=[],
+            semantic_structure=semantic_structure,
+            table_geometry=table_geometry or {},
+            table_render_model=render_model,
+            functional_equivalence_requirements=reqs
+        )

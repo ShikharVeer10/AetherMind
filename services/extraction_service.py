@@ -279,6 +279,11 @@ class ExtractionService:
                             if hasattr(element.table_semantic_interpretation, "model_dump")
                             else element.table_semantic_interpretation
                         ),
+                        "table_reconstruction": (
+                            element.table_reconstruction.model_dump()
+                            if hasattr(element.table_reconstruction, "model_dump")
+                            else element.table_reconstruction
+                        ),
 
                         "chart_understanding": (
                             element.chart_understanding.model_dump()
