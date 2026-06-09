@@ -1,14 +1,5 @@
-from langchain_core.prompts import ChatPromptTemplate
 
 class TableExtractionAgent:
-
-    @staticmethod
-    def get_prompt():
-        return ChatPromptTemplate.from_template(
-            """
-            ...
-            """
-        )
 
     def run(self, slide_model):
 

@@ -218,8 +218,9 @@ class TableService:
         if row_identifiers:
             interpretation_parts.append(f"Row items include: {', '.join(row_identifiers[:6])}.")
 
-        key_insight = self.generate_key_insight(table_data)
-        interpretation_parts.append(f"Key insight: {key_insight}")
+        insights = self.generate_key_insights(table_data)
+        if insights:
+            interpretation_parts.append(f"Key insights: {' '.join(insights)}")
         return " ".join(interpretation_parts)
 
     

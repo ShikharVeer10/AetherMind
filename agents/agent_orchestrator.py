@@ -150,8 +150,14 @@ class AgentOrchestrator:
         )
 
         # 11) Table extraction (markdown)
-        print("    [Orchestrator] Step 11: Table extraction...")
+        print("    [Orchestrator] Step 11: Table extraction and semantics...")
         table_markdowns = self.table_agent.run(slide_model)
+        
+        from services.semantic_table_service import SemanticTableService
+        table_sem_service = SemanticTableService()
+        for element in slide_model.elements:
+            if element.element_type == "table":
+                element.table_semantics = table_sem_service.analyze_table_semantics(element)
 
         # Final assembly
         print("    [Orchestrator] Final assembly...")
@@ -212,6 +218,19 @@ class AgentOrchestrator:
             slide_model.slide_summary = SemanticFlowService().format_structured_output(
                 slide_model.semantic_flow
             )
+            # Transfer LLM-derived semantics to SlideModel
+            slide_model.business_message = slide_model.semantic_flow.overall_flow
+            slide_model.communication_intent = slide_model.semantic_flow.slide_intent
+            slide_model.reading_order = slide_model.semantic_flow.reading_order
+            
+            if slide_model.semantic_flow.visual_hierarchy:
+                from models.document_model import VisualHierarchyModel
+                vh = slide_model.semantic_flow.visual_hierarchy
+                slide_model.visual_hierarchy = VisualHierarchyModel(
+                    primary_focus=[vh.get("primary_focus")] if vh.get("primary_focus") else [],
+                    secondary_focus=[vh.get("secondary_focus")] if vh.get("secondary_focus") else [],
+                    tertiary_focus=[vh.get("tertiary_focus")] if vh.get("tertiary_focus") else []
+                )
 
         # 12.5) Slide summary (fallback if semantic flow did not produce structured output)
         print("    [Orchestrator] Step 12.5: Slide summary generation...")
@@ -232,6 +251,17 @@ class AgentOrchestrator:
         recon_service = SlideReconstructionService()    
         recon_context = recon_service.build_context(slide_model,presentation_metadata=self.presentation_metadata)
         slide_model.slide_reconstruction_context = recon_context
+        
+        # Ensure top-level fields are populated if they weren't by semantic_flow
+        if not slide_model.business_message:
+            slide_model.business_message = recon_context.business_message
+        if not slide_model.communication_intent:
+            slide_model.communication_intent = recon_context.communication_intent
+        if not slide_model.functional_equivalence_requirements:
+            slide_model.functional_equivalence_requirements = recon_context.functional_equivalence_requirements
+        if not slide_model.reading_order:
+            slide_model.reading_order = recon_context.reading_order
+
         return slide_model
 
     async def _run_image_summaries(self, slide_model: SlideModel) -> Optional[str]:

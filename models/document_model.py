@@ -68,6 +68,7 @@ class DiagramUnderstandingModel(BaseModel):
     edge_count: int = 0
     nodes: List[Dict[str, Any]] = Field(default_factory=list)
     edges: List[Dict[str, Any]] = Field(default_factory=list)
+    semantic_relationships: List[Dict[str, Any]] = Field(default_factory=list)
     flow_description: str = ""
     summary: str = ""
 
@@ -81,6 +82,14 @@ class ChartUnderstandingModel(BaseModel):
     anomalies: List[str] = Field(default_factory=list)
     comparisons: List[str] = Field(default_factory=list)
     raw_chart_data: Optional[Dict[str, Any]] = None
+
+
+class TableSemanticsModel(BaseModel):
+    headers: List[str] = Field(default_factory=list)
+    sub_headers: List[str] = Field(default_factory=list)
+    row_groups: List[Dict[str, Any]] = Field(default_factory=list)
+    column_groups: List[Dict[str, Any]] = Field(default_factory=list)
+    merged_cells: List[Dict[str, Any]] = Field(default_factory=list)
 
 
 class SemanticRegionModel(BaseModel):
@@ -103,6 +112,7 @@ class DocumentElementModel(BaseModel):
     table_markdown: Optional[str] = None
     raw_table_content: Optional[List[List[str]]] = None
     table_structure: Optional[Dict[str, Any]] = None
+    table_semantics: Optional[TableSemanticsModel] = None
     table_visual_metadata: Optional[dict] = None
     table_render_model: Optional[dict] = None
     table_semantic_interpretation: Optional[Dict[str, Any]] = None
@@ -163,6 +173,7 @@ class LayoutRegionModel(BaseModel):
 
 class LayoutStructureModel(BaseModel):
     layout_type: str = ""
+    layout_pattern: str = ""
     regions: List[RegionModel] = Field(default_factory=list)
 
 
@@ -194,6 +205,9 @@ class VisualDesignModel(BaseModel):
 
 class ImageUnderstandingModel(BaseModel):
     scene_description: str = ""
+    business_meaning: Optional[str] = None
+    visual_metaphors: List[str] = Field(default_factory=list)
+    symbolic_meaning: List[str] = Field(default_factory=list)
     objects_detected: List[str] = Field(default_factory=list)
     actions_detected: List[str] = Field(default_factory=list)
     relationships: List[str] = Field(default_factory=list)
@@ -249,6 +263,7 @@ class SlideReconstructionContextModel(BaseModel):
     body_typography: str = ""
     typography_color_palette: List[str] = Field(default_factory=list)
     layout_type: str = ""
+    layout_pattern: str = ""
     canvas_ratio: str = "16:9"
     regions: List[str] = Field(default_factory=list)
     reading_order: List[str] = Field(default_factory=list)
@@ -262,6 +277,9 @@ class SlideReconstructionContextModel(BaseModel):
     image_reconstructions: List[Dict[str, Any]] = Field(default_factory=list)
     element_relationships: List[str] = Field(default_factory=list)
     reconstruction_prompt: str = ""
+    functional_equivalence_requirements: List[str] = Field(default_factory=list)
+    business_message: Optional[str] = None
+    communication_intent: Optional[str] = None
 
 class SlideContextModel(BaseModel):
     header_footer: Optional[HeaderFooterModel] = None
@@ -280,8 +298,6 @@ class SlideContextModel(BaseModel):
     table_contexts: List[Dict[str, Any]] = Field(default_factory=list)
     image_depictions: List[str] = Field(default_factory=list)
     slide_structure_summary: Optional[str] = None
-
-
 
 
 class ImageReconstructionModel(BaseModel):
@@ -307,6 +323,11 @@ class SemanticSlideDescriptionModel(BaseModel):
     image_depiction_summary: Optional[str]
     slide_archetype: str | None = None
     flowchart_summary: str | None = None
+
+class VisualHierarchyModel(BaseModel):
+    primary_focus: List[str] = Field(default_factory=list)
+    secondary_focus: List[str] = Field(default_factory=list)
+    tertiary_focus: List[str] = Field(default_factory=list)
 
 class SlideModel(BaseModel):
     slide_number: int
@@ -335,10 +356,17 @@ class SlideModel(BaseModel):
     semantic_regions: List[SemanticRegionModel] = Field(default_factory=list)
     detected_tables: Optional[list] = []
 
-    
+    # New additions for Semantic Slide Reconstruction Fidelity
+    business_message: Optional[str] = None
+    communication_intent: Optional[str] = None
+    slide_purpose: Optional[str] = None
+    visual_hierarchy: Optional[VisualHierarchyModel] = None
+    reading_order: List[str] = Field(default_factory=list)
+    functional_equivalence_requirements: List[str] = Field(default_factory=list)
 
 class DocumentStructureModel(BaseModel):
     presentation_type: str = "unknown"
+    document_role: str = "unknown"
     slide_sequence: List[str] = Field(default_factory=list)
     total_sections: int = 0
     section_breaks: List[int] = Field(default_factory=list)
@@ -364,4 +392,3 @@ class DocumentModel(BaseModel):
         description="Top-level presentation metadata: author, slide dimensions, theme, etc.",
     )
     document_structure: Optional[Dict[str, Any]] = None
-

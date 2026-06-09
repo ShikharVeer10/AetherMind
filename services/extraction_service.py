@@ -654,9 +654,9 @@ class ExtractionService:
                 "image_description": image_summary,
                 "table_markdown": element.table_markdown,
                 "table_structure": (
-                element.table_structure.model_dump()
-                    if element.table_structure
-                    else None
+                    element.table_structure.model_dump()
+                    if hasattr(element.table_structure, "model_dump")
+                    else element.table_structure
                 ),
                 "raw_table_content": element.raw_table_content,
                  "table_semantic_interpretation": (

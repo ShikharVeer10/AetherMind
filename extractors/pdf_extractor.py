@@ -1,4 +1,3 @@
-from cohere.types import chat_tool_call_delta_event_delta_message_tool_calls_function
 from services.semantic_table_service import SemanticTableService
 from services.flexible_table_detector import FlexibleTableDetector
 from typing import List, Optional
@@ -69,35 +68,30 @@ class PDFExtractor:
         page_height_points = page.rect.height
 
         extracted_elements = []
+        detected_tables = []
         z_order = 1
 
         text_dict = page.get_text("dict")
         blocks = text_dict.get("blocks", [])
         print("\nPAGE:", page_number)
+        
         try:
             tables = page.find_tables()
             print("TABLES FOUND:", len(tables.tables))
         except Exception as e:
             print("TABLE DETECTION ERROR:", e)
-            tables = []
-
-        try:
-            tables = page.find_tables()
-        except Exception:
-            pass
+            tables = None
         
         slide_title = self._deduce_title(
-        blocks,
-        page_height_points
-    )
+            blocks,
+            page_height_points
+        )
 
         for block_idx, block in enumerate(blocks):
-
             if block.get("type") != 0:
                 continue
 
             lines = block.get("lines", [])
-
             if not lines:
                 continue
 
@@ -105,26 +99,17 @@ class PDFExtractor:
             block_text_parts = []
 
             for line in lines:
-
                 line_spans = line.get("spans", [])
-
                 if not line_spans:
                     continue
 
-                line_text = "".join(
-                    span.get("text", "")
-                    for span in line_spans
-                ).strip()
-
+                line_text = "".join(span.get("text", "") for span in line_spans).strip()
                 if not line_text:
                     continue
 
                 runs = []
-
                 for span in line_spans:
-
                     span_text = span.get("text", "")
-
                     if not span_text:
                         continue
 
@@ -132,45 +117,30 @@ class PDFExtractor:
                     font_size = span.get("size")
                     flags = span.get("flags", 0)
 
-                    is_bold = (
-                        bool(flags & 16)
-                        or "bold" in font_name.lower()
-                    )
-
-                    is_italic = (
-                        bool(flags & 2)
-                        or "italic" in font_name.lower()
-                        or "oblique" in font_name.lower()
-                    )
+                    is_bold = bool(flags & 16) or "bold" in font_name.lower()
+                    is_italic = bool(flags & 2) or "italic" in font_name.lower() or "oblique" in font_name.lower()
 
                     color_int = span.get("color")
+                    runs.append(RunModel(
+                        text=span_text,
+                        bold=is_bold,
+                        italic=is_italic,
+                        font_size=font_size,
+                        font_name=font_name,
+                        font_color=self._get_color_hex(color_int),
+                    ))
 
-                    runs.append(
-                        RunModel(
-                            text=span_text,
-                            bold=is_bold,
-                            italic=is_italic,
-                            font_size=font_size,
-                            font_name=font_name,
-                            font_color=self._get_color_hex(color_int),
-                    )
-                )
-
-                paragraphs.append(
-                    ParagraphModel(
-                        level=0,
-                        text=line_text,
-                        runs=runs,
-                    )
-                )
-
+                paragraphs.append(ParagraphModel(
+                    level=0,
+                    text=line_text,
+                    runs=runs,
+                ))
                 block_text_parts.append(line_text)
 
             if not block_text_parts:
                 continue
 
             full_text = "\n".join(block_text_parts)
-
             bx0, by0, bx1, by1 = block["bbox"]
 
             position = PositionModel(
@@ -181,14 +151,11 @@ class PDFExtractor:
             )
 
             style = None
-
             if lines and lines[0].get("spans"):
                 first_span = lines[0]["spans"][0]
                 font_name = first_span.get("font", "")
                 flags = first_span.get("flags", 0)
-
                 is_bold = (bool(flags & 16) or "bold" in font_name.lower())
-
                 is_italic = (bool(flags & 2) or "italic" in font_name.lower() or "oblique" in font_name.lower())
 
                 style = StyleModel(
@@ -196,14 +163,10 @@ class PDFExtractor:
                     font_name=font_name,
                     bold=is_bold,
                     italic=is_italic,
-                    text_color=self._get_color_hex(
-                        first_span.get("color")
-                    ),
-                    background_color=None,
+                    text_color=self._get_color_hex(first_span.get("color")),
                 )
 
             element_id = f"slide_{page_number}_shape_{block_idx + 1}"
-
             elem = DocumentElementModel(
                 element_id=element_id,
                 element_type="text_box",
@@ -219,145 +182,55 @@ class PDFExtractor:
                     "z_order": z_order,
                 },
             )
-
             extracted_elements.append(elem)
-
-
-            visual_tables = (
-                self.flexible_table_detector
-                .detect_visual_tables(
-                    extracted_elements
-                )
-            )
-
-            for idx, visual_table in enumerate(visual_tables):
-                render_model = (
-                    
-                )
-
-                detected_tables.append({
-                    "table_type": visual_table["table_type"],
-                    "table_render_model": render_model,
-                    "rows": visual_table["rows"]
-                }
-            )
             z_order += 1
-        for table_idx, table in enumerate(tables.tables):
 
-            raw_table_content = self.extract_table_as_list(table)
-            print("\n" + "=" * 80)
-            print(f"TABLE {table_idx}")
-            print("=" * 80)
+        # Process native tables if found
+        if tables:
+            for table_idx, table in enumerate(tables.tables):
+                raw_table_content = self.extract_table_as_list(table)
+                if not raw_table_content:
+                    continue
 
-            for row in raw_table_content:
-                print(row)
-
-                print("=" * 80)
-            if not raw_table_content:
-                continue
-
-            table_markdown = self.table_service.to_markdown(
-                    raw_table_content
-            )
-
-            table_structure = self.table_service.analyze_structure(raw_table_content)
-
-            table_semantic_interpretation = (
-                self.table_service.generate_semantic_context(raw_table_content))
-
-            table_render_model = (
-                self.table_service.build_render_model(
-                raw_table_content,
-                table_structure
+                table_markdown = self.table_service.to_markdown(raw_table_content)
+                table_structure = self.table_service.analyze_structure(raw_table_content)
+                table_semantic_interpretation = self.table_service.generate_semantic_context(raw_table_content)
+                table_render_model = self.table_service.build_render_model(raw_table_content, table_structure)
+                
+                table_element = DocumentElementModel(
+                    element_id=f"slide_{page_number}_table_{table_idx}",
+                    element_type="table",
+                    text=table_markdown,
+                    paragraphs=[],
+                    position=PositionModel(
+                        x=table.bbox[0] * scale,
+                        y=table.bbox[1] * scale,
+                        width=(table.bbox[2] - table.bbox[0]) * scale,
+                        height=(table.bbox[3] - table.bbox[1]) * scale,
+                    ),
+                    table_markdown=table_markdown,
+                    raw_table_content=raw_table_content,
+                    table_structure=table_structure,
+                    table_render_model=table_render_model,
+                    table_semantic_interpretation=table_semantic_interpretation,
+                    metadata={"z_order": z_order}
                 )
-            )
-            table_visual_metadata = {
-                "page_number": page_number,
-                "bbox": {
-                    "x0": table.bbox[0],
-                    "y0": table.bbox[1],
-                    "x1": table.bbox[2],
-                    "y1": table.bbox[3],
-                },
-                "width": table.bbox[2] - table.bbox[0],
-                "height": table.bbox[3] - table.bbox[1],
-                "table_index": table_idx,
-            }
-            
-            table_element = DocumentElementModel(
-                element_id=f"slide_{page_number}_table_{table_idx}",
-                element_type="table",
-                text=table_markdown,
-                paragraphs=[],
-                style=None,
-                shape_type="table",
-                position=PositionModel(
-                    x=table.bbox[0] * scale,
-                    y=table.bbox[1] * scale,
-                    width=(table.bbox[2] - table.bbox[0]) * scale,
-                    height=(table.bbox[3] - table.bbox[1]) * scale,
-                ),
-                table_markdown=table_markdown,
-                raw_table_content=raw_table_content,
-                table_structure=table_structure,
-                table_render_model=table_render_model,
-                table_semantic_interpretation=table_semantic_interpretation,
-                table_visual_metadata=table_visual_metadata,
-                metadata={
-                    "z_order": z_order
-                }
-)
-
-            extracted_elements.append(
-                table_element
-            )
-
-            z_order += 1
-        layout_regions = []
-
-        try:
-
-            layout_region = (
-                self.layout_service
-                .build_grid_structure(page)
-            )
-
-            layout_regions.append(layout_region)
-
-        except Exception as e:
-
-            print(
-        f"Layout extraction failed: {e}"
-    )
-
-        detected_tables = []
-
-        for element in extracted_elements:
-
-            if element.element_type == "table":
-
+                extracted_elements.append(table_element)
                 detected_tables.append({
-                "raw_table_content": element.raw_table_content,
-                "table_structure": element.table_structure,
-                "table_render_model": element.table_render_model,
-                "table_semantic": element.table_semantic_interpretation,
+                    "rows": len(raw_table_content),
+                    "columns": max(len(r) for r in raw_table_content) if raw_table_content else 0,
+                    "content": raw_table_content
                 })
+                z_order += 1
 
-                detected_tables = []
-
-                for element in extracted_elements:
-
-                    if element.element_type == "table":
-
-                        detected_tables.append({
-                            "rows": len(element.raw_table_content),
-                            "columns": max(
-                                len(r)
-                                for r in element.raw_table_content
-                            ) if element.raw_table_content else 0,
-
-                            "content": element.raw_table_content
-                        })
+        # Flexible table detection fallback for text blocks
+        visual_tables = self.flexible_table_detector.detect_visual_tables(extracted_elements)
+        for visual_table in visual_tables:
+            detected_tables.append({
+                "table_type": visual_table.get("table_type", "visual_table"),
+                "rows": len(visual_table.get("rows", [])),
+                "content": visual_table.get("rows", [])
+            })
 
         return SlideModel(
             slide_number=page_number,

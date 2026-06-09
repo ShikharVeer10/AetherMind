@@ -10,11 +10,11 @@ class DocumentStructureService:
         - narrative flow description
         """
         if not doc or not doc.slides:
-            return {
-                "document_role": "unknown",
-                "sections": [],
-                "narrative_flow": "Empty document."
-            }
+            return DocumentStructureModel(
+                presentation_type="unknown",
+                document_role="unknown",
+                narrative_flow="Empty document."
+            )
 
         slide_roles = []
         slide_sequence = []
@@ -23,7 +23,6 @@ class DocumentStructureService:
         findings_slides = []
         recommendation_slides = []
         appendix_slides = []
-        section_breaks = []
         is_financial = False
         is_research = False
         is_consulting = False
@@ -55,28 +54,18 @@ class DocumentStructureService:
             
             slide_roles.append(intent)
             slide_sequence.append(intent)
+            slide_no = slide.slide_number
 
-        slide_no = slide.slide_number
-
-        if intent == "executive_summary":
-            executive_summary_slides.append(slide_no)
-
-        elif intent == "methodology":
-            methodology_slides.append(slide_no)
-
-        elif intent in {
-        "findings",
-        "dashboard",
-        "comparison",
-        "research_report"
-        }:
-            findings_slides.append(slide_no)
-
-        elif intent == "recommendations":
-            recommendation_slides.append(slide_no)
-
-        elif intent == "appendix":
-            appendix_slides.append(slide_no)
+            if intent == "executive_summary":
+                executive_summary_slides.append(slide_no)
+            elif intent == "methodology":
+                methodology_slides.append(slide_no)
+            elif intent in {"findings", "dashboard", "comparison", "research_report"}:
+                findings_slides.append(slide_no)
+            elif intent == "recommendations":
+                recommendation_slides.append(slide_no)
+            elif intent == "appendix":
+                appendix_slides.append(slide_no)
 
             # Check content keywords for overall classification
             content_text = ""
@@ -141,24 +130,17 @@ class DocumentStructureService:
 
         return DocumentStructureModel(
             presentation_type=doc_role,
+            document_role=doc_role,
             slide_sequence=slide_sequence,
-
             total_sections=len(sections),
-
-            section_breaks=section_breaks,
-
+            section_breaks=[],
             executive_summary_slides=executive_summary_slides,
-
             methodology_slides=methodology_slides,
-
             findings_slides=findings_slides,
-
             recommendation_slides=recommendation_slides,
-
             appendix_slides=appendix_slides,
-
             narrative_flow=narrative_flow,
-
+            sections=sections,
             document_summary=(
                 f"{doc_role} consisting of "
                 f"{len(doc.slides)} slides and "

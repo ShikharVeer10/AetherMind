@@ -57,9 +57,70 @@ class SlideReconstructionService:
         ctx.visual_elements = self._build_visual_elements(slide, pres_meta)
         ctx.image_reconstructions = self._build_image_reconstructions(slide)
         ctx.element_relationships = self._build_relationships(slide)
+        
+        # Populate new semantic fidelity fields
+        ctx.business_message = self._infer_business_message(slide)
+        ctx.communication_intent = self._infer_communication_intent(slide)
+        ctx.functional_equivalence_requirements = self._derive_functional_equivalence_requirements(slide)
+        ctx.layout_pattern = self._detect_layout_pattern(slide)
+
+        # Update SlideModel with these fields too
+        slide.business_message = ctx.business_message
+        slide.communication_intent = ctx.communication_intent
+        slide.slide_purpose = ctx.purpose
+        slide.functional_equivalence_requirements = ctx.functional_equivalence_requirements
+        
+        # Improved Visual Hierarchy for SlideModel
+        from models.document_model import VisualHierarchyModel
+        slide.visual_hierarchy = VisualHierarchyModel(
+            primary_focus=[ctx.primary_focus] if ctx.primary_focus else [],
+            secondary_focus=[ctx.secondary_focus] if ctx.secondary_focus else [],
+            tertiary_focus=[ctx.tertiary_elements] if ctx.tertiary_elements else []
+        )
+        slide.reading_order = ctx.reading_order
+
         ctx.reconstruction_prompt = self._format_reconstruction_prompt(ctx, slide)
 
         return ctx
+
+    def _infer_business_message(self, slide: SlideModel) -> str:
+        if slide.semantic_flow and slide.semantic_flow.overall_flow:
+            return slide.semantic_flow.overall_flow
+        if slide.slide_summary:
+            return slide.slide_summary.split(".")[0]
+        return "Not explicitly stated"
+
+    def _infer_communication_intent(self, slide: SlideModel) -> str:
+        if slide.semantic_flow and slide.semantic_flow.slide_intent:
+            return slide.semantic_flow.slide_intent
+        return self._infer_category(slide)
+
+    def _derive_functional_equivalence_requirements(self, slide: SlideModel) -> List[str]:
+        requirements = []
+        slide_type = self._infer_slide_type(slide)
+        
+        if slide_type == "flowchart":
+            requirements.append("Maintain the logical process flow and decision branches")
+        elif slide_type == "data_table":
+            requirements.append("Preserve the tabular structure and data relationships")
+        elif slide_type == "chart_slide":
+            requirements.append("Retain the visual representation of data trends and comparisons")
+            
+        if slide.layout_structure and slide.layout_structure.layout_type:
+            requirements.append(f"Follow the {slide.layout_structure.layout_type} layout pattern")
+            
+        if slide.semantic_flow and slide.semantic_flow.reading_order:
+            requirements.append("Preserve the specific semantic reading order")
+            
+        if not requirements:
+            requirements.append("Preserve information hierarchy and visual emphasis")
+            
+        return requirements
+
+    def _detect_layout_pattern(self, slide: SlideModel) -> str:
+        if slide.layout_structure and slide.layout_structure.layout_type:
+            return slide.layout_structure.layout_type
+        return "custom"
 
     def _infer_slide_type(self, slide: SlideModel) -> str:
         if slide.flowchart and slide.flowchart.is_flowchart:

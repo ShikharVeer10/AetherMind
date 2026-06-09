@@ -1,7 +1,38 @@
-from typing import Dict, List
+from typing import Dict, List, Any
+from models.document_model import TableSemanticsModel
 
 
 class SemanticTableService:
+
+    def analyze_table_semantics(self, table_element: Any) -> TableSemanticsModel:
+        """
+        Analyzes a table element to extract semantic structure.
+        In a real implementation, this would involve complex logic to identify
+        headers and groups based on styles, merged cells, and content.
+        """
+        semantics = TableSemanticsModel()
+        
+        if not hasattr(table_element, "raw_table_content") or not table_element.raw_table_content:
+            return semantics
+
+        raw_content = table_element.raw_table_content
+        if not raw_content:
+            return semantics
+
+        # Basic heuristic: First row is headers
+        if len(raw_content) > 0:
+            semantics.headers = [str(c) for c in raw_content[0]]
+
+        # Basic heuristic: Second row might be sub-headers if it exists
+        if len(raw_content) > 1:
+            # Simple check for sub-headers: if many cells are empty or similar
+            semantics.sub_headers = [str(c) for c in raw_content[1]]
+
+        # Map merged cells if available in metadata
+        if hasattr(table_element, "table_merged_cells") and table_element.table_merged_cells:
+            semantics.merged_cells = table_element.table_merged_cells
+
+        return semantics
 
     def build_table_json(
         self,

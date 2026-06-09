@@ -98,7 +98,7 @@ def test_pipeline():
     
     doc_structure_service = DocumentStructureService()
     doc.document_structure = doc_structure_service.analyze_document(doc)
-    assert doc.document_structure["document_role"] == "Financial Audit Report"
+    assert doc.document_structure.document_role == "Financial Audit Report"
     print("Document Structure Analysis: PASSED")
 
     # 5. Test JSON Serialization Compatibility
