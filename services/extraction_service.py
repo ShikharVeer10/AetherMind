@@ -270,8 +270,8 @@ class ExtractionService:
                         ),
                         "table_render_model": (
                             element.table_render_model.model_dump()
-                            if element.table_render_model
-                            else None
+                            if hasattr(element.table_render_model, "model_dump")
+                            else element.table_render_model
                         ),
 
                         "table_semantic_interpretation": (
