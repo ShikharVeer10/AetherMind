@@ -167,6 +167,7 @@ class DocumentElementModel(BaseModel):
     table_geometry: dict = Field(default_factory=dict)
     table_styles: dict = Field(default_factory=dict)
     table_merged_cells: list = Field(default_factory=list)
+    original_ids: List[str] = Field(default_factory=list)
 
 class HeaderFooterModel(BaseModel):
     header_text: Optional[str] = None

@@ -158,6 +158,10 @@ class FlexibleTableDetector:
             row_start = min(range(len(grid_y)), key=lambda i: abs(grid_y[i] - e.position.y))
             row_end = min(range(len(grid_y)), key=lambda i: abs(grid_y[i] - (e.position.y + e.position.height)))
 
+            # Clip indices to valid grid range
+            col_start = min(col_start, num_cols - 1)
+            row_start = min(row_start, num_rows - 1)
+            
             if col_end <= col_start: col_end = col_start + 1
             if row_end <= row_start: row_end = row_start + 1
             

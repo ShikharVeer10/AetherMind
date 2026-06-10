@@ -4,7 +4,7 @@ Converts raw table data (list of lists) into GitHub-Flavoured Markdown.
 Called by the orchestrator for every table element found on a slide.
 """
 
-from typing import List
+from typing import List, Any, Dict
 
 
 class TableService:
