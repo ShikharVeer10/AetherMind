@@ -294,39 +294,87 @@ class PPTExtractor:
         table_visual_metadata = None
 
         if element_type == "table":
-
             raw_table_content = self.extract_table_as_list(shape)
+            raw_table_styles = self._extract_table_styles(shape)
 
         table_md = self.extract_table_as_markdown(shape)
-
         table_structure = self.table_service.analyze_structure(raw_table_content)
+        table_semantic_interpretation = self.table_service.generate_semantic_context(raw_table_content)
+        table_render_model = self.table_service.build_render_model(raw_table_content, table_structure)
+        table_visual_metadata = self.extract_table_visual_metadata(shape)
 
-        table_semantic_interpretation = (self.table_service.generate_semantic_context(raw_table_content))
-
-        table_render_model = self.table_service.build_render_model(raw_table_content,table_structure)
-
-        table_visual_metadata = (self.extract_table_visual_metadata(shape))
-
-        print("TABLE DETECTED")
-        print("ROWS:", len(raw_table_content))
-        print("STRUCTURE:", table_structure)
+        table_reconstruction = self.table_service.build_reconstruction_payload(
+            table_id=element_id,
+            raw_table_content=raw_table_content,
+            table_structure=table_structure,
+            table_render_model=table_render_model,
+            table_semantics=table_semantic_interpretation,
+            is_visual=False,
+            table_geometry={"x": x, "y": y, "width": w, "height": h},
+            raw_table_styles=raw_table_styles
+        )
 
         return DocumentElementModel(
-    element_id=element_id,
-    element_type=element_type,
-    text=full_text,
-    paragraphs=paragraphs,
-    position=position,
-    style=style,
-    shape_type=str(shape.shape_type),
-    metadata=metadata,
-    table_markdown=table_md,
-    raw_table_content=raw_table_content,
-    table_structure=table_structure,
-    table_render_model=table_render_model,
-    table_semantic_interpretation=table_semantic_interpretation,
-    table_visual_metadata=table_visual_metadata,
-)  
+            element_id=element_id,
+            element_type=element_type,
+            text=full_text,
+            paragraphs=paragraphs,
+            position=position,
+            style=style,
+            shape_type=str(shape.shape_type),
+            metadata=metadata,
+            table_markdown=table_md,
+            raw_table_content=raw_table_content,
+            table_structure=table_structure,
+            table_render_model=table_render_model,
+            table_semantic_interpretation=table_semantic_interpretation,
+            table_visual_metadata=table_visual_metadata,
+            table_reconstruction=table_reconstruction
+        )
+
+    def _extract_table_styles(self, shape) -> List[List[StyleModel]]:
+        """Extracts styling (bg color, font properties) for every cell in a native PPT table."""
+        styles = []
+        if not shape.has_table:
+            return []
+        
+        for row in shape.table.rows:
+            row_styles = []
+            for cell in row.cells:
+                # 1. Background color
+                bg_color = None
+                try:
+                    if cell.fill and cell.fill.fore_color:
+                        bg_color = self._get_safe_color_hex(cell.fill.fore_color)
+                except Exception:
+                    pass
+                
+                # 2. Font properties from first paragraph
+                font_size = None
+                font_name = None
+                is_bold = False
+                text_color = None
+                try:
+                    if cell.text_frame.paragraphs:
+                        p = cell.text_frame.paragraphs[0]
+                        if p.runs:
+                            f = p.runs[0].font
+                            font_size = float(f.size.pt) if f.size else None
+                            font_name = f.name
+                            is_bold = bool(f.bold)
+                            text_color = self._get_safe_color_hex(f.color)
+                except Exception:
+                    pass
+                
+                row_styles.append(StyleModel(
+                    background_color=bg_color,
+                    font_size=font_size,
+                    font_name=font_name,
+                    bold=is_bold,
+                    text_color=text_color
+                ))
+            styles.append(row_styles)
+        return styles
         
 
     def _get_shape_type(self, shape) -> str:

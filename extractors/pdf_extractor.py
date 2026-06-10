@@ -163,21 +163,46 @@ class PDFExtractor:
                 if not raw_table_content:
                     continue
 
-                # Mark spans inside native table as consumed
+                # Mark spans inside native table as consumed and extract cell styles
                 t_bx0, t_by0, t_bx1, t_by1 = table.bbox
-                t_bx0, t_by0, t_bx1, t_by1 = t_bx0 * scale, t_by0 * scale, t_bx1 * scale, t_by1 * scale
-                
-                for elem in all_visual_elements:
-                    ex = elem.position.x
-                    ey = elem.position.y
-                    if (t_bx0 - 1000 <= ex <= t_bx1 + 1000) and (t_by0 - 1000 <= ey <= t_by1 + 1000):
-                        consumed_element_ids.add(elem.element_id)
+                t_bx0, t_by0, t_bx1, t_by1 = t_bx0 * scale, t_by0 * scale, t_bx1 * scale, t_by1 * scale        
+
+                raw_table_styles = []
+                for r_idx, row in enumerate(table.rows):
+                    row_styles = []
+                    for c_idx, cell_bbox in enumerate(row.cells):
+                        if cell_bbox is None:
+                            row_styles.append(None)
+                            continue
+
+                        # Find background color for this cell
+                        bg_color = self._get_background_color_at(page, cell_bbox)
+
+                        # Find dominant text style for this cell
+                        cell_style = None
+                        for elem in all_visual_elements:
+                            ex = elem.position.x
+                            ey = elem.position.y
+                            # Check if span is inside cell
+                            if (cell_bbox[0]*scale - 500 <= ex <= cell_bbox[2]*scale + 500) and \
+                               (cell_bbox[1]*scale - 500 <= ey <= cell_bbox[3]*scale + 500):
+                                consumed_element_ids.add(elem.element_id)
+                                if not cell_style and elem.style:
+                                    cell_style = elem.style.model_copy()
+
+                        if cell_style:
+                            cell_style.background_color = bg_color
+                        else:
+                            cell_style = StyleModel(background_color=bg_color)
+
+                        row_styles.append(cell_style)
+                    raw_table_styles.append(row_styles)
 
                 table_markdown = self.table_service.to_markdown(raw_table_content)
                 table_structure = self.table_service.analyze_structure(raw_table_content)
                 table_semantic_interpretation = self.table_service.generate_semantic_context(raw_table_content)
                 table_render_model = self.table_service.build_render_model(raw_table_content, table_structure)
-                
+
                 table_reconstruction = self.table_service.build_reconstruction_payload(
                     table_id=f"slide_{page_number}_table_{table_idx}",
                     raw_table_content=raw_table_content,
@@ -190,9 +215,10 @@ class PDFExtractor:
                         "y": t_by0,
                         "width": t_bx1 - t_bx0,
                         "height": t_by1 - t_by0
-                    }
+                    },
+                    raw_table_styles=raw_table_styles
                 )
-                
+
                 table_element = DocumentElementModel(
                     element_id=f"slide_{page_number}_table_{table_idx}",
                     element_type="table",
@@ -223,7 +249,7 @@ class PDFExtractor:
         # 3. Flexible table detection on remaining spans
         remaining_spans = [e for e in all_visual_elements if e.element_id not in consumed_element_ids]
         visual_tables = self.flexible_table_detector.detect_visual_tables(remaining_spans)
-            
+
         for vt_idx, visual_table in enumerate(visual_tables):
             raw_table_content = visual_table.get("rows", [])
             raw_table_styles = visual_table.get("styles", [])
@@ -235,21 +261,25 @@ class PDFExtractor:
             table_markdown = self.table_service.to_markdown(raw_table_content)
             table_structure = self.table_service.analyze_structure(raw_table_content)
             table_structure["merged_cells"] = visual_table.get("merged_cells", [])
-            
+
             table_semantic_interpretation = self.table_service.generate_semantic_context(raw_table_content)
             table_render_model = self.table_service.build_render_model(raw_table_content, table_structure)
             bbox = visual_table.get("bbox", {"x": 0, "y": 0, "width": 0, "height": 0})
-            
+
             # 3.1 Extract Background Colors for Visual Table Cells
-            raw_table_bg_colors = []
+            if not raw_table_styles:
+                raw_table_styles = [[None for _ in row] for row in raw_table_content]
+
             for r_idx, row in enumerate(raw_table_content):
-                row_colors = []
                 for c_idx, text in enumerate(row):
-                    # Estimate point-based bbox for this cell
-                    # This is a heuristic based on the grid layout
+                    # Estimate cell bbox for background color query
+                    # This is approximate based on elements in that cell
                     cell_color = self._get_background_color_at(page, (bbox["x"]/scale, bbox["y"]/scale, (bbox["x"]+bbox["width"])/scale, (bbox["y"]+bbox["height"])/scale))
-                    row_colors.append(cell_color)
-                raw_table_bg_colors.append(row_colors)
+                    if cell_color:
+                        if not raw_table_styles[r_idx][c_idx]:
+                            raw_table_styles[r_idx][c_idx] = StyleModel(background_color=cell_color)
+                        else:
+                            raw_table_styles[r_idx][c_idx].background_color = cell_color
 
             table_reconstruction = self.table_service.build_reconstruction_payload(
                 table_id=f"slide_{page_number}_vtable_{vt_idx}",
@@ -261,15 +291,6 @@ class PDFExtractor:
                 table_geometry=bbox,
                 raw_table_styles=raw_table_styles
             )
-            
-            # Apply background colors to reconstruction cells
-            if table_reconstruction and table_reconstruction.cells:
-                for cell in table_reconstruction.cells:
-                    bg_color = raw_table_bg_colors[cell.row][cell.column]
-                    if bg_color:
-                        if not cell.style:
-                            cell.style = StyleModel()
-                        cell.style.background_color = bg_color
 
             table_element = DocumentElementModel(
                 element_id=f"slide_{page_number}_vtable_{vt_idx}",
@@ -305,14 +326,16 @@ class PDFExtractor:
             if elem.element_id not in consumed_element_ids:
                 final_elements.append(elem)
 
+        # 5. Detect Slide Background Color
+        slide_bg_color = self._get_background_color_at(page, (0, 0, page.rect.width, page.rect.height)) or "#ffffff"
+
         return SlideModel(
             slide_number=page_number,
             title=slide_title,
             elements=final_elements,
-            background_color="#ffffff",
+            background_color=slide_bg_color,
             detected_tables=detected_tables,
         )
-
 
 
 

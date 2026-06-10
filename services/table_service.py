@@ -113,24 +113,26 @@ class TableService:
             return {}
 
         structure = self.analyze_structure(table_data)
-        
+
         # Dense reconstruction strategy for LLM
         strategy = []
         if structure["table_archetype"] == "complex_cross_tab":
             strategy.append("Recreate as a multi-tier hierarchical matrix. Map the top {d} rows as spanning headers.".format(d=structure["header_depth"]))
         if structure["is_pivot_structure"]:
-            strategy.append("The first column contains primary row identifiers; treat as Y-axis headers.")
+            strategy.append("The first column contains primary row identifiers; treat as Y-axis headers.")     
         if structure["section_rows"]:
             strategy.append("This table contains mid-table section headers at rows {r}. These should span the full width.".format(r=structure["section_rows"]))
-        
+
+        # Add visual theme cues if possible (placeholder for logic that checks raw_table_styles)
+        strategy.append("Apply the specific background colors and text weights defined in the 'cells' metadata to ensure visual parity.")
+
         return {
             "archetype": structure["table_archetype"],
             "structural_summary": "A {a} with {r} rows and {c} columns.".format(a=structure["table_archetype"], r=structure["dimensions"]["rows"], c=structure["dimensions"]["cols"]),
             "reconstruction_strategy": " ".join(strategy),
             "key_insights": self.generate_key_insights(table_data),
-            "logical_reading_order": "column-major" if structure["is_pivot_structure"] else "row-major"
+            "logical_reading_order": "column-major" if structure["is_pivot_structure"] else "row-major"        
         }
-
     def generate_interpretation(self, table_data: List[List[str]]) -> str:
         """
         Generate a semantic interpretation of the table content and structure.
