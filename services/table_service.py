@@ -44,14 +44,12 @@ class TableService:
 
     def analyze_structure(self, table_data: List[List[str]]) -> dict:
         """
-        Analyze table structure to detect:
-        - nested headers
-        - grouped rows
-        - grouped columns
-        - subtotals
-        - totals
-        - comparison tables
-        - audit-style financial tables
+        Deep structural analysis to detect sophisticated table patterns:
+        - Multi-level hierarchical headers (n-tier)
+        - Pivot/Cross-tab structures
+        - Asymmetric grids (merged cells)
+        - Key-Value pairs vs Matrix data
+        - Section-based row grouping
         """
         import re
         if not table_data:
@@ -59,128 +57,80 @@ class TableService:
 
         num_rows = len(table_data)
         num_cols = max(len(row) for row in table_data) if num_rows > 0 else 0
-
-        # Pad rows to ensure uniform length
         padded_table_data = [row + [""] * (num_cols - len(row)) for row in table_data]
 
-        # Check for nested headers
-        has_nested_headers = False
-        if num_rows > 1:
-            first_row = padded_table_data[0]
-            # Duplicate adjacent cells in header rows often represent merged cells
-            has_duplicates = any(first_row[i] == first_row[i+1] and first_row[i].strip() for i in range(len(first_row)-1))
-            empty_first = sum(1 for c in first_row if not c.strip())
-            if empty_first > 0 or has_duplicates:
-                has_nested_headers = True
-
-        # Check for subtotals and totals
-        has_subtotals = False
-        has_totals = False
-        total_rows = []
-        subtotal_rows = []
+        # 1. Detect Header Depth (hierarchical headers)
+        header_depth = 0
+        for i in range(min(4, num_rows)):
+            row_str = "".join(padded_table_data[i]).strip()
+            # If row is empty or looks like a continuation of headers (duplicated cells for spans)
+            if i < num_rows - 1:
+                unique_cells = len(set(c for c in padded_table_data[i] if c.strip()))
+                if unique_cells < num_cols * 0.5: # Many merged cells usually indicates a top-level category header
+                    header_depth = i + 1
+                else:
+                    break
         
-        # Check for grouped rows
-        grouped_row_indices = []
-        for i, row in enumerate(padded_table_data):
-            row_str = " ".join(row).lower()
-            if "subtotal" in row_str or "sub-total" in row_str:
-                has_subtotals = True
-                subtotal_rows.append(i)
-            elif "total" in row_str or "sum" in row_str:
-                has_totals = True
-                total_rows.append(i)
+        # 2. Detect Pivot Structure (headers on both X and Y axis)
+        is_pivot = False
+        if num_rows > 1 and num_cols > 1:
+            first_col_headers = sum(1 for r in range(header_depth, num_rows) if padded_table_data[r][0].strip())
+            if first_col_headers > (num_rows - header_depth) * 0.8:
+                is_pivot = True
 
-            non_empty_cells = [c.strip() for c in row if c.strip()]
-            if len(non_empty_cells) == 1 and i > 0 and i not in total_rows and i not in subtotal_rows:
-                grouped_row_indices.append(i)
+        # 3. Detect Row Sections (Sub-headers within the body)
+        section_rows = []
+        for i in range(header_depth, num_rows):
+            non_empty = [c.strip() for c in padded_table_data[i] if c.strip()]
+            if len(non_empty) == 1 and i < num_rows - 1:
+                section_rows.append(i)
 
-        # Check for grouped columns
-        grouped_cols = []
-        for col_idx in range(num_cols):
-            col_cells = [padded_table_data[row_idx][col_idx].strip() for row_idx in range(num_rows)]
-            empty_count = sum(1 for c in col_cells if not c)
-            if empty_count > num_rows * 0.7 and empty_count < num_rows:
-                grouped_cols.append(col_idx)
-
-        # Check for comparison tables
-        is_comparison = False
-        all_cells_str = " ".join(" ".join(row) for row in padded_table_data).lower()
-        if any(kw in all_cells_str for kw in ("vs", "versus", "compare", "features")):
-            is_comparison = True
-        yes_no_count = sum(1 for row in padded_table_data for cell in row if cell.strip().lower() in ("yes", "no", "y", "n", "✓", "✗", "true", "false"))
-        if yes_no_count > 2:
-            is_comparison = True
-
-        # Check for audit-style financial tables
-        is_financial = False
-        financial_keywords = {"revenue", "profit", "ebitda", "balance", "audit", "cash flow", "assets", "liabilities", "expenses", "income", "tax", "operating"}
-        if any(kw in all_cells_str for kw in financial_keywords):
-            is_financial = True
-        financial_patterns = sum(1 for row in padded_table_data for cell in row if re.search(r'\$\d+|\(\d+\)|\b\d+,\d{3}\b', cell))
-        if financial_patterns > 1:
-            is_financial = True
+        # 4. Detect Financial/Data intensity
+        all_text = " ".join([" ".join(r) for r in padded_table_data]).lower()
+        is_financial = any(kw in all_text for kw in {"revenue", "ebitda", "profit", "budget", "cost", "total", "variance"})
+        has_numeric_density = sum(1 for r in padded_table_data for c in r if re.search(r'\d', c)) > (num_rows * num_cols * 0.4)
 
         return {
-            "has_nested_headers": has_nested_headers,
-            "has_grouped_rows": len(grouped_row_indices) > 0,
-            "grouped_row_indices": grouped_row_indices,
-            "has_grouped_columns": len(grouped_cols) > 0,
-            "grouped_column_indices": grouped_cols,
-            "has_subtotals": has_subtotals,
-            "subtotal_rows": subtotal_rows,
-            "has_totals": has_totals,
-            "total_rows": total_rows,
-            "is_comparison_table": is_comparison,
-            "is_financial_table": is_financial
+            "header_depth": header_depth or 1,
+            "is_pivot_structure": is_pivot,
+            "section_rows": section_rows,
+            "is_asymmetric": "merged_cells" in locals() or header_depth > 1, # Heuristic
+            "is_financial": is_financial,
+            "has_numeric_density": has_numeric_density,
+            "dimensions": {"rows": num_rows, "cols": num_cols},
+            "table_archetype": self._infer_archetype(header_depth, is_pivot, section_rows, is_financial)
         }
 
-    def generate_semantic_context(self,table_data: List[List[str]]) -> dict:
+    def _infer_archetype(self, header_depth, is_pivot, section_rows, is_financial) -> str:
+        if is_pivot and header_depth > 1: return "complex_cross_tab"
+        if section_rows: return "sectioned_report"
+        if is_pivot: return "matrix_comparison"
+        if is_financial: return "financial_statement"
+        return "standard_list"
 
+    def generate_semantic_context(self, table_data: List[List[str]]) -> dict:
         if not table_data:
             return {}
 
-        interpretation = self.generate_interpretation(
-            table_data
-    )
-
-        headers = [
-            str(c).strip()
-            for c in table_data[0]
-            if str(c).strip()
-        ]
-
-        entities = []
-
-        for row in table_data[1:]:
-            if row and row[0].strip():
-                entities.append(row[0].strip())
-
-        purpose = "reference"
-
-        structure = self.analyze_structure(
-            table_data
-    )
-
-        if structure.get("is_comparison_table"):
-            purpose = "comparison"
-
-        elif structure.get("is_financial_table"):
-            purpose = "financial_reporting"
-
-        elif len(headers) >= 2:
-            purpose = "categorization"
-
+        structure = self.analyze_structure(table_data)
+        
+        # Dense reconstruction strategy for LLM
+        strategy = []
+        if structure["table_archetype"] == "complex_cross_tab":
+            strategy.append("Recreate as a multi-tier hierarchical matrix. Map the top {d} rows as spanning headers.".format(d=structure["header_depth"]))
+        if structure["is_pivot_structure"]:
+            strategy.append("The first column contains primary row identifiers; treat as Y-axis headers.")
+        if structure["section_rows"]:
+            strategy.append("This table contains mid-table section headers at rows {r}. These should span the full width.".format(r=structure["section_rows"]))
+        
         return {
-            "title": self.infer_table_title(table_data),
-            "purpose": purpose,
-            "column_headers": headers,
-            "entities": entities[:10],
-            "semantic_summary": interpretation,
+            "archetype": structure["table_archetype"],
+            "structural_summary": "A {a} with {r} rows and {c} columns.".format(a=structure["table_archetype"], r=structure["dimensions"]["rows"], c=structure["dimensions"]["cols"]),
+            "reconstruction_strategy": " ".join(strategy),
             "key_insights": self.generate_key_insights(table_data),
-            "row_count": len(table_data),
-            "column_count": len(headers),
-            "raw_text": table_data,
+            "logical_reading_order": "column-major" if structure["is_pivot_structure"] else "row-major"
         }
+
     def generate_interpretation(self, table_data: List[List[str]]) -> str:
         """
         Generate a semantic interpretation of the table content and structure.
@@ -375,7 +325,8 @@ class TableService:
         table_render_model: dict,
         table_semantics: dict,
         is_visual: bool,
-        table_geometry: dict = None
+        table_geometry: dict = None,
+        raw_table_styles: List[List[Any]] = None
     ) -> "TableReconstructionModel":
         from models.document_model import (
             TableReconstructionModel,
@@ -393,11 +344,23 @@ class TableService:
         headers = [c.strip() for c in raw_table_content[0]] if num_rows > 0 else []
         row_headers = [r[0].strip() for r in raw_table_content[1:] if len(r) > 0] if num_rows > 1 else []
 
+        merged_cells_data = table_structure.get("merged_cells", [])
+
         cells = []
         for r_idx, row in enumerate(raw_table_content):
             for c_idx, text in enumerate(row):
                 role = "data"
                 importance = "normal"
+                
+                # Check for spans from merged_cells_data
+                row_span = 1
+                column_span = 1
+                for mc in merged_cells_data:
+                    if mc.get("row") == r_idx and mc.get("col") == c_idx:
+                        row_span = mc.get("row_span", 1)
+                        column_span = mc.get("col_span", 1)
+                        break
+
                 if r_idx == 0:
                     role = "header"
                     importance = "high"
@@ -409,16 +372,21 @@ class TableService:
                 elif r_idx in table_structure.get("subtotal_rows", []):
                     role = "subtotal"
 
+                cell_style = None
+                if raw_table_styles and r_idx < len(raw_table_styles) and c_idx < len(raw_table_styles[r_idx]):
+                    cell_style = raw_table_styles[r_idx][c_idx]
+
                 cells.append(TableCellModel(
                     row=r_idx,
                     column=c_idx,
                     text=text.strip(),
-                    row_span=1,
-                    column_span=1,
+                    row_span=row_span,
+                    column_span=column_span,
                     role=role,
                     importance=importance,
                     semantic_meaning=table_semantics.get("key_insights", [""])[0] if table_semantics.get("key_insights") else "",
-                    cell_geometry={}
+                    cell_geometry={},
+                    style=cell_style
                 ))
         
         semantic_structure = TableSemanticStructureModel(
@@ -433,7 +401,7 @@ class TableService:
             body_rows=list(range(1, num_rows)),
             grouped_columns=table_structure.get("grouped_column_indices", []),
             grouped_rows=table_structure.get("grouped_row_indices", []),
-            merged_regions=[],
+            merged_regions=merged_cells_data,
             visual_hierarchy=["header"] + (["summary"] if table_structure.get("has_totals") else [])
         )
         
@@ -451,6 +419,19 @@ class TableService:
         elif table_structure.get("is_financial_table"):
             table_type = "financial_statement"
 
+        # Standardized Guide for Downstream LLMs
+        guide = (
+            "INTERPRETATION GUIDE: This table uses a {archetype} structure. "
+            "1. Header Hierarchy: Treat the first {h_depth} rows as multi-level headers. "
+            "2. Grid Mapping: Use the 'cells' array to extract data. "
+            "3. Merged Regions: Refer to 'merged_cells' to identify specific spanning instructions (colspan/rowspan). "
+            "4. Reconstruction: {strategy}"
+        ).format(
+            archetype=table_semantics.get("archetype", "standard"),
+            h_depth=table_structure.get("header_depth", 1),
+            strategy=table_semantics.get("reconstruction_strategy", "Maintain exact grid alignment.")
+        )
+
         return TableReconstructionModel(
             table_id=table_id,
             table_type=table_type,
@@ -460,9 +441,11 @@ class TableService:
             headers=headers,
             row_headers=row_headers,
             cells=cells,
-            merged_cells=[],
+            merged_cells=merged_cells_data,
             semantic_structure=semantic_structure,
             table_geometry=table_geometry or {},
             table_render_model=render_model,
-            functional_equivalence_requirements=reqs
+            functional_equivalence_requirements=reqs,
+            reconstruction_strategy=table_semantics.get("reconstruction_strategy", ""),
+            interpretation_guide=guide
         )

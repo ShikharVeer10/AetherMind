@@ -104,11 +104,78 @@ class PPTExtractor:
         except Exception:
             pass
 
+        # 3. Visual Table Detection Fallback
+        from services.flexible_table_detector import FlexibleTableDetector
+        detector = FlexibleTableDetector()
+        visual_tables = detector.detect_visual_tables(extracted_elements)
+        
+        detected_tables_metadata = []
+        consumed_element_ids = set()
+        
+        for vt_idx, visual_table in enumerate(visual_tables):
+            raw_table_content = visual_table.get("rows", [])
+            raw_table_styles = visual_table.get("styles", [])
+            if not raw_table_content:
+                continue
+
+            consumed_element_ids.update(visual_table.get("consumed_ids", []))
+
+            table_md = self.table_service.to_markdown(raw_table_content)
+            table_structure = self.table_service.analyze_structure(raw_table_content)
+            table_structure["merged_cells"] = visual_table.get("merged_cells", [])
+            
+            table_semantic_interpretation = self.table_service.generate_semantic_context(raw_table_content)
+            table_render_model = self.table_service.build_render_model(raw_table_content, table_structure)
+            bbox = visual_table.get("bbox", {"x": 0, "y": 0, "width": 0, "height": 0})
+
+            table_reconstruction = self.table_service.build_reconstruction_payload(
+                table_id=f"slide_{slide_number}_vtable_{vt_idx}",
+                raw_table_content=raw_table_content,
+                table_structure=table_structure,
+                table_render_model=table_render_model,
+                table_semantics=table_semantic_interpretation,
+                is_visual=True,
+                table_geometry=bbox,
+                raw_table_styles=raw_table_styles
+            )
+
+            table_element = DocumentElementModel(
+                element_id=f"slide_{slide_number}_vtable_{vt_idx}",
+                element_type="table",
+                text=table_md,
+                paragraphs=[],
+                position=PositionModel(
+                    x=bbox["x"],
+                    y=bbox["y"],
+                    width=bbox["width"],
+                    height=bbox["height"]
+                ),
+                table_markdown=table_md,
+                raw_table_content=raw_table_content,
+                table_structure=table_structure,
+                table_render_model=table_render_model,
+                table_semantic_interpretation=table_semantic_interpretation,
+                table_reconstruction=table_reconstruction,
+                table_merged_cells=visual_table.get("merged_cells", []),
+                metadata={"name": f"Visual Table {vt_idx}", "z_order": z_order}
+            )
+            extracted_elements.append(table_element)
+            detected_tables_metadata.append({
+                "table_type": "visual_table",
+                "rows": len(raw_table_content),
+                "content": raw_table_content
+            })
+            z_order += 1
+
+        # 4. Filter out consumed elements from the main list
+        final_elements = [e for e in extracted_elements if e.element_id not in consumed_element_ids]
+
         return SlideModel(
             slide_number=slide_number,
             title=slide_title,
-            elements=extracted_elements,
+            elements=final_elements,
             background_color=slide_bg_color,
+            detected_tables=detected_tables_metadata
         )
 
     def _extract_shape_recursive(

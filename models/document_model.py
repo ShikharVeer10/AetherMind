@@ -102,6 +102,7 @@ class TableCellModel(BaseModel):
     importance: str = "normal"
     semantic_meaning: str = ""
     cell_geometry: Dict[str, float] = Field(default_factory=dict)
+    style: Optional[StyleModel] = None
 
 class TableSemanticStructureModel(BaseModel):
     comparison_dimension: List[str] = Field(default_factory=list)
@@ -131,6 +132,8 @@ class TableReconstructionModel(BaseModel):
     table_geometry: Dict[str, float] = Field(default_factory=dict)
     table_render_model: TableRenderModel = Field(default_factory=TableRenderModel)
     functional_equivalence_requirements: List[str] = Field(default_factory=list)
+    reconstruction_strategy: str = ""
+    interpretation_guide: str = ""
 
 class SemanticRegionModel(BaseModel):
     name: str

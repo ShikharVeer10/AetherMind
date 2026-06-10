@@ -67,7 +67,7 @@ class PDFExtractor:
         scale = 12700.0
         page_height_points = page.rect.height
 
-        extracted_elements = []
+        all_visual_elements = []
         detected_tables = []
         z_order = 1
 
@@ -87,110 +87,91 @@ class PDFExtractor:
             page_height_points
         )
 
+        # 1. Extract every span as a distinct DocumentElementModel for high-res table detection
+        span_id_counter = 1
         for block_idx, block in enumerate(blocks):
             if block.get("type") != 0:
                 continue
 
             lines = block.get("lines", [])
-            if not lines:
-                continue
-
-            paragraphs = []
-            block_text_parts = []
-
             for line in lines:
                 line_spans = line.get("spans", [])
-                if not line_spans:
-                    continue
-
-                line_text = "".join(span.get("text", "") for span in line_spans).strip()
-                if not line_text:
-                    continue
-
-                runs = []
                 for span in line_spans:
-                    span_text = span.get("text", "")
+                    span_text = span.get("text", "").strip()
                     if not span_text:
                         continue
 
+                    bx0, by0, bx1, by1 = span["bbox"]
                     font_name = span.get("font", "")
                     font_size = span.get("size")
                     flags = span.get("flags", 0)
-
                     is_bold = bool(flags & 16) or "bold" in font_name.lower()
                     is_italic = bool(flags & 2) or "italic" in font_name.lower() or "oblique" in font_name.lower()
-
                     color_int = span.get("color")
-                    runs.append(RunModel(
-                        text=span_text,
-                        bold=is_bold,
-                        italic=is_italic,
+
+                    style = StyleModel(
                         font_size=font_size,
                         font_name=font_name,
-                        font_color=self._get_color_hex(color_int),
-                    ))
+                        bold=is_bold,
+                        italic=is_italic,
+                        text_color=self._get_color_hex(color_int),
+                    )
 
-                paragraphs.append(ParagraphModel(
-                    level=0,
-                    text=line_text,
-                    runs=runs,
-                ))
-                block_text_parts.append(line_text)
+                    element_id = f"slide_{page_number}_span_{span_id_counter}"
+                    elem = DocumentElementModel(
+                        element_id=element_id,
+                        element_type="text_box",
+                        text=span_text,
+                        paragraphs=[ParagraphModel(
+                            level=0,
+                            text=span_text,
+                            runs=[RunModel(
+                                text=span_text,
+                                bold=is_bold,
+                                italic=is_italic,
+                                font_size=font_size,
+                                font_name=font_name,
+                                font_color=self._get_color_hex(color_int)
+                            )]
+                        )],
+                        position=PositionModel(
+                            x=bx0 * scale,
+                            y=by0 * scale,
+                            width=(bx1 - bx0) * scale,
+                            height=(by1 - by0) * scale,
+                        ),
+                        style=style,
+                        shape_type="rect",
+                        metadata={
+                            "name": f"Span {span_id_counter}",
+                            "visible": True,
+                            "is_placeholder": False,
+                            "z_order": z_order,
+                        },
+                    )
+                    all_visual_elements.append(elem)
+                    span_id_counter += 1
+                    z_order += 1
 
-            if not block_text_parts:
-                continue
+        # 2. Native Table Processing
+        consumed_element_ids = set()
+        final_elements = []
 
-            full_text = "\n".join(block_text_parts)
-            bx0, by0, bx1, by1 = block["bbox"]
-
-            position = PositionModel(
-                x=bx0 * scale,
-                y=by0 * scale,
-                width=(bx1 - bx0) * scale,
-                height=(by1 - by0) * scale,
-            )
-
-            style = None
-            if lines and lines[0].get("spans"):
-                first_span = lines[0]["spans"][0]
-                font_name = first_span.get("font", "")
-                flags = first_span.get("flags", 0)
-                is_bold = (bool(flags & 16) or "bold" in font_name.lower())
-                is_italic = (bool(flags & 2) or "italic" in font_name.lower() or "oblique" in font_name.lower())
-
-                style = StyleModel(
-                    font_size=first_span.get("size"),
-                    font_name=font_name,
-                    bold=is_bold,
-                    italic=is_italic,
-                    text_color=self._get_color_hex(first_span.get("color")),
-                )
-
-            element_id = f"slide_{page_number}_shape_{block_idx + 1}"
-            elem = DocumentElementModel(
-                element_id=element_id,
-                element_type="text_box",
-                text=full_text,
-                paragraphs=paragraphs,
-                position=position,
-                style=style,
-                shape_type="rect",
-                metadata={
-                    "name": f"Text Block {block_idx + 1}",
-                    "visible": True,
-                    "is_placeholder": False,
-                    "z_order": z_order,
-                },
-            )
-            extracted_elements.append(elem)
-            z_order += 1
-
-        # Process native tables if found
         if tables:
             for table_idx, table in enumerate(tables.tables):
                 raw_table_content = self.extract_table_as_list(table)
                 if not raw_table_content:
                     continue
+
+                # Mark spans inside native table as consumed
+                t_bx0, t_by0, t_bx1, t_by1 = table.bbox
+                t_bx0, t_by0, t_bx1, t_by1 = t_bx0 * scale, t_by0 * scale, t_bx1 * scale, t_by1 * scale
+                
+                for elem in all_visual_elements:
+                    ex = elem.position.x
+                    ey = elem.position.y
+                    if (t_bx0 - 1000 <= ex <= t_bx1 + 1000) and (t_by0 - 1000 <= ey <= t_by1 + 1000):
+                        consumed_element_ids.add(elem.element_id)
 
                 table_markdown = self.table_service.to_markdown(raw_table_content)
                 table_structure = self.table_service.analyze_structure(raw_table_content)
@@ -205,10 +186,10 @@ class PDFExtractor:
                     table_semantics=table_semantic_interpretation,
                     is_visual=False,
                     table_geometry={
-                        "x": table.bbox[0] * scale,
-                        "y": table.bbox[1] * scale,
-                        "width": (table.bbox[2] - table.bbox[0]) * scale,
-                        "height": (table.bbox[3] - table.bbox[1]) * scale
+                        "x": t_bx0,
+                        "y": t_by0,
+                        "width": t_bx1 - t_bx0,
+                        "height": t_by1 - t_by0
                     }
                 )
                 
@@ -218,10 +199,10 @@ class PDFExtractor:
                     text=table_markdown,
                     paragraphs=[],
                     position=PositionModel(
-                        x=table.bbox[0] * scale,
-                        y=table.bbox[1] * scale,
-                        width=(table.bbox[2] - table.bbox[0]) * scale,
-                        height=(table.bbox[3] - table.bbox[1]) * scale,
+                        x=t_bx0,
+                        y=t_by0,
+                        width=t_bx1 - t_bx0,
+                        height=t_by1 - t_by0,
                     ),
                     table_markdown=table_markdown,
                     raw_table_content=raw_table_content,
@@ -231,7 +212,7 @@ class PDFExtractor:
                     table_reconstruction=table_reconstruction,
                     metadata={"z_order": z_order}
                 )
-                extracted_elements.append(table_element)
+                final_elements.append(table_element)
                 detected_tables.append({
                     "rows": len(raw_table_content),
                     "columns": max(len(r) for r in raw_table_content) if raw_table_content else 0,
@@ -239,21 +220,36 @@ class PDFExtractor:
                 })
                 z_order += 1
 
-        # Flexible table detection fallback for text blocks
-        visual_tables = self.flexible_table_detector.detect_visual_tables(extracted_elements)
-        if visual_tables:
-            print(f"VISUAL TABLES FOUND: {len(visual_tables)}")
+        # 3. Flexible table detection on remaining spans
+        remaining_spans = [e for e in all_visual_elements if e.element_id not in consumed_element_ids]
+        visual_tables = self.flexible_table_detector.detect_visual_tables(remaining_spans)
             
         for vt_idx, visual_table in enumerate(visual_tables):
             raw_table_content = visual_table.get("rows", [])
+            raw_table_styles = visual_table.get("styles", [])
             if not raw_table_content:
                 continue
 
+            consumed_element_ids.update(visual_table.get("consumed_ids", []))
+
             table_markdown = self.table_service.to_markdown(raw_table_content)
             table_structure = self.table_service.analyze_structure(raw_table_content)
+            table_structure["merged_cells"] = visual_table.get("merged_cells", [])
+            
             table_semantic_interpretation = self.table_service.generate_semantic_context(raw_table_content)
             table_render_model = self.table_service.build_render_model(raw_table_content, table_structure)
             bbox = visual_table.get("bbox", {"x": 0, "y": 0, "width": 0, "height": 0})
+            
+            # 3.1 Extract Background Colors for Visual Table Cells
+            raw_table_bg_colors = []
+            for r_idx, row in enumerate(raw_table_content):
+                row_colors = []
+                for c_idx, text in enumerate(row):
+                    # Estimate point-based bbox for this cell
+                    # This is a heuristic based on the grid layout
+                    cell_color = self._get_background_color_at(page, (bbox["x"]/scale, bbox["y"]/scale, (bbox["x"]+bbox["width"])/scale, (bbox["y"]+bbox["height"])/scale))
+                    row_colors.append(cell_color)
+                raw_table_bg_colors.append(row_colors)
 
             table_reconstruction = self.table_service.build_reconstruction_payload(
                 table_id=f"slide_{page_number}_vtable_{vt_idx}",
@@ -262,8 +258,18 @@ class PDFExtractor:
                 table_render_model=table_render_model,
                 table_semantics=table_semantic_interpretation,
                 is_visual=True,
-                table_geometry=bbox
+                table_geometry=bbox,
+                raw_table_styles=raw_table_styles
             )
+            
+            # Apply background colors to reconstruction cells
+            if table_reconstruction and table_reconstruction.cells:
+                for cell in table_reconstruction.cells:
+                    bg_color = raw_table_bg_colors[cell.row][cell.column]
+                    if bg_color:
+                        if not cell.style:
+                            cell.style = StyleModel()
+                        cell.style.background_color = bg_color
 
             table_element = DocumentElementModel(
                 element_id=f"slide_{page_number}_vtable_{vt_idx}",
@@ -282,9 +288,10 @@ class PDFExtractor:
                 table_render_model=table_render_model,
                 table_semantic_interpretation=table_semantic_interpretation,
                 table_reconstruction=table_reconstruction,
+                table_merged_cells=visual_table.get("merged_cells", []),
                 metadata={"z_order": z_order}
             )
-            extracted_elements.append(table_element)
+            final_elements.append(table_element)
 
             detected_tables.append({
                 "table_type": visual_table.get("table_type", "visual_table"),
@@ -293,13 +300,19 @@ class PDFExtractor:
             })
             z_order += 1
 
+        # 4. Final collection of non-consumed spans
+        for elem in all_visual_elements:
+            if elem.element_id not in consumed_element_ids:
+                final_elements.append(elem)
+
         return SlideModel(
             slide_number=page_number,
             title=slide_title,
-            elements=extracted_elements,
+            elements=final_elements,
             background_color="#ffffff",
             detected_tables=detected_tables,
         )
+
 
 
 
@@ -387,3 +400,39 @@ class PDFExtractor:
             return f"#{r:02x}{g:02x}{b:02x}"
         except Exception:
             return None
+
+    def _get_background_color_at(self, page, bbox) -> Optional[str]:
+        """Detects the background color of a region by finding the topmost fill shape."""
+        try:
+            # bbox is (x0, y0, x1, y1) in points
+            # Query for drawings (vector graphics) intersecting this area
+            drawings = page.get_drawings()
+            candidate_colors = []
+            for d in drawings:
+                # Check for fill property and intersection
+                if d.get("fill") and d.get("rect"):
+                    d_rect = d["rect"]
+                    # Calculate intersection
+                    ix0 = max(bbox[0], d_rect[0])
+                    iy0 = max(bbox[1], d_rect[1])
+                    ix1 = min(bbox[2], d_rect[2])
+                    iy1 = min(bbox[3], d_rect[3])
+
+                    if ix1 > ix0 and iy1 > iy0:
+                        # Significant intersection found
+                        area = (ix1 - ix0) * (iy1 - iy0)
+                        if area > 10: # Minimum 10 sq points
+                            color = d["fill"]
+                            # fitz colors are (r, g, b) floats 0-1
+                            hex_color = "#{:02x}{:02x}{:02x}".format(
+                                int(color[0]*255), int(color[1]*255), int(color[2]*255)
+                            )
+                            candidate_colors.append(hex_color)
+
+            # Return topmost (last in list) non-white color
+            for c in reversed(candidate_colors):
+                if c.lower() != "#ffffff":
+                    return c
+        except Exception:
+            pass
+        return None
