@@ -87,10 +87,12 @@ class FlexibleTableDetector:
 
             detected_tables.append({
                 "table_type": "visual_grid",
-                "rows": grid_info["rows"],
+                "rows": grid_info["rows_data"],
+                "styles": grid_info["cell_styles"],
                 "merged_cells": grid_info["merged_cells"],
                 "num_rows": grid_info["num_rows"],
                 "num_cols": grid_info["num_cols"],
+                "consumed_ids": grid_info["consumed_ids"],
                 "bbox": {
                     "x": min_x,
                     "y": min_y,
@@ -114,31 +116,29 @@ class FlexibleTableDetector:
         return total_cells >= 4
 
     def _reconstruct_grid(self, elements: List[Any]) -> Dict[str, Any]:
-        """Reconstructs a 2D grid from a collection of spatially positioned elements."""
+        """
+        Lossless grid reconstruction using strict geometric intersections.
+        Guarantees that every input element is accounted for and mapped to a unique grid space.
+        """
         if not elements:
             return {}
 
-        # 0. Merge very close spans (PDF encoding artifacts)
+        # 0. Cleanup: Merge very close spans (PDF encoding artifacts)
+        # This is a safe pre-process to avoid fragmentation of single logical words
         merged_elements = self._merge_adjacent_spans(elements)
 
-        # 1. Extract all horizontal and vertical boundaries
-        x_coords = []
-        y_coords = []
+        # 1. Discover definitive Column and Row boundaries (Grid Lines)
+        # We look for clusters of X (start/end) and Y (start/end) to find the "bones"
+        x_points = []
+        y_points = []
         for e in merged_elements:
-            x_coords.append(e.position.x)
-            x_coords.append(e.position.x + e.position.width)
-            y_coords.append(e.position.y)
-            y_coords.append(e.position.y + e.position.height)
+            x_points.extend([e.position.x, e.position.x + e.position.width])
+            y_points.extend([e.position.y, e.position.y + e.position.height])
 
-        # 2. Cluster boundaries to find grid lines
-        GRID_TOLERANCE = 120000.0 
-        
-        grid_x = self._cluster_coordinates(x_coords, GRID_TOLERANCE)
-        grid_y = self._cluster_coordinates(y_coords, GRID_TOLERANCE)
-        
-        # 2.5 Refine grid lines based on alignment density
-        grid_x = self._refine_grid_lines(grid_x, [e.position.x for e in merged_elements] + [e.position.x + e.position.width for e in merged_elements])
-        grid_y = self._refine_grid_lines(grid_y, [e.position.y for e in merged_elements] + [e.position.y + e.position.height for e in merged_elements])
+        # Cluster points into unique grid lines with a tight tolerance
+        # 80000 EMU is ~0.08 inch
+        grid_x = self._cluster_coordinates(x_points, 80000.0)
+        grid_y = self._cluster_coordinates(y_points, 80000.0)
 
         num_cols = len(grid_x) - 1
         num_rows = len(grid_y) - 1
@@ -146,74 +146,140 @@ class FlexibleTableDetector:
         if num_cols <= 0 or num_rows <= 0:
             return {}
 
-        # 3. Initialize grid and map elements
-        grid = [[None for _ in range(num_cols)] for _ in range(num_rows)]
-        grid_styles = [[None for _ in range(num_cols)] for _ in range(num_rows)]
-        merged_cells = []
-        consumed_ids = []
-
+        # 2. Map elements to the Grid
+        # Every element MUST belong to at least one cell.
+        # If it spans boundaries, it dictates a merged region.
+        
+        # grid[row][col] -> list of elements in that cell
+        logical_grid = [[[] for _ in range(num_cols)] for _ in range(num_rows)]
+        
         for e in merged_elements:
-            col_start = min(range(len(grid_x)), key=lambda i: abs(grid_x[i] - e.position.x))
-            col_end = min(range(len(grid_x)), key=lambda i: abs(grid_x[i] - (e.position.x + e.position.width)))
-            row_start = min(range(len(grid_y)), key=lambda i: abs(grid_y[i] - e.position.y))
-            row_end = min(range(len(grid_y)), key=lambda i: abs(grid_y[i] - (e.position.y + e.position.height)))
+            # Find the best fitting row/col indices based on center-point intersection
+            # to avoid ambiguity at the exact boundaries.
+            cx = e.position.x + e.position.width / 2
+            cy = e.position.y + e.position.height / 2
+            
+            col_idx = -1
+            for i in range(num_cols):
+                if grid_x[i] <= cx <= grid_x[i+1]:
+                    col_idx = i
+                    break
+            
+            row_idx = -1
+            for i in range(num_rows):
+                if grid_y[i] <= cy <= grid_y[i+1]:
+                    row_idx = i
+                    break
+            
+            # Fallback to nearest if somehow outside (geometric floating point edge cases)
+            if col_idx == -1:
+                col_idx = min(range(num_cols), key=lambda i: abs(cx - (grid_x[i] + grid_x[i+1])/2))
+            if row_idx == -1:
+                row_idx = min(range(num_rows), key=lambda i: abs(cy - (grid_y[i] + grid_y[i+1])/2))
 
-            # Clip indices to valid grid range
-            col_start = min(col_start, num_cols - 1)
-            row_start = min(row_start, num_rows - 1)
+            # Determine span based on bounding box covering grid lines
+            # If an element's edge significantly crosses a grid line, it's a span
+            SPAN_THRESHOLD = 50000.0 # ~0.05 inch
             
-            if col_end <= col_start: col_end = col_start + 1
-            if row_end <= row_start: row_end = row_start + 1
+            start_col = col_idx
+            end_col = col_idx
+            # Check for column span
+            for i in range(num_cols + 1):
+                if grid_x[i] > e.position.x + SPAN_THRESHOLD and grid_x[i] < (e.position.x + e.position.width) - SPAN_THRESHOLD:
+                    # Spans this boundary
+                    pass # We will use the start_col/row logic to fill merged_cells later
             
-            col_end = min(col_end, num_cols)
-            row_end = min(row_end, num_rows)
+            # For lossless extraction, we first place it in its primary logical cell
+            logical_grid[row_idx][col_idx].append(e)
 
-            text = e.text.strip()
-            if hasattr(e, "original_ids"):
-                consumed_ids.extend(e.original_ids)
-            else:
-                consumed_ids.append(e.element_id)
-            
-            if grid[row_start][col_start] is None:
-                grid[row_start][col_start] = text
-                if hasattr(e, "style") and e.style:
-                    grid_styles[row_start][col_start] = e.style
-            else:
-                grid[row_start][col_start] += " " + text
-            
-            row_span = row_end - row_start
-            col_span = col_end - col_start
-            
-            if row_span > 1 or col_span > 1:
-                merged_cells.append({
-                    "row": row_start, "col": col_start,
-                    "row_span": row_span, "col_span": col_span, "text": text
-                })
-                for r in range(row_start, row_end):
-                    for c in range(col_start, col_end):
-                        if r == row_start and c == col_start: continue
-                        if grid[r][c] is None: grid[r][c] = ""
-
-        final_rows = []
-        final_styles = []
+        # 3. Structural Normalization and Merge Detection
+        # Identify "Visually Merged" regions (spans)
+        # In this lossless model, we detect spans by looking at which grid-defined cells 
+        # are actually part of the same physical shape or text flow.
+        
+        merged_cells = []
+        rows_data = []
+        cell_styles = []
+        
         for r in range(num_rows):
-            row_data = []
+            row_vals = []
             row_styles = []
             for c in range(num_cols):
-                val = grid[r][c]
-                style = grid_styles[r][c]
-                row_data.append(val if val is not None else "")
+                cell_elements = logical_grid[r][c]
+                # Sort elements within a cell by their visual position (reading order within cell)
+                cell_elements.sort(key=lambda x: (x.position.y, x.position.x))
+                
+                text = " ".join([elem.text.strip() for elem in cell_elements if elem.text])
+                row_vals.append(text)
+                
+                # Capture visual metadata from the primary element in the cell
+                style = None
+                if cell_elements:
+                    style = cell_elements[0].style
                 row_styles.append(style)
-            final_rows.append(row_data)
-            final_styles.append(row_styles)
+            
+            rows_data.append(row_vals)
+            cell_styles.append(row_styles)
+
+        # 4. Refine Spans (Heuristic based on empty neighbors and global alignment)
+        # To maintain "Identical Structure", we look for logical neighbors that are empty 
+        # but likely part of a span based on the element's actual width/height.
+        for e in merged_elements:
+            # Re-verify spans based on actual geometry vs grid lines
+            r_start = -1; r_end = -1; c_start = -1; c_end = -1
+            
+            for i in range(num_rows):
+                if grid_y[i] <= e.position.y + SPAN_THRESHOLD: r_start = i
+                if grid_y[i+1] >= (e.position.y + e.position.height) - SPAN_THRESHOLD:
+                    r_end = i
+                    if r_start != -1: break
+            
+            for i in range(num_cols):
+                if grid_x[i] <= e.position.x + SPAN_THRESHOLD: c_start = i
+                if grid_x[i+1] >= (e.position.x + e.position.width) - SPAN_THRESHOLD:
+                    c_end = i
+                    if c_start != -1: break
+            
+            if r_start != -1 and r_end != -1 and c_start != -1 and c_end != -1:
+                row_span = (r_end - r_start) + 1
+                col_span = (c_end - c_start) + 1
+                if row_span > 1 or col_span > 1:
+                    merged_cells.append({
+                        "row": r_start,
+                        "column": c_start,
+                        "row_span": row_span,
+                        "column_span": col_span
+                    })
+
+        # 5. Validation and Deduplication
+        # - Verify no text lost or duplicated
+        all_mapped_elements = [el for r in range(num_rows) for c in range(num_cols) for el in logical_grid[r][c]]
+        if len(all_mapped_elements) != len(merged_elements):
+             print(f"[FlexibleTableDetector] WARNING: Lossless mapping mismatch. Mapped {len(all_mapped_elements)} vs Input {len(merged_elements)}")
+
+        # - Deduplicate merged regions and ensure no overlaps
+        unique_merged = []
+        covered_cells = set()
+        for mc in merged_cells:
+            # Check if start cell already covered
+            if (mc["row"], mc["column"]) in covered_cells:
+                continue
+            
+            # Add to unique and mark all cells in span as covered
+            unique_merged.append(mc)
+            for r in range(mc["row"], mc["row"] + mc["row_span"]):
+                for c in range(mc["column"], mc["column"] + mc["column_span"]):
+                    covered_cells.add((r, c))
 
         return {
-            "rows": final_rows,
-            "styles": final_styles,
-            "merged_cells": merged_cells,
+            "rows": list(range(num_rows)),
+            "columns": list(range(num_cols)),
+            "rows_data": rows_data,
+            "cell_styles": cell_styles,
+            "merged_cells": unique_merged,
             "num_rows": num_rows,
             "num_cols": num_cols,
-            "consumed_ids": consumed_ids
+            "consumed_ids": [eid for e in merged_elements for eid in (getattr(e, "original_ids", [e.element_id]))]
         }
 
     def _merge_adjacent_spans(self, elements: List[Any]) -> List[Any]:

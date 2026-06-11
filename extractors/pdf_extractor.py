@@ -24,11 +24,15 @@ class PDFExtractor:
         self.flexible_table_detector = FlexibleTableDetector()
         self.semantic_table_service = SemanticTableService()
 
-    def extract_document(self) -> DocumentModel:
+    def extract_document(self, target_pages: Optional[List[int]] = None) -> DocumentModel:
         extracted_slides = []
         for page_index, page in enumerate(self.doc):
+            page_number = page_index + 1
+            if target_pages and page_number not in target_pages:
+                continue
+                
             extracted_slide = self.extract_page(
-                page=page, page_number=page_index + 1
+                page=page, page_number=page_number
             )
             extracted_slides.append(extracted_slide)
 
@@ -152,6 +156,41 @@ class PDFExtractor:
                     all_visual_elements.append(elem)
                     span_id_counter += 1
                     z_order += 1
+
+        # 1.5 Extract vector graphics (lines, rects) for structural grid detection
+        try:
+            drawings = page.get_drawings()
+            drawing_counter = 1
+            for d in drawings:
+                rect = d.get("rect")
+                if rect:
+                    rx0, ry0, rx1, ry1 = rect
+                    # Filter out full-page backgrounds or tiny artifacts
+                    if (rx1 - rx0) * (ry1 - ry0) > 10 and (rx1 - rx0) < page.rect.width * 0.95:
+                        elem = DocumentElementModel(
+                            element_id=f"slide_{page_number}_drawing_{drawing_counter}",
+                            element_type="shape",
+                            text="",
+                            paragraphs=[],
+                            position=PositionModel(
+                                x=rx0 * scale,
+                                y=ry0 * scale,
+                                width=(rx1 - rx0) * scale,
+                                height=(ry1 - ry0) * scale,
+                            ),
+                            shape_type="rect",
+                            metadata={
+                                "name": f"Drawing {drawing_counter}",
+                                "visible": True,
+                                "is_placeholder": False,
+                                "z_order": z_order,
+                            },
+                        )
+                        all_visual_elements.append(elem)
+                        drawing_counter += 1
+                        z_order += 1
+        except Exception as e:
+            print(f"Warning: Failed to extract drawings for grid detection: {e}")
 
         # 2. Native Table Processing
         consumed_element_ids = set()

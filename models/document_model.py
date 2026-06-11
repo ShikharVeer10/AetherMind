@@ -73,15 +73,41 @@ class DiagramUnderstandingModel(BaseModel):
     summary: str = ""
 
 
+class ChartAxisModel(BaseModel):
+    min: Optional[float] = None
+    max: Optional[float] = None
+    ticks: List[str] = Field(default_factory=list)
+    label: Optional[str] = None
+    axis_type: str = "linear"
+
+class ChartSeriesModel(BaseModel):
+    name: str = ""
+    values: List[Any] = Field(default_factory=list)
+    color: Optional[str] = None
+
 class ChartUnderstandingModel(BaseModel):
+    chart_id: str = ""
     chart_type: str = "none"
     title: Optional[str] = None
+    subtitle: Optional[str] = None
+    categories: List[str] = Field(default_factory=list)
+    series: List[ChartSeriesModel] = Field(default_factory=list)
+    legend: List[str] = Field(default_factory=list)
+    axes: Dict[str, ChartAxisModel] = Field(default_factory=dict)
+    data_labels: List[str] = Field(default_factory=list)
+    insights: List[str] = Field(default_factory=list)
+    visual_relationships: List[str] = Field(default_factory=list)
+    # Legacy fields
     measures: List[str] = Field(default_factory=list)
     dimensions: List[str] = Field(default_factory=list)
     trends: List[str] = Field(default_factory=list)
     anomalies: List[str] = Field(default_factory=list)
     comparisons: List[str] = Field(default_factory=list)
     raw_chart_data: Optional[Dict[str, Any]] = None
+
+class VisualObjectClass(BaseModel):
+    classification: str
+    confidence: float
 
 
 class TableSemanticsModel(BaseModel):
@@ -98,6 +124,10 @@ class TableCellModel(BaseModel):
     text: str
     row_span: int = 1
     column_span: int = 1
+    background_color: Optional[str] = None
+    font_size: Optional[float] = None
+    font_weight: Optional[str] = None
+    alignment: Optional[str] = None
     role: str = "data"
     importance: str = "normal"
     semantic_meaning: str = ""
@@ -122,18 +152,52 @@ class TableReconstructionModel(BaseModel):
     table_id: str
     table_type: str = "standard"
     visual_table: bool = False
-    rows: int
-    columns: int
-    headers: List[str] = Field(default_factory=list)
-    row_headers: List[str] = Field(default_factory=list)
+    rows: List[int] = Field(default_factory=list)
+    columns: List[int] = Field(default_factory=list)
     cells: List[TableCellModel] = Field(default_factory=list)
     merged_cells: List[Dict[str, Any]] = Field(default_factory=list)
+    hierarchy: List[Dict[str, Any]] = Field(default_factory=list)
+    relationships: List[Dict[str, Any]] = Field(default_factory=list)
+    # Metadata for legacy and enrichment
+    row_count: int = 0
+    column_count: int = 0
+    headers: List[str] = Field(default_factory=list)
+    row_headers: List[str] = Field(default_factory=list)
     semantic_structure: TableSemanticStructureModel = Field(default_factory=TableSemanticStructureModel)
     table_geometry: Dict[str, float] = Field(default_factory=dict)
     table_render_model: TableRenderModel = Field(default_factory=TableRenderModel)
     functional_equivalence_requirements: List[str] = Field(default_factory=list)
     reconstruction_strategy: str = ""
     interpretation_guide: str = ""
+
+class LayoutGraphModel(BaseModel):
+    nodes: List[Dict[str, Any]] = Field(default_factory=list)
+    edges: List[Dict[str, Any]] = Field(default_factory=list)
+
+class SlideArchetypeModel(BaseModel):
+    slide_archetype: str
+    confidence: float = 0.0
+
+class CapabilityMapModel(BaseModel):
+    domains: List[Dict[str, Any]] = Field(default_factory=list)
+    capabilities: List[Dict[str, Any]] = Field(default_factory=list)
+    relationships: List[Dict[str, Any]] = Field(default_factory=list)
+
+class GovernanceFrameworkModel(BaseModel):
+    layers: List[Dict[str, Any]] = Field(default_factory=list)
+    entities: List[Dict[str, Any]] = Field(default_factory=list)
+    relationships: List[Dict[str, Any]] = Field(default_factory=list)
+
+class ProcessFlowModel(BaseModel):
+    nodes: List[Dict[str, Any]] = Field(default_factory=list)
+    edges: List[Dict[str, Any]] = Field(default_factory=list)
+    sequence: List[str] = Field(default_factory=list)
+    decision_points: List[str] = Field(default_factory=list)
+
+class DashboardModel(BaseModel):
+    panels: List[Dict[str, Any]] = Field(default_factory=list)
+    metrics: List[Dict[str, Any]] = Field(default_factory=list)
+    relationships: List[Dict[str, Any]] = Field(default_factory=list)
 
 class SemanticRegionModel(BaseModel):
     name: str
@@ -286,6 +350,14 @@ class SemanticFlowModel(BaseModel):
     visual_grouping: List[Dict[str, Any]] = Field(default_factory=list)
     storytelling_structure: Optional[str] = None
     reading_order: List[str] = Field(default_factory=list)
+    
+    # LLM-derived structural metadata
+    slide_archetype: Optional[str] = None
+    capability_map_data: Optional[Dict[str, Any]] = None
+    governance_data: Optional[Dict[str, Any]] = None
+    process_flow_data: Optional[Dict[str, Any]] = None
+    dashboard_data: Optional[Dict[str, Any]] = None
+    table_intelligence: List[Dict[str, Any]] = Field(default_factory=list)
 
 class SlideReconstructionContextModel(BaseModel):
     title: str = ""
@@ -400,6 +472,7 @@ class SlideModel(BaseModel):
     chart_understandings: List[ChartUnderstandingModel] = Field(default_factory=list)
     semantic_regions: List[SemanticRegionModel] = Field(default_factory=list)
     detected_tables: Optional[list] = []
+    layout_graph: Optional[LayoutGraphModel] = None
 
     # New additions for Semantic Slide Reconstruction Fidelity
     business_message: Optional[str] = None
@@ -408,6 +481,13 @@ class SlideModel(BaseModel):
     visual_hierarchy: Optional[VisualHierarchyModel] = None
     reading_order: List[str] = Field(default_factory=list)
     functional_equivalence_requirements: List[str] = Field(default_factory=list)
+
+    # Universal Structural Understanding Layer
+    slide_archetype: Optional[SlideArchetypeModel] = None
+    capability_map: Optional[CapabilityMapModel] = None
+    governance_framework: Optional[GovernanceFrameworkModel] = None
+    process_flow: Optional[ProcessFlowModel] = None
+    dashboard: Optional[DashboardModel] = None
 
 class DocumentStructureModel(BaseModel):
     presentation_type: str = "unknown"

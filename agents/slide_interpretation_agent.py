@@ -56,14 +56,13 @@ _RECONSTRUCTION_SYSTEM_PROMPT = (
     "13. visual_grouping: List of elements grouped together (e.g. key-value pairs, column cards, flow blocks).\n"
     "14. storytelling_structure: Narrative or logical structure explaining how the slide tells its story (e.g., problem-solution, progression, cause-effect).\n"
     "15. reading_order: Ordered list of text strings or element descriptions depicting exact reading flow.\n"
-    "16. image_generation_prompt: PRIMARY reconstruction field — a complete visual blueprint with sections:\n"
-    "   === LAYOUT === (left/right/top/bottom/center with contents and proportions)\n"
-    "   === OBJECTS === (every visible object with exact text, type, placement)\n"
-    "   === DIAGRAM STRUCTURE === (decisions, branches, flow, exact text, mermaid if applicable)\n"
-    "   === VISUAL HIERARCHY === (importance, grouping, emphasis)\n"
-    "   === SPATIAL RELATIONSHIPS === (placement, connectors, arrow directions)\n"
-    "   === VISUAL DESIGN === (colors, shapes, styling)\n"
-    "   === RENDERING INSTRUCTIONS === (how to recreate near-identically)\n"
+    "16. image_generation_prompt: PRIMARY reconstruction field — a complete visual blueprint.\n"
+    "17. slide_archetype: Precise classification (e.g., capability_map, process_flow, dashboard, governance_model).\n"
+    "18. capability_map_data: If applicable, dictionary with 'domains', 'capabilities', and 'hierarchy'.\n"
+    "19. governance_data: If applicable, dictionary with 'layers', 'entities', and 'relationships'.\n"
+    "20. process_flow_data: If applicable, dictionary with 'nodes', 'edges', and 'sequence'.\n"
+    "21. dashboard_data: If applicable, dictionary with 'panels', 'metrics', and 'kpis'.\n"
+    "22. table_intelligence: For ANY table (standard or unstructured), a list of structures including 'merged_cells', 'nested_headers', 'matrix_logic', and 'semantic_roles'.\n\n"
     "If the original slide disappeared, image_generation_prompt alone must be enough for another model "
     "to generate a visually and semantically near-identical slide."
 )
@@ -85,7 +84,13 @@ _JSON_SCHEMA_HINT = (
     '  "layout_regions": [{"name": "string", "bounds": {}, "description": "string"}],\n'
     '  "visual_grouping": [{"group_id": "string", "element_ids": ["string"], "description": "string"}],\n'
     '  "storytelling_structure": "string",\n'
-    '  "reading_order": ["string"]\n'
+    '  "reading_order": ["string"],\n'
+    '  "slide_archetype": "string",\n'
+    '  "capability_map_data": {"domains": [], "capabilities": [], "hierarchy": []},\n'
+    '  "governance_data": {"layers": [], "entities": [], "relationships": []},\n'
+    '  "process_flow_data": {"nodes": [], "edges": [], "sequence": []},\n'
+    '  "dashboard_data": {"panels": [], "metrics": []},\n'
+    '  "table_intelligence": [{"table_id": "string", "merged_cells": [], "nested_headers": [], "semantic_roles": {}}]\n'
     "}"
 )
 

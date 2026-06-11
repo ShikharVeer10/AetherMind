@@ -25,6 +25,8 @@ from agents.extraction_agents import (
 )
 from agents.table_extraction_agent import TableExtractionAgent
 
+from services.semantic_region_detection_service import SemanticRegionDetectionService
+
 class AgentOrchestrator:
     """
     Coordinates multiple extraction services/agents for a single slide.
@@ -58,6 +60,7 @@ class AgentOrchestrator:
         self.diagram_agent = DiagramUnderstandingAgent()
         self.table_agent = TableExtractionAgent()
         self.context_agent = ContextAssemblyAgent()
+        self.semantic_region_service = SemanticRegionDetectionService()
 
     async def process_slide(
         self, slide_model: SlideModel, raw_slide
@@ -75,7 +78,12 @@ class AgentOrchestrator:
         if slide_model.title:
             self.last_slide_title = slide_model.title
 
+        print("    [Orchestrator] Step 0: Semantic regions and layout graph...")
+        slide_model.semantic_regions = self.semantic_region_service.detect_regions(slide_model)
+        slide_model.layout_graph = self.semantic_region_service.build_layout_graph(slide_model.elements, slide_model.semantic_regions)
+
         # 1) Exact text extraction (verbatim)
+
         print("    [Orchestrator] Step 1: Text extraction...")
         slide_model.text_points = self.text_agent.run(slide_model)
 
@@ -149,15 +157,57 @@ class AgentOrchestrator:
             diagram_understanding=diagram_understanding
         )
 
+        # 10.5) Visual Object Classification
+        print("    [Orchestrator] Step 10.5: Visual Object Classification...")
+        from services.visual_object_classifier_service import VisualObjectClassifierService
+        visual_classifier = VisualObjectClassifierService()
+        visual_classifier.classify_elements(slide_model.elements)
+
+        # 10.6) Chart Detection and Understanding
+        print("    [Orchestrator] Step 10.6: Chart Detection and Understanding...")
+        from services.chart_detection_service import ChartDetectionService
+        from services.chart_understanding_service import ChartUnderstandingService
+        from services.chart_reconstruction_service import ChartReconstructionService
+        
+        chart_detector = ChartDetectionService()
+        chart_detector.detect_charts(slide_model.elements)
+        
+        chart_service = ChartUnderstandingService()
+        chart_reconstructor = ChartReconstructionService()
+        
+        slide_model.chart_understandings = []
+        for element in slide_model.elements:
+            vclass = element.metadata.get("visual_class", {})
+            if isinstance(vclass, dict) and vclass.get("classification") == "chart":
+                element.element_type = "chart" # Ensure it's treated as a chart
+                chart_info = chart_service.extract_understanding(element)
+                element.chart_understanding = chart_info
+                slide_model.chart_understandings.append(chart_info)
+                element.metadata["chart_reconstruction"] = chart_reconstructor.build_reconstruction_data(chart_info)
+
         # 11) Table extraction (markdown)
         print("    [Orchestrator] Step 11: Table extraction and semantics...")
         table_markdowns = self.table_agent.run(slide_model)
         
         from services.semantic_table_service import SemanticTableService
+        from services.advanced_table_intelligence_service import AdvancedTableIntelligenceService
         table_sem_service = SemanticTableService()
+        advanced_table_service = AdvancedTableIntelligenceService()
+
         for element in slide_model.elements:
             if element.element_type == "table":
+                vclass = element.metadata.get("visual_class", {})
+                if isinstance(vclass, dict) and vclass.get("classification") != "table":
+                    # If classified as something else, skip table analysis
+                    continue
                 element.table_semantics = table_sem_service.analyze_table_semantics(element)
+                element.table_reconstruction = advanced_table_service.analyze_table(element)
+
+        # 11.5) Universal Structural Understanding
+        print("    [Orchestrator] Step 11.5: Universal Structural Understanding...")
+        from services.structural_understanding_service import UniversalStructuralUnderstandingService
+        struct_service = UniversalStructuralUnderstandingService()
+        slide_model = struct_service.analyze_slide(slide_model)
 
         # Final assembly
         print("    [Orchestrator] Final assembly...")
@@ -175,17 +225,7 @@ class AgentOrchestrator:
         from services.image_understanding_service import ImageUnderstandingService
         from services.imagereconstruction_service import ImageReconstructionService
         from services.semantic_slide_service import SemanticSlideService
-        from services.chart_understanding_service import ChartUnderstandingService
         from services.semantic_region_detection_service import SemanticRegionDetectionService
-
-        # Run Chart Understanding Service
-        chart_service = ChartUnderstandingService()
-        slide_model.chart_understandings = []
-        for element in slide_model.elements:
-            if element.element_type == "chart" or (element.element_type == "image" and any(k in (element.metadata.get("image_summary") or "").lower() for k in ("chart", "graph", "dashboard", "kpi"))):
-                chart_info = chart_service.analyze_chart_element(element, slide_model)
-                element.chart_understanding = chart_info
-                slide_model.chart_understandings.append(chart_info)
 
         img_und_service = ImageUnderstandingService()
         slide_model.image_understanding = img_und_service.analyze_slide(slide_model)
@@ -218,11 +258,48 @@ class AgentOrchestrator:
             slide_model.slide_summary = SemanticFlowService().format_structured_output(
                 slide_model.semantic_flow
             )
-            # Transfer LLM-derived semantics to SlideModel
+            # Transfer LLM-derived semantics to SlideModel (Universal Structural Understanding)
             slide_model.business_message = slide_model.semantic_flow.overall_flow
             slide_model.communication_intent = slide_model.semantic_flow.slide_intent
             slide_model.reading_order = slide_model.semantic_flow.reading_order
             
+            # HIGH ACCURACY OVERRIDE: If LLM identified a specific archetype, trust it over heuristics
+            if slide_model.semantic_flow.slide_archetype:
+                from models.document_model import SlideArchetypeModel
+                slide_model.slide_archetype = SlideArchetypeModel(
+                    slide_archetype=slide_model.semantic_flow.slide_archetype,
+                    confidence=0.95  # LLM reasoning is high confidence
+                )
+
+            # Map framework-specific data from LLM reasoning
+            if slide_model.semantic_flow.capability_map_data:
+                from models.document_model import CapabilityMapModel
+                slide_model.capability_map = CapabilityMapModel(**slide_model.semantic_flow.capability_map_data)
+            
+            if slide_model.semantic_flow.governance_data:
+                from models.document_model import GovernanceFrameworkModel
+                slide_model.governance_framework = GovernanceFrameworkModel(**slide_model.semantic_flow.governance_data)
+                
+            if slide_model.semantic_flow.process_flow_data:
+                from models.document_model import ProcessFlowModel
+                slide_model.process_flow = ProcessFlowModel(**slide_model.semantic_flow.process_flow_data)
+                
+            if slide_model.semantic_flow.dashboard_data:
+                from models.document_model import DashboardModel
+                slide_model.dashboard = DashboardModel(**slide_model.semantic_flow.dashboard_data)
+
+            # Table Intelligence Refinement
+            if slide_model.semantic_flow.table_intelligence:
+                for llm_table in slide_model.semantic_flow.table_intelligence:
+                    tid = llm_table.get("table_id")
+                    for element in slide_model.elements:
+                        if element.element_id == tid and element.table_reconstruction:
+                            # Update with LLM-derived structural insights (merged cells, etc.)
+                            if "merged_cells" in llm_table:
+                                element.table_reconstruction.merged_cells = llm_table["merged_cells"]
+                            if "nested_headers" in llm_table:
+                                element.table_reconstruction.hierarchy = llm_table["nested_headers"]
+
             if slide_model.semantic_flow.visual_hierarchy:
                 from models.document_model import VisualHierarchyModel
                 vh = slide_model.semantic_flow.visual_hierarchy

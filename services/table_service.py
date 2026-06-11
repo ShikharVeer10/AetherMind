@@ -336,12 +336,16 @@ class TableService:
             TableSemanticStructureModel,
             TableRenderModel
         )
-        
+
         if not raw_table_content:
             return None
 
         num_rows = len(raw_table_content)
         num_cols = max(len(r) for r in raw_table_content) if num_rows > 0 else 0
+
+        # Lossless Schema: rows and columns are indices
+        rows_indices = list(range(num_rows))
+        cols_indices = list(range(num_cols))
 
         headers = [c.strip() for c in raw_table_content[0]] if num_rows > 0 else []
         row_headers = [r[0].strip() for r in raw_table_content[1:] if len(r) > 0] if num_rows > 1 else []
@@ -353,30 +357,37 @@ class TableService:
             for c_idx, text in enumerate(row):
                 role = "data"
                 importance = "normal"
-                
-                # Check for spans from merged_cells_data
+
+                # Check for spans
                 row_span = 1
                 column_span = 1
                 for mc in merged_cells_data:
-                    if mc.get("row") == r_idx and mc.get("col") == c_idx:
+                    if mc.get("row") == r_idx and mc.get("column") == c_idx:
                         row_span = mc.get("row_span", 1)
-                        column_span = mc.get("col_span", 1)
+                        column_span = mc.get("column_span", 1)
                         break
+
+                # Extract visual metadata from raw_table_styles
+                bg_color = None
+                f_size = None
+                f_weight = "normal"
+                align = "left"
+
+                if raw_table_styles and r_idx < len(raw_table_styles) and c_idx < len(raw_table_styles[r_idx]):
+                    style = raw_table_styles[r_idx][c_idx]
+                    if style:
+                        bg_color = style.background_color
+                        f_size = style.font_size
+                        if style.bold:
+                            f_weight = "bold"
+                        # Alignment is often inferred or stored in metadata
+                        # align = style.alignment or "left"
 
                 if r_idx == 0:
                     role = "header"
                     importance = "high"
                 elif c_idx == 0:
                     role = "row_header"
-                elif r_idx in table_structure.get("total_rows", []):
-                    role = "summary"
-                    importance = "high"
-                elif r_idx in table_structure.get("subtotal_rows", []):
-                    role = "subtotal"
-
-                cell_style = None
-                if raw_table_styles and r_idx < len(raw_table_styles) and c_idx < len(raw_table_styles[r_idx]):
-                    cell_style = raw_table_styles[r_idx][c_idx]
 
                 cells.append(TableCellModel(
                     row=r_idx,
@@ -384,13 +395,17 @@ class TableService:
                     text=text.strip(),
                     row_span=row_span,
                     column_span=column_span,
+                    background_color=bg_color,
+                    font_size=f_size,
+                    font_weight=f_weight,
+                    alignment=align,
                     role=role,
                     importance=importance,
                     semantic_meaning=table_semantics.get("key_insights", [""])[0] if table_semantics.get("key_insights") else "",
                     cell_geometry={},
-                    style=cell_style
+                    style=raw_table_styles[r_idx][c_idx] if raw_table_styles and r_idx < len(raw_table_styles) and c_idx < len(raw_table_styles[r_idx]) else None
                 ))
-        
+
         semantic_structure = TableSemanticStructureModel(
             comparison_dimension=headers if table_structure.get("is_comparison_table") else [],
             evaluation_dimension=row_headers if table_structure.get("is_comparison_table") else [],
@@ -406,40 +421,15 @@ class TableService:
             merged_regions=merged_cells_data,
             visual_hierarchy=["header"] + (["summary"] if table_structure.get("has_totals") else [])
         )
-        
-        reqs = ["Preserve row hierarchy", "Preserve column hierarchy"]
-        if table_structure.get("is_comparison_table"):
-            reqs.append("Preserve comparison relationships")
-        if table_structure.get("has_grouped_rows"):
-            reqs.append("Preserve grouping structure")
-        if table_structure.get("is_financial_table"):
-            reqs.append("Preserve financial calculation logic")
-
-        table_type = "standard"
-        if table_structure.get("is_comparison_table"):
-            table_type = "comparison_matrix"
-        elif table_structure.get("is_financial_table"):
-            table_type = "financial_statement"
-
-        # Standardized Guide for Downstream LLMs
-        guide = (
-            "INTERPRETATION GUIDE: This table uses a {archetype} structure. "
-            "1. Header Hierarchy: Treat the first {h_depth} rows as multi-level headers. "
-            "2. Grid Mapping: Use the 'cells' array to extract data. "
-            "3. Merged Regions: Refer to 'merged_cells' to identify specific spanning instructions (colspan/rowspan). "
-            "4. Reconstruction: {strategy}"
-        ).format(
-            archetype=table_semantics.get("archetype", "standard"),
-            h_depth=table_structure.get("header_depth", 1),
-            strategy=table_semantics.get("reconstruction_strategy", "Maintain exact grid alignment.")
-        )
 
         return TableReconstructionModel(
             table_id=table_id,
-            table_type=table_type,
+            table_type=table_semantics.get("archetype", "standard"),
             visual_table=is_visual,
-            rows=num_rows,
-            columns=num_cols,
+            rows=rows_indices,
+            columns=cols_indices,
+            row_count=num_rows,
+            column_count=num_cols,
             headers=headers,
             row_headers=row_headers,
             cells=cells,
@@ -447,7 +437,17 @@ class TableService:
             semantic_structure=semantic_structure,
             table_geometry=table_geometry or {},
             table_render_model=render_model,
-            functional_equivalence_requirements=reqs,
+            functional_equivalence_requirements=["Preserve identical row/column count", "Maintain precise cell spanning"],
             reconstruction_strategy=table_semantics.get("reconstruction_strategy", ""),
-            interpretation_guide=guide
+            interpretation_guide=self._build_lossless_guide(table_semantics, table_structure)
+        )
+
+    def _build_lossless_guide(self, semantics: dict, structure: dict) -> str:
+        return (
+            "LOSSLESS RECONSTRUCTION GUIDE: Use the 'cells' array for content and visual metadata. "
+            "Refer to 'row_span' and 'column_span' for merged regions. "
+            "Archetype: {a}. Hierarchy: {d}-level header.".format(
+                a=semantics.get("archetype", "standard"),
+                d=structure.get("header_depth", 1)
+            )
         )

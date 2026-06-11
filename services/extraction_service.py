@@ -7,6 +7,7 @@ multiple extraction agents in parallel phases.
 
 import json
 from pathlib import Path
+from typing import List, Optional
 from extractors.ppt_extractor import PPTExtractor
 from agents.agent_orchestrator import AgentOrchestrator
 
@@ -91,7 +92,7 @@ class ExtractionService:
                 except Exception:
                     pass
 
-    async def extract_document(self):
+    async def extract_document(self, target_pages: Optional[List[int]] = None):
         if self.document_extension not in {".pptx", ".ppt", ".pdf"}:
             raise ValueError(
                 f"Unsupported document type: {self.document_extension}"
@@ -108,16 +109,26 @@ class ExtractionService:
                 current_doc_path = temp_pptx_path
 
             if self.document_extension in {".pptx", ".ppt"}:
+                from extractors.ppt_extractor import PPTExtractor
                 extractor = PPTExtractor(current_doc_path)
                 document_model = extractor.extract_document()
                 if self.document_extension == ".ppt":
                     document_model.document_name = Path(self.document_path).name
                     document_model.document_type = "ppt"
+                
+                # Filter PPT slides if target_pages provided
+                if target_pages:
+                    document_model.slides = [s for s in document_model.slides if s.slide_number in target_pages]
+                    document_model.total_slides = len(document_model.slides)
+                
                 raw_slides = list(extractor.presentation.slides)
+                if target_pages:
+                    raw_slides = [raw_slides[i] for i, s in enumerate(extractor.extract_document().slides) if s.slide_number in target_pages]
+                    
             elif self.document_extension == ".pdf":
                 from extractors.pdf_extractor import PDFExtractor
                 extractor = PDFExtractor(current_doc_path)
-                document_model = extractor.extract_document()
+                document_model = extractor.extract_document(target_pages=target_pages)
                 
                 # Apply Deloitte-specific presentation overrides only if this is the target document
                 doc_name_lower = Path(self.document_path).name.lower()
@@ -402,6 +413,10 @@ class ExtractionService:
             slide_reconstruction_context = None
             if slide.slide_reconstruction_context:
                 slide_reconstruction_context = slide.slide_reconstruction_context.model_dump()
+                
+            layout_graph = None
+            if slide.layout_graph:
+                layout_graph = slide.layout_graph.model_dump()
 
             slides_payload.append(
                 {
@@ -426,6 +441,12 @@ class ExtractionService:
                     "slide_reconstruction_context": slide_reconstruction_context,
                     "chart_understandings": [cu.model_dump() for cu in slide.chart_understandings] if slide.chart_understandings else [],
                     "semantic_regions": [sr.model_dump() for sr in slide.semantic_regions] if slide.semantic_regions else [],
+                    "layout_graph": layout_graph,
+                    "slide_archetype": slide.slide_archetype.model_dump() if slide.slide_archetype else None,
+                    "capability_map": slide.capability_map.model_dump() if slide.capability_map else None,
+                    "governance_framework": slide.governance_framework.model_dump() if slide.governance_framework else None,
+                    "process_flow": slide.process_flow.model_dump() if slide.process_flow else None,
+                    "dashboard": slide.dashboard.model_dump() if slide.dashboard else None,
                     "llm_reconstruction_payload": self._build_llm_reconstruction_payload(
                         slide
                     ),
