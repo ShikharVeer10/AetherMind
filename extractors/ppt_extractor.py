@@ -92,6 +92,8 @@ class PPTExtractor:
             )
             for element in elements:
                 extracted_elements.append(element)
+        
+        z_order = len(slide.shapes)
         # 2. Fallback: if no placeholder title, use the first element text
         if slide_title is None:
             for element in extracted_elements:

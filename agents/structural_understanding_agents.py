@@ -164,15 +164,31 @@ class DashboardExtractionAgent:
         if slide.slide_archetype and slide.slide_archetype.slide_archetype in ["dashboard_slide", "scorecard_slide"]:
             is_dash = True
         
-        if not is_dash and not any(k in (slide.title or "").lower() for k in ["fragmentation", "cost", "fte", "location", "labor"]):
+        # Check for recurring NMSU dashboard keywords
+        dashboard_keywords = ["fragmentation", "cost", "fte", "location", "labor", "centralization", "shared services"]
+        if not is_dash and not any(k in (slide.title or "").lower() for k in dashboard_keywords):
             return None
                 
         model = DashboardModel()
         panels = []
         metrics = []
         
+        # If we have chart understandings from Vision LLM, they are primary for dashboards
+        if slide.chart_understandings:
+            for chart in slide.chart_understandings:
+                # Map chart data to dashboard metrics or panels
+                metrics.append({
+                    "id": chart.chart_id,
+                    "type": "chart_data",
+                    "chart_type": chart.chart_type,
+                    "title": chart.title,
+                    "series": [s.model_dump() for s in chart.series],
+                    "categories": chart.categories,
+                    "units": chart.units
+                })
+
         import re
-        # Precise regex for NMSU report values
+        # Fallback/Supplemental regex for NMSU report values
         number_pattern = re.compile(r"^\d+(\.\d+)?$")
         scale_pattern = re.compile(r"^\(\d+\)$")
         cost_pattern = re.compile(r"^\$\d+(\.\d+)?[KM]?$")
@@ -184,7 +200,8 @@ class DashboardExtractionAgent:
                     metrics.append({
                         "id": element.element_id, 
                         "value": text,
-                        "position": element.position.model_dump()
+                        "position": element.position.model_dump(),
+                        "type": "scalar_metric"
                     })
             
             if element.element_type == "shape" and element.position.width > 2000000:
@@ -200,12 +217,30 @@ class DashboardExtractionAgent:
 
 class SpanOfControlAgent:
     """
-    Specialized agent for Management Layer hierarchies.
+    Specialized agent for Management Layer hierarchies (e.g., Screenshot 22).
     """
     def run(self, slide: SlideModel) -> List[Dict[str, Any]]:
-        if not any(k in (slide.title or "").lower() for k in ["span of control", "management layer"]):
+        if not any(k in (slide.title or "").lower() for k in ["span of control", "management layer", "soc"]):
             return []
             
+        # Preference 1: Use Vision-extracted specialized chart data
+        if slide.chart_understandings:
+            for chart in slide.chart_understandings:
+                if chart.chart_type == "span_of_control_pyramid" or "span of control" in (chart.title or "").lower():
+                    # Transform chart series into layer data
+                    layers = []
+                    # Assuming categories are layers and series[0] isAvg SoC
+                    for idx, cat in enumerate(chart.categories):
+                        soc_val = chart.series[0].values[idx] if len(chart.series) > 0 and len(chart.series[0].values) > idx else "N/A"
+                        mgr_count = chart.series[1].values[idx] if len(chart.series) > 1 and len(chart.series[1].values) > idx else "0"
+                        layers.append({
+                            "layer_label": f"Layer {cat}",
+                            "avg_soc": soc_val,
+                            "number_of_managers": mgr_count
+                        })
+                    return layers
+
+        # Preference 2: Positional text extraction (Legacy/Fallback)
         layers = []
         text_elements = [e for e in slide.elements if e.text and e.element_type in ["text_box", "shape"]]
         text_elements.sort(key=lambda e: e.position.y)

@@ -88,13 +88,19 @@ class ChartSeriesModel(BaseModel):
 class ChartUnderstandingModel(BaseModel):
     chart_id: str = ""
     chart_type: str = "none"
+    orientation: Optional[str] = None
+    stacking: Optional[str] = None
     title: Optional[str] = None
     subtitle: Optional[str] = None
+    units: Optional[str] = None
     categories: List[str] = Field(default_factory=list)
     series: List[ChartSeriesModel] = Field(default_factory=list)
     legend: List[str] = Field(default_factory=list)
+    legend_mapping: Dict[str, str] = Field(default_factory=dict)
     axes: Dict[str, ChartAxisModel] = Field(default_factory=dict)
     data_labels: List[str] = Field(default_factory=list)
+    data_labels_visible: bool = False
+    reconstruction_hints: Optional[str] = None
     insights: List[str] = Field(default_factory=list)
     visual_relationships: List[str] = Field(default_factory=list)
     # Legacy fields
