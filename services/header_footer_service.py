@@ -3,23 +3,11 @@ from pptx.enum.shapes import PP_PLACEHOLDER_TYPE
 from models.document_model import HeaderFooterModel
 
 
-# Top 12% of a standard 16:9 slide (6,858,000 EMU height)
 _HEADER_Y_CUTOFF = 820_000
-# Bottom 12% — anything below this Y is considered footer region
 _FOOTER_Y_CUTOFF = 6_030_000
 
 
 class HeaderFooterService:
-    """
-    Reads header/footer placeholders from three layers:
-        1. The slide itself
-        2. The slide's layout
-        3. The slide master
-
-    Additionally scans regular text shapes positioned in the extreme top
-    or bottom of the slide as secondary header/footer sources.
-    """
-
     def extract(self, slide) -> HeaderFooterModel:
         header_text: Optional[str] = None
         footer_text: Optional[str] = None
@@ -42,8 +30,6 @@ class HeaderFooterService:
                     slide_number_text, date_text,
                 )
             )
-
-        # --- Layer 2: Slide layout placeholders ---
         try:
             layout = slide.slide_layout
             for ph in layout.placeholders:
@@ -68,9 +54,6 @@ class HeaderFooterService:
                 )
         except Exception:
             pass
-
-        # --- Layer 4: Positional fallback for header/footer from text shapes ---
-        # --- Layer 4: Positional fallback for header/footer from text shapes ---
         header_text, footer_text = self._positional_header_footer(slide,header_text,footer_text)
 
         confidentiality_label = self._detect_confidentiality(footer_text)

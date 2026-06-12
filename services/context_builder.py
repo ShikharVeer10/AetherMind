@@ -1,18 +1,3 @@
-"""
-Builds the aggregated Context block for each slide.
-
-The context combines:
-    - Header / footer
-    - Slide title
-    - Visual inventory counts
-    - Layout structure
-    - Flowchart info (if present)
-    - Text points summary
-    - Relationship mappings
-    - Diagram understanding
-    - A human-readable outline string
-"""
-
 from models.document_model import (
     FlowchartModel,
     HeaderFooterModel,

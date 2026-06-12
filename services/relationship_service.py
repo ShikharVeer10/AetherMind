@@ -1,29 +1,11 @@
-"""
-Detects spatial relationships between document elements on a slide.
-
-Supports:
-    - Proximity-based grouping (elements close together)
-    - Containment (one element inside another)
-    - Connector-based linking (arrows/connectors joining shapes)
-"""
-
 from typing import List
-
 from models.document_model import DocumentElementModel, RelationshipModel
-
-
 _PROXIMITY_THRESHOLD = 500_000
 
 
 class RelationshipService:
 
-    def detect(
-        self, elements: List[DocumentElementModel]
-    ) -> List[RelationshipModel]:
-        """
-        Analyse all elements on a slide and return a list of
-        detected relationships.
-        """
+    def detect(self, elements: List[DocumentElementModel]) -> List[RelationshipModel]:
         relationships: List[RelationshipModel] = []
 
         connectors = [
@@ -59,8 +41,6 @@ class RelationshipService:
                         target_element_id=b.element_id,
                     )
                 )
-
-        # NEW HIERARCHY CHECK
                 elif self._is_hierarchy(a, b):
                     relationships.append(
                         RelationshipModel(
@@ -118,13 +98,6 @@ class RelationshipService:
 
         return "flow"
 
-
-
-
-
-
-
-
     @staticmethod
     def _connector_direction(begin, end) -> str:
         dx = end[0] - begin[0]
@@ -141,11 +114,7 @@ class RelationshipService:
         cy = element.position.y + element.position.height / 2
         return cx, cy
 
-    def _find_connector_targets(
-        self,
-        connector: DocumentElementModel,
-        boxes: List[DocumentElementModel],
-    ) -> RelationshipModel | None:
+    def _find_connector_targets(self,connector: DocumentElementModel,boxes: List[DocumentElementModel],) -> RelationshipModel | None:
         endpoints = connector.metadata.get("connector_endpoints", {})
         if not endpoints:
             return None
@@ -202,25 +171,12 @@ class RelationshipService:
         )
 
     @staticmethod
-    def _is_hierarchy(
-    parent: DocumentElementModel,
-    child: DocumentElementModel,
-    ) -> bool:
-
-        parent_center_x = (
-        parent.position.x + parent.position.width / 2
-    )
-
-        child_center_x = (
-        child.position.x + child.position.width / 2
-    )
-
-    # Same vertical column
-        same_column = abs(
-            parent_center_x - child_center_x
-    ) < 100000
-
-    # Child below parent
+    def _is_hierarchy(parent: DocumentElementModel,child: DocumentElementModel,) -> bool:
+        parent_center_x = (parent.position.x + parent.position.width / 2)
+        child_center_x = (child.position.x + child.position.width / 2)
+        # Same vertical column
+        same_column = abs(parent_center_x - child_center_x) < 100000
+        # Child below parent
         below_parent = child.position.y > parent.position.y
 
         return same_column and below_parent

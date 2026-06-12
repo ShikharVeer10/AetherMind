@@ -28,15 +28,12 @@ class DocumentStructureService:
         is_consulting = False
 
         for slide in doc.slides:
-            intent = "findings"  # default fallback
-            
-            # 1. Determine slide intent from image understanding or semantic flow
+            intent = "findings"  
             if slide.image_understanding and slide.image_understanding.slide_intent:
                 intent = slide.image_understanding.slide_intent
             elif slide.semantic_flow and slide.semantic_flow.slide_intent:
                 intent = slide.semantic_flow.slide_intent
             else:
-                # Rule-based fallback
                 if slide.flowchart and slide.flowchart.is_flowchart:
                     intent = "process_flow"
                 elif slide.layout_structure and slide.layout_structure.layout_type == "title_slide":
@@ -66,8 +63,6 @@ class DocumentStructureService:
                 recommendation_slides.append(slide_no)
             elif intent == "appendix":
                 appendix_slides.append(slide_no)
-
-            # Check content keywords for overall classification
             content_text = ""
             if slide.title:
                 content_text += slide.title + " "
@@ -82,8 +77,6 @@ class DocumentStructureService:
                 is_research = True
             if any(w in content_lower for w in ("recommendation", "roadmap", "strategy", "deliverable", "proposal")):
                 is_consulting = True
-
-        # Group contiguous slides into sections
         sections = []
         current_section_name = None
         current_start = 1
@@ -101,16 +94,12 @@ class DocumentStructureService:
                 })
                 current_section_name = sec_name
                 current_start = idx
-                
-        # Append the final section
         if current_section_name:
             sections.append({
                 "section_name": current_section_name,
                 "slide_range": [current_start, len(doc.slides)],
                 "description": f"This section covers {current_section_name.lower()}."
             })
-
-        # Determine overall document role
         doc_role = "Enterprise Presentation"
         if is_financial:
             doc_role = "Financial Audit Report"
@@ -118,8 +107,6 @@ class DocumentStructureService:
             doc_role = "Consulting Report"
         elif is_research:
             doc_role = "Research Paper / Report"
-
-        # Build narrative flow
         narrative_parts = [f"This document is classified as a {doc_role} consisting of {len(doc.slides)} slides."]
         for sec in sections:
             r = sec["slide_range"]

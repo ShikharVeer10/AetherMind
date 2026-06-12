@@ -1,9 +1,3 @@
-"""
-Programmatic Slide Summarization Agent.
-No Gemini, OpenAI, Groq, or external LLM dependencies.
-"""
-
-
 class SummarizationAgent:
 
     system_prompt = (

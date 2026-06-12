@@ -14,6 +14,11 @@ from models.document_model import (
     RunModel,
 )
 from services.table_service import TableService
+from models.document_model import (
+    ChartUnderstandingModel,
+    ChartSeriesModel,
+    ChartAxisModel,
+)
 
 
 class PPTExtractor:
@@ -296,8 +301,12 @@ class PPTExtractor:
         if element_type == "table":
             raw_table_content = self.extract_table_as_list(shape)
             raw_table_styles = self._extract_table_styles(shape)
+            table_md = self.extract_table_as_markdown(shape)
+            # Ensure text attribute contains the table markdown for verbatim extraction
+            full_text = table_md
+        else:
+            table_md = self.extract_table_as_markdown(shape)
 
-        table_md = self.extract_table_as_markdown(shape)
         table_structure = self.table_service.analyze_structure(raw_table_content)
         table_semantic_interpretation = self.table_service.generate_semantic_context(raw_table_content)
         table_render_model = self.table_service.build_render_model(raw_table_content, table_structure)

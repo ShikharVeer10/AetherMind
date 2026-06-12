@@ -209,7 +209,7 @@ class FlexibleTableDetector:
                 # Sort elements within a cell by their visual position (reading order within cell)
                 cell_elements.sort(key=lambda x: (x.position.y, x.position.x))
                 
-                text = " ".join([elem.text.strip() for elem in cell_elements if elem.text])
+                text = "\n".join([elem.text.strip() for elem in cell_elements if elem.text])
                 row_vals.append(text)
                 
                 # Capture visual metadata from the primary element in the cell

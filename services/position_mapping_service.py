@@ -1,6 +1,3 @@
-"""
-Builds a position map for all elements on a slide.
-"""
 from typing import List
 from models.document_model import DocumentElementModel, PositionMapModel
 class PositionMappingService:

@@ -10,8 +10,7 @@ from pathlib import Path
 from services.extraction_service import ExtractionService
 
 # Specified pages from the user request
-# Page 24 to 32 and Page 35 to 43
-TARGET_PAGES = list(range(24, 33)) + list(range(35, 44))
+TARGET_PAGES = [7, 8, 10, 11, 12, 13, 24, 25, 26, 27, 28, 29, 30, 31, 32, 35, 36, 37, 38, 39, 40, 41, 42, 43, 108, 109]
 
 async def run_targeted_extraction():
     pdf_path = r"C:\Users\shikh\Downloads\NMSU-Recommendations-Report-Final.pdf"

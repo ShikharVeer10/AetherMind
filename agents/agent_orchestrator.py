@@ -1,8 +1,6 @@
 """
 Multi-agent orchestrator that runs extraction tasks in the required order.
-Each task is owned by a dedicated agent with an explicit system prompt.
 """
-
 from typing import Optional
 from models.document_model import FlowchartModel
 
@@ -68,12 +66,9 @@ class AgentOrchestrator:
         """
         Run all extraction phases on a single slide and return the
         enriched SlideModel.
-
         Parameters:
             slide_model:  The SlideModel already populated with elements
                           by PPTExtractor.
-            raw_slide:    The raw python-pptx slide object (needed for
-                          header/footer placeholder access).
         """
         if slide_model.title:
             self.last_slide_title = slide_model.title
@@ -128,10 +123,6 @@ class AgentOrchestrator:
             reading_order_labels=[],
             process_summary=None,
         )
-
-       
-
-        # 9) Image understanding and depiction
         print("    [Orchestrator] Step 9: Image summaries...")
         image_summary_text = await self._run_image_summaries(slide_model)
 
@@ -156,14 +147,10 @@ class AgentOrchestrator:
             relationships=relationships or [],
             diagram_understanding=diagram_understanding
         )
-
-        # 10.5) Visual Object Classification
         print("    [Orchestrator] Step 10.5: Visual Object Classification...")
         from services.visual_object_classifier_service import VisualObjectClassifierService
         visual_classifier = VisualObjectClassifierService()
         visual_classifier.classify_elements(slide_model.elements)
-
-        # 10.6) Chart Detection and Understanding
         print("    [Orchestrator] Step 10.6: Chart Detection and Understanding...")
         from services.chart_detection_service import ChartDetectionService
         from services.chart_understanding_service import ChartUnderstandingService
@@ -185,7 +172,6 @@ class AgentOrchestrator:
                 slide_model.chart_understandings.append(chart_info)
                 element.metadata["chart_reconstruction"] = chart_reconstructor.build_reconstruction_data(chart_info)
 
-        # 11) Table extraction (markdown)
         print("    [Orchestrator] Step 11: Table extraction and semantics...")
         table_markdowns = self.table_agent.run(slide_model)
         
@@ -203,13 +189,10 @@ class AgentOrchestrator:
                 element.table_semantics = table_sem_service.analyze_table_semantics(element)
                 element.table_reconstruction = advanced_table_service.analyze_table(element)
 
-        # 11.5) Universal Structural Understanding
         print("    [Orchestrator] Step 11.5: Universal Structural Understanding...")
         from services.structural_understanding_service import UniversalStructuralUnderstandingService
         struct_service = UniversalStructuralUnderstandingService()
         slide_model = struct_service.analyze_slide(slide_model)
-
-        # Final assembly
         print("    [Orchestrator] Final assembly...")
         slide_model.header_footer = header_footer or HeaderFooterModel()
         slide_model.visual_inventory = visual_inventory or VisualInventoryModel()
@@ -220,7 +203,6 @@ class AgentOrchestrator:
         slide_model.diagram_understanding = diagram_understanding
         slide_model.flowchart = flowchart
 
-        # 12) Semantic flow, image understanding, and reconstruction
         print("    [Orchestrator] Step 12: Semantic services...")
         from services.image_understanding_service import ImageUnderstandingService
         from services.imagereconstruction_service import ImageReconstructionService
@@ -232,8 +214,6 @@ class AgentOrchestrator:
 
         img_rec_service = ImageReconstructionService()
         slide_model.image_reconstruction = img_rec_service.analyze_slide(slide_model)
-
-        # Run Semantic Region Detection Service
         sem_region_service = SemanticRegionDetectionService()
         slide_model.semantic_regions = sem_region_service.detect_regions(slide_model)
 
@@ -258,20 +238,15 @@ class AgentOrchestrator:
             slide_model.slide_summary = SemanticFlowService().format_structured_output(
                 slide_model.semantic_flow
             )
-            # Transfer LLM-derived semantics to SlideModel (Universal Structural Understanding)
             slide_model.business_message = slide_model.semantic_flow.overall_flow
             slide_model.communication_intent = slide_model.semantic_flow.slide_intent
             slide_model.reading_order = slide_model.semantic_flow.reading_order
-            
-            # HIGH ACCURACY OVERRIDE: If LLM identified a specific archetype, trust it over heuristics
             if slide_model.semantic_flow.slide_archetype:
                 from models.document_model import SlideArchetypeModel
                 slide_model.slide_archetype = SlideArchetypeModel(
                     slide_archetype=slide_model.semantic_flow.slide_archetype,
                     confidence=0.95  # LLM reasoning is high confidence
                 )
-
-            # Map framework-specific data from LLM reasoning
             if slide_model.semantic_flow.capability_map_data:
                 from models.document_model import CapabilityMapModel
                 slide_model.capability_map = CapabilityMapModel(**slide_model.semantic_flow.capability_map_data)
@@ -288,13 +263,11 @@ class AgentOrchestrator:
                 from models.document_model import DashboardModel
                 slide_model.dashboard = DashboardModel(**slide_model.semantic_flow.dashboard_data)
 
-            # Table Intelligence Refinement
             if slide_model.semantic_flow.table_intelligence:
                 for llm_table in slide_model.semantic_flow.table_intelligence:
                     tid = llm_table.get("table_id")
                     for element in slide_model.elements:
                         if element.element_id == tid and element.table_reconstruction:
-                            # Update with LLM-derived structural insights (merged cells, etc.)
                             if "merged_cells" in llm_table:
                                 element.table_reconstruction.merged_cells = llm_table["merged_cells"]
                             if "nested_headers" in llm_table:
@@ -308,8 +281,6 @@ class AgentOrchestrator:
                     secondary_focus=[vh.get("secondary_focus")] if vh.get("secondary_focus") else [],
                     tertiary_focus=[vh.get("tertiary_focus")] if vh.get("tertiary_focus") else []
                 )
-
-        # 12.5) Slide summary (fallback if semantic flow did not produce structured output)
         print("    [Orchestrator] Step 12.5: Slide summary generation...")
         if not slide_model.slide_summary:
             slide_summary = await self._run_slide_summary(
@@ -328,8 +299,6 @@ class AgentOrchestrator:
         recon_service = SlideReconstructionService()    
         recon_context = recon_service.build_context(slide_model,presentation_metadata=self.presentation_metadata)
         slide_model.slide_reconstruction_context = recon_context
-        
-        # Ensure top-level fields are populated if they weren't by semantic_flow
         if not slide_model.business_message:
             slide_model.business_message = recon_context.business_message
         if not slide_model.communication_intent:
@@ -344,8 +313,6 @@ class AgentOrchestrator:
     async def _run_image_summaries(self, slide_model: SlideModel) -> Optional[str]:
         if not self.image_summarization_agent:
             return ""
-
-        # Extract all text from slide to use as context
         text_lines = []
         if getattr(slide_model, "text_points", None):
             for p in slide_model.text_points:

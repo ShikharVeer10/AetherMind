@@ -1,15 +1,9 @@
-"""
-Chart Reconstruction Service
-Converts ChartUnderstanding into prompt/data for another LLM to recreate the chart.
-"""
 
 from models.document_model import ChartUnderstandingModel
 
 class ChartReconstructionService:
     def build_reconstruction_data(self, understanding: ChartUnderstandingModel) -> dict:
-        """
-        Outputs semantic chart reconstruction data.
-        """
+
         if not understanding:
             return {}
             

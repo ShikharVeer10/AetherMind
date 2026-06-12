@@ -69,8 +69,7 @@ class SlideReconstructionService:
         slide.communication_intent = ctx.communication_intent
         slide.slide_purpose = ctx.purpose
         slide.functional_equivalence_requirements = ctx.functional_equivalence_requirements
-        
-        # Improved Visual Hierarchy for SlideModel
+
         from models.document_model import VisualHierarchyModel
         slide.visual_hierarchy = VisualHierarchyModel(
             primary_focus=[ctx.primary_focus] if ctx.primary_focus else [],

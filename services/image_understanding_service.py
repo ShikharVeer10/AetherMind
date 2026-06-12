@@ -4,10 +4,7 @@ from models.document_model import VisualDesignModel
 
 
 class ImageUnderstandingService:
-    def analyze_slide(
-        self,
-        slide: SlideModel
-    ) -> ImageUnderstandingModel:
+    def analyze_slide(self,slide: SlideModel) -> ImageUnderstandingModel:
         image_understanding = ImageUnderstandingModel()
         image_understanding.image_type = self._detect_image_type(slide)
         image_understanding.scene_description = (self._build_scene_description(slide))
@@ -150,10 +147,7 @@ class ImageUnderstandingService:
 
         return "The slide presents information through visual and textual elements."
 
-    def _build_visual_design(
-        self,
-        slide: SlideModel
-    ) -> VisualDesignModel:
+    def _build_visual_design(self,slide: SlideModel) -> VisualDesignModel:
         design = VisualDesignModel()
         design.background_style = (
             "presentation"
@@ -171,56 +165,27 @@ class ImageUnderstandingService:
 
         return design
 
-    def _extract_colors(
-        self,
-        slide: SlideModel
-    ) -> list[str]:
-
+    def _extract_colors(self,slide: SlideModel) -> list[str]:
         colors = set()
-
         for element in slide.elements:
 
-            if (
-                element.style
-                and
-                element.style.background_color
-            ):
-                colors.add(
-                    element.style.background_color
-                )
-            if (
-                element.style
-                and
-                element.style.text_color
-            ):
-                colors.add(
-                    element.style.text_color
-                )
+            if (element.style and element.style.background_color):
+                colors.add(element.style.background_color)
+            if (element.style and element.style.text_color):
+                colors.add(element.style.text_color)
         return list(colors)
 
-    def _extract_visual_elements(
-        self,
-        slide: SlideModel
-    ) -> list[str]:
+    def _extract_visual_elements(self,slide: SlideModel) -> list[str]:
         visual_elements = []
         for element in slide.elements:
-            visual_elements.append(
-                element.element_type
-            )
+            visual_elements.append(element.element_type)
+        return list(set(visual_elements))
 
-        return list(
-            set(visual_elements)
-        )
-
-    def _build_recreation_prompt(
-        self,
-        slide: SlideModel
-    ) -> str:
+    def _build_recreation_prompt(self,slide: SlideModel) -> str:
         if slide.semantic_flow and slide.semantic_flow.image_generation_prompt:
             return slide.semantic_flow.image_generation_prompt
 
         from services.semantic_flow_service import SemanticFlowService
-
         return SemanticFlowService().analyze_slide(slide).image_generation_prompt
 
     def _populate_reconstruction_fields(self, slide: SlideModel, image_understanding: ImageUnderstandingModel):

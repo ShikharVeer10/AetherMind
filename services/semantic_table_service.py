@@ -5,70 +5,41 @@ from models.document_model import TableSemanticsModel
 class SemanticTableService:
 
     def analyze_table_semantics(self, table_element: Any) -> TableSemanticsModel:
-        """
-        Analyzes a table element to extract semantic structure.
-        In a real implementation, this would involve complex logic to identify
-        headers and groups based on styles, merged cells, and content.
-        """
         semantics = TableSemanticsModel()
-        
         if not hasattr(table_element, "raw_table_content") or not table_element.raw_table_content:
             return semantics
-
         raw_content = table_element.raw_table_content
         if not raw_content:
             return semantics
-
-        # Basic heuristic: First row is headers
         if len(raw_content) > 0:
             semantics.headers = [str(c) for c in raw_content[0]]
-
-        # Basic heuristic: Second row might be sub-headers if it exists
         if len(raw_content) > 1:
-            # Simple check for sub-headers: if many cells are empty or similar
             semantics.sub_headers = [str(c) for c in raw_content[1]]
-
-        # Map merged cells if available in metadata
         if hasattr(table_element, "table_merged_cells") and table_element.table_merged_cells:
             semantics.merged_cells = table_element.table_merged_cells
 
         return semantics
 
-    def build_table_json(
-        self,
-        table_cells: List[Dict],
-        table_bbox: Dict
-    ) -> Dict:
-
+    def build_table_json(self, table_cells: List[Dict], table_bbox: Dict) -> Dict:
         rows = {}
         cols = {}
 
         for cell in table_cells:
-
             row = cell["row"]
             col = cell["col"]
-
             rows[row] = True
             cols[col] = True
 
         return {
             "table_type": "semantic_table",
-
             "bbox": table_bbox,
-
             "row_count": len(rows),
             "column_count": len(cols),
-
             "cells": table_cells
         }
 
-    def analyze_visual_table(
-    self,
-    visual_table
-    ):
-
+    def analyze_visual_table(self, visual_table):
         rows = visual_table["rows"]
-
         return {
             "summary":
                 f"{len(rows)} rows detected",

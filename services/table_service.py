@@ -26,7 +26,7 @@ class TableService:
             return ""
 
         escaped = [
-            [str(cell).replace("\n", " ").replace("|", "\\|") for cell in row]
+            [str(cell).replace("\n", "<br>").replace("|", "\\|") for cell in row]
             for row in table_data
         ]
 

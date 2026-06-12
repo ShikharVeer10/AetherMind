@@ -1,39 +1,23 @@
 from collections import defaultdict
 import fitz
-
-
 class LayoutStructureService:
-
     def extract_layout_regions(self, page):
-
         drawings = page.get_drawings()
         text_dict = page.get_text("dict")
-
         horizontal_lines = []
         vertical_lines = []
-
         for drawing in drawings:
-
             for item in drawing["items"]:
-
                 if item[0] != "l":
                     continue
-
                 p1 = item[1]
                 p2 = item[2]
-
                 x1, y1 = p1.x, p1.y
                 x2, y2 = p2.x, p2.y
-
                 if abs(y1 - y2) < 2:
-                    horizontal_lines.append(
-                        (x1, y1, x2, y2)
-                    )
-
+                    horizontal_lines.append((x1, y1, x2, y2))
                 elif abs(x1 - x2) < 2:
-                    vertical_lines.append(
-                        (x1, y1, x2, y2)
-                    )
+                    vertical_lines.append((x1, y1, x2, y2))
 
         text_blocks = []
 

@@ -1,11 +1,3 @@
-"""
-Analyses the spatial layout of elements on a slide to determine:
-    - Layout type (title_slide, single_column, two_column, flowchart, etc.)
-    - Named spatial regions (header, body-left, body-right, footer)
-
-Uses the slide dimensions (in EMUs) for normalisation.
-"""
-
 from typing import List
 from models.document_model import (
     DocumentElementModel,
@@ -25,19 +17,11 @@ _LEFT_RIGHT_SPLIT = 0.50
 
 class LayoutAnalysisService:
 
-    def __init__(
-        self,
-        slide_width: float = _SLIDE_WIDTH,
-        slide_height: float = _SLIDE_HEIGHT,
-    ):
+    def __init__(self,slide_width: float = _SLIDE_WIDTH,slide_height: float = _SLIDE_HEIGHT):
         self.slide_width = slide_width
         self.slide_height = slide_height
 
-    def analyse(
-        self,
-        elements: List[DocumentElementModel],
-        flowchart: FlowchartModel,
-    ) -> LayoutStructureModel:
+    def analyse(self,elements: List[DocumentElementModel],flowchart: FlowchartModel,) -> LayoutStructureModel:
         """
         Classify layout type and segment elements into named regions.
         """
@@ -119,21 +103,16 @@ class LayoutAnalysisService:
     ) -> str:
         text_elements = [e for e in elements if e.text]
 
-        # Flowchart takes priority if detected
         if flowchart.is_flowchart:
             return "flowchart"
-
-        # Title slide: ≤ 2 text elements, no tables, no images
         has_tables = any(e.element_type == "table" for e in elements)
         has_images = any(e.element_type == "image" for e in elements)
         if len(text_elements) <= 2 and not has_tables and not has_images:
             return "title_slide"
 
-        # Two-column: both sides have content
         if left_body_ids and right_body_ids:
             return "two_column"
 
-        # Diagram: mostly images/shapes with few text items
         shape_or_image = [
             e for e in elements
             if e.element_type in ("image", "shape", "chart")

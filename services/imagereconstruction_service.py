@@ -4,97 +4,48 @@ from models.document_model import SlideModel
 
 class ImageReconstructionService:
 
-    def analyze_slide(
-        self,
-        slide: SlideModel
-    ) -> ImageReconstructionModel:
-
+    def analyze_slide(self,slide: SlideModel) -> ImageReconstructionModel:
         reconstruction = ImageReconstructionModel()
+        reconstruction.layout_description = (self._build_layout_description(slide))
 
-        reconstruction.layout_description = (
-            self._build_layout_description(slide)
-        )
+        reconstruction.color_palette = (self._extract_color_palette(slide))
 
-        reconstruction.color_palette = (
-            self._extract_color_palette(slide)
-        )
+        reconstruction.object_location = (self._extract_object_locations(slide))
 
-        reconstruction.object_location = (
-            self._extract_object_locations(slide)
-        )
+        reconstruction.connector_layout = (self._extract_connector_layout(slide))
 
-        reconstruction.connector_layout = (
-            self._extract_connector_layout(slide)
-        )
+        reconstruction.object_inventory = (self._extract_object_inventory(slide))
 
-        reconstruction.object_inventory = (
-            self._extract_object_inventory(slide)
-        )
+        reconstruction.visual_hierarchy = (self._build_visual_hierarchy(slide))
 
-        reconstruction.visual_hierarchy = (
-            self._build_visual_hierarchy(slide)
-        )
+        reconstruction.layout_regions = (self._extract_layout_regions(slide))
 
-        reconstruction.layout_regions = (
-            self._extract_layout_regions(slide)
-        )
+        reconstruction.design_style = (self._detect_design_style(slide))
 
-        reconstruction.design_style = (
-            self._detect_design_style(slide)
-        )
-
-        reconstruction.recreation_prompt = (
-            self._build_recreation_prompt(slide)
-        )
+        reconstruction.recreation_prompt = (self._build_recreation_prompt(slide))
 
         return reconstruction
 
-    def _build_layout_description(
-        self,
-        slide: SlideModel
-    ) -> str:
+    def _build_layout_description(self,slide: SlideModel) -> str:
 
         if slide.layout_structure:
-            return (
-                f"Layout type is "
-                f"{slide.layout_structure.layout_type}"
-            )
+            return (f"Layout type is {slide.layout_structure.layout_type}")
 
         return "Mixed presentation layout"
 
-    def _extract_color_palette(
-        self,
-        slide: SlideModel
-    ) -> list[str]:
-
+    def _extract_color_palette(self,slide: SlideModel) -> list[str]:
         colors = set()
-
         for element in slide.elements:
 
-            if (
-                element.style
-                and
-                element.style.background_color
-            ):
-                colors.add(
-                    element.style.background_color
-                )
+            if (element.style and element.style.background_color):
+                colors.add(element.style.background_color)
 
-            if (
-                element.style
-                and
-                element.style.text_color
-            ):
-                colors.add(
-                    element.style.text_color
-                )
+            if (element.style and element.style.text_color):
+                colors.add(element.style.text_color)
 
         return list(colors)
 
-    def _extract_object_locations(
-        self,
-        slide: SlideModel
-    ) -> list[str]:
+    def _extract_object_locations(self,slide: SlideModel) -> list[str]:
 
         locations = []
         width = 12192000.0
@@ -122,10 +73,7 @@ class ImageReconstructionService:
 
         return locations
 
-    def _extract_connector_layout(
-        self,
-        slide: SlideModel
-    ) -> list[str]:
+    def _extract_connector_layout(self,slide: SlideModel) -> list[str]:
 
         connectors = []
 
@@ -160,17 +108,12 @@ class ImageReconstructionService:
 
         if slide.title:
 
-            hierarchy.append(
-                f"Primary Title: {slide.title}"
-            )
+            hierarchy.append(f"Primary Title: {slide.title}")
 
         for element in slide.elements:
 
             if element.text:
-
-                hierarchy.append(
-                    f"Content: {element.text}"
-                )
+                hierarchy.append(f"Content: {element.text}")
 
         return hierarchy
 
@@ -191,18 +134,10 @@ class ImageReconstructionService:
 
     def _detect_design_style(self,slide: SlideModel) -> str:
 
-        if (
-            slide.flowchart
-            and
-            slide.flowchart.is_flowchart
-        ):
+        if (slide.flowchart and slide.flowchart.is_flowchart):
             return "flowchart"
 
-        if (
-            slide.diagram_understanding
-            and
-            slide.diagram_understanding.is_diagram
-        ):
+        if (slide.diagram_understanding and slide.diagram_understanding.is_diagram):
             return "diagram"
 
         return "presentation"
